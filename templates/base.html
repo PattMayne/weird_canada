@@ -1,0 +1,77 @@
+	{% load staticfiles %}
+<!DOCTYPE HTML>
+
+
+
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static "css/foundation.css" %}" media="screen" />
+  <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}" media="screen" />
+  
+  <script src="{% static "js/vendor/jquery.js" %}"></script>
+  <script src="{% static "js/vendor/modernizr.js" %}"></script>
+  
+	<link href='http://fonts.googleapis.com/css?family=News+Cycle|Jura:600' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+
+
+
+  <!-- nav bar -->
+  <div class="full-width navigation-area">
+	<nav class="top-bar" data-topbar role="navigation">
+		<ul class="title-area">
+			
+			<li class="name">
+				<div>
+					
+					<h1><a href="#">Weird Canada</a></h1>
+				</div>
+			</li> <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+			<li class="toggle-topbar menu-icon">
+				<a href="#"><span>Menu</span></a>
+			</li>
+		</ul>
+		<section class="top-bar-section">
+			<!-- Right Nav Section -->
+			<ul class="right" class="active">
+				<li>
+					<a href="#">VIEW POSTS</a>
+				</li>
+				<li>
+					<a href="#/">VIEW WORKS</a>
+				</li>
+				<li>
+					<a href="#">ADD POST</a>
+				</li>
+				<li>
+					<a href="#">ADD WORK</a>
+				</li>
+				<li>
+					<a href="#">SIGN IN/OUT</a>
+				</li>
+			</ul> <!-- Left Nav Section -->
+		</section>
+	</nav>
+</div>
+	<!-- end of nav bar -->
+	
+	{% block content %}
+	
+	{% endblock %}
+	  
+
+  <script src="{% static "js/foundation.min.js" %}"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  
+  
+</body>
+
+</html>
