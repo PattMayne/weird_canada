@@ -33,7 +33,7 @@ class Artist(models.Model):
     birthdate = models.DateField(null=True, blank=True)
     deathdate = models.DateField(null=True, blank=True)
     group = models.BooleanField(default=False)
-    members = models.ManyToManyField('self', null=True, blank=True)
+    members = models.ManyToManyField('self')
     link = models.ForeignKey(URL)
 
     class Meta:
