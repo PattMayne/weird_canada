@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'indie_db',
+    'blog'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,9 +60,14 @@ WSGI_APPLICATION = 'weird_canada.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'wc_db',
+        'USER': 'pattmayne',
+        'PASSWORD': '/`%!>"nkCM5D',
+        'HOST': 'localhost',
+        'PORT': '23746',
     }
+
 }
 
 # Internationalization
