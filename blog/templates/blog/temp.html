@@ -12,6 +12,7 @@
 			<div class="row">
 				<h2>Enter New Work of Art</h2>
 				<form method="post" action="">
+					{% csrf_token %}
 					{{ author_form }}
 				</form>
 			</div>
