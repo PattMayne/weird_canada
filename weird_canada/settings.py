@@ -97,3 +97,7 @@ STATICFILES_DIRS = (
 
 )
 '''
+
+
+MEDIA_ROOT = '/home/pattmayne/webapps/limbs_008/weird_canada/media/'
+MEDIA_URL = '/media/'
