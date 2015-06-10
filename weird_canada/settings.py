@@ -90,7 +90,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = "/home/pattmayne/webapps/limbs_008/weird_canada/static/"
 '''
 STATICFILES_DIRS = (
     "/home/pattmayne/webapps/limbs_008/weird_canada/static/",
