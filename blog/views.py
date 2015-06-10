@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 #These three defs are for LIST pages, with ALL the albums, producers, or artists
 def test(request):
-    return render(request, 'blog/test.html', {})
+    return render(request, 'blog/temp.html', {})
