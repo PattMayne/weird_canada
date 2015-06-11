@@ -34,7 +34,7 @@ class Artist(models.Model):
     deathdate = models.DateField(null=True, blank=True)
     group = models.BooleanField(default=False)
     members = models.ManyToManyField('self')
-    link = models.ForeignKey(URL)
+    website = models.ForeignKey(URL)
 
     class Meta:
         ordering = ['name']
@@ -51,7 +51,7 @@ class Contributor(models.Model):
 
 class ProductionCompany(models.Model):
     name = models.CharField(max_length=200)
-    link = models.ForeignKey(URL)
+    website = models.ForeignKey(URL)
 
     def __str__(self):
         return self.name
@@ -62,7 +62,7 @@ class ProductionCompany(models.Model):
 
 
 class Work(models.Model):
-    kind = models.CharField(max_length=200)
+    category = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     extra_data = models.TextField(null=True, blank=True)
@@ -71,7 +71,7 @@ class Work(models.Model):
     production_company = models.ForeignKey(ProductionCompany, blank=True, null=True)
     self_published = models.BooleanField(default=False)
     creator = models.ForeignKey(Artist)
-    link = models.ForeignKey(URL)
+    website = models.ForeignKey(URL)
     styles = models.CharField(max_length=200)
     contributors = models.ManyToManyField(Contributor)
 

@@ -37,3 +37,14 @@ class BlogEntryForm(ModelForm):
             'publish': CheckboxInput(attrs={'label': 'Publish Now?', 'required': False}),
             'body_fr': Textarea(attrs={'placeholder': 'Article Français', 'required': False})
         }
+
+    def save(self, commit=True):
+        entry = super(BlogEntryForm, self).save(commit=True)
+        entry.title = self.cleaned_data['title']
+        entry.body_en = self.cleaned_data['body_en']
+        entry.body_fr = self.cleaned_data['body_fr']
+        entry.publish = self.cleaned_data['publish']
+        entry.save()
+        return entry
+
+
