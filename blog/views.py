@@ -18,7 +18,7 @@ def test(request):
 
 def write_new_artist(request):
     artist_form = AddArtistForm
-    return render(request, 'blog/temp.html', {'artist_form': artist_form})
+    return render(request, 'blog/write_new_artist.html', {'artist_form': artist_form})
 
 
 def save_new_artist(request):
