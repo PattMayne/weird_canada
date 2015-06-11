@@ -1,3 +1,29 @@
+
+/*
+    Custom CSS
+*/
+
+::-webkit-input-placeholder {
+   color: #333333;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #333333;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #333333;  
+}
+
+:-ms-input-placeholder {  
+   color: #333333;  
+}
+
+
+/*
+    Foundation Vanilla
+*/
+
 meta.foundation-version {
   font-family: "/5.5.2/"; }
 
