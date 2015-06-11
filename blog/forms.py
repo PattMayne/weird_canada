@@ -10,10 +10,10 @@ class AddAuthorForm(ModelForm):
         fields = ('authorname', 'tagline', 'description', 'website')
 
         widgets = {
-                'authorname': TextInput(attrs={'placeholder': 'Author Name', 'required': True}),
-                'tagline': TextInput(attrs={'placeholder': 'Tagline (From the SOMETHING of...)', 'required': True}),
-                'description': Textarea(attrs={'required': True}),
-                'website': TextInput(attrs={'required': False})
+                'authorname': TextInput(attrs={'placeholder': 'Enter Name', 'required': True}),
+                'tagline': TextInput(attrs={'placeholder': 'From the SOMETHING of...', 'required': True}),
+                'description': Textarea(attrs={'required': True, 'placeholder': 'Enter Description'}),
+                'website': TextInput(attrs={'required': False, 'placeholder': 'Enter Full URL'})
             }
 
     def save(self, commit=True):
@@ -25,27 +25,3 @@ class AddAuthorForm(ModelForm):
         author.save()
         return author
 
-'''
-
-class AddAuthorForm(ModelForm):
-    class Meta:
-        model = Author
-        fields = ('authorname', 'tagline', 'description', 'website')
-
-    widgets = {
-            'authorname': TextInput(attrs={'placeholder': 'Author Name', 'required': True}),
-            'tagline': TextInput(attrs={'placeholder': 'Tagline (From the SOMETHING of...)', 'required': True}),
-            'description': Textarea(attrs={'required': True}),
-            'website': TextInput(attrs={'required': False})
-        }
-
-    def save(self, commit=True):
-        author = super(AddAuthorForm, self).save(commit=True)
-        author.authorname = self.cleaned_data['authorname']
-        author.tagline = self.cleaned_data['tagline']
-        author.description = self.cleaned_data['description']
-        author.website = self.cleaned_data['website']
-        author.save()
-        return author
-
-'''
