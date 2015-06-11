@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from blog.forms import AddAuthorForm, BlogEntryForm
 from indie_db.forms import AddArtistForm, AddWorkForm
+from indie_db.models import Artist, Work
 
 # Create your views here.
 
@@ -37,6 +38,14 @@ def save_new_artist(request):
 
 def view_artist(request):
     if request.method == 'POST':
-        if artist in request.POST:
-            artist_id = request.POST.get('artist')
+        if 'artist' in request.POST:
+            artist = Artist.objects.filter(name=request.POST.get('artist'))[0]
             return render(request, 'blog/view_artist.html', {'artist': artist})
+
+
+def view_work(request):
+    author_form = AddAuthorForm
+    entry_form = BlogEntryForm
+    artist_form = AddArtistForm
+    work_form = AddWorkForm
+    return render(request, 'blog/temp.html', {'author_form': author_form, 'entry_form': entry_form, 'work_form': work_form, 'artist_form': artist_form})
