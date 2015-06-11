@@ -7,19 +7,19 @@ from blog.models import Entry, Tag, Author
 class AddArtistForm(ModelForm):
     class Meta:
         model = Artist
-        fields = ('name', 'website', 'description')
+        fields = ('name', 'description')
 
         widgets = {
             'name': TextInput(attrs={'placeholder': 'Enter Artist Name', 'required': True}),
             'description': Textarea(attrs={'required': True, 'placeholder': 'Enter Artist Description'}),
-            'website': TextInput(attrs={'required': False, 'placeholder': 'Enter Full Website URL'})
+            #'website': TextInput(attrs={'required': False, 'placeholder': 'Enter Full Website URL'})
             }
 
     def save(self, commit=True):
         artist = super(AddArtistForm, self).save(commit=True)
         artist.name = self.cleaned_data['name']
         artist.description = self.cleaned_data['description']
-        artist.website = self.cleaned_data['website']
+        #artist.website = self.cleaned_data['website']
         artist.save()
         return artist
 
