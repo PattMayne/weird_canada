@@ -34,7 +34,7 @@ class Artist(models.Model):
     deathdate = models.DateField(null=True, blank=True)
     group = models.BooleanField(default=False)
     members = models.ManyToManyField('self')
-    website = models.ForeignKey(URL)
+    website = models.ForeignKey(URL, null=True, blank=True)
 
     class Meta:
         ordering = ['name']
