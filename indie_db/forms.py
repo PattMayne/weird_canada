@@ -1,5 +1,6 @@
 from django import forms
-from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput
+from django.utils.translation import ugettext_lazy as _
+from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField
 from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany
 from blog.models import Entry, Tag, Author
 
@@ -7,19 +8,28 @@ from blog.models import Entry, Tag, Author
 class AddArtistForm(ModelForm):
     class Meta:
         model = Artist
-        fields = ('name', 'description')
+        fields = ('name', 'description', 'birthdate', 'deathdate', 'group')
+
+        labels = {
+            'name': _('Name'),
+            'birthdate': _('Birth or Formed Date'),
+            'deathdate': _('Death or Disbanded Date'),
+            'group': _('Group?'),
+            'description': _('Description'),
+            }
 
         widgets = {
             'name': TextInput(attrs={'placeholder': 'Enter Artist Name', 'required': True}),
+            'birthdate': DateField(attrs={'required': False}),
+            'deathdate': DateField(attrs={'required': False}),
+            'group': CheckboxInput(attrs={'required': False}),
             'description': Textarea(attrs={'required': True, 'placeholder': 'Enter Artist Description'}),
-            #'website': TextInput(attrs={'required': False, 'placeholder': 'Enter Full Website URL'})
             }
 
     def save(self, commit=True):
         artist = super(AddArtistForm, self).save(commit=True)
         artist.name = self.cleaned_data['name']
         artist.description = self.cleaned_data['description']
-        #artist.website = self.cleaned_data['website']
         artist.save()
         return artist
 
