@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}View Artist {% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="panel">
+		<h2>{{ artist.name }}</h2>
+		<br>
+		<p>
+			{{ artist.description }}
+		</p>
+
+	</div>
+</div>
+
+
+{% endblock %}
