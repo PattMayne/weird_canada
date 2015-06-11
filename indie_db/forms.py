@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField
+from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput
 from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany
 from blog.models import Entry, Tag, Author
 
@@ -20,8 +20,8 @@ class AddArtistForm(ModelForm):
 
         widgets = {
             'name': TextInput(attrs={'placeholder': 'Enter Artist Name', 'required': True}),
-            #'birthdate': DateField(attrs={'required': False}),
-            #'deathdate': DateField(attrs={'required': False}),
+            'birthdate': DateInput(attrs={'required': False}),
+            'deathdate': DateInput(attrs={'required': False}),
             'group': CheckboxInput(attrs={'required': False}),
             'description': Textarea(attrs={'required': True, 'placeholder': 'Enter Artist Description'}),
             }
