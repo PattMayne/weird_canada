@@ -4,19 +4,19 @@
 */
 
 ::-webkit-input-placeholder {
-   color: #333333;
+   color: #222222!important;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #333333;  
+   color: #222222!important;  
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #333333;  
+   color: #222222!important;  
 }
 
 :-ms-input-placeholder {  
-   color: #333333;  
+   color: #222222!important;  
 }
 
 
