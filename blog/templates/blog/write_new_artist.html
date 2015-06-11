@@ -11,8 +11,14 @@
 		<form method="post" action="/wc_admin/save_new_artist">
 			{% csrf_token %}
 			{{ artist_form }}
+
+			
+
+			<br>
 			<input type="submit" class="button small" value="SAVE">
 		</form>
+
+		<p>Date: <input type="text" id="datepicker"></p>
 	</div>
 </div>
 
