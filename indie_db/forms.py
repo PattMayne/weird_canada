@@ -20,8 +20,8 @@ class AddArtistForm(ModelForm):
 
         widgets = {
             'name': TextInput(attrs={'placeholder': 'Enter Artist Name', 'required': True}),
-            'birthdate': DateField(attrs={'required': False}),
-            'deathdate': DateField(attrs={'required': False}),
+            #'birthdate': DateField(attrs={'required': False}),
+            #'deathdate': DateField(attrs={'required': False}),
             'group': CheckboxInput(attrs={'required': False}),
             'description': Textarea(attrs={'required': True, 'placeholder': 'Enter Artist Description'}),
             }
