@@ -25,3 +25,15 @@ class AddAuthorForm(ModelForm):
         author.save()
         return author
 
+
+class BlogEntryForm(ModelForm):
+    class Meta:
+        model = Entry
+        fields = ('author', 'title', 'slug', 'category', 'body_en', 'body_fr', 'publish', 'tags')
+
+        widgets = {
+            'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
+            'body_en': TextArea(attrs={'placeholder': 'English Body', 'required': False}),
+            'publish': CheckboxInput(attrs={'label': 'Publish Now?', 'required': False}),
+            'body_en': TextArea(attrs={'placeholder': 'Article Français', 'required': False})
+        }
