@@ -33,7 +33,7 @@ class BlogEntryForm(ModelForm):
 
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
-            'body_en': TextArea(attrs={'placeholder': 'English Body', 'required': False}),
+            'body_en': Textarea(attrs={'placeholder': 'English Body', 'required': False}),
             'publish': CheckboxInput(attrs={'label': 'Publish Now?', 'required': False}),
-            'body_en': TextArea(attrs={'placeholder': 'Article Français', 'required': False})
+            'body_en': Textarea(attrs={'placeholder': 'Article Français', 'required': False})
         }
