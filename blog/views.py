@@ -31,7 +31,7 @@ def save_new_artist(request):
             return render(request, 'blog/view_artist.html', {'artist': artist})
         else:
             error_message = 'The form was not valid. The data was not saved.'
-            return render(request, 'blog/error.html', {'error_message': error_message})
+            return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
 
 
 # View raw data from indie_db
