@@ -56,7 +56,7 @@ def write_new_work(request):
 
 
 def save_new_work(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and 'artist_id' in request.POST:
         form = AddWorkForm(request.POST)
         artist_id = request.POST.get('artist_id')
         artist = Artist.objects.get(pk=artist_id)
