@@ -22,9 +22,12 @@
 	</div>
 
 	<div class="panel wc_control">
-		<button class="button small" href="#">
-			Add Work by {{artist.name}} to Database
-		</button>
+		<form method="post" action="/wc_admin/save_new_work/">
+			<input type="hidden" name="artist_id" value="{{ artist.id }}">
+			<button class="button small" type="submit">
+				Add Work by {{artist.name}} to Database
+			</button>
+		</form>
 		<br>
 
 		{% if artist.group %}

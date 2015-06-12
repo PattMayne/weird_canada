@@ -56,11 +56,15 @@ def write_new_work(request):
 
 
 def save_new_work(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and 'artist_id' in request.POST:
         form = AddWorkForm(request.POST)
+        artist_id = request.POST.get('artist_id')
+        artist = Artist.object.get(pk=artist_id)
         work = None
         if form.is_valid():
             work = form.save()
+            work.creator = artist
+            work.save()
             work_id = work.id
             if 'website_name' in request.POST and 'website_url' in request.POST:
                 website_name = request.POST.get('website_name')
@@ -100,6 +104,8 @@ def save_new_work(request):
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
+    error_message = 'The form was not valid. The data was not saved.'
+    return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
 
 
 # View raw data from indie_db
