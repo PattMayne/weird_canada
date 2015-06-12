@@ -23,6 +23,7 @@
 
 	<div class="panel wc_control">
 		<form method="post" action="/wc_admin/save_new_work/">
+			{% csrf_token %}
 			<input type="hidden" name="artist_id" value="{{ artist.id }}">
 			<button class="button small" type="submit">
 				Add Work by {{artist.name}} to Database
