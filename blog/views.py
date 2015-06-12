@@ -51,8 +51,11 @@ def save_new_artist(request):
 
 
 def write_new_work(request):
-    work_form = AddWorkForm
-    return render(request, 'blog/work_write_new.html', {'work_form': work_form})
+    if request.method == 'POST':
+        if'artist_id' in request.POST:
+            artist_id = request.POST.get('artist_id')
+            work_form = AddWorkForm
+            return render(request, 'blog/work_write_new.html', {'work_form': work_form, 'artist_id': artist_id})
 
 
 def save_new_work(request):
