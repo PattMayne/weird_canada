@@ -15,44 +15,58 @@
 			<div class="large-6 columns">
 
 				<h5>ARTIST:</h5>
-				<p>{{work.creator.name}}</p>
+				<div class="large-12 columns">
+					<p>{{work.creator.name}}</p>
+				</div>
 
 				<h5>RELEASED:</h5>
-				<p>{{work.created}}</p>
+				<div class="large-12 columns">
+					<p>{{work.created}}</p>
+				</div>
 
 				<h5>CITY:</h5>
-				<p>{{work.city}}</p>
+				<div class="large-12 columns">
+					<p>{{work.city}}</p>
+				</div>
 
 			</div>
 			<div class="large-6 columns">
 
 				<h5>CATEGORY:</h5>
-				<p>{{work.category}}</p>
+				<div class="large-12 columns">
+					<p>{{work.category}}</p>
+				</div>
 
 				<h5>STYLES:</h5>
-				<p>
-					{% for style in styles %}
-						
-						<a href=""> {{ style }} </a>
-	
-					{% endfor %}
-				</p>
+				<div class="large-12 columns">
+					<p>
+						{% for style in styles %}
+							
+							<a href=""> {{ style }} </a>
+		
+						{% endfor %}
+					</p>
+				</div>
 			</div>
 			<div class="large-12 columns">
 
 				<h5>WEBSITE:</h5>
-				<p>{{work.website.name}}</p>
-				<p>{{work.website.link}}</p>
+				<div class="large-12 columns">
+					<p>{{work.website.name}}</p>
+					<p>{{work.website.link}}</p>
+				</div>
 			
 			</div>
 			<div class="large-12 columns">
 
-				<p>
-					DESCRIPTION:
-					<br>
-					{{ work.description }}
-					<br>
-				</p>
+				<h5>DESCRIPTION:</h5>
+				<div class="large-12 columns">
+					<p>
+						<br>
+						{{ work.description }}
+						<br>
+					</p>
+				</div>
 
 			</div>
 
@@ -60,23 +74,10 @@
 
 	<div class="panel wc_control">
 		<button class="button small" href="#">
-			Add Work by {{artist.name}} to Database
+			Add Contributors
 		</button>
 		<br>
 
-		{% if artist.group %}
-
-		<button class="button small" href="#">
-			Add Group Members to {{ artist.name }}
-		</button>
-
-		{% else %}
-
-		<button class="button small" href="#">
-			Add Groups that {{ artist.name }} is a member of
-		</button>
-
-		{% endif %}
 	</div>
 
 </div>
