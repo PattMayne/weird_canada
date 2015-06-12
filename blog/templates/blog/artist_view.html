@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="panel wc_control">
-		<form method="post" action="/wc_admin/save_new_work/">
+		<form method="post" action="/wc_admin/write_new_work/">
 			{% csrf_token %}
 			<input type="hidden" name="artist_id" value="{{ artist.id }}">
 			<button class="button small" type="submit">
