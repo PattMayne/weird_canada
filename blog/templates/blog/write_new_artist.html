@@ -24,13 +24,22 @@
 			{% csrf_token %}
 			{{ artist_form }}
 
+			<br>
+			<label for="id_website_name">Website Name:
+				<input type="text" id="id_website_name" name="website_name" placeholder="Enter a Title or Label for the Website" maxlength="200"/>
+			</label>
+
+			<br>
+			<label for="id_website_name">Website URL:
+				<input type="text" id="id_website_url" name="website_url" placeholder="Enter Full Website URL" maxlength="400"/>
+			</label>
+
 			
 
 			<br>
 			<input type="submit" class="button small" value="SAVE">
 		</form>
 
-		<p>Date: <input type="text" id="datepicker"></p>
 	</div>
 </div>
 

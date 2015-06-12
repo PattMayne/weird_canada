@@ -14,7 +14,7 @@ class AddArtistForm(ModelForm):
             'name': _('Name'),
             'birthdate': _('Birth or Formed Date'),
             'deathdate': _('Death or Disbanded Date'),
-            'group': _('Group?'),
+            'group': _('Select if this artist is a group/band'),
             'description': _('Description'),
             }
 
@@ -30,6 +30,8 @@ class AddArtistForm(ModelForm):
         artist = super(AddArtistForm, self).save(commit=True)
         artist.name = self.cleaned_data['name']
         artist.description = self.cleaned_data['description']
+        artist.birthdate = self.cleaned_data['birthdate']
+        artist.deathdate = self.cleaned_data['deathdate']
         artist.save()
         return artist
 

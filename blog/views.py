@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from blog.forms import AddAuthorForm, BlogEntryForm
 from indie_db.forms import AddArtistForm, AddWorkForm
-from indie_db.models import Artist, Work
+from indie_db.models import Artist, Work, URL
 
 # Create your views here.
 
@@ -28,6 +28,16 @@ def save_new_artist(request):
         artist = None
         if form.is_valid():
             artist = form.save()
+            if 'website_name' in request.POST and 'website_url' in request.POST:
+                website_name = request.POST.get('website_name')
+                website_url = request.POST.get('website_url')
+                website = URL()
+                website.name = website_name
+                website.link = website_url
+                website.save()
+                
+                artist.website = website
+                artist.save()
             return render(request, 'blog/view_artist.html', {'artist': artist})
         else:
             error_message = 'The form was not valid. The data was not saved.'
