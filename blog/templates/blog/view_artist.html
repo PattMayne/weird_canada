@@ -21,7 +21,24 @@
 	</div>
 
 	<div class="panel wc_control">
-		<button class="button small" href="#">Add Work by {{artist.name}} to Database</button>
+		<button class="button small" href="#">
+			Add Work by {{artist.name}} to Database
+		</button>
+		<br>
+
+		{% if artist.group %}
+
+		<button class="button small" href="#">
+			Add Group Members to {{ artist.name }}
+		</button>
+
+		{% else %}
+
+		<button class="button small" href="#">
+			Add Groups that {{ artist.name }} is a member of
+		</button>
+
+		{% endif %}
 	</div>
 
 </div>
