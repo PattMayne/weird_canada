@@ -77,10 +77,10 @@ class Work(models.Model):
     city = models.CharField(max_length=200)
     production_company = models.ForeignKey(ProductionCompany, blank=True, null=True)
     self_published = models.BooleanField(default=False)
-    creator = models.ForeignKey(Artist)
-    website = models.ForeignKey(URL)
-    styles = models.ManyToManyField(Style)
-    contributors = models.ManyToManyField(Contributor)
+    creator = models.ForeignKey(Artist, null=True, blank=True)
+    website = models.ForeignKey(URL, null=True, blank=True)
+    styles = models.ManyToManyField(Style, null=True, blank=True)
+    contributors = models.ManyToManyField(Contributor, null=True, blank=True)
 
     class Meta:
         ordering = ['-created']
