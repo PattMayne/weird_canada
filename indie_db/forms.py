@@ -66,10 +66,8 @@ class AddWorkForm(ModelForm):
         work.title = self.cleaned_data['title']
         work.created = self.cleaned_data['created']
         work.description = self.cleaned_data['description']
-        work.website = self.cleaned_data['website']
         work.extra_data = self.cleaned_data['extra_data']
         work.city = self.cleaned_data['city']
         work.category = self.cleaned_data['category']
-        work.styles = self.cleaned_data['styles']
         work.save()
         return work
