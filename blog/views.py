@@ -1,4 +1,9 @@
+# Django core stuff
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+
+# Weird Canada apps stuff
 from blog.forms import AddAuthorForm, BlogEntryForm
 from indie_db.forms import AddArtistForm, AddWorkForm
 from indie_db.models import Artist, Work, URL
@@ -35,10 +40,11 @@ def save_new_artist(request):
                 website.name = website_name
                 website.link = website_url
                 website.save()
-                
+
                 artist.website = website
                 artist.save()
-            return render(request, 'blog/view_artist.html', {'artist': artist})
+            return HttpResponseRedirect('/indie_db/view_artist/', {'artist': artist})
+            #return render(request, 'blog/view_artist.html', {'artist': artist})
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
