@@ -1,22 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}View Artist {% endblock %}
+{% block title %} {{ artist.name }} {% endblock %}
 
 {% block content %}
 
 <div class="row">
 	<div class="panel">
 		<h2>{{ artist.name }}</h2>
-		<p>{% if artist.group %} Group {% else %}Individual{% endif %}</p>
-		<p>{% if artist.group %} FORMED: {% else %}BORN:{% endif %} {{ artist.birthdate }}</p>
-		<p>{% if artist.group %} DISBANDED: {% else %}DIED:{% endif %} {{ artist.deathdate }}</p>
-		<br>
-		<p>
-			DESCRIPTION:
-			<br>
-			{{ artist.description }}
-			<br>
-		</p>
+		<h5>{% if artist.group %} Group {% else %}Individual{% endif %}</p>
+		<h5>{% if artist.group %} FORMED: {% else %}BORN:{% endif %}</h5><p> {{ artist.birthdate }}</p>
+		<h5>{% if artist.group %} DISBANDED: {% else %}DIED:{% endif %}</h5><p> {{ artist.deathdate }}</p>
+
+		<h5>WEBSITE:</h5>
+		<p>{{artist.website.name}}</p>
+		<p>{{artist.website.link}}</p>
+
+
+		<h5>DESCRIPTION:</h5>
+		<p>{{ artist.description }}</p>
 
 	</div>
 

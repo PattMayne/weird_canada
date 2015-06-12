@@ -39,21 +39,32 @@ class AddArtistForm(ModelForm):
 class AddWorkForm(ModelForm):
     class Meta:
         model = Work
-        fields = ('category', 'title', 'description', 'extra_data', 'created', 'city', 'self_published', 'creator', 'website', 'styles')
+        fields = ('category', 'title', 'description', 'extra_data', 'created', 'city', 'self_published')
+
+        labels = {
+            'created': _('Release Date'),
+            'category': _('Media Category'),
+            'title': _('Title'),
+            'description': _('Descriptione'),
+            'extra_data': _('Extra Info'),
+            'city': _('City and Province'),
+            #'styles': _('Styles and Genres')
+        }
 
         widgets = {
-            'category': TextInput(attrs={'placeholder': 'Category', 'required': True}),
-            'title': TextInput(attrs={'placeholder': 'Enter Title of Work', 'required': True}),
-            'description': Textarea(attrs={'required': False, 'placeholder': 'Enter Work Description'}),
-            'extra_data': Textarea(attrs={'required': False, 'placeholder': 'Enter Work Extra Data'}),
-            'city': TextInput(attrs={'placeholder': 'Enter City and Abbreviated Province', 'required': False}),
-            'website': TextInput(attrs={'required': False, 'placeholder': 'Enter Full Website URL'}),
-            'styles': TextInput(attrs={'required': False, 'placeholder': 'Enter Styles and Genres'})
+            'created': DateInput(attrs={'required': False}),
+            'category': TextInput(attrs={'placeholder': 'Enter Category', 'required': True}),
+            'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
+            'description': Textarea(attrs={'required': False, 'placeholder': 'Enter Description'}),
+            'extra_data': Textarea(attrs={'required': False, 'placeholder': 'Enter Extra Info'}),
+            'city': TextInput(attrs={'placeholder': 'City, PR', 'required': False}),
+            #'styles': TextInput(attrs={'required': False, 'placeholder': 'Separate them with a comma (" , ") Max five'})
         }
 
     def save(self, commit=True):
         work = super(AddWorkForm, self).save(commit=True)
         work.title = self.cleaned_data['title']
+        work.created = self.cleaned_data['created']
         work.description = self.cleaned_data['description']
         work.website = self.cleaned_data['website']
         work.extra_data = self.cleaned_data['extra_data']

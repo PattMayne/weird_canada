@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}{{ work.title }} {% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="panel">
+		<div class="row">
+			<div class="large-12 columns">
+
+				<h2>{{ work.title }}</h2>
+
+			</div>
+			<div class="large-6 columns">
+
+				<h5>ARTIST:</h5>
+				<p>{{work.creator.name}}</p>
+
+				<h5>RELEASED:</h5>
+				<p>{{work.created}}</p>
+
+				<h5>CITY:</h5>
+				<p>{{work.city}}</p>
+
+			</div>
+			<div class="large-6 columns">
+
+				<h5>CATEGORY:</h5>
+				<p>{{work.category}}</p>
+
+				<h5>STYLES:</h5>
+				<p>
+					{% for style in styles %}
+						
+						<a href=""> {{ style }} </a>
+	
+					{% endfor %}
+				</p>
+			</div>
+			<div class="large-12 columns">
+
+				<h5>WEBSITE:</h5>
+				<p>{{work.website.name}}</p>
+				<p>{{work.website.link}}</p>
+			
+			</div>
+			<div class="large-12 columns">
+
+				<p>
+					DESCRIPTION:
+					<br>
+					{{ work.description }}
+					<br>
+				</p>
+
+			</div>
+
+	</div>
+
+	<div class="panel wc_control">
+		<button class="button small" href="#">
+			Add Work by {{artist.name}} to Database
+		</button>
+		<br>
+
+		{% if artist.group %}
+
+		<button class="button small" href="#">
+			Add Group Members to {{ artist.name }}
+		</button>
+
+		{% else %}
+
+		<button class="button small" href="#">
+			Add Groups that {{ artist.name }} is a member of
+		</button>
+
+		{% endif %}
+	</div>
+
+</div>
+
+
+{% endblock %}

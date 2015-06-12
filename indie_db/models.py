@@ -19,6 +19,13 @@ from django.db import models
 '''
 
 
+class Style(models.Model):
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
+
+
 class URL(models.Model):
     link = models.CharField(max_length=400)
     name = models.CharField(max_length=200)
@@ -72,7 +79,7 @@ class Work(models.Model):
     self_published = models.BooleanField(default=False)
     creator = models.ForeignKey(Artist)
     website = models.ForeignKey(URL)
-    styles = models.CharField(max_length=200)
+    styles = models.ManyToManyField(Style)
     contributors = models.ManyToManyField(Contributor)
 
     class Meta:

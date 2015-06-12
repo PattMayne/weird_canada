@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Work to the Database {% endblock %}
+
+{% block content %}
+
+  <script>
+
+  $(function() {
+    $( "#id_release_date" ).datepicker();
+  });
+
+
+  </script>
+
+
+
+<div class="row">
+	<div class="panel">
+		<h2>Add Work to the Database</h2>
+
+		<form method="post" action="/wc_admin/save_new_work">
+			{% csrf_token %}
+			{{ work_form }}
+
+			<br>
+			<label for="id_styles">Genres and Styles:
+				<input type="text" id="id_styles" name="styles" placeholder="Separate them with a comma (" , ") Max five" maxlength="200"/>
+			</label>
+
+			<br>
+			<label for="id_website_name">Website Name:
+				<input type="text" id="id_website_name" name="website_name" placeholder="Enter a Title or Label for the Website" maxlength="200"/>
+			</label>
+
+			<br>
+			<label for="id_website_name">Website URL:
+				<input type="text" id="id_website_url" name="website_url" placeholder="Enter Full Website URL" maxlength="400"/>
+			</label>
+
+			
+
+			<br>
+			<input type="submit" class="button small" value="SAVE">
+		</form>
+
+	</div>
+</div>
+
+
+
+
+{% endblock %}
