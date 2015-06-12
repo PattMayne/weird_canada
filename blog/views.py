@@ -122,8 +122,7 @@ def view_artist(request):
 
 
 def view_work(request):
-    author_form = AddAuthorForm
-    entry_form = BlogEntryForm
-    artist_form = AddArtistForm
-    work_form = AddWorkForm
-    return render(request, 'blog/temp.html', {'author_form': author_form, 'entry_form': entry_form, 'work_form': work_form, 'artist_form': artist_form})
+    if request.method == 'GET':
+        if 'id' in request.GET:
+            work = Work.objects.get(pk=request.GET.get('id'))
+            return render(request, 'blog/work_view.html', {'work': work})
