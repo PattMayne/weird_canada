@@ -59,7 +59,7 @@ def save_new_work(request):
     if request.method == 'POST' and 'artist_id' in request.POST:
         form = AddWorkForm(request.POST)
         artist_id = request.POST.get('artist_id')
-        artist = Artist.object.get(pk=artist_id)
+        artist = Artist.objects.get(pk=artist_id)
         work = None
         if form.is_valid():
             work = form.save()
@@ -82,7 +82,7 @@ def save_new_work(request):
                 styles = []
 
                 for style in styles_list:
-                    styles_list_switch.append(style.strip())
+                    styles.append(style.strip())
 
                 # A Style is another model, linked to the "work" via a ManyToMany field
                 # Here we check to see if the user has entered styles that already exist in the database
