@@ -33,6 +33,7 @@ def save_new_artist(request):
         artist = None
         if form.is_valid():
             artist = form.save()
+            artist_id = artist.id
             if 'website_name' in request.POST and 'website_url' in request.POST:
                 website_name = request.POST.get('website_name')
                 website_url = request.POST.get('website_url')
@@ -43,7 +44,7 @@ def save_new_artist(request):
 
                 artist.website = website
                 artist.save()
-            return HttpResponseRedirect('/indie_db/view_artist/', {'artist': artist})
+            return HttpResponseRedirect('/indie_db/view_artist/?id=' + str(artist_id))
             #return render(request, 'blog/view_artist.html', {'artist': artist})
         else:
             error_message = 'The form was not valid. The data was not saved.'
@@ -53,9 +54,9 @@ def save_new_artist(request):
 # View raw data from indie_db
 
 def view_artist(request):
-    if request.method == 'POST':
-        if 'artist' in request.POST:
-            artist = Artist.objects.filter(name=request.POST.get('artist'))[0]
+    if request.method == 'GET':
+        if 'id' in request.GET:
+            artist = Artist.objects.get(pk=request.GET.get('id'))
             return render(request, 'blog/view_artist.html', {'artist': artist})
 
 
