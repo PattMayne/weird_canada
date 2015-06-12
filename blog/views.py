@@ -105,7 +105,7 @@ def save_new_work(request):
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
     error_message = 'The form was not valid. The data was not saved.'
-    return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
+    return render(request, 'blog/error.html', {'error_message': error_message})
 
 
 # View raw data from indie_db
