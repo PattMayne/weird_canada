@@ -12,7 +12,9 @@ urlpatterns = patterns('',
     url(r'^test/$', 'blog.views.test', name="test_page"),
     # add stuff to the database
     url(r'^wc_admin/write_new_artist/$', 'blog.views.write_new_artist', name="write_new_artist_view"),
+    url(r'^wc_admin/write_new_work/$', 'blog.views.write_new_work', name="write_new_work_view"),
     url(r'^wc_admin/save_new_artist', 'blog.views.save_new_artist', name="save_new_artist_view"),
+    url(r'^wc_admin/save_new_work', 'blog.views.save_new_work', name="save_new_work_view"),
     # view raw database info
     url(r'^indie_db/view_artist/$', 'blog.views.view_artist', name="view_artist_view"),
     url(r'^indie_db/view_work/$', 'blog.views.view_work', name="view_work_view"),
