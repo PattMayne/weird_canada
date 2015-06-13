@@ -30,7 +30,7 @@ class AddAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('title', 'body_en', 'body_fr', 'publish', 'created')
+        fields = ('created', 'title', 'body_en', 'body_fr', 'publish',)
 
         widgets = {
             'created': DateInput(attrs={'required': True}),
