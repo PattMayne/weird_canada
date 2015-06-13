@@ -33,15 +33,15 @@ class AddArticleForm(ModelForm):
         fields = ('created', 'title', 'body_en', 'body_fr', 'publish',)
 
         widgets = {
-            'created': DateInput(attrs={'required': True}),
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
+            #'created': DateInput(attrs={'required': True}),
             'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
             'publish': CheckboxInput(attrs={'required': False}),
             'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False})
         }
 
         labels = {
-            'created': _('Orignal Publication Date'),
+            #'created': _('Orignal Publication Date'),
             'title': _('Title'),
             'body_en': _('English Text'),
             'publish': _('Publish Now?'),
