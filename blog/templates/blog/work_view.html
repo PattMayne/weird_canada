@@ -76,12 +76,13 @@
 			Add Contributors
 		</button>
 		<br>
+		
+		<form method="post" action="/wc_admin/write_review/">
+			<inpup type="hidden" name="work_id" value="{{ work.id }}">
+			<input type="submit" class="button small" value="Write Article about this Work">
 
-		<button class="button small" href="/wc_admin/write_review/">
-			Write Article about this Work
-		</button>
 		<br>
-
+		</form>
 	</div>
 
 </div>

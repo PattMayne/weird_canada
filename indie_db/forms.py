@@ -45,7 +45,7 @@ class AddWorkForm(ModelForm):
             'created': _('Release Date'),
             'category': _('Media Category'),
             'title': _('Title'),
-            'description': _('Descriptione'),
+            'description': _('Description'),
             'extra_data': _('Extra Info'),
             'city': _('City and Province'),
             #'styles': _('Styles and Genres')
