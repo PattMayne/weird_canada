@@ -30,18 +30,18 @@ class AddAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('created', 'title', 'body_en', 'body_fr', 'publish',)
+        fields = ('date_created', 'title', 'body_en', 'body_fr', 'publish',)
 
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
-            #'created': DateInput(attrs={'required': True}),
+            'date_created': DateInput(attrs={'required': True}),
             'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
             'publish': CheckboxInput(attrs={'required': False}),
             'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False})
         }
 
         labels = {
-            #'created': _('Orignal Publication Date'),
+            #'date_created': _('Orignal Publication Date'),
             'title': _('Title'),
             'body_en': _('English Text'),
             'publish': _('Publish Now?'),
@@ -51,7 +51,7 @@ class AddArticleForm(ModelForm):
     def save(self, commit=True):
         article = super(AddArticleForm, self).save(commit=True)
         article.title = self.cleaned_data['title']
-        article.created = self.cleaned_data['created']
+        article.date_created = self.cleaned_data['date_created']
         article.body_en = self.cleaned_data['body_en']
         article.body_fr = self.cleaned_data['body_fr']
         article.publish = self.cleaned_data['publish']
