@@ -78,7 +78,8 @@
 		<br>
 		
 		<form method="post" action="/wc_admin/write_review/">
-			<inpup type="hidden" name="work_id" value="{{ work.id }}">
+			{% csrf_token %}
+			<input type="hidden" name="work_id" value="{{ work.id }}">
 			<input type="submit" class="button small" value="Write Article about this Work">
 
 		<br>
