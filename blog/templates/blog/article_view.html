@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="panel">
+		<div class="row">
+
+			<div class="large-6 medium-6 columns">
+				<h5>{{ article.author }}</h5>
+				<h5>{{ article.created }}</h5>
+			</div>
+
+			<div class="large-6 medium-6 columns">
+				<h6>Work: {{ article.work_link }}</h6>
+				<h6>Artist: {{ article.artist_link }}</h6>
+			</div>
+
+			<div class="large-12 columns">
+				<h2>{{ article.title }}</h2>
+
+				<br><br>
+
+				<p><i>English Article</i></p>
+				<p class="article_text">
+					{{ article.body_en }}
+				</p>
+
+				<br><br>
+
+				<p><i>Article Français</i></p>
+				<p class="article_text">
+					{{ article.body_fr }}
+				</p>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

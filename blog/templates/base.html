@@ -10,6 +10,7 @@
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" type="text/css" href="{% static "css/foundation.css" %}" media="screen" />
   <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}" media="screen" />
+  <link rel="stylesheet" type="text/css" href="{% static "css/wc_style.css" %}" media="screen" />
   
   <script src="{% static "js/vendor/jquery.js" %}"></script>
   <script src="{% static "js/vendor/modernizr.js" %}"></script>
@@ -35,7 +36,7 @@
 
 <body>
 
-
+<div id="page_wrapper"> <!-- This takes the whole page... a footer can live beneath it -->
 
   <!-- nav bar -->
   <div class="full-width navigation-area">
@@ -73,13 +74,25 @@
 			</ul> <!-- Left Nav Section -->
 		</section>
 	</nav>
-</div>
+  </div>
 	<!-- end of nav bar -->
 	
 	{% block content %}
 	
 	{% endblock %}
 	  
+</div><!-- END OF page_wrapper -->
+
+
+
+<!-- Footer -->
+
+
+
+
+<!-- END OF Footer -->
+
+
 
   <script src="{% static "js/foundation.min.js" %}"></script>
     <script>

@@ -52,8 +52,7 @@
 
 				<h5>WEBSITE:</h5>
 				<div class="large-12 columns">
-					<p>{{work.website.name}}</p>
-					<p>{{work.website.link}}</p>
+					<p><a href="{{work.website.link}}">{{work.website.name}}</a></p>
 				</div>
 			
 			</div>
@@ -75,6 +74,11 @@
 	<div class="panel wc_control">
 		<button class="button small" href="#">
 			Add Contributors
+		</button>
+		<br>
+
+		<button class="button small" href="/wc_admin/write_review">
+			Write Article about this Work
 		</button>
 		<br>
 

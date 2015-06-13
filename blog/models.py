@@ -25,19 +25,19 @@ class Tag(models.Model):
         return self.tag_name
 
 
-class Entry(models.Model):
-    author = models.ForeignKey(Author)
+class Article(models.Model):
+    author = models.ForeignKey(Author, blank=True, null=True)
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200)
+    slug = models.SlugField(max_length=200, blank=True, null=True)
     category = models.CharField(max_length=200)
-    body_en = models.TextField()
-    body_fr = models.TextField()
+    body_en = models.TextField(blank=True, null=True)
+    body_fr = models.TextField(blank=True, null=True)
     #body_en = MarkdownField()
     #body_fr = MarkdownField()
     publish = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now=True)
     modified = models.DateTimeField(auto_now=True)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True, null=True)
     work_link = models.ForeignKey(Work, null=True, blank=True)
     artist_link = models.ForeignKey(Artist, null=True, blank=True)
 

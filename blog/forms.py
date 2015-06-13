@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput
 from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany
-from blog.models import Entry, Tag, Author
+from blog.models import Article, Tag, Author
 
 
 class AddAuthorForm(ModelForm):
@@ -26,25 +26,35 @@ class AddAuthorForm(ModelForm):
         return author
 
 
-class BlogEntryForm(ModelForm):
+class AddArticleForm(ModelForm):
     class Meta:
-        model = Entry
-        fields = ('author', 'title', 'slug', 'category', 'body_en', 'body_fr', 'publish', 'tags')
+        model = Article
+        fields = ('title', 'body_en', 'body_fr', 'publish', 'created')
 
         widgets = {
+            'created': DateInput(attrs={'required': True}),
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
-            'body_en': Textarea(attrs={'placeholder': 'English Body', 'required': False}),
-            'publish': CheckboxInput(attrs={'label': 'Publish Now?', 'required': False}),
-            'body_fr': Textarea(attrs={'placeholder': 'Article Français', 'required': False})
+            'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
+            'publish': CheckboxInput(attrs={'required': False}),
+            'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False})
+        }
+
+        labels = {
+            'created': _('Orignal Publication Date'),
+            'title': _('Title'),
+            'body_en': _('English Text'),
+            'publish': _('Publish Now?'),
+            'body_fr': _('Article Français'),
         }
 
     def save(self, commit=True):
-        entry = super(BlogEntryForm, self).save(commit=True)
-        entry.title = self.cleaned_data['title']
-        entry.body_en = self.cleaned_data['body_en']
-        entry.body_fr = self.cleaned_data['body_fr']
-        entry.publish = self.cleaned_data['publish']
-        entry.save()
-        return entry
+        article = super(AddArticleForm, self).save(commit=True)
+        article.title = self.cleaned_data['title']
+        article.created = self.cleaned_data['created']
+        article.body_en = self.cleaned_data['body_en']
+        article.body_fr = self.cleaned_data['body_fr']
+        article.publish = self.cleaned_data['publish']
+        article.save()
+        return article
 
 

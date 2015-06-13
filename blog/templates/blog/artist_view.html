@@ -6,44 +6,76 @@
 
 <div class="row">
 	<div class="panel">
-		<h2>{{ artist.name }}</h2>
-		<h5>{% if artist.group %} Group {% else %}Individual{% endif %}</p>
-		<h5>{% if artist.group %} FORMED: {% else %}BORN:{% endif %}</h5><p> {{ artist.birthdate }}</p>
-		<h5>{% if artist.group %} DISBANDED: {% else %}DIED:{% endif %}</h5><p> {{ artist.deathdate }}</p>
+		<div class="row">
+			<div class="large-12 columns">
+				<h2>{{ artist.name }}</h2>
+			</div>
+			<div class="large-3 medium-6 columns">
+				<h5>{% if artist.group %} Group {% else %}Individual{% endif %}</p>
+			</div>
+			<div class="large-3 medium-6 columns">
+				<h5>{% if artist.group %} FORMED: {% else %}BORN:{% endif %}</h5><p> {{ artist.birthdate }}</p>
+			</div>
+			<div class="large-3 medium-6 columns">
+				<h5>{% if artist.group %} DISBANDED: {% else %}DIED:{% endif %}</h5><p> {{ artist.deathdate }}</p>
+			</div>
+			<div class="large-3 medium-6 columns">
+			</div>
+			<div class="large-12 columns">
 
-		<h5>WEBSITE:</h5>
-		<p>{{artist.website.name}}</p>
-		<p>{{artist.website.link}}</p>
+				<h5>WEBSITE:</h5>
+				<p><a href="{{artist.website.link}}">{{artist.website.name}}</a></p>
 
+				<h5>DESCRIPTION:</h5>
+				<p>{{ artist.description }}</p>
+			</div>
+		</div>
 
-		<h5>DESCRIPTION:</h5>
-		<p>{{ artist.description }}</p>
+	</div>
+
+	<div class="panel">
 
 	</div>
 
 	<div class="panel wc_control">
-		<form method="post" action="/wc_admin/write_new_work/">
-			{% csrf_token %}
-			<input type="hidden" name="artist_id" value="{{ artist.id }}">
-			<button class="button small" type="submit">
-				Add Work by {{artist.name}} to Database
-			</button>
-		</form>
-		<br>
+		<div class="row">
+			<div class="large-12 columns">
+				<h2>Controls</h2>
+			</div>
+			<div class="large-6 medium-6 columns">
+				<form method="post" action="/wc_admin/write_new_work/">
+					{% csrf_token %}
+					<input type="hidden" name="artist_id" value="{{ artist.id }}">
+					<button class="button small" type="submit">
+						Add Work by {{artist.name}} to Database
+					</button>
+				</form>
+				<br>
+			</div>
+			<div class="large-6 medium-6 columns">
 
-		{% if artist.group %}
+				{% if artist.group %}
 
-		<button class="button small" href="#">
-			Add Group Members to {{ artist.name }}
-		</button>
+				<button class="button small" href="#">
+					Add Group Members to {{ artist.name }}
+				</button>
 
-		{% else %}
+				{% else %}
 
-		<button class="button small" href="#">
-			Add Groups that {{ artist.name }} is a member of
-		</button>
+				<button class="button small" href="#">
+					Add Groups that {{ artist.name }} is a member of
+				</button>
 
-		{% endif %}
+				{% endif %}
+			</div>
+			<div class="large-6 medium-6 columns">
+				<button class="button small" href="#">
+					Edit this Artist
+				</button>
+			</div>
+			<div class="large-6 medium-6 columns">
+			</div>
+			
 	</div>
 
 </div>
