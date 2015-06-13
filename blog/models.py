@@ -35,7 +35,7 @@ class Article(models.Model):
     #body_en = MarkdownField()
     #body_fr = MarkdownField()
     publish = models.BooleanField(default=True)
-    date_created = models.DateTimeField(auto_now=True)
+    date_created = models.DateTimeField(blank=True, null=True)
     modified = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     work_link = models.ForeignKey(Work, null=True, blank=True)
