@@ -41,7 +41,7 @@ class AddArticleForm(ModelForm):
         }
 
         labels = {
-            #'date_created': _('Orignal Publication Date'),
+            'date_created': _('Orignal Publication Date'),
             'title': _('Title'),
             'body_en': _('English Text'),
             'publish': _('Publish Now?'),
