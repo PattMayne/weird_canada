@@ -1,5 +1,6 @@
 from django import forms
-from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput
+from django.utils.translation import ugettext_lazy as _
+from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput
 from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany
 from blog.models import Article, Tag, Author
 
