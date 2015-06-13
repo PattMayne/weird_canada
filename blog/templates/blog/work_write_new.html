@@ -19,7 +19,7 @@
 	<div class="panel">
 		<h2>Add Work to the Database</h2>
 
-		<form method="post" action="/wc_admin/save_new_work">
+		<form method="post" action="/wc_admin/save_new_work/">
 			{% csrf_token %}
 			{{ work_form }}
 
