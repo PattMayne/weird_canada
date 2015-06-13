@@ -6,11 +6,10 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 
 # Weird Canada apps stuff
-from blog.forms import AddAuthorForm, BlogEntryForm
 from indie_db.forms import AddArtistForm, AddWorkForm
 from indie_db.models import Artist, Work, URL, Style
 from blog.models import Article, Author, Tag
-from blog.forms import AddArticleForm
+from blog.forms import AddArticleForm, AddAuthorForm
 
 # Create your views here.
 
@@ -18,10 +17,10 @@ from blog.forms import AddArticleForm
 #TEST
 def test(request):
     author_form = AddAuthorForm
-    entry_form = BlogEntryForm
+    article_form = AddArticleForm
     artist_form = AddArtistForm
     work_form = AddWorkForm
-    return render(request, 'blog/temp.html', {'author_form': author_form, 'entry_form': entry_form, 'work_form': work_form, 'artist_form': artist_form})
+    return render(request, 'blog/temp.html', {'author_form': author_form, 'article_form': article_form, 'work_form': work_form, 'artist_form': artist_form})
 
 
 # Add Article to BLOG
