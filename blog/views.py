@@ -40,7 +40,7 @@ def save_new_review_article(request):
         form = AddArticleForm(request.POST)
         work_id = request.POST.get('work_id')
         work = Work.objects.get(pk=work_id)
-        artist = work.artist
+        artist = work.creator
         if form.is_valid():
             article = form.save()
             author = Author.objects.filter(user=request.user)[0]
