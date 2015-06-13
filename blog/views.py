@@ -38,10 +38,15 @@ def write_new_review_article(request):
 def save_new_review_article(request):
     if request.method == 'POST' and request.user.is_authenticated():
         form = AddArticleForm(request.POST)
+        work_id = request.POST.get('work_id')
+        work = Work.objects.get(pk=work_id)
+        artist = work.artist
         if form.is_valid():
             article = form.save()
             author = Author.objects.filter(user=request.user)[0]
             article.author = author
+            article.work_link = work
+            article.artist_link = artist
             article.save()
             tags_string = request.POST.get('tags')
             tags_list = tags_string.split(',')
@@ -61,11 +66,11 @@ def save_new_review_article(request):
                 else:
                     #create a new tag, save it to the DB, and add it to the article
                     new_tag = Tag()
-                    new_tag.name = tag
+                    new_tag.tag_name = tag
                     new_tag.save()
                     article.tags.add(new_tag)
                     article.save()
-            return HttpResponseRedirect('/indie_db/view_article/?id=' + str(work_id))
+            return HttpResponseRedirect('/indie_db/view_article/?id=' + str(article.id))
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
