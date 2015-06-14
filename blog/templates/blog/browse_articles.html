@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %} Browse Articles {% endblock %}
+
+{% block content %}
+
+<div class="large-12 columns">
+	<div class="row">
+		<div class="panel">
+			<div class="row">
+				<h6>SEARCH & SORT:</h6>
+				<form method="get" action="/indie_db/browse_articles/">
+					
+					<div class="large-6 medium-6 columns">
+
+						<select name="order_by" id="id_order_by">
+							<option value="date_desc">Date (desc)</option>
+							<option value="date_asc">Date (asc)</option>
+							<option value="title_desc">Title (desc)</option>
+							<option value="title_asc">Title (asc)</option>
+						</select>
+
+					</div>
+					<div class="large-6 medium-6 columns">
+						<input type="text" name="search" id="id_search" placeholder="Search Titles">
+					</div>
+					
+					<div class="large-6 medium-6 columns">
+						<input type="submit" class="button small" value="GO">
+					</div>
+
+				</form>
+				<h3>ARTICLES:</h3>
+
+					{% for article in articles %}
+						
+						<div class="large-4 medium-6 small-12 columns">
+							<h5>{{ article.title }}</h5>
+							<p>
+								{{ article.date_created }}
+								<br>
+								By {{ article.author }}
+								<br>
+								Category: {{ article.category }}
+								<br>
+								Published?...{% if article.publish %} Yes {% else %} No {% endif %}
+							</p>
+						</div>
+
+					{% endfor %}
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

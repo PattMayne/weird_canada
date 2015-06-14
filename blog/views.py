@@ -232,3 +232,8 @@ def view_work(request):
         if 'id' in request.GET:
             work = Work.objects.get(pk=request.GET.get('id'))
             return render(request, 'blog/work_view.html', {'work': work})
+
+def browse_articles(request):
+    all_articles = Article.objects.all()
+    return render(request, 'indie_db/browse_articles.html', {'articles': all_articles})
+    
