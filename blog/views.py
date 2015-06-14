@@ -17,9 +17,9 @@ from blog.forms import AddArticleForm, AddAuthorForm
 #  EXTRA FUNCTIONS
 
 
-def user_has_author(user):
-    this_user = user
-    author_profiles = Author.objects.filter(user.id=this_user.id)
+def user_has_author(sent_user):
+    this_user = sent_user
+    author_profiles = Author.objects.filter(user_id=this_user.id)
     if len(author_profiles) > 0:
         return True
     else:
