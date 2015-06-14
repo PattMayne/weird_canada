@@ -10,7 +10,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^test/$', 'blog.views.test', name="test_page"),
-    url(r'^wc_admin/', 'blog.views.wc_admin_hub', name="wc_admin_hub_view"),
+    url(r'^wc_admin', 'blog.views.wc_admin_hub', name="wc_admin_hub_view"),
+
     # add stuff to the database
     url(r'^wc_admin/write_new_artist/$', 'blog.views.write_new_artist', name="write_new_artist_view"),
     url(r'^wc_admin/write_new_work/$', 'blog.views.write_new_work', name="write_new_work_view"),
