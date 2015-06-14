@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth.models import User
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # Weird Canada apps stuff
 from indie_db.forms import AddArtistForm, AddWorkForm
 from indie_db.models import Artist, Work, URL, Style
@@ -233,6 +235,40 @@ def view_work(request):
             work = Work.objects.get(pk=request.GET.get('id'))
             return render(request, 'blog/work_view.html', {'work': work})
 
+
 def browse_articles(request):
-    all_articles = Article.objects.all()
-    return render(request, 'blog/browse_articles.html', {'articles': all_articles})
+    if request.method == 'GET':
+        order_by = '-id'
+
+        order_by_request = request.GET.get('order_by')
+        search_request = request.GET.get('search')
+        
+        if order_by_request == 'date_desc':
+            order_by = '-date_created'
+        elif order_by_request == 'date_asc':
+            order_by = 'date_created'
+        elif order_by_request == 'title_asc':
+            order_by = 'title'
+        elif order_by_request == 'title_desc':
+            order_by = '-title'
+
+        all_articles = Article.objects.filter(title__icontains=search_request).order_by(order_by)
+    else:
+        all_articles = Article.objects.all().order_by('-id')
+
+    pager = Paginator(all_articles, 3)
+
+    if request.method == 'GET' and 'page' in request.GET:
+        page = request.GET.get('page')
+    else:
+        page = 1
+
+    try:
+        articles = pager.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        articles = pager.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        articles = pager.page(pager.num_pages)
+    return render(request, 'blog/browse_articles.html', {'articles': articles})
