@@ -302,7 +302,7 @@ def browse_artists(request):
         elif order_by_request == 'birthdate_desc':
             order_by = '-birthdate'
 
-        all_artists = Artist.objects.filter(title__icontains=search_request).order_by(order_by)
+        all_artists = Artist.objects.filter(name__icontains=search_request).order_by(order_by)
     else:
         all_artists = Artist.objects.all().order_by('-id')
 
