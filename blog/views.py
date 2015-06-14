@@ -52,7 +52,7 @@ def wc_admin_hub(request):
             total_artists = Artist.objects.count()
 
             args = {'author': author, 'latest_articles': latest_articles, 'latest_artists': latest_artists, 'latest_works': latest_works, 'total_articles': total_articles, 'total_artists': total_artists, 'total_authors': total_authors, 'total_works': total_works}
-            return render(request, 'wc_admin/wc_admin_hub.html', args)
+            return render(request, 'blog/wc_admin_hub.html', args)
         else:
             error_message = 'You must create an Author Profile before you can use this page.'
             return render(request, 'blog/error.html', {'error_message': error_message})
