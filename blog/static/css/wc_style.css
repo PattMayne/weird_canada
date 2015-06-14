@@ -16,6 +16,12 @@
 	min-height: 100%!important;
 }
 
+.sub_panel{
+	background-color: #ffffff;
+	margin: 5px;
+	padding: 7px;
+}
+
 ::-webkit-input-placeholder {
    color: #222222!important;
 }

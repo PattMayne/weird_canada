@@ -30,25 +30,28 @@
 					</div>
 
 				</form>
-				<h3>ARTICLES:</h3>
+				<div class="large-12 columns">
+					<h3>ARTICLES:</h3>
 
 					{% for article in articles %}
-						
+							
 						<div class="large-4 medium-6 small-12 columns">
-							<h5>{{ article.title }}</h5>
-							<p>
-								{{ article.date_created }}
-								<br>
-								By {{ article.author }}
-								<br>
-								Category: {{ article.category }}
-								<br>
-								Published?...{% if article.publish %} Yes {% else %} No {% endif %}
-							</p>
+							<div class="sub_panel">
+								<h5>{{ article.title }}</h5>
+								<p>
+									{{ article.date_created }}
+									<br>
+									By {{ article.author }}
+									<br>
+									Category: {{ article.category }}
+									<br>
+									Published?...{% if article.publish %} Yes {% else %} No {% endif %}
+								</p>
+							</div>
 						</div>
 
 					{% endfor %}
-
+				</div>
 			</div>
 		</div>
 	</div>
