@@ -375,4 +375,4 @@ def browse_works(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         works = pager.page(pager.num_pages)
-    return render(request, 'blog/browse_artists.html', {'works': works, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request, 'category': category})
+    return render(request, 'blog/browse_works.html', {'works': works, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request, 'category': category})
