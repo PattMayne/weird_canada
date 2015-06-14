@@ -5,10 +5,11 @@
 {% block content %}
 
 <div class="large-12 columns">
-
-	<div class="large-6 medium-6 columns">
+	<div class="row">
 		<div class="panel">
-			<div class="row">
+			<div class="large-6 medium-6 columns">
+			
+			
 				<h3>Database</h3>
 				<br>
 
@@ -29,12 +30,9 @@
 				</p>
 
 			</div>
-		</div>
-	</div>
 
-	<div class="large-6 medium-6 columns">
-		<div class="panel">
-			<div class="row">
+			<div class="large-6 medium-6 columns">
+
 				<h3>Profile</h3>
 				<br>
 
@@ -89,7 +87,6 @@
 				<br>
 
 				<button class="button small">Edit Profile</button>
-
 			</div>
 		</div>
 	</div>
@@ -107,6 +104,7 @@
 			<ul class="wc_list">
 				<li><p>{{ article.author }}</p></li>
 				<li><p>{{ article.category }}</p></li>
+			</ul>
 
 			{% endfor %}
 			<br>
