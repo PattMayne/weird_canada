@@ -235,5 +235,4 @@ def view_work(request):
 
 def browse_articles(request):
     all_articles = Article.objects.all()
-    return render(request, 'indie_db/browse_articles.html', {'articles': all_articles})
-    
+    return render(request, 'blog/browse_articles.html', {'articles': all_articles})
