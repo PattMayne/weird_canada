@@ -233,7 +233,8 @@ def view_work(request):
     if request.method == 'GET':
         if 'id' in request.GET:
             work = Work.objects.get(pk=request.GET.get('id'))
-            return render(request, 'blog/work_view.html', {'work': work})
+            articles = Article.objects.filter(work_link=work)
+            return render(request, 'blog/work_view.html', {'work': work, 'articles': articles})
 
 
 def browse_articles(request):

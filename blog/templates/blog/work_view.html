@@ -88,5 +88,30 @@
 
 </div>
 
+<div class="panel">
+		<div class="row">
+			<div class="large-12 columns">
+				<h3>{{ articles.count }} Articles about {{ work }}</h3>
+			</div>
+				{% for article in articles %}
+					<div class="large-4 medium-6 columns">
+						<a href="/indie_db/view_article/?id={{ article.id }}">
+								<div class="sub_panel link_panel">
+									<h5>{{ article.title }}</h5>
+									<p>By {{ article.author }}
+										<br>
+										{{ article.date_created }}
+										<br>
+										Category: {{ article.category }}
+									</p>
+								</div>
+							</a>
+					</div>
+				{% endfor %}
+		</div>
+
+	</div>
+</div>
+
 
 {% endblock %}
