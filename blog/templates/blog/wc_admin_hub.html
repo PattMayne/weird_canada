@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %} Weird Canada Control Panel {% endblock %}
+
+{% block content %}
+
+<div class="large-12 columns">
+
+	<div class="large-6 medium-6 columns">
+		<div class="panel">
+			<div class="row">
+				<h3>Database</h3>
+				<br>
+
+				<p>
+					<button class="button small">Add Artist</button>
+				</p>
+				<p>
+					<button class="button small">Add Article</button>
+				</p>
+				<p>
+					<button class="button small">Browse Artists</button>
+				</p>
+				<p>
+					<button class="button small">Browse Works</button>
+				</p>
+				<p>
+					<button class="button small">Browse Articles</button>
+				</p>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="large-6 medium-6 columns">
+		<div class="panel">
+			<div class="row">
+				<h3>Profile</h3>
+				<br>
+
+				<table>
+
+					<tr>
+						<td>
+							Username:
+						</td>
+						<td>
+							{{ user.username }}
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Author Name:
+						</td>
+						<td>
+							{{ author.authorname }}
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Real Name:
+						</td>
+						<td>
+							{{ user.first_name }} {{user.last_name}}
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Email:
+						</td>
+						<td>
+							{{ user.email }}
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Member Since:
+						</td>
+						<td>
+							{{ user.date_joined }}
+						</td>
+					</tr>
+
+				</table>
+				<br>
+
+				<button class="button small">Edit Profile</button>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="panel">
+		<h3>Latest Articles:</h3>
+
+		{% for article in latest_articles %}
+
+		<h5>{{ article.title }}</h5>
+		<p>{{ article.author }}</p>
+		<p>{{ article.category }}</p>
+
+		{% endfor %}
+		<br>
+
+		<h3>Latest Works:</h3>
+
+		{% for work in latest_works %}
+
+		<h5>{{ work.title }}</h5>
+		<p>{{ work.creator }}</p>
+		<p>{{ work.category }}</p>
+
+		{% endfor %}
+		<br>
+
+		<h3>Latest Artists:</h3>
+
+		{% for work in latest_artists %}
+
+		<h5>{{ artist.name }}</h5>
+
+		{% endfor %}
+		<br>
+
+	</div>
+</div>
+
+
+{% endblock %}

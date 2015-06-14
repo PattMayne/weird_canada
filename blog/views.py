@@ -14,6 +14,18 @@ from blog.forms import AddArticleForm, AddAuthorForm
 # Create your views here.
 
 
+#  EXTRA FUNCTIONS
+
+
+def user_has_author(user):
+    this_user = user
+    author_profiles = Author.objects.filter(user.id=this_user.id)
+    if len(author_profiles) > 0:
+        return True
+    else:
+        return False
+
+
 #TEST
 def test(request):
     author_form = AddAuthorForm
@@ -21,6 +33,32 @@ def test(request):
     artist_form = AddArtistForm
     work_form = AddWorkForm
     return render(request, 'blog/temp.html', {'author_form': author_form, 'article_form': article_form, 'work_form': work_form, 'artist_form': artist_form})
+
+
+# WC_ADMIN
+
+
+def wc_admin_hub(request):
+    if request.user.is_authenticated():
+        if user_has_author(request.user):
+            author = Author.objects.filter(user=request.user)[0]
+            latest_articles = Article.objects.all().order_by('-id')[:5]
+            latest_works = Work.objects.all().order_by('-id')[:5]
+            latest_artists = Artist.objects.all().order_by('-id')[:5]
+
+            total_authors = Author.objects.count()
+            total_articles = Article.objects.count()
+            total_works = Work.objects.count()
+            total_artists = Artist.objects.count()
+
+            args = {'author': author, 'latest_articles': latest_articles, 'latest_artists': latest_artists, 'latest_works': latest_works, 'total_articles': total_articles, 'total_artists': total_artists, 'total_authors': total_authors, 'total_works': total_works}
+            return render(request, 'wc_admin/wc_admin_hub.html', args)
+        else:
+            error_message = 'You must create an Author Profile before you can use this page.'
+            return render(request, 'blog/error.html', {'error_message': error_message})
+    else:
+        error_message = 'You must log in before you can use this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
 
 
 # Add Article to BLOG
