@@ -36,18 +36,20 @@
 					{% for article in articles %}
 							
 						<div class="large-4 medium-6 small-12 columns">
-							<div class="sub_panel">
-								<h5>{{ article.title }}</h5>
-								<p>
-									{{ article.date_created }}
-									<br>
-									By {{ article.author }}
-									<br>
-									Category: {{ article.category }}
-									<br>
-									Published?...{% if article.publish %} Yes {% else %} No {% endif %}
-								</p>
-							</div>
+							<a href="/indie_db/view_article/?id={{ article.id }}">
+								<div class="sub_panel link_panel">
+									<h5>{{ article.title }}</h5>
+									<p>
+										{{ article.date_created }}
+										<br>
+										By {{ article.author }}
+										<br>
+										Category: {{ article.category }}
+										<br>
+										Published?...{% if article.publish %} Yes {% else %} No {% endif %}
+									</p>
+								</div>
+							</a>
 						</div>
 
 					{% endfor %}

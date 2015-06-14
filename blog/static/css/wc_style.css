@@ -20,6 +20,11 @@
 	background-color: #ffffff;
 	margin: 5px;
 	padding: 7px;
+	border: 2px solid white;
+}
+
+.link_panel:hover{
+	border: 2px solid black;
 }
 
 ::-webkit-input-placeholder {
