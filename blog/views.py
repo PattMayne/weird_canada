@@ -237,9 +237,11 @@ def view_work(request):
 
 
 def browse_articles(request):
+    results_per_page = 2
+    search_request = ''
+    order_by_request = ''
     if request.method == 'GET':
         order_by = '-id'
-
         order_by_request = request.GET.get('order_by')
         search_request = request.GET.get('search')
         
@@ -256,7 +258,7 @@ def browse_articles(request):
     else:
         all_articles = Article.objects.all().order_by('-id')
 
-    pager = Paginator(all_articles, 3)
+    pager = Paginator(all_articles, results_per_page)
 
     if request.method == 'GET' and 'page' in request.GET:
         page = request.GET.get('page')
@@ -271,4 +273,4 @@ def browse_articles(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         articles = pager.page(pager.num_pages)
-    return render(request, 'blog/browse_articles.html', {'articles': articles})
+    return render(request, 'blog/browse_articles.html', {'articles': articles, 'results_per_page': results_per_page, 'total_results': total_results,'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request})
