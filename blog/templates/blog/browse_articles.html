@@ -25,8 +25,13 @@
 						<input type="text" name="search" id="id_search" placeholder="Search Titles">
 					</div>
 					
-					<div class="large-6 medium-6 columns">
+					<div class="large-12 columns">
 						<input type="submit" class="button small" value="GO">
+					</div>
+
+					<div class="large-12 columns">
+						<p>Page {{page}} of {{ number_of_pages }}</p>
+						<p>{{ total_results }} results</p>
 					</div>
 
 				</form>
@@ -62,7 +67,7 @@
         	{% endif %}
 
         	{% if articles.has_next %}
-            <a href="?page={{ articles.next_page_number }}&order_by={{ order_by }}&search={{ search }}" class="right">previous</a>
+            <a href="?page={{ articles.next_page_number }}&order_by={{ order_by }}&search={{ search }}" class="right">next</a>
         	{% endif %}
         </div>
 	</div>
