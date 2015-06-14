@@ -24,4 +24,5 @@ urlpatterns = patterns('',
     url(r'^indie_db/view_work/$', 'blog.views.view_work', name="view_work_view"),
     url(r'^indie_db/view_article/$', 'blog.views.view_article', name="view_article_view"),
     url(r'^indie_db/browse_articles/$', 'blog.views.browse_articles', name="browse_articles_view"),
+    url(r'^indie_db/browse_artists/$', 'blog.views.browse_artists', name="browse_artists_view"),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

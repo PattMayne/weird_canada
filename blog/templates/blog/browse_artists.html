@@ -1,10 +1,72 @@
 {% extends "base.html" %}
 
-{% block title %} Browse Articles {% endblock %}
+{% block title %} Browse Artists {% endblock %}
 
 {% block content %}
 
+<div class="large-12 columns">
+	<div class="row">
+		<div class="panel">
+			<div class="row">
+				<h6>SEARCH & SORT:</h6>
+				<form method="get" action="/indie_db/browse_articles/">
+					
+					<div class="large-6 medium-6 columns">
 
+						<select name="order_by" id="id_order_by">
+							<option value="birthdate_desc">Birth/Formed Date (desc)</option>
+							<option value="birthdate_asc">Birth/Formed Date (asc)</option>
+							<option value="name_desc">Name (desc)</option>
+							<option value="name_asc">Name (asc)</option>
+						</select>
+
+					</div>
+					<div class="large-6 medium-6 columns">
+						<input type="text" name="search" id="id_search" placeholder="Search Names">
+					</div>
+					
+					<div class="large-12 columns">
+						<input type="submit" class="button small" value="GO">
+					</div>
+
+					<div class="large-12 columns">
+						<p>Page {{page}} of {{ number_of_pages }}</p>
+						<p>{{ total_results }} results</p>
+					</div>
+
+				</form>
+				<div class="large-12 columns">
+					<h3>ARTISTS:</h3>
+
+					{% for artist in artists %}
+							
+						<div class="large-4 medium-6 small-12 columns">
+							<a href="/indie_db/view_artist/?id={{ artist.id }}">
+								<div class="sub_panel link_panel">
+									<h5>{{ artist.name }}</h5>
+									<p>
+										{% if artist.group %}Formed: {% else %}Born:{% endif %}{{ artist.birthdate }}
+										<br>
+									</p>
+								</div>
+							</a>
+						</div>
+
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="large-12 columns">
+			{% if artists.has_previous %}
+            <a href="?page={{ artists.previous_page_number }}&order_by={{ order_by }}&search={{ search }}" class="left">previous</a>
+        	{% endif %}
+
+        	{% if artists.has_next %}
+            <a href="?page={{ artists.next_page_number }}&order_by={{ order_by }}&search={{ search }}" class="right">next</a>
+        	{% endif %}
+        </div>
+	</div>
+</div>
 
 
 {% endblock %}

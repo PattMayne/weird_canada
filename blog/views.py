@@ -237,7 +237,7 @@ def view_work(request):
 
 
 def browse_articles(request):
-    results_per_page = 2
+    results_per_page = 18
     search_request = ''
     order_by_request = ''
     order_by = '-id'
@@ -278,3 +278,47 @@ def browse_articles(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         articles = pager.page(pager.num_pages)
     return render(request, 'blog/browse_articles.html', {'articles': articles, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request})
+
+
+def browse_artists(request):
+    results_per_page = 18
+    search_request = ''
+    order_by_request = ''
+    order_by = '-id'
+    if request.method == 'GET':
+        
+        order_by_request = request.GET.get('order_by')
+        search_request = request.GET.get('search')
+
+        if search_request is None:
+            search_request = ''
+        
+        elif order_by_request == 'name_asc':
+            order_by = 'name'
+        elif order_by_request == 'name_desc':
+            order_by = '-name'
+        elif order_by_request == 'birthdate_asc':
+            order_by = 'birthdate'
+        elif order_by_request == 'birthdate_desc':
+            order_by = '-birthdate'
+
+        all_artists = Artist.objects.filter(title__icontains=search_request).order_by(order_by)
+    else:
+        all_artists = Artist.objects.all().order_by('-id')
+
+    pager = Paginator(all_artists, results_per_page)
+
+    if request.method == 'GET' and 'page' in request.GET:
+        page = request.GET.get('page')
+    else:
+        page = 1
+
+    try:
+        artists = pager.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        artists = pager.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        artists = pager.page(pager.num_pages)
+    return render(request, 'blog/browse_artists.html', {'artists': artists, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request})
