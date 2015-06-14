@@ -47,3 +47,12 @@
 .wc_list li{
 	list-style-type: none;
 }
+
+
+/*
+		Indie DB styling
+*/
+
+.article_text{
+	text-align: justify;
+}

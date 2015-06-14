@@ -16,6 +16,7 @@
 			<div class="large-6 medium-6 columns">
 				<h6>Work: {{ article.work_link }}</h6>
 				<h6>Artist: {{ article.artist_link }}</h6>
+				<h6>Category: {{ article.category }}</h6>
 			</div>
 
 			<div class="large-12 columns">
@@ -24,16 +25,19 @@
 				<br><br>
 
 				<p><i>English Article</i></p>
-				<p class="article_text">
-					{{ article.body_en }}
-				</p>
-
+				<div class="sub_panel">
+					<p class="article_text">
+						{{ article.body_en }}
+					</p>
+				</div>
 				<br><br>
 
 				<p><i>Article Français</i></p>
-				<p class="article_text">
-					{{ article.body_fr }}
-				</p>
+				<div class="sub_panel">
+					<p class="article_text">
+						{{ article.body_fr }}
+					</p>
+				</div>
 			</div>
 
 		</div>
