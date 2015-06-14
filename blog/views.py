@@ -245,6 +245,9 @@ def browse_articles(request):
         
         order_by_request = request.GET.get('order_by')
         search_request = request.GET.get('search')
+
+        if search_request is None:
+            search_request = ''
         
         if order_by_request == 'date_desc':
             order_by = '-date_created'
