@@ -1,10 +1,80 @@
 {% extends "base.html" %}
 
-{% block title %} Browse Articles {% endblock %}
+{% block title %} Browse Works of Art {% endblock %}
 
 {% block content %}
 
+<div class="large-12 columns">
+	<div class="row">
+		<div class="panel">
+			<div class="row">
+				<h6>SEARCH & SORT:</h6>
+				<form method="get" action="/indie_db/browse_articles/">
+					
+					<div class="large-6 medium-6 columns">
 
+						<select name="order_by" id="id_order_by">
+							<option value="created_desc">Date (desc)</option>
+							<option value="created_asc">Date (asc)</option>
+							<option value="title_desc">Title (desc)</option>
+							<option value="title_asc">Title (asc)</option>
+						</select>
+
+					</div>
+					<div class="large-6 medium-6 columns">
+						<input type="text" name="search" id="id_search" placeholder="Search Titles">
+					</div>
+
+					<div class="large-6 medium-6 large-pull-6 medium-pull-6 columns">
+						<input type="text" placeholder="Search Category" >
+					</div>
+					
+					<div class="large-6 medium-6 large-push-6 medium-push-6 columns">
+						<input type="submit" class="button small" value="GO">
+					</div>
+
+					<div class="large-12 columns">
+						<p>Page {{page}} of {{ number_of_pages }}</p>
+						<p>{{ total_results }} results</p>
+					</div>
+
+				</form>
+				<div class="large-12 columns">
+					<h3>WORKS:</h3>
+
+					{% for work in works %}
+							
+						<div class="large-4 medium-6 small-12 columns">
+							<a href="/indie_db/view_work/?id={{ work.id }}">
+								<div class="sub_panel link_panel">
+									<h5>{{ work.title }}</h5>
+									<p>
+										{{ work.created }}
+										<br>
+										By {{ work.artist }}
+										<br>
+										Category: {{ work.category }}
+
+									</p>
+								</div>
+							</a>
+						</div>
+
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="large-12 columns">
+			{% if works.has_previous %}
+            <a href="?page={{ works.previous_page_number }}&order_by={{ order_by }}&search={{ search }}" class="left">previous</a>
+        	{% endif %}
+
+        	{% if works.has_next %}
+            <a href="?page={{ works.next_page_number }}&order_by={{ order_by }}&search={{ search }}" class="right">next</a>
+        	{% endif %}
+        </div>
+	</div>
+</div>
 
 
 {% endblock %}

@@ -73,7 +73,7 @@ class Work(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     extra_data = models.TextField(null=True, blank=True)
-    created = models.DateField()
+    created = models.DateField(null=True, blank=True)
     city = models.CharField(max_length=200)
     production_company = models.ForeignKey(ProductionCompany, blank=True, null=True)
     self_published = models.BooleanField(default=False)
