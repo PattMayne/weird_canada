@@ -240,8 +240,9 @@ def browse_articles(request):
     results_per_page = 2
     search_request = ''
     order_by_request = ''
+    order_by = '-id'
     if request.method == 'GET':
-        order_by = '-id'
+        
         order_by_request = request.GET.get('order_by')
         search_request = request.GET.get('search')
         
