@@ -83,7 +83,7 @@ def save_new_review_article(request):
         artist = work.creator
         if form.is_valid():
             article = form.save()
-            author = Author.objects.filter(user=request.user)[0]
+            author = request.user
             article.author = author
             article.work_link = work
             article.artist_link = artist
@@ -137,7 +137,7 @@ def save_new_artist(request):
     if request.method == 'POST':
         form = AddArtistForm(request.POST)
         artist = None
-        author = Author.objects.filter(user=request.user)[0]
+        author = request.user
         if form.is_valid():
             artist = form.save()
             artist_id = artist.id
@@ -171,7 +171,7 @@ def save_new_work(request):
         form = AddWorkForm(request.POST)
         artist_id = request.POST.get('artist_id')
         artist = Artist.objects.get(pk=artist_id)
-        author = Author.objects.filter(user=request.user)[0]
+        author = request.user
         work = None
         if form.is_valid():
             work = form.save()
