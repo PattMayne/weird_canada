@@ -20,7 +20,7 @@
 	<div class="panel">
 		<h2>Add Artist to the Database</h2>
 
-		<form method="post" action="/wc_admin/save_new_artist">
+		<form method="post" action="/wc_admin/save_new_artist/">
 			{% csrf_token %}
 			{{ artist_form }}
 
