@@ -9,16 +9,73 @@
 		<div class="row">
 
 			<div class="large-6 medium-6 columns">
-				<h6>{{ article.author }}</h6>
-				<h6>{{ article.date_created }}</h6>
+				<table>
+
+					<tr>
+						<td>
+							<h6>Author:</h6>
+						</td>
+						<td>
+							<h6>{{ article.author }}</h6>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<h6>Publish Date:</h6>
+						</td>
+						<td>
+							<h6>{{ article.date_created }}</h6>
+						</td>
+					</tr>
+
+
+				</table>
+				
+				
 			</div>
 
 			<div class="large-6 medium-6 columns">
-				<h6><a href="/indie_db/view_work/?id={{ work.id }}">Work: {{ article.work_link }}</a></h6>
-				<h6>Artist: {{ article.artist_link }}</h6>
-				<h6>Category: {{ article.category }}</h6>
-				<h6>Tags: {% for tag in article.tags.all %} {{ tag }}, {% endfor %}</h6>
+				<table>
 
+					<tr>
+						<td>
+							<h6>Work:</h6>
+						</td>
+						<td>
+							<h6><a href="/indie_db/view_work/?id={{ work.id }}"> {{ article.work_link }}</a></h6>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<h6>Artist: </h6>
+						</td>
+						<td>
+							<h6>{{ article.artist_link }}</h6>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<h6>Category: </h6>
+						</td>
+						<td>
+							<h6>{{ article.category }}</h6>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<h6>Tags: </h6>
+						</td>
+						<td>
+							<h6>{% for tag in article.tags.all %} {{ tag }}, {% endfor %}</h6>
+						</td>
+					</tr>
+
+				</table>
+				
 			</div>
 
 			<div class="large-12 columns">
