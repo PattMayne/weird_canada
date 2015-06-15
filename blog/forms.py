@@ -102,7 +102,7 @@ class UpdateProfileForm(forms.ModelForm):
         return email
 
     def save(self, commit=True):
-        user = super(RegistrationForm, self).save(commit=False)
+        user = super(UpdateProfileForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
 
         if commit:
