@@ -379,6 +379,9 @@ def browse_works(request):
     return render(request, 'blog/browse_works.html', {'works': works, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request, 'category': category})
 
 
+# WC_ADMIN profile stuff
+
+
 def edit_profile(request):
     if request.user.is_authenticated:
         if user_has_author(request.user):
@@ -396,5 +399,19 @@ def edit_profile(request):
 
 
 def save_profile(request):
+    if request.user.is_authenticated:
+        if user_has_author(request.user):
+            author_profile = Author.objects.filter(user=request.user)[0]
+            author_form = EditAuthorForm(request.POST, instance=author_profile)
+            user_form = UpdateProfileForm(request.POST, instance=request.user)
+            if author_form.is_valid():
+                author_form.save()
+            if user_form.is_valid():
+                user_form.save()
+            if 'password' in request.POST:
+                if request.POST.get('password') != '':
+                    request.user.set_password(request.POST.get('password'))
+                    request.user.save()
+            return HttpResponseRedirect('/wc_admin')
     error_message = 'This page does not exist. So how are you here??'
     return render(request, 'blog/error.html', {'error_message': error_message})
