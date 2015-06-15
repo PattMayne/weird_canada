@@ -93,7 +93,7 @@ def save_new_review_article(request):
             tags = []
 
             for tag in tags_list:
-                tags.append(tag.strip().lower())
+                tags.append(tag.strip().lower().replace('-', ' ').replace('_', ' '))
 
             # A Tag is another model, linked to the "article" via a ManyToMany field
             # Here we check to see if the user has entered tags that already exist in the database
@@ -137,6 +137,7 @@ def save_new_artist(request):
     if request.method == 'POST':
         form = AddArtistForm(request.POST)
         artist = None
+        author = Author.objects.filter(user=request.user)[0]
         if form.is_valid():
             artist = form.save()
             artist_id = artist.id
@@ -149,6 +150,7 @@ def save_new_artist(request):
                 website.save()
 
                 artist.website = website
+                artist.author = author
                 artist.save()
             return HttpResponseRedirect('/indie_db/view_artist/?id=' + str(artist_id))
         else:
@@ -169,6 +171,7 @@ def save_new_work(request):
         form = AddWorkForm(request.POST)
         artist_id = request.POST.get('artist_id')
         artist = Artist.objects.get(pk=artist_id)
+        author = Author.objects.filter(user=request.user)[0]
         work = None
         if form.is_valid():
             work = form.save()
@@ -184,6 +187,7 @@ def save_new_work(request):
                 website.save()
 
                 work.website = website
+                work.author = author
                 work.save()
             if 'styles' in request.POST:
                 styles_string = request.POST.get('styles')
@@ -191,7 +195,7 @@ def save_new_work(request):
                 styles = []
 
                 for style in styles_list:
-                    styles.append(style.strip().lower())
+                    styles.append(style.strip().lower().replace('-', ' ').replace('_', ' '))
 
                 # A Style is another model, linked to the "work" via a ManyToMany field
                 # Here we check to see if the user has entered styles that already exist in the database

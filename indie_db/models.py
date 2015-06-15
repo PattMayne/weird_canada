@@ -1,5 +1,7 @@
 from django.db import models
 
+from blog.models import Author
+
 # Create your models here.
 
 '''
@@ -41,6 +43,7 @@ class Artist(models.Model):
     deathdate = models.DateField(null=True, blank=True)
     group = models.BooleanField(default=False)
     members = models.ManyToManyField('self')
+    author = models.ForeignKey(Author, null=True, blank=True)
     website = models.ForeignKey(URL, null=True, blank=True)
 
     class Meta:
@@ -59,6 +62,8 @@ class Contributor(models.Model):
 class ProductionCompany(models.Model):
     name = models.CharField(max_length=200)
     website = models.ForeignKey(URL)
+    location = models.CharField(max_length=200)
+    author = models.ForeignKey(Author, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -81,6 +86,7 @@ class Work(models.Model):
     website = models.ForeignKey(URL, null=True, blank=True)
     styles = models.ManyToManyField(Style, null=True, blank=True)
     contributors = models.ManyToManyField(Contributor, null=True, blank=True)
+    author = models.ForeignKey(Author, null=True, blank=True)
 
     class Meta:
         ordering = ['-created']
