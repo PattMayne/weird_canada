@@ -32,6 +32,10 @@
 						<a class="button small" href="/indie_db/browse_articles">Browse Articles</a>
 					</p>
 
+					<p>
+						<a class="button small" data-reveal-id="help_modal" href="#">HELP!</a>
+					</p>
+
 				</div>
 
 				<div class="large-6 medium-6 columns">
@@ -201,6 +205,101 @@
 			<b>To write a stand-alone article</b>, such an article for IDEAS or HOW-TO:
 		</p>
 		<a href="/indie_db/write_mono_article" class="button small">CLICK HERE</a>
+	</div>
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+<div id="help_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">How to use this site</h2>
+  <p class="lead">Select which action you want to learn about</p>
+
+	<div class="large-12 columns">
+
+		<ul class="tabs" data-tab>
+		  <li class="tab-title active"><a href="#panel1">Intro/a></li>
+		  <li class="tab-title"><a href="#panel2">Reviews</a></li>
+		  <li class="tab-title"><a href="#panel3">How To / Ideas / Stand-Alone Articles</a></li>
+		  <li class="tab-title"><a href="#panel4">Editing</a></li>
+		</ul>
+		<div class="tabs-content">
+
+		  <div class="content active" id="panel1">
+		  	<p>
+		  		<b>Introduction:</b>
+		  	</p>
+		  		<div class="large-12 columns">
+					<p class="justify">
+						This site hosts a database of information about art and artists. We host profiles as data objects. The primary data-objects are:
+					</p>
+					<ul class="wc_list">
+						<li>Works (like a "work of art")</li>
+						<li>Artists (who create works of art)</li>
+						<li>Articles (can be reviews of works of art, or can be stand-alone)</li>
+						<li>Plus some other things...</li>
+					</ul>
+					<p class="justify">
+						A review Article cannot exist without a Work profile. A Work profile cannot exist without an Artist profile. One Artist can be linked to many Works. One Work can be linked to many Reviews.
+					</p>
+					<p class="justify">
+						Visitors to the site will primarily be looking at Articles, but they'll be able to do dynamic searches of Artists and Works to help them find the right Articles. Plus they can just check out raw data about an album, book, or artist without reading a full review.
+					</p>
+		  		</div>
+		  </div>
+
+		  <div class="content" id="panel2">
+		    <p>
+		  		<b>How to write Review Articles:</b>
+		  	</p>
+		  		<div class="large-12 columns">
+					<p class="justify">
+						<ol>
+							<li>
+								<p class="justify">
+									First add an Artist profile to the database (check the database first... maybe someone already added their profile)
+								</p>
+							</li>
+							<li>
+								<p class="justify">
+									Go to the artist's page and add a profile for a Work of art to the database (again... check first to see if it's already there).
+								</p>
+							</li>
+							<li>
+								<p class="justify">
+									Go to the Work's page and write a review about it.
+								</p>
+							</li>
+						</ol>
+					</p>
+		  		</div>
+		  </div>
+
+		  <div class="content" id="panel3">
+		    <p>
+		  		<b>How to write Stand-Alone Articles:</b>
+		  	</p>
+		  	<div class="large-12 columns">
+				<p class="justify">
+					It's pretty simple... just press the button and write the article. Ideas / How-To Articles aren't linked to anything else.
+				</p>
+		  	</div>
+		  </div>
+
+		  <div class="content" id="panel4">
+		    <p>
+		  		<b>How to edit stuff:</b>
+		  	</p>
+		  	<div class="large-12 columns">
+				<p class="justify">
+					If you are the person who wrote an article or who created a profile then you can go back and edit those things later. Otherwise, only certain privilaged users can edit articles and profiles that they did not create.
+					<br>
+					To edit your entries just go to the entry and press the "edit" button. That button will only appear for those who have the rights to edit them.
+				</p>
+		  	</div>
+		  </div>
+
+		</div>
+
 	</div>
 
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
