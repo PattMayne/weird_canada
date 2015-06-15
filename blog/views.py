@@ -83,7 +83,7 @@ def save_new_review_article(request):
         artist = work.creator
         if form.is_valid():
             article = form.save()
-            author = request.user
+            author = Author.objects.filter(user=request.user)[0]
             article.author = author
             article.work_link = work
             article.artist_link = artist
