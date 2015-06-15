@@ -9,7 +9,7 @@
 		<div class="panel">
 			<div class="row">
 				<h2>Enter New Author</h2>
-				<form method="post" action="">
+				<form method="post" action="/wc_admin/save_profile/">
 					{% csrf_token %}
 					{{ author_form }}
 					<br>

@@ -412,6 +412,6 @@ def save_profile(request):
                 if request.POST.get('password') != '':
                     request.user.set_password(request.POST.get('password'))
                     request.user.save()
-            return HttpResponseRedirect('/wc_admin')
+            return HttpResponseRedirect('/wc_admin/')
     error_message = 'This page does not exist. So how are you here??'
     return render(request, 'blog/error.html', {'error_message': error_message})
