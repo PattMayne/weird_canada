@@ -12,6 +12,11 @@ urlpatterns = patterns('',
     url(r'^test/$', 'blog.views.test', name="test_page"),
     url(r'^wc_admin/$', 'blog.views.wc_admin_hub', name="wc_admin_hub_view"),
 
+    # profile / admin stuff
+
+    url(r'^wc_admin/edit_profile/', 'blog.views.edit_profile', name="edit_profile_view"),
+    url(r'^wc_admin/save_profile/', 'blog.views.save_profile', name="save_profile_view"),
+
     # add stuff to the database
     url(r'^wc_admin/write_new_artist/', 'blog.views.write_new_artist', name="write_new_artist_view"),
     url(r'^wc_admin/write_new_work/', 'blog.views.write_new_work', name="write_new_work_view"),

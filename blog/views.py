@@ -11,7 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from indie_db.forms import AddArtistForm, AddWorkForm
 from indie_db.models import Artist, Work, URL, Style
 from blog.models import Article, Author, Tag
-from blog.forms import AddArticleForm, AddAuthorForm
+from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
 # Create your views here.
 
@@ -377,3 +377,24 @@ def browse_works(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         works = pager.page(pager.num_pages)
     return render(request, 'blog/browse_works.html', {'works': works, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request, 'category': category})
+
+
+def edit_profile(request):
+    if request.user.is_authenticated:
+        if user_has_author(request.user):
+            author_profile = Author.objects.filter(user=request.user)[0]
+            author_form = EditAuthorForm(instance=author_profile)
+            user_form = UpdateProfileForm(instance=request.user)
+
+            return render(request, 'blog/edit_profile.html', {'author_form': author_form, 'user_form': user_form})
+        else:
+            error_message = 'You must have an author account to access this page.'
+            return render(request, 'blog/error.html', {'error_message': error_message})
+    else:
+        error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+def save_profile(request):
+    error_message = 'This page does not exist. So how are you here??'
+    return render(request, 'blog/error.html', {'error_message': error_message})
