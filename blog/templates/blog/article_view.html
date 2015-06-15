@@ -9,14 +9,16 @@
 		<div class="row">
 
 			<div class="large-6 medium-6 columns">
-				<h5>{{ article.author }}</h5>
-				<h5>{{ article.date_created }}</h5>
+				<h6>{{ article.author }}</h6>
+				<h6>{{ article.date_created }}</h6>
 			</div>
 
 			<div class="large-6 medium-6 columns">
-				<h6>Work: {{ article.work_link }}</h6>
+				<h6><a href="/indie_db/view_work/?id={{ work.id }}">Work: {{ article.work_link }}</a></h6>
 				<h6>Artist: {{ article.artist_link }}</h6>
 				<h6>Category: {{ article.category }}</h6>
+				<h6>Tags: {% for tag in article.tags.all %} {{ tag }}, {% endfor %}</h6>
+
 			</div>
 
 			<div class="large-12 columns">
