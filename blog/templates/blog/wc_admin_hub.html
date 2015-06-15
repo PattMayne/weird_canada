@@ -20,7 +20,7 @@
 						<a class="button small" href="/wc_admin/write_new_artist">Add Artist</a>
 					</p>
 					<p>
-						<a class="button small">Add Article</a>
+						<a href="" class="button small" data-reveal-id="add_article_modal">Add Article</a>
 					</p>
 					<p>
 						<a class="button small" href="/indie_db/browse_works">Browse Works</a>
@@ -178,6 +178,32 @@
 				</div>
 		</div>
 	</div>
+</div>
+
+
+
+<div id="add_article_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Wanna write a new article?</h2>
+  <p class="lead">Which kind of article would you like to write?</p>
+
+	<div class="large-6 medium-6 columns">
+		<p class="justify">
+			<b>To write an article based on a work of art</b> you must first find the work of art in the database. You'll probably have to add it to the database first. AND before you do that you'll have to make sure the ARTIST who made the WORK is also in the database.
+		</p>
+		<p>So here are your options:</p>
+		<a href="/indie_db/browse_works" class="button small">BROWSE WORKS</a>
+		<a href="/indie_db/browse_artists" class="button small">BROWSE ARTISTS</a>
+		<a href="/wc_admin/write_new_artist" class="button small">ADD ARTIST TO DB</a>
+	</div>
+
+	<div class="large-6 medium-6 columns">
+		<p class="justify">
+			<b>To write a stand-alone article</b>, such an article for IDEAS or HOW-TO:
+		</p>
+		<a href="/indie_db/write_mono_article" class="button small">CLICK HERE</a>
+	</div>
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
 {% endblock %}
