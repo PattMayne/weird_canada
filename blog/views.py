@@ -475,7 +475,8 @@ def write_author_profile(request):
             error_message = 'You already have an author profile. You can edit it <a href="/wc_admin/">Here</a>'
             return render(request, 'blog/error.html', {'error_message': error_message})
         else:
-            return render(request, 'blog/author_write.html')
+            author_form = EditAuthorForm()
+            return render(request, 'blog/author_write.html', 'author_form': author_form)
     else:
         error_message = 'You must be logged in to do this.'
         return render(request, 'blog/error.html', {'error_message': error_message})
