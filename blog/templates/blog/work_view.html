@@ -70,25 +70,30 @@
 			</div>
 
 	</div>
+</div>
 
 	<div class="panel wc_control">
+		<h3>Controls</h3>
 		<button class="button small" href="#">
 			Add Contributors
 		</button>
-		<br>
 		
 		<form method="post" action="/wc_admin/write_review/">
 			{% csrf_token %}
 			<input type="hidden" name="work_id" value="{{ work.id }}">
 			<input type="submit" class="button small" value="Write Article about this Work">
 
-		<br>
 		</form>
+
+		<button class="button small" href="#">
+			Add Tracklist
+		</button>
 	</div>
 
 </div>
 
-<div class="panel">
+<div class="row">
+	<div class="panel">
 		<div class="row">
 			<div class="large-12 columns">
 				<h3>{{ articles.count }} Articles about {{ work }}</h3>
@@ -112,6 +117,45 @@
 
 	</div>
 </div>
+
+						<!-- MODALS -->
+
+<div id="add_contributors_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Wanna add contributors to {{ work }}?</h2>
+  <p class="lead">How many contributors do you want to add?</p>
+
+	<div class="large-6 columns">
+		<p class="justify">
+			<i>Remember: A "contributor" is stored as an Artist, so the contributing Artist needs to already be in the database before you can add them to this list.</i>
+		</p>
+		<form method="post" action="/wc_admin/add_contributors/">
+			<input type="number" required>
+			<input type="hidden" name="work_id" value="{{ work.id }}">
+			<input type="submit" class="button small" value="GO">
+		</form>
+		
+		<a href="/wc_admin/add_contributors" class="button small">GO</a>
+	</div>
+
+	<div class="large-6 columns">
+		<p class="justify">
+			If you have not made sure that the contributing Artist(s) are already in the database, you should search/browse for them and probably add them yourself. Then you can come back here and add them to the list of contributing Artists.
+		</p>
+
+		<div class="large-6 medium-6 columns">
+			<a href="/indie_db/browse_artists" class="button small">BROWSE ARTISTS</a>
+		</div>
+		<div class="large-6 medium-6 columns">
+			<a href="/wc_admin/write_new_artist" class="button small">ADD CONTRIBUTING ARTIST TO DB</a>
+		</div>
+		
+		
+	</div>
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+						<!-- END of MODALS -->
 
 
 {% endblock %}
