@@ -476,7 +476,7 @@ def write_author_profile(request):
             return render(request, 'blog/error.html', {'error_message': error_message})
         else:
             author_form = EditAuthorForm()
-            return render(request, 'blog/author_write.html', 'author_form': author_form)
+            return render(request, 'blog/author_write.html', {'author_form': author_form})
     else:
         error_message = 'You must be logged in to do this.'
         return render(request, 'blog/error.html', {'error_message': error_message})
