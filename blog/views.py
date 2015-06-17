@@ -76,11 +76,11 @@ def write_new_review_article(request):
 
 
 def write_new_mono_article(request):
-    if request.method == 'POST':
+    if request.user.is_authenticated():
         article_form = AddArticleForm
         return render(request, 'blog/article_mono_write_new.html', {'article_form': article_form})
     else:
-        error_message = 'You took the wrong path to this page.'
+        error_message = 'You must be logged in to view this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
