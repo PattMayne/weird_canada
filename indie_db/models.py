@@ -87,7 +87,7 @@ class ProductionCompany(models.Model):
 
 
 class Work(models.Model):
-    w_category = models.OneToOneField(WorkCategory, null=True, blank=True)
+    work_category = models.OneToOneField(WorkCategory, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     extra_data = models.TextField(null=True, blank=True)
