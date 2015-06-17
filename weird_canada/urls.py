@@ -16,6 +16,8 @@ urlpatterns = patterns('',
 
     url(r'^wc_admin/edit_profile/', 'blog.views.edit_profile', name="edit_profile_view"),
     url(r'^wc_admin/save_profile/', 'blog.views.save_profile', name="save_profile_view"),
+    url(r'^wc_admin/write_profile/', 'blog.views.write_author_profile', name="write_author_profile_view"),
+    url(r'^wc_admin/save_new_author/', 'blog.views.save_new_author_profile', name="save_new_author_profile_view"),
 
     # add stuff to the database
     url(r'^wc_admin/write_new_artist/', 'blog.views.write_new_artist', name="write_new_artist_view"),

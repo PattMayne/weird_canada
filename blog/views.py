@@ -56,8 +56,7 @@ def wc_admin_hub(request):
             args = {'author': author, 'latest_articles': latest_articles, 'latest_artists': latest_artists, 'latest_works': latest_works, 'total_articles': total_articles, 'total_artists': total_artists, 'total_authors': total_authors, 'total_works': total_works}
             return render(request, 'blog/wc_admin_hub.html', args)
         else:
-            error_message = 'You must create an Author Profile before you can use this page.'
-            return render(request, 'blog/error.html', {'error_message': error_message})
+            return HttpResponseRedirect('/write_profile/')
     else:
         error_message = 'You must log in before you can use this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
@@ -443,13 +442,13 @@ def edit_profile(request):
 
             return render(request, 'blog/edit_profile.html', {'author_form': author_form, 'user_form': user_form})
         else:
-            error_message = 'You must have an author account to access this page.'
-            return render(request, 'blog/error.html', {'error_message': error_message})
+            return HttpResponseRedirect('/write_profile/')
     else:
         error_message = 'You must be logged in to access this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
+# For EDITING an author profile
 def save_profile(request):
     if request.user.is_authenticated:
         if user_has_author(request.user):
@@ -467,3 +466,28 @@ def save_profile(request):
             return HttpResponseRedirect('/wc_admin/')
     error_message = 'This page does not exist. So how are you here??'
     return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+# For the original CREATION of an author profile
+def write_author_profile(request):
+    if request.user.is_authenticated():
+        if user_has_author(request.user):
+            error_message = 'You already have an author profile. You can edit it <a href="/wc_admin/">Here</a>'
+            return render(request, 'blog/error.html', {'error_message': error_message})
+        else:
+            return render(request, 'blog/author_write.html', {'error_message': error_message})
+    else:
+        error_message = 'You must be logged in to do this.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+def save_new_author_profile(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            if user_has_author(request.user):
+                author_form = EditAuthorForm(request.POST)
+                if author_form.is_valid():
+                    author = author_form.save()
+                    author.user = request.user
+                    author.save()
+                    return HttpResponseRedirect('/wc_admin/')
