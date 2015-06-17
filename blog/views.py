@@ -457,8 +457,14 @@ def save_profile(request):
             user_form = UpdateProfileForm(request.POST, instance=request.user)
             if author_form.is_valid():
                 author_form.save()
+            else:
+                error_message = 'The form was not valid. The data was not saved.'
+                return render(request, 'blog/error.html', {'error_message': error_message, 'form': author_form})
             if user_form.is_valid():
                 user_form.save()
+            else:
+                error_message = 'The form was not valid. The data was not saved.'
+                return render(request, 'blog/error.html', {'error_message': error_message, 'form': user_form})
             if 'password' in request.POST:
                 if request.POST.get('password') != '':
                     request.user.set_password(request.POST.get('password'))
@@ -492,5 +498,8 @@ def save_new_author_profile(request):
                     author.user = request.user
                     author.save()
                     return HttpResponseRedirect('/wc_admin/')
+                else:
+                    error_message = 'The form was not valid. The data was not saved.'
+                    return render(request, 'blog/error.html', {'error_message': error_message, 'form': author_form})
     error_message = 'Something went wrong.'
     return render(request, 'blog/error.html', {'error_message': error_message})
