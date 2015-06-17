@@ -54,7 +54,7 @@ class EditAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('date_created', 'title', 'body_en', 'body_fr', 'publish', 'a_category')
+        fields = ('date_created', 'title', 'body_en', 'body_fr', 'publish', 'article_category')
 
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
@@ -71,7 +71,7 @@ class AddArticleForm(ModelForm):
             'body_en': _('English Text'),
             'publish': _('Publish Now?'),
             'body_fr': _('Article Français'),
-            'a_category': _('Choose Category'),
+            'article_category': _('Choose Category'),
         }
 
     def save(self, commit=True):
@@ -81,7 +81,7 @@ class AddArticleForm(ModelForm):
         article.body_en = self.cleaned_data['body_en']
         article.body_fr = self.cleaned_data['body_fr']
         article.publish = self.cleaned_data['publish']
-        article.a_category = self.cleaned_data['a_category']
+        article.article_category = self.cleaned_data['article_category']
         article.save()
         return article
 
