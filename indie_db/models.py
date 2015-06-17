@@ -21,6 +21,14 @@ from django.contrib.auth.models import User
 '''
 
 
+class WorkCategory(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
 class Style(models.Model):
     name = models.CharField(max_length=64)
 
@@ -42,7 +50,7 @@ class Artist(models.Model):
     birthdate = models.DateField(null=True, blank=True)
     deathdate = models.DateField(null=True, blank=True)
     group = models.BooleanField(default=False)
-    members = models.ManyToManyField('self')
+    members = models.ManyToManyField('self', null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True)
     website = models.ForeignKey(URL, null=True, blank=True)
 
@@ -74,7 +82,7 @@ class ProductionCompany(models.Model):
 
 
 class Work(models.Model):
-    category = models.CharField(max_length=200)
+    category = models.OneToOneField(WorkCategory, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     extra_data = models.TextField(null=True, blank=True)

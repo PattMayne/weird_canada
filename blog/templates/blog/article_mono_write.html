@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Write a New Article {% endblock %}
+
+{% block content %}
+
+  <script>
+
+  $(function() {
+    $( "#id_date_created" ).datepicker();
+  });
+
+
+  </script>
+
+
+
+<div class="row">
+	<div class="panel">
+		<h2>Write a New Article</h2>
+
+		<form method="post" action="/wc_admin/save_mono_article/">
+			{% csrf_token %}
+			{{ article_form }}
+
+			<br>
+			<label for="id_tags">Add Tags for Better Search Results:
+				<input type="text" id="id_tags" name="tags" placeholder="Separate them with a comma (" , ") Max five" maxlength="200"/>
+			</label>
+
+			<br>
+			<input type="hidden" name="work_id" value="{{ work_id }}">
+			<input type="submit" class="button small" value="SAVE">
+		</form>
+
+	</div>
+</div>
+
+
+
+{% endblock %}

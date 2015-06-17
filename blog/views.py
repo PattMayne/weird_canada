@@ -75,6 +75,15 @@ def write_new_review_article(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
+def write_new_mono_article(request):
+    if request.method == 'POST':
+        article_form = AddArticleForm
+        return render(request, 'blog/article_mono_write_new.html', {'article_form': article_form})
+    else:
+        error_message = 'You took the wrong path to this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
 def save_new_review_article(request):
     if request.method == 'POST' and request.user.is_authenticated():
         form = AddArticleForm(request.POST)
@@ -87,6 +96,45 @@ def save_new_review_article(request):
             article.author = author
             article.work_link = work
             article.artist_link = artist
+            article.save()
+            tags_string = request.POST.get('tags')
+            tags_list = tags_string.split(',')
+            tags = []
+
+            for tag in tags_list:
+                tags.append(tag.strip().lower().replace('-', ' ').replace('_', ' '))
+
+            # A Tag is another model, linked to the "article" via a ManyToMany field
+            # Here we check to see if the user has entered tags that already exist in the database
+            for tag in tags:
+                pre_existing_tags = Tag.objects.filter(tag_name=tag)
+                if len(pre_existing_tags) > 0:
+                    pre_existing_tag = pre_existing_tags[0]
+                    article.tags.add(pre_existing_tag)
+                    article.save()
+                else:
+                    #create a new tag, save it to the DB, and add it to the article
+                    new_tag = Tag()
+                    new_tag.tag_name = tag
+                    new_tag.save()
+                    article.tags.add(new_tag)
+                    article.save()
+            return HttpResponseRedirect('/indie_db/view_article/?id=' + str(article.id))
+        else:
+            error_message = 'The form was not valid. The data was not saved.'
+            return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
+    else:
+        error_message = 'The info was not properly posted. The data was not saved.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+def save_new_mono_article(request):
+    if request.method == 'POST' and request.user.is_authenticated():
+        form = AddArticleForm(request.POST)
+        if form.is_valid():
+            article = form.save()
+            author = Author.objects.filter(user=request.user)[0]
+            article.author = author
             article.save()
             tags_string = request.POST.get('tags')
             tags_list = tags_string.split(',')

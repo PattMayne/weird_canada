@@ -6,6 +6,14 @@ from indie_db.models import Artist, Work
 # Create your models here.
 
 
+class ArticleCategory(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
 class Author(models.Model):
     authorname = models.CharField(max_length=200, unique=True)
     tagline = models.CharField(max_length=300)
@@ -29,11 +37,10 @@ class Article(models.Model):
     author = models.ForeignKey(Author, blank=True, null=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True, null=True)
-    category = models.CharField(max_length=200)
+    category = models.OneToOneField(ArticleCategory, blank=True, null=True)
     body_en = models.TextField(blank=True, null=True)
     body_fr = models.TextField(blank=True, null=True)
-    #body_en = MarkdownField()
-    #body_fr = MarkdownField()
+    is_review = models.BooleanField(default=False)
     publish = models.BooleanField(default=True)
     date_created = models.DateTimeField(blank=True, null=True)
     modified = models.DateTimeField(auto_now=True)
