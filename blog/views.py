@@ -56,7 +56,7 @@ def wc_admin_hub(request):
             args = {'author': author, 'latest_articles': latest_articles, 'latest_artists': latest_artists, 'latest_works': latest_works, 'total_articles': total_articles, 'total_artists': total_artists, 'total_authors': total_authors, 'total_works': total_works}
             return render(request, 'blog/wc_admin_hub.html', args)
         else:
-            return HttpResponseRedirect('/write_profile/')
+            return HttpResponseRedirect('/wc_admin/write_profile/')
     else:
         error_message = 'You must log in before you can use this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
@@ -442,7 +442,7 @@ def edit_profile(request):
 
             return render(request, 'blog/edit_profile.html', {'author_form': author_form, 'user_form': user_form})
         else:
-            return HttpResponseRedirect('/write_profile/')
+            return HttpResponseRedirect('/wc_admin/write_profile/')
     else:
         error_message = 'You must be logged in to access this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
