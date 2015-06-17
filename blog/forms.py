@@ -54,7 +54,7 @@ class EditAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('date_created', 'title', 'body_en', 'body_fr', 'publish', 'article_category')
+        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'publish')
 
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
