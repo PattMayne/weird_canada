@@ -485,10 +485,12 @@ def write_author_profile(request):
 def save_new_author_profile(request):
     if request.method == 'POST':
         if request.user.is_authenticated():
-            if user_has_author(request.user):
+            if not user_has_author(request.user):
                 author_form = EditAuthorForm(request.POST)
                 if author_form.is_valid():
                     author = author_form.save()
                     author.user = request.user
                     author.save()
                     return HttpResponseRedirect('/wc_admin/')
+    error_message = 'Something went wrong.'
+    return render(request, 'blog/error.html', {'error_message': error_message})
