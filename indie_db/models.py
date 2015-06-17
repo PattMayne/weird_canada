@@ -25,6 +25,11 @@ class WorkCategory(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
 
+    class Meta:
+        ordering = ['title']
+        verbose_name = "Work of Art Category"
+        verbose_name_plural = "Work of Art Categories"
+
     def __str__(self):
         return self.title
 
@@ -82,7 +87,7 @@ class ProductionCompany(models.Model):
 
 
 class Work(models.Model):
-    category = models.OneToOneField(WorkCategory, null=True, blank=True)
+    w_category = models.OneToOneField(WorkCategory, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     extra_data = models.TextField(null=True, blank=True)
