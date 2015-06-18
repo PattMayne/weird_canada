@@ -168,24 +168,31 @@
 			
 				</div>
 
-				<br>
+				<hr>
 
 				<h5>Set Production/Publication Company</h5>
 
-				<div class="large-6 columns">
-					<p class="justify">
-						<i>Select company from list below, or add company to the database via the link to the right.</i>
-					</p>
+				<div class="large-12 columns">
 
-					<form method="post" action="add_production_company">
-						<input type="hidden" name="work_id" value="work.id" />
-						<select name="company_id">
-							{% for company in production_companies %}
-							<option value="{{ company.id }}">{{ company.name }}</option>
-							{% endfor %}
-						</select>
-					</form>
+					<div class="large-7 columns">
+						<p class="justify">
+							<i>Select company from list below, or add company to the database via the link to the right.</i>
+						</p>
 
+						<form method="post" action="add_production_company">
+							<input type="hidden" name="work_id" value="work.id" />
+							<select name="company_id">
+								{% for company in production_companies %}
+								<option value="{{ company.id }}">{{ company.name }}</option>
+								{% endfor %}
+							</select>
+						</form>
+					</div>
+
+					<div class="large-5 columns">
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
