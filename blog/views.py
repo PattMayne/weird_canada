@@ -282,7 +282,7 @@ def add_contributor(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         role = request.POST.get('role')
-        contributing_artist = Artist.objects.filter(name=request.POST.get('contributor_name'))[0]
+        contributing_artist = Artist.objects.get(pk=request.POST.get('contributor_to_add'))[0]
         contributor = Contributor()
         contributor.contributing_artist = contributing_artist
         contributor.role = role

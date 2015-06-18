@@ -140,8 +140,13 @@
 					</p>
 					<form method="post" action="/wc_admin/add_contributor/">
 						{% csrf_token %}
-						<label for="number_of_contributors">Type name... are they here already?
-							<input id="artists" name="contributor_name" placeholder="Type their name here" required>
+						<label for="contributor_to_add">Are they in the database?
+							<select name="contributor_to_add">
+								<option selected="true" disabled="disabled">Select Company</option>
+								{% for artist in all_artists %}
+									<option value="{{ artist.id }}">{{ artist.name }}</option>
+						    	{% endfor %}
+							</select>
 						</label>
 						<br>
 						<label for="role">What Role did they play in this work of art?
@@ -234,20 +239,6 @@
 	</div>
 </div>
 
-<!-- JQuery for the autocomplete text thing -->
-
-  <script>
-  $(function() {
-    var availableArtists = [
-    	{% for artist in all_artists %}
-    		"{{ artist.name }}",
-    	{% endfor %}
-    ];
-    $( "#artists" ).autocomplete({
-      source: availableArtists
-    });
-  });
-  </script>
 
 						<!-- MODALS -->
 
