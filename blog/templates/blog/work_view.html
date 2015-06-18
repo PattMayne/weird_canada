@@ -181,7 +181,7 @@
 
 						<form method="post" action="/wc_admin/add_production_company/">
 							{% csrf_token %}
-							<input type="hidden" name="work_id" value="work.id" />
+							<input type="hidden" name="work_id" value="{{work.id}}" />
 							<select name="company_id">
 								{% for company in production_companies %}
 								<option value="{{ company.id }}">{{ company.name }}</option>

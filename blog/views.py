@@ -372,6 +372,7 @@ def view_production_company(request):
         error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
         return render(request, 'blog/error.html', {'error_message': error_message})
 
+
         # THIS is for adding an EXISTING production company to a WORK profile
 def add_production_company(request):
     if request.method == 'POST' and request.user.is_authenticated():
