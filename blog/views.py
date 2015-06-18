@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Weird Canada apps stuff
 from indie_db.forms import AddArtistForm, AddWorkForm
-from indie_db.models import Artist, Work, URL, Style
+from indie_db.models import Artist, Work, URL, Style, Contributor
 from blog.models import Article, Author, Tag
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
@@ -271,8 +271,18 @@ def save_new_work(request):
 
 def add_contributor(request):
     if request.method == 'POST' and request.user.is_authenticated():
-        #work = Work.objects.get(pk=request.POST.get('work_id'))
-        work_id = request.POST.get('work_id')
+        work = Work.objects.get(pk=request.POST.get('work_id'))
+        role = request.POST.get('role')
+        contributing_artist = Artist.objects.filter(name=request.POST.get('contributor_name'))[0]
+        contributor = Contributor()
+        contributor.contributing_artist = contributing_artist
+        contributor.role = role
+        contributor.save()
+
+        work.contributors.add(contributor)
+        work.save()
+
+        return HttpResponseRedirect('/indie_db/view_work/?id=' + work.id)
 
     else:
         error_message = 'You must be logged in to access this page.'

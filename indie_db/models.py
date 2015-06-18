@@ -68,7 +68,7 @@ class Artist(models.Model):
 
 class Contributor(models.Model):
     contributing_artist = models.ForeignKey(Artist, null=True, blank=True)
-    alternate_name = models.CharField(max_length=200)
+    alternate_name = models.CharField(max_length=200, null=True, blank=True)
     role = models.CharField(max_length=200)
 
 
