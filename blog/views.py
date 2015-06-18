@@ -269,6 +269,16 @@ def save_new_work(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
+def add_contributor(request):
+    if request.method == 'POST' and request.user.is_authenticated():
+        #work = Work.objects.get(pk=request.POST.get('work_id'))
+        work_id = request.POST.get('work_id')
+
+    else:
+        error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
 # View raw data from indie_db
 
 def view_artist(request):

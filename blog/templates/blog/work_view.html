@@ -116,28 +116,46 @@
 	</div>
 </div>
 
+<!-- JQuery for the autocomplete text thing -->
+
+  <script>
+  $(function() {
+    var availableArtists = [
+    	{% for artist in all_artists %}
+    		"{{ artist.name }}",
+    	{% endfor %}
+    ];
+    $( "#artists" ).autocomplete({
+      source: availableArtists
+    });
+  });
+  </script>
+
 						<!-- MODALS -->
 
 <div id="add_contributors_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <h2 id="modalTitle">Wanna add contributors to {{ work }}?</h2>
-  <p class="lead">How many contributors do you want to add?</p>
+  <h2 id="modalTitle">Wanna add a contributor to {{ work }}?</h2>
+  <p class="lead center">One at a time...</p>
 
 	<div class="large-6 columns">
 		<p class="justify">
 			<i>Remember: A "contributor" is stored as an Artist, so the contributing Artist needs to already be in the database before you can add them to this list.</i>
 		</p>
-		<form method="post" action="/wc_admin/add_contributors/">
-			<input type="number" required>
+		<form method="post" action="/wc_admin/add_contributor/">
+			<label for="number_of_contributors">Is the contributing Artist already in the database?
+				<input id="artists" name="added_contributor" placeholder="Type the name here" required>
+			</label>
+			<label for="role">What Role did they play in this work of art?
+				<input id="role" name="role" placeholder="Role" required>
+			</label>
 			<input type="hidden" name="work_id" value="{{ work.id }}">
 			<input type="submit" class="button small" value="GO">
 		</form>
-		
-		<a href="/wc_admin/add_contributors" class="button small">GO</a>
 	</div>
 
 	<div class="large-6 columns">
 		<p class="justify">
-			If you have not made sure that the contributing Artist(s) are already in the database, you should search/browse for them and probably add them yourself. Then you can come back here and add them to the list of contributing Artists.
+			If the contributing Artist is not already in the database, you should search/browse for them and probably add them yourself. Then you can come back here and add them to the list of contributing Artists.
 		</p>
 
 		<div class="large-6 medium-6 columns">
