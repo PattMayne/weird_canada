@@ -87,56 +87,58 @@
 	</div>
 
 	<div class="panel wc_control">
-		<div class="large-12 columns">
-			<h3>Controls</h3>
-		</div>
-		<div class="large-6 medium-6 columns">
+		<div class="row">
+			<div class="large-12 columns">
+				<h3>Controls</h3>
+			</div>
+			<div class="large-4 medium-4 columns">
 
-			<form method="post" action="/wc_admin/write_review/">
-				{% csrf_token %}
-				<input type="hidden" name="work_id" value="{{ work.id }}">
-				<input type="submit" class="button small" value="Write Article about this Work">
-
-			</form>
-
-			<button class="button small" href="#">
-				Add Tracklist
-			</button>
-		</div>
-		<div class="large-6 medium-6 columns">
-
-			<div class="large-6 columns">
-				<h5>Add Contributor</h5>
-				<p class="justify">
-					<i>Remember: A "contributor" is stored as an Artist, so the contributing Artist needs to already be in the database before you can add them to this list.</i>
-				</p>
-				<form method="post" action="/wc_admin/add_contributor/">
-					<label for="number_of_contributors">Is the contributing Artist already in the database?
-						<input id="artists" name="contributor_name" placeholder="Type the name here" required>
-					</label>
-					<label for="role">What Role did they play in this work of art?
-						<input id="role" name="role" placeholder="Role" required>
-					</label>
+				<form method="post" action="/wc_admin/write_review/">
+					{% csrf_token %}
 					<input type="hidden" name="work_id" value="{{ work.id }}">
-					<input type="submit" class="button small" value="GO">
+					<input type="submit" class="button small" value="Write Article about this Work">
+
 				</form>
+
+				<button class="button small" href="#">
+					Add Tracklist
+				</button>
 			</div>
-
-			<div class="large-6 columns">
-				<p class="justify">
-					If the contributing Artist is not already in the database, you should search/browse for them and probably add them yourself. Then you can come back here and add them to the list of contributing Artists.
-				</p>
-
-				<div class="large-6 medium-6 columns">
-					<a href="/indie_db/browse_artists" class="button small">BROWSE ARTISTS</a>
+			<div class="large-8 medium-8 columns">
+				<h5>Add Contributor</h5>
+				<div class="large-6 columns">
+					
+					<p class="justify">
+						<i>Remember: A "contributor" is stored as an Artist, so the contributing Artist needs to already be in the database before you can add them to this list.</i>
+					</p>
+					<form method="post" action="/wc_admin/add_contributor/">
+						<label for="number_of_contributors">Is the contributing Artist already in the database?
+							<input id="artists" name="contributor_name" placeholder="Type the name here" required>
+						</label>
+						<label for="role">What Role did they play in this work of art?
+							<input id="role" name="role" placeholder="Role" required>
+						</label>
+						<input type="hidden" name="work_id" value="{{ work.id }}">
+						<input type="submit" class="button small" value="GO">
+					</form>
 				</div>
-				<div class="large-6 medium-6 columns">
-					<a href="/wc_admin/write_new_artist" class="button small">ADD CONTRIBUTING ARTIST TO DB</a>
+
+				<div class="large-6 columns">
+					<p class="justify">
+						If the contributing Artist is not already in the database, you should search/browse for them and probably add them yourself. Then you can come back here and add them to the list of contributing Artists.
+					</p>
+
+					<div class="large-6 medium-6 columns">
+						<a href="/indie_db/browse_artists" class="button small">BROWSE ARTISTS</a>
+					</div>
+					<div class="large-6 medium-6 columns">
+						<a href="/wc_admin/write_new_artist" class="button small">ADD CONTRIBUTING ARTIST TO DB</a>
+					</div>
+					
+			
 				</div>
-				
-		
+
 			</div>
-
 		</div>
 	</div>
 
