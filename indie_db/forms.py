@@ -80,7 +80,7 @@ class AddProductionCompanyForm(ModelForm):
 
         labels = {
             'name': _('Name of Company'),
-            'website': _('Full official URL (include http://'),
+            'website': _('Full official URL (include http://)'),
             'location': _('City and Province'),
             }
 

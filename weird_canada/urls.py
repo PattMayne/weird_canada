@@ -31,8 +31,8 @@ urlpatterns = patterns('',
     url(r'^wc_admin/write_contributor/', 'blog.views.write_contributor', name="add_contributor_view"),
     url(r'^wc_admin/write_tracklist/', 'blog.views.write_tracklist', name="add_tracklist_view"),
     url(r'^wc_admin/save_tracklist/', 'blog.views.save_tracklist', name="save_tracklist_view"),
-    url(r'^wc_admin/write_production_company/', 'blog.views.write_production_company', name="add_production_company_view"),
-    url(r'^wc_admin/save_production_company/', 'blog.views.save_production_company', name="save_production_company_view"),
+    url(r'^wc_admin/write_new_production_company/', 'blog.views.write_production_company', name="add_production_company_view"),
+    url(r'^wc_admin/save_new_production_company/', 'blog.views.save_production_company', name="save_production_company_view"),
 
     # view raw database info
     url(r'^wc_admin/view_artist/$', 'blog.views.view_artist', name="view_artist_view"),

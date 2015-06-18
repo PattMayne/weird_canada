@@ -321,12 +321,12 @@ def save_tracklist(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def write_production_company(request):
+def write_new_production_company(request):
     production_company_form = AddProductionCompanyForm
     return render(request, 'blog/production_company_write_new.html', {'production_company_form': production_company_form})
 
 
-def save_production_company(request):
+def save_new_production_company(request):
     if request.user.is_authenticated() and request.method == 'POST':
         production_company_form = AddProductionCompanyForm(request.POST)
         if production_company_form.is_valid():
