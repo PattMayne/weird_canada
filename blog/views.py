@@ -53,7 +53,9 @@ def wc_admin_hub(request):
             total_works = Work.objects.count()
             total_artists = Artist.objects.count()
 
-            args = {'author': author, 'latest_articles': latest_articles, 'latest_artists': latest_artists, 'latest_works': latest_works, 'total_articles': total_articles, 'total_artists': total_artists, 'total_authors': total_authors, 'total_works': total_works}
+            all_artists = Artist.objects.all()
+
+            args = {'all_artists': all_artists, 'author': author, 'latest_articles': latest_articles, 'latest_artists': latest_artists, 'latest_works': latest_works, 'total_articles': total_articles, 'total_artists': total_artists, 'total_authors': total_authors, 'total_works': total_works}
             return render(request, 'blog/wc_admin_hub.html', args)
         else:
             return HttpResponseRedirect('/wc_admin/write_profile/')
