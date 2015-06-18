@@ -342,7 +342,11 @@ def save_new_production_company(request):
                 website = URL()
                 website.link = request.POST.get('URL')
                 if 'website_name' in request.POST:
-                    website.name = request.POST.get('website_name')
+                    website_name = request.POST.get('website_name')
+                    if website_name is not '':
+                        website.name = website_name
+                    else:
+                        website.name = 'Website for ' + production_company.name
                 else:
                     website.name = 'Website for ' + production_company.name
                 website.save()
