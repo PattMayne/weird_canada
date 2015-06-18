@@ -380,9 +380,11 @@ def add_production_company(request):
         if 'company_id' in request.POST:
             production_company = ProductionCompany.objects.get(pk=request.POST.get('company_id'))
             work.production_company = production_company
-        elif 'self_released' in request.POST:
-            if request.POST.get('self_released') == True:
-                work.self_published = True
+
+        if 'self_released' in request.POST:
+            work.self_published = True
+        else:
+            work.self_published = False
         work.save()
 
         return HttpResponseRedirect('/wc_admin/view_work/?id=' + str(work.id))

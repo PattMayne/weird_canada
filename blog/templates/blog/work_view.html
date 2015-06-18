@@ -183,6 +183,7 @@
 							{% csrf_token %}
 							<input type="hidden" name="work_id" value="{{work.id}}" />
 							<select name="company_id">
+								<option selected="true" disabled="disabled">Select Company</option> 
 								{% for company in production_companies %}
 								<option value="{{ company.id }}">{{ company.name }}</option>
 								{% endfor %}
@@ -190,7 +191,7 @@
 							<br>
 							<h5>OR</h5>
 							<label for="self_released">Check Here if Self-Released
-								<input type="checkbox" name="self_released" value="true">
+								<input type="checkbox" name="self_released">
 							</label>
 							<br><br>
 							<input type="submit" class="button small" value="SET PRODUCTION COMPANY">
