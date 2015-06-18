@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Weird Canada apps stuff
 from indie_db.forms import AddArtistForm, AddWorkForm
-from indie_db.models import Artist, Work, URL, Style, Contributor
+from indie_db.models import Artist, Work, URL, Style, Contributor, Track
 from blog.models import Article, Author, Tag
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
@@ -284,6 +284,38 @@ def add_contributor(request):
 
         return HttpResponseRedirect('/indie_db/view_work/?id=' + str(work.id))
 
+    else:
+        error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+def add_tracklist(reequest):
+    if request.method == 'POST' and request.user.is_authenticated():
+        work = Work.objects.get(pk=request.POST.get('work_id'))
+        number_of_tracks = request.POST.get('number_of_tracks')
+        track_number_list = []
+        for track_no in range(1, number_of_tracks + 1):
+            track_number_list.append(track_no)
+        return render(request, 'blog/work_add_tracklist.html', {'work': work, 'number_of_tracks': number_of_tracks, 'track_number_list': track_number_list})
+    else:
+        error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+def save_tracklist(request):
+    if request.method == 'POST' and request.user.is_authenticated():
+        work = Work.objects.get(pk=request.POST.get('work_id'))
+        number_of_tracks = request.POST.get('number_of_tracks')
+        for track_no in range(1, number_of_tracks + 1):
+            new_track = Track()
+            new_track.position = track_no
+            new_track.title = request.POST.get('track_title_' + str(track_no))
+            if 'duration_' + str(track_no) in request.POST:
+                new_track.duration = request.POST.get('duration_' + str(track_no))
+            new_track.save()
+            work.tracklist.add(new_track)
+            work.save()
+        return HttpResponseRedirect('/indie_db/view_work/?id=' + str(work.id))
     else:
         error_message = 'You must be logged in to access this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})

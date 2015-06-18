@@ -10,6 +10,11 @@ class ArticleCategory(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
 
+    class Meta:
+        ordering = ['title']
+        verbose_name = "Article Category"
+        verbose_name_plural = "Article Categories"
+
     def __str__(self):
         return self.title
 

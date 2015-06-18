@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Add Tracklist {% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+		<div class="panel">
+			<div class="row">
+				<h2>Add Tracklist for {{ work }}</h2>
+				<form method="post" action="/wc_admin/save_tracklist/">
+					{% csrf_token %}
+					
+					{% for track_number in track_number_list %}
+						<label for="track_name_{{ track_number }}">Track # {{ track_number }}
+							<input type="text" name="track_title_{{ track_number }}" id="track_title_{{ track_number }}" placeholder="Title of Track # {{ track_number }}" required>
+							<input type="text" name="duration_{{ track_number }}" id="duration_{{ track_number }}" placeholder="Duration 00:00">
+						</label>
+							<br><br>
+
+					{% endfor %}
+
+						<input type="hidden" name="work_id" id="work_id" value="{{work.id}}" />
+						<input type="hidden" name="number_of_tracks" id="number_of_tracks" value="{{number_of_tracks}}" />
+						<input type="submit" class="button small" value="SAVE">
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

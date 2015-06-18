@@ -21,6 +21,15 @@ from django.contrib.auth.models import User
 '''
 
 
+class Track(models.Model):
+    position = models.InterField(default=0)
+    title = models.CharField(max_length=200)
+    duration = models.CharField(max_length=12)
+
+    def __str__(self):
+        return self.title
+
+
 class WorkCategory(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
@@ -71,6 +80,9 @@ class Contributor(models.Model):
     alternate_name = models.CharField(max_length=200, null=True, blank=True)
     role = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.contributing_artist.name
+
 
 class ProductionCompany(models.Model):
     name = models.CharField(max_length=200)
@@ -100,6 +112,7 @@ class Work(models.Model):
     styles = models.ManyToManyField(Style, null=True, blank=True)
     contributors = models.ManyToManyField(Contributor, null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True)
+    tracklist = models.ManyToManyField(Track, null=True, blank=True)
 
     class Meta:
         ordering = ['-created']

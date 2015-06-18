@@ -102,9 +102,7 @@
 
 				</form>
 
-				<button class="button small" href="#">
-					Add Tracklist
-				</button>
+				<a href="" class="button small" data-reveal-id="add_tracklist_modal">Add Tracklist</a>
 			</div>
 			<div class="large-8 medium-8 columns">
 				<h5>Add Contributor</h5>
@@ -115,14 +113,15 @@
 					</p>
 					<form method="post" action="/wc_admin/add_contributor/">
 						{% csrf_token %}
-						<label for="number_of_contributors">Is the contributing Artist already in the database?
-							<input id="artists" name="contributor_name" placeholder="Type the name here" required>
+						<label for="number_of_contributors">Type name... are they here already?
+							<input id="artists" name="contributor_name" placeholder="Type their name here" required>
 						</label>
+						<br>
 						<label for="role">What Role did they play in this work of art?
 							<input id="role" name="role" placeholder="Role" required>
 						</label>
 						<input type="hidden" name="work_id" value="{{ work.id }}">
-						<input type="submit" class="button small" value="GO">
+						<input type="submit" class="button small" value="ADD">
 					</form>
 				</div>
 
@@ -190,6 +189,24 @@
 
 						<!-- MODALS -->
 
+
+<div id="add_tracklist_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Add Track List to this Work</h2>
+  <p class="lead">How many tracks will you add?</p>
+
+	<div class="large-12 columns">
+		<p class="justify">
+			<form method="post" action="/wc_admin/add_tracklist/">
+				<input type="number" name="number_of_tracks" id="number_of_tracks" placeholder="How Many?" required />
+				<input type="hidden" name="work_id" id="work_id" value="{{ work.id }}" />
+				<input type="submit" class="button small" value="PROCEED" />
+			</form>
+			
+		</p>
+	</div>
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
 
 
 						<!-- END of MODALS -->

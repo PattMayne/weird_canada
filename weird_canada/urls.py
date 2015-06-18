@@ -29,6 +29,8 @@ urlpatterns = patterns('',
     url(r'^wc_admin/save_mono_article/', 'blog.views.save_new_mono_article', name="save_new_mono_article_view"),
     url(r'^wc_admin/save_review/', 'blog.views.save_new_review_article', name="save_new_review_article_view"),
     url(r'^wc_admin/add_contributor/', 'blog.views.add_contributor', name="add_contributor_view"),
+    url(r'^wc_admin/add_tracklist/', 'blog.views.add_tracklist', name="add_tracklist_view"),
+    url(r'^wc_admin/save_tracklist/', 'blog.views.save_tracklist', name="save_tracklist_view"),
 
     # view raw database info
     url(r'^indie_db/view_artist/$', 'blog.views.view_artist', name="view_artist_view"),
