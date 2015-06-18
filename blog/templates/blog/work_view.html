@@ -112,6 +112,7 @@
 						<i>Remember: A "contributor" is stored as an Artist, so the contributing Artist needs to already be in the database before you can add them to this list.</i>
 					</p>
 					<form method="post" action="/wc_admin/add_contributor/">
+						{% csrf_token %}
 						<label for="number_of_contributors">Is the contributing Artist already in the database?
 							<input id="artists" name="contributor_name" placeholder="Type the name here" required>
 						</label>
