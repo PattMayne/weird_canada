@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} {{ production_company.name }} {% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="panel">
+		<div class="row">
+			<div class="large-12 columns">
+				<h2>{{ production_company.name }}</h2>
+			
+
+				<h5>WEBSITE:</h5>
+				<p><a href="{{production_company.website.link}}">{{ production_company.website.name }}</a></p>
+
+				<h5>LOCATION:</h5>
+				<p>{{ production_company.location }}</p>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+
+
+
+{% endblock %}

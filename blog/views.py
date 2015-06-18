@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Weird Canada apps stuff
 from indie_db.forms import AddArtistForm, AddWorkForm, AddProductionCompanyForm
-from indie_db.models import Artist, Work, URL, Style, Contributor, Track
+from indie_db.models import Artist, Work, URL, Style, Contributor, Track, ProductionCompany
 from blog.models import Article, Author, Tag
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
@@ -352,7 +352,7 @@ def save_new_production_company(request):
                 website.save()
                 production_company.website = website
             production_company.save()
-            return render(request, 'blog/production_company_view.html', {'production_company': production_company})
+            return HttpResponseRedirect('/wc_admin/view_production_company/?id=' + str(production_company.id))
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': production_company_form})
@@ -360,6 +360,14 @@ def save_new_production_company(request):
         error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
         return render(request, 'blog/error.html', {'error_message': error_message})
 
+
+def view_production_company(request):
+    if request.method == 'GET':
+        production_company = ProductionCompany.objects.get(pk=request.GET.get('id'))
+        return render(request, 'blog/production_company_view.html', {'production_company': production_company})
+    else:
+        error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
 
 # View raw data from indie_db
 
