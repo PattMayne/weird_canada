@@ -306,7 +306,7 @@ def save_tracklist(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         number_of_tracks = request.POST.get('number_of_tracks')
-        for track_no in range(1, number_of_tracks + 1):
+        for track_no in range(1, int(number_of_tracks) + 1):
             new_track = Track()
             new_track.position = track_no
             new_track.title = request.POST.get('track_title_' + str(track_no))
