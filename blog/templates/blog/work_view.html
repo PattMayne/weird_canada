@@ -48,6 +48,24 @@
 					</p>
 				</div>
 
+				{% if has_tracklist %}
+
+				<h5>TRACKLIST:</h5>
+				<div class="large-12 columns">
+					<p>
+						<ul class="wc_list">
+						{% for track in work.tracklist.all %}
+							<li>
+								<b>{{ track.position }}.</b> {{ track.title }} <br>
+								{{ track.duration }}
+							</li>
+						{% endfor %}
+						</ul>
+					</p>
+				</div>
+
+				{% endif %}
+
 				<h5>CONTRIBUTORS:</h5>
 				<div class="large-12 columns">
 					<p>

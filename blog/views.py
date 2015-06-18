@@ -335,10 +335,13 @@ def view_artist(request):
 def view_work(request):
     if request.method == 'GET':
         if 'id' in request.GET:
+            has_tracklist = False
             work = Work.objects.get(pk=request.GET.get('id'))
+            if work.tracklist.count() > 0:
+                has_tracklist = True
             articles = Article.objects.filter(work_link=work)
             all_artists = Artist.objects.all()
-            return render(request, 'blog/work_view.html', {'all_artists': all_artists, 'work': work, 'articles': articles})
+            return render(request, 'blog/work_view.html', {'all_artists': all_artists, 'work': work, 'articles': articles, 'has_tracklist': has_tracklist})
 
 
 def browse_articles(request):
