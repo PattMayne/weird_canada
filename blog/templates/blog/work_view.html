@@ -29,6 +29,16 @@
 					<p>{{work.city}}</p>
 				</div>
 
+				<h5>LABEL:</h5>
+				<div class="large-12 columns">
+					{% if work.self_published %}
+						<p>Self-Released</p>
+					{% else %}
+						<p>{{ work.production_company }}</p>
+					{% endif %}
+
+				</div>
+
 			</div>
 			<div class="large-6 columns">
 
@@ -157,6 +167,24 @@
 					
 			
 				</div>
+
+				<br>
+
+				<h5>Set Production/Publication Company</h5>
+
+				<div class="large-6 columns">
+					<p class="justify">
+						<i>Select company from list below, or add company to the database via the link to the right.</i>
+					</p>
+
+					<form method="post" action="add_production_company">
+						<input type="hidden" name="work_id" value="work.id" />
+						<select name="company_id">
+							{% for company in production_companies %}
+							<option value="{{ company.id }}">{{ company.name }}</option>
+							{% endfor %}
+						</select>
+					</form>
 
 			</div>
 		</div>

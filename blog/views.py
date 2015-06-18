@@ -206,6 +206,9 @@ def save_new_artist(request):
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
+    else:
+        error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
 
 
 def write_new_work(request):
@@ -275,7 +278,7 @@ def save_new_work(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def write_contributor(request):
+def add_contributor(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         role = request.POST.get('role')
@@ -369,6 +372,21 @@ def view_production_company(request):
         error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
         return render(request, 'blog/error.html', {'error_message': error_message})
 
+
+def add_production_company(request):
+    if request.method == 'POST' and request.user.is_authenticated():
+        work = Work.objects.get(pk=request.POST.get('work_id'))
+        production_company = ProductionCompany.objects.get(pk=request.POST.get('company_id'))
+        work.production_company = production_company
+        work.save()
+
+        return HttpResponseRedirect('/wc_admin/view_work/?id=' + str(work.id))
+
+    else:
+        error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
 # View raw data from indie_db
 
 def view_artist(request):
@@ -378,6 +396,9 @@ def view_artist(request):
             artist = Artist.objects.get(pk=artist_id)
             works = Work.objects.filter(creator=artist)
             return render(request, 'blog/artist_view.html', {'artist': artist, 'works': works})
+    else:
+        error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
 
 
 def view_work(request):
@@ -388,8 +409,12 @@ def view_work(request):
             if work.tracklist.count() > 0:
                 has_tracklist = True
             articles = Article.objects.filter(work_link=work)
-            all_artists = Artist.objects.all()
-            return render(request, 'blog/work_view.html', {'all_artists': all_artists, 'work': work, 'articles': articles, 'has_tracklist': has_tracklist})
+            all_artists = Artist.objects.all().order_by('name')
+            all_production_companies = ProductionCompany.objects.all().order_by('name')
+            return render(request, 'blog/work_view.html', {'all_artists': all_artists, 'work': work, 'articles': articles, 'has_tracklist': has_tracklist, 'production_companies': all_production_companies})
+    else:
+        error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
 
 
 def browse_articles(request):
