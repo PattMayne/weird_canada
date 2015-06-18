@@ -321,7 +321,7 @@ def save_tracklist(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def add_production_company(request):
+def write_production_company(request):
     production_company_form = AddProductionCompanyForm
     return render(request, 'blog/production_company_write_new.html', {'production_company_form': production_company_form})
 
