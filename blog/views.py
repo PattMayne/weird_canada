@@ -416,8 +416,8 @@ def view_work(request):
             if work.tracklist.count() > 0:
                 has_tracklist = True
             articles = Article.objects.filter(work_link=work)
-            all_artists = Artist.objects.all().order_by('name')
-            all_production_companies = ProductionCompany.objects.all().order_by('name')
+            all_artists = Artist.objects.all().extra(select={'lower_name': 'lower(name)'}).order_by('lower_name')
+            all_production_companies = ProductionCompany.objects.all().extra(select={'lower_name': 'lower(name)'}).order_by('lower_name')
             return render(request, 'blog/work_view.html', {'all_artists': all_artists, 'work': work, 'articles': articles, 'has_tracklist': has_tracklist, 'production_companies': all_production_companies})
     else:
         error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
