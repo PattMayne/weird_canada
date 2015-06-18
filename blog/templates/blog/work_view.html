@@ -179,7 +179,7 @@
 							<i>Select company from list below, or add company to the database via the link to the right.</i>
 						</p>
 
-						<form method="post" action="add_production_company">
+						<form method="post" action="/wc_admin/add_production_company">
 							<input type="hidden" name="work_id" value="work.id" />
 							<select name="company_id">
 								{% for company in production_companies %}
