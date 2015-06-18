@@ -149,7 +149,7 @@
 					</p>
 
 					<div class="large-6 medium-6 columns">
-						<a href="/indie_db/browse_artists" class="button small">BROWSE ARTISTS</a>
+						<a href="/wc_admin/browse_artists" class="button small">BROWSE ARTISTS</a>
 					</div>
 					<div class="large-6 medium-6 columns">
 						<a href="/wc_admin/write_new_artist" class="button small">ADD CONTRIBUTING ARTIST TO DB</a>
@@ -172,7 +172,7 @@
 			</div>
 				{% for article in articles %}
 					<div class="large-4 medium-6 columns">
-						<a href="/indie_db/view_article/?id={{ article.id }}">
+						<a href="/wc_admin/view_article/?id={{ article.id }}">
 								<div class="sub_panel link_panel">
 									<h5>{{ article.title }}</h5>
 									<p>By {{ article.author }}

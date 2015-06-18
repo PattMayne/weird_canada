@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Weird Canada apps stuff
-from indie_db.forms import AddArtistForm, AddWorkForm
+from indie_db.forms import AddArtistForm, AddWorkForm, AddProductionCompanyForm
 from indie_db.models import Artist, Work, URL, Style, Contributor, Track
 from blog.models import Article, Author, Tag
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
@@ -118,7 +118,7 @@ def save_new_review_article(request):
                     new_tag.save()
                     article.tags.add(new_tag)
                     article.save()
-            return HttpResponseRedirect('/indie_db/view_article/?id=' + str(article.id))
+            return HttpResponseRedirect('/wc_admin/view_article/?id=' + str(article.id))
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
@@ -157,7 +157,7 @@ def save_new_mono_article(request):
                     new_tag.save()
                     article.tags.add(new_tag)
                     article.save()
-            return HttpResponseRedirect('/indie_db/view_article/?id=' + str(article.id))
+            return HttpResponseRedirect('/wc_admin/view_article/?id=' + str(article.id))
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
@@ -199,7 +199,7 @@ def save_new_artist(request):
                 artist.website = website
                 artist.author = author
                 artist.save()
-            return HttpResponseRedirect('/indie_db/view_artist/?id=' + str(artist_id))
+            return HttpResponseRedirect('/wc_admin/view_artist/?id=' + str(artist_id))
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
@@ -260,7 +260,7 @@ def save_new_work(request):
                         work.styles.add(new_style)
                         work.save()
 
-            return HttpResponseRedirect('/indie_db/view_work/?id=' + str(work_id))
+            return HttpResponseRedirect('/wc_admin/view_work/?id=' + str(work_id))
         else:
             error_message = 'The form was not valid. The data was not saved.'
             return render(request, 'blog/error.html', {'error_message': error_message, 'form': form})
@@ -269,7 +269,7 @@ def save_new_work(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def add_contributor(request):
+def write_contributor(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         role = request.POST.get('role')
@@ -282,14 +282,14 @@ def add_contributor(request):
         work.contributors.add(contributor)
         work.save()
 
-        return HttpResponseRedirect('/indie_db/view_work/?id=' + str(work.id))
+        return HttpResponseRedirect('/wc_admin/view_work/?id=' + str(work.id))
 
     else:
         error_message = 'You must be logged in to access this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def add_tracklist(request):
+def write_tracklist(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         number_of_tracks = request.POST.get('number_of_tracks')
@@ -315,9 +315,30 @@ def save_tracklist(request):
             new_track.save()
             work.tracklist.add(new_track)
             work.save()
-        return HttpResponseRedirect('/indie_db/view_work/?id=' + str(work.id))
+        return HttpResponseRedirect('/wc_admin/view_work/?id=' + str(work.id))
     else:
         error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+def add_production_company(request):
+    production_company_form = AddProductionCompanyForm
+    return render(request, 'blog/production_company_write_new.html', {'production_company_form': production_company_form})
+
+
+def save_production_company(request):
+    if request.user.is_authenticated() and request.method == 'POST':
+        production_company_form = AddProductionCompanyForm(request.POST)
+        if production_company_form.is_valid():
+            production_company = production_company_form.save()
+            production_company.author = request.user
+            production_company.save()
+            return render(request, 'blog/production_company_view.html', {'production_company': production_company})
+        else:
+            error_message = 'The form was not valid. The data was not saved.'
+            return render(request, 'blog/error.html', {'error_message': error_message, 'form': production_company_form})
+    else:
+        error_message = 'You followed the wrong procedure to get here, or you are not logged in.'
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}New Production Company Profile {% endblock %}
+
+{% block content %}
+
+
+	<div class="row">
+		<div class="panel">
+			<div class="row">
+				<h2>New Production Company</h2>
+				<form method="post" action="/wc_admin/save_new_production_company/">
+					{% csrf_token %}
+					{{ production_company_form }}
+					<br>
+					<input type="submit" value="SAVE">
+					<p>
+
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

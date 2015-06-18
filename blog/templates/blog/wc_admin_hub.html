@@ -18,13 +18,13 @@
 					
 					<div class="large-6 columns">
 						<p>
-							<a class="button small" href="/indie_db/browse_works">Browse Works</a>
+							<a class="button small" href="/wc_admin/browse_works">Browse Works</a>
 						</p>
 						<p>
-							<a class="button small" href="/indie_db/browse_artists">Browse Artists</a>
+							<a class="button small" href="/wc_admin/browse_artists">Browse Artists</a>
 						</p>
 						<p>
-							<a class="button small" href="/indie_db/browse_articles">Browse Articles</a>
+							<a class="button small" href="/wc_admin/browse_articles">Browse Articles</a>
 						</p>
 					</div>
 
@@ -33,9 +33,15 @@
 						<p>
 							<a class="button small" href="/wc_admin/write_new_artist">Add Artist</a>
 						</p>
+
 						<p>
 							<a href="" class="button small" data-reveal-id="add_article_modal">Add Article</a>
 						</p>
+
+						<p>
+							<a class="button small" href="/wc_admin/write_production_company">Add Production Company</a>
+						</p>
+
 					</div>
 					
 					<div class="large-12 columns center">
@@ -120,7 +126,7 @@
 					<div class="large-12 columns">
 						{% for article in latest_articles %}
 
-						<a href="/indie_db/view_article/?id={{ article.id }}"><h5>{{ article.title }}</h5></a>
+						<a href="/wc_admin/view_article/?id={{ article.id }}"><h5>{{ article.title }}</h5></a>
 						<ul class="wc_list">
 							<li><p>{{ article.author }}</p></li>
 							<li><p>{{ article.category }}</p></li>
@@ -138,7 +144,7 @@
 
 						{% for work in latest_works %}
 
-						<a href="/indie_db/view_work/?id={{ work.id }}"><h5>{{ work.title }}</h5></a>
+						<a href="/wc_admin/view_work/?id={{ work.id }}"><h5>{{ work.title }}</h5></a>
 						<ul class="wc_list">
 							<li><p>{{ work.creator }}</p></li>
 							<li><p>{{ work.category }}</p></li>	
@@ -157,7 +163,7 @@
 					<div class="large-12 columns">
 						{% for artist in latest_artists %}
 
-						<a href="/indie_db/view_artist/?id={{ artist.id }}"><h5>{{ artist.name }}</h5></a>
+						<a href="/wc_admin/view_artist/?id={{ artist.id }}"><h5>{{ artist.name }}</h5></a>
 
 						{% endfor %}
 						<br>
@@ -207,8 +213,8 @@
 			<b>To write an article based on a work of art</b> you must first find the work of art in the database. You'll probably have to add it to the database first. AND before you do that you'll have to make sure the ARTIST who made the WORK is also in the database.
 		</p>
 		<p>So here are your options:</p>
-		<a href="/indie_db/browse_works" class="button small">BROWSE WORKS</a>
-		<a href="/indie_db/browse_artists" class="button small">BROWSE ARTISTS</a>
+		<a href="/wc_admin/browse_works" class="button small">BROWSE WORKS</a>
+		<a href="/wc_admin/browse_artists" class="button small">BROWSE ARTISTS</a>
 		<a href="/wc_admin/write_new_artist" class="button small">ADD ARTIST TO DB</a>
 	</div>
 

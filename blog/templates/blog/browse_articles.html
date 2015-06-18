@@ -9,7 +9,7 @@
 		<div class="panel">
 			<div class="row">
 				<h6>SEARCH & SORT:</h6>
-				<form method="get" action="/indie_db/browse_articles/">
+				<form method="get" action="/wc_admin/browse_articles/">
 					
 					<div class="large-6 medium-6 columns">
 
@@ -41,7 +41,7 @@
 					{% for article in articles %}
 							
 						<div class="large-4 medium-6 small-12 columns">
-							<a href="/indie_db/view_article/?id={{ article.id }}">
+							<a href="/wc_admin/view_article/?id={{ article.id }}">
 								<div class="sub_panel link_panel">
 									<h5>{{ article.title }}</h5>
 									<p>

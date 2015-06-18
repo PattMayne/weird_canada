@@ -9,7 +9,7 @@
 		<div class="panel">
 			<div class="row">
 				<h6>SEARCH & SORT:</h6>
-				<form method="get" action="/indie_db/browse_artists/">
+				<form method="get" action="/wc_admin/browse_artists/">
 					
 					<div class="large-6 medium-6 columns">
 
@@ -42,7 +42,7 @@
 					{% for artist in artists %}
 							
 						<div class="large-4 medium-6 small-12 columns">
-							<a href="/indie_db/view_artist/?id={{ artist.id }}">
+							<a href="/wc_admin/view_artist/?id={{ artist.id }}">
 								<div class="sub_panel link_panel">
 									<h5>{{ artist.name }}</h5>
 									<p>

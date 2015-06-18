@@ -86,8 +86,8 @@ class Contributor(models.Model):
 
 class ProductionCompany(models.Model):
     name = models.CharField(max_length=200)
-    website = models.ForeignKey(URL)
-    location = models.CharField(max_length=200)
+    website = models.ForeignKey(URL, null=True, blank=True)
+    location = models.CharField(max_length=200, null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True)
 
     def __str__(self):
