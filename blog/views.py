@@ -282,7 +282,7 @@ def add_contributor(request):
         work.contributors.add(contributor)
         work.save()
 
-        return HttpResponseRedirect('/indie_db/view_work/?id=' + work.id)
+        return HttpResponseRedirect('/indie_db/view_work/?id=' + str(work.id))
 
     else:
         error_message = 'You must be logged in to access this page.'
