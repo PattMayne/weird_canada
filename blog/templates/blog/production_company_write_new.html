@@ -13,7 +13,16 @@
 					{% csrf_token %}
 					{{ production_company_form }}
 					<br>
+					<label for="website_name">Name of Website (Optional)
+						<input type="text" name="website_name" id="website_name" placeholder="Name of Website" />
+					</label>
+					<br>
+					<label for="URL">Website Full URL (Include 'http://') (Optional)
+						<input type="text" name="URL" id="URL" placeholder="Full URL" />
+					</label>
+					<br>
 					<input type="submit" value="SAVE">
+					<br>
 					<p>
 
 					</p>

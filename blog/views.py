@@ -188,8 +188,11 @@ def save_new_artist(request):
         if form.is_valid():
             artist = form.save()
             artist_id = artist.id
-            if 'website_name' in request.POST and 'website_url' in request.POST:
-                website_name = request.POST.get('website_name')
+            if 'website_url' in request.POST:
+                if 'website_name' in request.POST:
+                    website_name = request.POST.get('website_name')
+                else:
+                    website_name = 'Website for ' + artist.name
                 website_url = request.POST.get('website_url')
                 website = URL()
                 website.name = website_name
@@ -225,8 +228,11 @@ def save_new_work(request):
             work.creator = artist
             work.save()
             work_id = work.id
-            if 'website_name' in request.POST and 'website_url' in request.POST:
-                website_name = request.POST.get('website_name')
+            if 'website_url' in request.POST:
+                if 'website_name' in request.POST:
+                    website_name = request.POST.get('website_name')
+                else:
+                    website_name = 'Website for ' + work.title
                 website_url = request.POST.get('website_url')
                 website = URL()
                 website.name = website_name
@@ -332,6 +338,15 @@ def save_new_production_company(request):
         if production_company_form.is_valid():
             production_company = production_company_form.save()
             production_company.author = request.user
+            if 'URL' in request.POST:
+                website = URL()
+                website.link = request.POST.get('URL')
+                if 'website_name' in request.POST:
+                    website.name = request.POST.get('website_name')
+                else:
+                    website.name = 'Website for ' + production_company.name
+                website.save()
+                production_company.website = website
             production_company.save()
             return render(request, 'blog/production_company_view.html', {'production_company': production_company})
         else:
