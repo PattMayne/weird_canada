@@ -22,7 +22,7 @@ from django.contrib.auth.models import User
 
 
 class Track(models.Model):
-    position = models.InterField(default=0)
+    position = models.IntegerField(default=0)
     title = models.CharField(max_length=200)
     duration = models.CharField(max_length=12)
 
