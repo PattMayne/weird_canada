@@ -289,7 +289,7 @@ def add_contributor(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def add_tracklist(reequest):
+def add_tracklist(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         number_of_tracks = request.POST.get('number_of_tracks')
