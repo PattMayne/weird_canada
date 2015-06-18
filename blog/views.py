@@ -294,7 +294,7 @@ def add_tracklist(request):
         work = Work.objects.get(pk=request.POST.get('work_id'))
         number_of_tracks = request.POST.get('number_of_tracks')
         track_number_list = []
-        for track_no in range(1, number_of_tracks + 1):
+        for track_no in range(1, int(number_of_tracks) + 1):
             track_number_list.append(track_no)
         return render(request, 'blog/work_add_tracklist.html', {'work': work, 'number_of_tracks': number_of_tracks, 'track_number_list': track_number_list})
     else:
