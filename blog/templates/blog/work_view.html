@@ -56,8 +56,7 @@
 						<ul class="wc_list">
 						{% for track in work.tracklist.all %}
 							<li>
-								<b>{{ track.position }}.</b> {{ track.title }} <br>
-								{{ track.duration }}
+								<b>{{ track.position }}.</b> {{ track.title }} [{{ track.duration }}]
 							</li>
 						{% endfor %}
 						</ul>
