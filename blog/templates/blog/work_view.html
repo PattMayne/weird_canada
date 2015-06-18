@@ -53,8 +53,10 @@
 					<p>
 						{% for contributor in work.contributors.all %}
 							
-							<p>{{ contributor.contributing_artist.name }} <br>
-							{{ contributor.role }} </p>
+							<p>
+								<b>NAME:</b> {{ contributor.contributing_artist.name }} <br>
+								<b>ROLE:</b> {{ contributor.role }}
+							</p>
 							<br>
 		
 						{% endfor %}
