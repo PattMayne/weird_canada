@@ -6,6 +6,16 @@ from indie_db.models import Artist, Work
 # Create your models here.
 
 
+class ArticleImage(models.Model):
+    main_image = models.BooleanField(default=False)
+    position = models.IntegerField(default=0)
+    caption = models.CharField(max_length=200)
+    image_link = models.FileField(upload_to='img/article/%Y/%m/%d', default='img/default.png')
+
+    class Meta:
+        ordering = ['position']
+
+
 class ArticleCategory(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
@@ -23,7 +33,6 @@ class Author(models.Model):
     authorname = models.CharField(max_length=200, unique=True)
     tagline = models.CharField(max_length=300, default='From the mad mind of ')
     description = models.TextField(blank=True, null=True)
-    #profile_image = models.FileField(upload_to='prof_img/user/%Y/%m/%d', default='prof_img/user/default.jpg')
     user = models.OneToOneField(User, blank=True, null=True)
     website = models.CharField(max_length=400, blank=True, null=True)
 
@@ -31,6 +40,7 @@ class Author(models.Model):
         return self.authorname
 
 
+        # The Tag is just a handle to help people search for the right content
 class Tag(models.Model):
     tag_name = models.CharField(max_length=200)
 

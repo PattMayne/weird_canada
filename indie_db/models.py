@@ -59,6 +59,7 @@ class URL(models.Model):
 
 
 class Artist(models.Model):
+    prof_image = models.FileField(upload_to='img/artist/%Y/%m/%d', default='img/default.png')
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     birthdate = models.DateField(null=True, blank=True)
@@ -99,6 +100,7 @@ class ProductionCompany(models.Model):
 
 
 class Work(models.Model):
+    cover_image = models.FileField(upload_to='img/work/%Y/%m/%d', default='img/default.png')
     work_category = models.OneToOneField(WorkCategory, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)

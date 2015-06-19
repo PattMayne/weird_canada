@@ -142,7 +142,7 @@
 						{% csrf_token %}
 						<label for="contributor_to_add">Are they in the database?
 							<select name="contributor_to_add">
-								<option selected="true" disabled="disabled">Select Company</option>
+								<option selected="true" disabled="disabled">Select Contributing Artist</option>
 								{% for artist in all_artists %}
 									<option value="{{ artist.id }}">{{ artist.name }}</option>
 						    	{% endfor %}
