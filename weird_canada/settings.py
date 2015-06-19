@@ -55,6 +55,9 @@ ROOT_URLCONF = 'weird_canada.urls'
 
 WSGI_APPLICATION = 'weird_canada.wsgi.application'
 
+# Markdown
+MARKDOWN_EDITOR_SKIN = 'simple'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

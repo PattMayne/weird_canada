@@ -57,8 +57,7 @@ class EditAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        markdown_content = forms.CharField(widget=MarkdownWidget())
-        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'publish')
+        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'publish', 'markdown_content')
 
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
@@ -67,7 +66,7 @@ class AddArticleForm(ModelForm):
             'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
             'publish': CheckboxInput(attrs={'required': False}),
             'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False}),
-            #'markdown_content': MarkdownWidget()
+            'markdown_content': MarkdownFormField()
         }
 
         labels = {
