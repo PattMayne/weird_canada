@@ -93,12 +93,7 @@
 				<p><i>English Article</i></p>
 				<div class="sub_panel">
 					<p class="article_text">
-						
-						{% autoescape off %}
-						
-						{% render_as_template article.body_en %}
-						
-						{% endautoescape %}
+						{{ article.body_en|safe }}
 					</p>
 				</div>
 				<br><br>
