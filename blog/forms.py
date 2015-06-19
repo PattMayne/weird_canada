@@ -2,8 +2,8 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
-from django_markdown.fields import MarkdownFormField
-from django_markdown.widgets import MarkdownWidget
+#from django_markdown.fields import MarkdownFormField
+#from django_markdown.widgets import MarkdownWidget
 
 from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput
 from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany

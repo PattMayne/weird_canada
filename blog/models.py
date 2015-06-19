@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django_markdown.models import MarkdownField
+#from django_markdown.models import MarkdownField
 from indie_db.models import Artist, Work
 
 # Create your models here.

@@ -45,6 +45,6 @@ urlpatterns = patterns('',
     url(r'^wc_admin/browse_works/$', 'blog.views.browse_works', name="browse_works_view"),
 
     # markdown urls
-    url('^markdown/', include( 'django_markdown.urls')),
+    #url('^markdown/', include( 'django_markdown.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
