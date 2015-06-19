@@ -66,7 +66,7 @@ class AddArticleForm(ModelForm):
             'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
             'publish': CheckboxInput(attrs={'required': False}),
             'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False}),
-            'markdown_content': MarkdownFormField()
+            'markdown_content': MarkdownWidget()
         }
 
         labels = {
