@@ -7,13 +7,9 @@ from django.db.models import TextField
 # Register your models here.
 
 
-class EntryAdmin(MarkdownModelAdmin):
-    formfield_overrides = {TextField: {'widget': AdminMarkdownWidget}}
-
-
-#admin.site.register(Article)
+admin.site.register(Article)
 admin.site.register(Author)
 admin.site.register(Tag)
 admin.site.register(ArticleCategory)
 admin.site.register(ArticleImage)
-admin.site.register(Article, EntryAdmin)
+admin.site.register(Article)
