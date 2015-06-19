@@ -5,7 +5,6 @@
 {% block content %}
 
 {% load static from staticfiles %}
-{% load render_as_template %}
 
 
 <div class="row">
@@ -94,7 +93,12 @@
 				<p><i>English Article</i></p>
 				<div class="sub_panel">
 					<p class="article_text">
-						{{ article.body_en|safe }}
+						
+						{% autoescape off %}
+						{% filter truncatewords_html:"100" %}
+						{% render_as_template article.body_en %}
+						{% endfilter %}
+						{% endautoescape %}
 					</p>
 				</div>
 				<br><br>
