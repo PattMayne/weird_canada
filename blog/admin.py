@@ -4,8 +4,9 @@ from django_markdown.fields import MarkdownFormField
 from django_markdown.widgets import MarkdownWidget
 
 # Register your models here.
+admin.site.register(Article)
 admin.site.register(Author)
 admin.site.register(Tag)
 admin.site.register(ArticleCategory)
 admin.site.register(ArticleImage)
-admin.site.register(Article, MarkdownModelAdmin)
+#admin.site.register(Article, MarkdownModelAdmin)
