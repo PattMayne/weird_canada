@@ -56,7 +56,7 @@ ROOT_URLCONF = 'weird_canada.urls'
 WSGI_APPLICATION = 'weird_canada.wsgi.application'
 
 # Markdown
-MARKDOWN_EDITOR_SKIN = 'simple'
+# MARKDOWN_EDITOR_SKIN = 'simple'
 
 
 # Database
