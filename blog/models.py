@@ -65,7 +65,7 @@ class Article(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     work_link = models.ForeignKey(Work, null=True, blank=True)
     artist_link = models.ForeignKey(Artist, null=True, blank=True)
-    images = models.ManyToManyField(ArticleImage)
+    images = models.ManyToManyField(ArticleImage, null=True, blank=True)
 
     def __str__(self):
         return self.title
