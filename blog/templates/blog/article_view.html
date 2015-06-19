@@ -95,9 +95,9 @@
 					<p class="article_text">
 						
 						{% autoescape off %}
-						{% filter truncatewords_html:"100" %}
+						
 						{% render_as_template article.body_en %}
-						{% endfilter %}
+						
 						{% endautoescape %}
 					</p>
 				</div>
