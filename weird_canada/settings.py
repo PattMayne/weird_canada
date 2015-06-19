@@ -30,7 +30,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    #'django_markdown',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,9 +53,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'weird_canada.urls'
 
 WSGI_APPLICATION = 'weird_canada.wsgi.application'
-
-# Markdown
-# MARKDOWN_EDITOR_SKIN = 'simple'
 
 
 # Database
