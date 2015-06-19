@@ -93,7 +93,7 @@
 				<p><i>English Article</i></p>
 				<div class="sub_panel">
 					<p class="article_text">
-						{{ article.body_en }}
+						{{ article.body_en|safe }}
 					</p>
 				</div>
 				<br><br>
@@ -101,7 +101,7 @@
 				<p><i>Article Français</i></p>
 				<div class="sub_panel">
 					<p class="article_text">
-						{{ article.body_fr }}
+						{{ article.body_fr|safe }}
 					</p>
 				</div>
 			</div>
