@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-#from django_markdown.models import MarkdownField
+from django_markdown.models import MarkdownField
 from indie_db.models import Artist, Work
 
 # Create your models here.
@@ -66,6 +66,8 @@ class Article(models.Model):
     work_link = models.ForeignKey(Work, null=True, blank=True)
     artist_link = models.ForeignKey(Artist, null=True, blank=True)
     images = models.ManyToManyField(ArticleImage)
+
+    markdown_content = MarkdownField()
 
     def __str__(self):
         return self.title

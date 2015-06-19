@@ -2,6 +2,9 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
+from django_markdown.fields import MarkdownFormField
+from django_markdown.widgets import MarkdownWidget
+
 from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput
 from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany
 from blog.models import Article, Tag, Author
@@ -54,7 +57,7 @@ class EditAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'publish')
+        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'publish', 'markdown_content')
 
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
@@ -62,7 +65,8 @@ class AddArticleForm(ModelForm):
             'a_category': Select(attrs={'required': True}),
             'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
             'publish': CheckboxInput(attrs={'required': False}),
-            'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False})
+            'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False}),
+            'markdown_content': MarkdownWidget()
         }
 
         labels = {
