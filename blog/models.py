@@ -67,7 +67,7 @@ class Article(models.Model):
     artist_link = models.ForeignKey(Artist, null=True, blank=True)
     images = models.ManyToManyField(ArticleImage)
 
-    markdown_content = MarkdownField()
+    markdown_content = MarkdownField(null=True, blank=True)
 
     def __str__(self):
         return self.title
