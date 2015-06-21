@@ -16,7 +16,7 @@ class ArticleImage(models.Model):
         ordering = ['position']
 
     def __str__(self):
-        return self.image_link
+        return self.caption
 
 
 class ArticleCategory(models.Model):
