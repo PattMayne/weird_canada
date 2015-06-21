@@ -15,6 +15,9 @@ class ArticleImage(models.Model):
     class Meta:
         ordering = ['position']
 
+    def __str__(self):
+        return self.image_link
+
 
 class ArticleCategory(models.Model):
     title = models.CharField(max_length=200)
