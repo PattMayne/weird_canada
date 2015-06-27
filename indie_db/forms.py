@@ -53,7 +53,7 @@ class AddWorkForm(ModelForm):
 
         widgets = {
             'created': DateInput(attrs={'required': False}),
-            'work_category': TextInput(attrs={'placeholder': 'Enter Category', 'required': True}),
+            'work_category': Select(attrs={'required': True}),
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
             'description': Textarea(attrs={'required': False, 'placeholder': 'Enter Description'}),
             'extra_data': Textarea(attrs={'required': False, 'placeholder': 'Enter Extra Info'}),
