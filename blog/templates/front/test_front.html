@@ -62,9 +62,11 @@
 									{{ articles.0.title }}
 								</a>
 							</h1>
-							<h2 class=""><b>{{ articles.0.author }}
-								
-							</b></h2>
+							<h2 class="">
+								<b>
+									{{ articles.0.author }}
+								</b>
+							</h2>
 							<h2><a href="#">{{ articles.0.author }}</a> | {{ articles.0.date_created }}</h2>
 
 							<p>
@@ -78,7 +80,7 @@
 					<!-- Two Secondary Posts -->
 
 					<div class="articleList features col-md-11 col-md-offset-1 border">
-						<div class="row">
+						
 
 							{% if articles.1 %}
 						
@@ -133,7 +135,7 @@
 
 							{% endif %}
 
-						</div>
+						
 					</div>
 
 				</div>
