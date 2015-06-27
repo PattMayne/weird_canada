@@ -4,18 +4,25 @@
 
 {% block content %}
 
-<ul>
+<div class="row">
+	<div class="panel">
+		<div class="row">
+			<ul>
 
-{% for article in articles %}
+			{% for article in articles %}
 
-	<li>
-		<h3>{{ article.title }}</h3>
-		<h5>{{ article.author }}</h5>
-	</li>
+				<li>
+					<h3>{{ article.title }}</h3>
+					<h5>{{ article.author }}</h5>
+				</li>
 
 
-{% endfor%}
+			{% endfor%}
 
-</ul>
+			</ul>
+
+		</div>
+	</div>
+</div>
 
 {% endblock %}
