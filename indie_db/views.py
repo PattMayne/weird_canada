@@ -55,15 +55,14 @@ from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAut
 
 def index(request):
 
-    categories = ArticleCategory.objects.all()
-
     articles_per_page = 12
     category = 'all'
 
-    if request.method == 'GET':
-        if 'cat' in request.GET:
-            category = request.GET.get('category')
-            articles = Article.objects.filter(publish=True).filter(article_category__title__contains=category).order_by('-date_created')
+    articles = []
+    categories = ArticleCategory.objects.all()
+    if request.method == 'GET' and 'cat' in request.GET:        
+        category = request.GET.get('category')
+        articles = Article.objects.filter(publish=True).filter(article_category__title__contains=category).order_by('-date_created')
     else:
         articles = Article.objects.filter(publish=True).order_by('-date_created')
 
