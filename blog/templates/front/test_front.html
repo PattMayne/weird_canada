@@ -111,24 +111,22 @@
 							{% if articles.2 %}
 							
 							<article class="postContent"><!-- second secondary post -->
-								<div class="postMedia col-md-7">
-									<a href="?article={{ articles.2.id }}">
-										<img src="/media/{{ articles.2.cover_image }}" class="front_page_pic" />
+								<div  class="postMedia col-md-8">
+									<a href="?article=22">
+										<img src="/media/{{ articles.2.cover_image }}" class="front_page_pic left" />
 									</a>
 								</div>
-								<div class="articleHead col-md-3">
-									<p class="postType"><a href="?cat={{ articles.2.article_category }}">{{ articles.2.article_category }}</a></p>
-									<h1>
-										<a href="#">
-											{{ articles.2.title }}
-										</a>
-									</h1>
+								<div class="articleHead col-md-4">
+									<p class="postType"><a href="?how_category=word">CategoryName</a></p>
+									<h1><a href="?article=44">
+										The Title
+									</a></h1>
 									<h2>
-										
+										Artist Name
 									</h2>
-									<h3><a href="#">{{ articles.2.author }}</a> | {{ articles.2.date_created }}</h3>
+									<h3><a href="#">Author Name</a> | Posted Date</h3>
 									<p>
-										{{ articles.2.body_en }}
+										Lots of Text. Lorem ipsum deidus maximo glorious.
 									</p>
 								</div>
 							</article>
