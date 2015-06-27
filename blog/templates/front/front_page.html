@@ -1,0 +1,176 @@
+
+	<br/>
+	<section id="index" class="container">
+	
+	<!--Primary Post-->
+	<div class="articleList features inner col-md-10 col-md-offset-1">
+		<article class="postContent">
+			<div class="postMedia">
+				<a href="?article={{ articles.0.id }}">
+					<img src="
+						<?php echo $URL_start . $articles[0]['cover_image'];?>
+					">
+				</a>
+			</div>
+			<div class="articleHead">
+				<p class="postType">
+					<a href="?how_category=<?php echo $celebration_how_category; ?>">
+						<?php 
+							echo $articles[0]['how_category'];
+
+						?>
+					</a>
+				</p>
+				<h1>
+					<a href="?article=<?php echo $articles[0]['celebration_id'];?>" class="primary-post-title">
+						<?php echo $articles[0]['celebration_title']; ?>
+					</a>
+				</h1>
+				<h2 class=""><b>
+					<?php
+						if($articles[0]['work_artist'] != 'NONE')
+						{
+							echo $articles[0]['work_artist'];
+						}
+						
+					?>
+				</b></h2>
+				<h2><a href="#"><?php echo $articles[0]['author_name']; ?></a> | <?php echo $articles[0]['post_datetime']; ?></h2>
+				<p>
+					<?php echo $articles[0]['celebration_text']; ?>
+				</p>
+			</div>
+		</article>
+	</div>
+	
+	<!-- Two Secondary Posts -->
+	<div class="articleList features col-md-10 col-md-offset-1">
+		<div class="row">
+		
+			<article class="postContent"><!-- first secondary post -->
+				<div  class="postMedia col-md-8">
+					<a href="?article=<?php echo $articles[1]['celebration_id'];?>">
+						<img src="<?php echo $URL_start . $articles[1]['cover_image'];?>">
+					</a>
+				</div>
+				<div class="articleHead col-md-4">
+					<p class="postType"><a href="?how_category=<?php echo $celebration_how_category; ?>"><?php echo  $articles[1]['how_category']; ?></a></p>
+					<h1>
+						<a href="?article=<?php echo $articles[1]['celebration_id'];?>">
+							<?php echo  $articles[1]['celebration_title']; ?>
+						</a>
+					</h1>
+					<h2>
+						<?php
+							if($articles[1]['work_artist'] != 'NONE')
+							{
+								echo  $articles[1]['work_artist'];
+							}
+						?>
+					</h2>
+					<h3><a href="#"><?php echo $articles[1]['author_name']; ?></a> | <?php echo $articles[1]['post_datetime']; ?></h3>
+					<p>
+						<?php echo $articles[1]['celebration_text']; ?>
+					</p>
+				</div>
+			</article>
+			
+			<article class="postContent"><!-- second secondary post -->
+				<div  class="postMedia col-md-8">
+					<a href="?article=<?php echo $articles[2]['celebration_id'];?>">
+						<img src="<?php echo $URL_start . $articles[2]['cover_image'];?>">
+					</a>
+				</div>
+				<div class="articleHead col-md-4">
+					<p class="postType"><a href="?how_category=<?php echo $celebration_how_category; ?>"><?php echo  $articles[2]['how_category']; ?></a></p>
+					<h1><a href="?article=<?php echo  $articles[2]['celebration_id'];?>">
+						<?php echo $articles[2]['celebration_title']; ?>
+					</a></h1>
+					<h2>
+						<?php
+							if($articles[2]['work_artist'] != 'NONE')
+							{
+								echo $articles[2]['work_artist'];
+							}
+						?>
+					</h2>
+					<h3><a href="#"><?php echo  $articles[2]['author_name']; ?></a> | <?php echo $articles[2]['post_datetime']; ?></h3>
+					<p>
+						<?php echo $articles[2]['celebration_text']; ?>
+					</p>
+				</div>
+			</article>
+		</div>
+	</div>
+	
+	<!-- All the other (thirdary?) posts -->
+	<!-- MATT: This is where I will use a LOOP to just make this post once (or three times).
+	
+		At the top of the page we can grab all the posts from the database and put them in PHP variables and arrays.
+		
+		Then we can generate as many "articles" as we fucking need. Yeah boy.
+		
+		But I need to check this out to see how the formatting works. See how one is labelled differently from the others.
+		
+		!!!!!!!!!!!!!!!!!!!!!
+		I'm pretty sure I can just do a PHP loop here for X number of items...
+		Everything inside the <article> tag looks identical.
+	-->
+	
+	<div class="articleList gridBlock col-md-10 col-md-offset-1">
+		<div class="row">
+		
+			<?php
+				for($i=3; $i<9; $i++):
+				$thisArticle = $articles[$i];
+			?>
+				<article class="postContent col-md-4">
+					<div  class="postMedia">
+						<a href="?article=<?php echo $thisArticle['celebration_id'];?>">
+							<img src="
+								<?php
+									echo $URL_start . $thisArticle['cover_image'];
+								?>
+							">
+						</a>
+					</div>
+					<div class="articleHead">
+						<h6 class="postType">
+							<a href="#"><?php echo $thisArticle['article_type']; ?></a>
+						</h6>
+						<h1>
+							<a href="?article=<?php echo $thisArticle['celebration_id'];?>">
+								<?php echo $thisArticle['celebration_title']; ?>
+							</a>
+						</h1>
+						<h2>
+							<?php
+								if($thisArticle['work_artist'] != 'NONE')
+								{
+									echo $thisArticle['work_artist'];
+								}
+							?>
+						</h2>
+						<h3>
+							<a href="#"><?php echo $thisArticle['post_datetime']; ?></a>
+						</h3>
+						<h3>
+							<a href="#"><?php echo $thisArticle['author_name']; ?></a>
+						</h3>
+						<p>
+							<?php echo $thisArticle['celebration_text']; ?>
+						</p>
+					</div>
+				</article>
+			
+			<?php
+				endfor;
+			?>
+			
+			
+		</div>
+	</div>
+
+	</section>
+	
+

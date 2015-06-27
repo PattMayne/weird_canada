@@ -1,0 +1,21 @@
+{% extends "base_front.html" %}
+
+{% block title %} Weird Canada {% endblock %}
+
+{% block content %}
+
+<ul>
+
+{% for article in articles %}
+
+	<li>
+		<h3>{{ article.title }}</h3>
+		<h5>{{ article.author }}</h5>
+	</li>
+
+
+{% endfor%}
+
+</ul>
+
+{% endblock %}

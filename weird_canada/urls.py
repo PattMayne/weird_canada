@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'weird_canada.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'^$', 'indie_db.views.index'),
+
     url(r'^admin/', include(admin.site.urls)),
     url(r'^test/$', 'blog.views.test', name="test_page"),
     url(r'^wc_admin/$', 'blog.views.wc_admin_hub', name="wc_admin_hub_view"),
