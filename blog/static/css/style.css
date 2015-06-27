@@ -8,6 +8,10 @@
   border: 1px solid red;
 }
 
+.border_2{
+  border: 2px solid blue;
+}
+
 .postLinks{
 	font-size: 175% !important;
 }

@@ -31,7 +31,7 @@
   
 </head>
 
-<body>
+<body id="home">
 
 <div id="page_wrapper"> <!-- This takes the whole page... a footer can live beneath it -->
 
@@ -72,13 +72,15 @@
 	</nav>
   </div>
 	<!-- end of nav bar -->
+
+	<div class="content">
 	
 	{% block content %}
 	
 	{% endblock %}
 	  
-</div><!-- END OF page_wrapper -->
-
+	</div><!-- END OF content -->
+</div> <!-- end of PageWrapper -->
 
 
 <!-- Footer -->
