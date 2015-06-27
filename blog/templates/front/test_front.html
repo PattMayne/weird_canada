@@ -11,7 +11,7 @@
 			<section id="index" class="container">
 	
 				<!--Primary Post-->
-				<div class="articleList features inner col-md-10 col-md-offset-1 left">
+				<div class="articleList features inner col-md-10 col-md-offset-1">
 					<article class="postContent">
 						<div class="postMedia">
 							<a href="?article={{ articles.0.id }}">
@@ -47,36 +47,9 @@
 
 					<!-- Two Secondary Posts -->
 
-					<div class="articleList features col-md-10 col-md-offset-1">
+					<div class="articleList features col-md-10 col-md-offset-2">
 						<div class="row">
 
-
-							{% if articles.2 %}
-							
-							<article class="postContent"><!-- second secondary post -->
-								<div class="postMedia col-md-8">
-									<a href="?article={{ articles.2.id }}">
-										<img src="/media/{{ articles.2.cover_image }}" class="secondary_pic"/>
-									</a>
-								</div>
-								<div class="articleHead col-md-4">
-									<p class="postType"><a href="?cat={{ articles.2.article_category }}">{{ articles.2.article_category }}</a></p>
-									<h1>
-										<a href="#">
-											{{ articles.2.title }}
-										</a>
-									</h1>
-									<h2>
-										
-									</h2>
-									<h3><a href="#">{{ articles.2.author }}</a> | {{ articles.2.date_created }}</h3>
-									<p>
-										{{ articles.2.body_en|truncatewords:50 }}
-									</p>
-								</div>
-							</article>
-
-							{% endif %}
 							{% if articles.1 %}
 						
 							<article class="postContent"><!-- first secondary post -->
@@ -102,7 +75,34 @@
 										{{ articles.1.body_en|truncatewords:50 }}
 									</p>
 								</div>
-								
+
+							</article>
+
+							{% endif %}
+
+							{% if articles.2 %}
+							
+							<article class="postContent"><!-- second secondary post -->
+								<div class="postMedia col-md-8">
+									<a href="?article={{ articles.2.id }}">
+										<img src="/media/{{ articles.2.cover_image }}" class="secondary_pic"/>
+									</a>
+								</div>
+								<div class="articleHead col-md-4">
+									<p class="postType"><a href="?cat={{ articles.2.article_category }}">{{ articles.2.article_category }}</a></p>
+									<h1>
+										<a href="#">
+											{{ articles.2.title }}
+										</a>
+									</h1>
+									<h2>
+										
+									</h2>
+									<h3><a href="#">{{ articles.2.author }}</a> | {{ articles.2.date_created }}</h3>
+									<p>
+										{{ articles.2.body_en|truncatewords:50 }}
+									</p>
+								</div>
 							</article>
 
 							{% endif %}
