@@ -1,112 +1,117 @@
+{% extends "base_front.html" %}
 
-	<br/>
-	<section id="index" class="container">
+{% block title %} Weird Canada {% endblock %}
+
+{% block content %}
+
+
+
 	
-	<!--Primary Post-->
-	<div class="articleList features inner col-md-10 col-md-offset-1">
-		<article class="postContent">
-			<div class="postMedia">
-				<a href="?article={{ articles.0.id }}">
-					<img src="
-						<?php echo $URL_start . $articles[0]['cover_image'];?>
-					">
-				</a>
-			</div>
-			<div class="articleHead">
-				<p class="postType">
-					<a href="?how_category=<?php echo $celebration_how_category; ?>">
-						<?php 
-							echo $articles[0]['how_category'];
 
-						?>
-					</a>
-				</p>
-				<h1>
-					<a href="?article=<?php echo $articles[0]['celebration_id'];?>" class="primary-post-title">
-						<?php echo $articles[0]['celebration_title']; ?>
-					</a>
-				</h1>
-				<h2 class=""><b>
-					<?php
-						if($articles[0]['work_artist'] != 'NONE')
-						{
-							echo $articles[0]['work_artist'];
-						}
+			<section id="index" class="container">
+	
+				<!--Primary Post-->
+				<div class="articleList features inner col-md-10 col-md-offset-1">
+					<article class="postContent">
+						<div class="postMedia">
+							<a href="?article={{ articles.0.id }}">
+								<img src="/media/{{ articles.0.cover_image }}" class="front_page_pic" />
+							</a>
+						</div>
+						<div class="articleHead">
+							<p class="postType">
+								<a href="?cat="{{ articles.0.article_category }}>
+									{{ articles.0.article_category }}
+								</a>
+							</p>
+							<h1>
+								<a href="?article={{ articles.0.id }}" class="primary-post-title">
+									{{ articles.0.title }}
+								</a>
+							</h1>
+							<h2 class="">
+								<b>
+									{{ articles.0.author }}
+								</b>
+							</h2>
+							<h2><a href="/indie_db?author={{ articles.0.author.id }}">{{ articles.0.author }}</a> | {{ articles.0.date_created|date:"M d, Y" }}</h2>
+
+							<p>
+								<!-- THIS ONCE SAID: $articles[0]['celebration_text']; -->
+								Celebration Text!
+							</p>
+
+						</div>
+					</article>
+				</div>
+
+					<!-- Two Secondary Posts -->
+
+					<div class="articleList features col-md-10 col-md-offset-1 col-lg-offset-1">
+						<div class="row">
+
+							{% if articles.1 %}
 						
-					?>
-				</b></h2>
-				<h2><a href="#"><?php echo $articles[0]['author_name']; ?></a> | <?php echo $articles[0]['post_datetime']; ?></h2>
-				<p>
-					<?php echo $articles[0]['celebration_text']; ?>
-				</p>
-			</div>
-		</article>
-	</div>
-	
-	<!-- Two Secondary Posts -->
-	<div class="articleList features col-md-10 col-md-offset-1">
-		<div class="row">
-		
-			<article class="postContent"><!-- first secondary post -->
+							<article class="postContent"><!-- first secondary post -->
 
-				<div  class="postMedia col-md-8">
-					<a href="?article=<?php echo $articles[1]['celebration_id'];?>">
-						<img src="<?php echo $URL_start . $articles[1]['cover_image'];?>">
-					</a>
-				</div>
+								<div  class="postMedia col-md-8">
+									<a href="?article={{ articles.1.id }}">
+										<img src="/media/{{ articles.1.cover_image }}" class="secondary_pic"/>
+									</a>
+								</div>
 
-				<div class="articleHead col-md-4">
-					<p class="postType"><a href="?how_category=<?php echo $celebration_how_category; ?>"><?php echo  $articles[1]['how_category']; ?></a></p>
-					<h1>
-						<a href="?article=<?php echo $articles[1]['celebration_id'];?>">
-							<?php echo  $articles[1]['celebration_title']; ?>
-						</a>
-					</h1>
-					<h2>
-						<?php
-							if($articles[1]['work_artist'] != 'NONE')
-							{
-								echo  $articles[1]['work_artist'];
-							}
-						?>
-					</h2>
-					<h3><a href="#"><?php echo $articles[1]['author_name']; ?></a> | <?php echo $articles[1]['post_datetime']; ?></h3>
-					<p>
-						<?php echo $articles[1]['celebration_text']; ?>
-					</p>
-				</div>
-				
-			</article>
-			
-			<article class="postContent"><!-- second secondary post -->
-				<div  class="postMedia col-md-8">
-					<a href="?article=<?php echo $articles[2]['celebration_id'];?>">
-						<img src="<?php echo $URL_start . $articles[2]['cover_image'];?>">
-					</a>
-				</div>
-				<div class="articleHead col-md-4">
-					<p class="postType"><a href="?how_category=<?php echo $celebration_how_category; ?>"><?php echo  $articles[2]['how_category']; ?></a></p>
-					<h1><a href="?article=<?php echo  $articles[2]['celebration_id'];?>">
-						<?php echo $articles[2]['celebration_title']; ?>
-					</a></h1>
-					<h2>
-						<?php
-							if($articles[2]['work_artist'] != 'NONE')
-							{
-								echo $articles[2]['work_artist'];
-							}
-						?>
-					</h2>
-					<h3><a href="#"><?php echo  $articles[2]['author_name']; ?></a> | <?php echo $articles[2]['post_datetime']; ?></h3>
-					<p>
-						<?php echo $articles[2]['celebration_text']; ?>
-					</p>
-				</div>
-			</article>
-		</div>
-	</div>
-	
-	<!-- All the other (thirdary?) posts -->
+								<div class="articleHead col-md-4">
+									<p class="postType"><a href="?cat={{ articles.1.article_category }}">{{ articles.1.article_category }}</a></p>
+									<h1>
+										<a href="?article={{ articles.1.id }}">
+											{{ articles.1.title }}
+										</a>
+									</h1>
+									<h2>
+										
+									</h2>
+									<h3><a href="/indie_db?author={{ articles.1.author.id }}">{{ articles.1.author }}</a> | {{ articles.1.date_created|date:"M d, Y" }}</h3>
+									<p>
+										{{ articles.1.body_en|truncatewords:50 }}
+									</p>
+								</div>
+
+							</article>
+
+							{% endif %}
+
+							{% if articles.2 %}
+							
+							<article class="postContent"><!-- second secondary post -->
+								<div class="postMedia col-md-8">
+									<a href="?article={{ articles.2.id }}">
+										<img src="/media/{{ articles.2.cover_image }}" class="secondary_pic"/>
+									</a>
+								</div>
+								<div class="articleHead col-md-4">
+									<p class="postType"><a href="?cat={{ articles.2.article_category }}">{{ articles.2.article_category }}</a></p>
+									<h1>
+										<a href="?article={{ articles.2.id }}">
+											{{ articles.2.title }}
+										</a>
+									</h1>
+									<h2>
+										
+									</h2>
+									<h3><a href="/indie_db?author={{ articles.2.author.id }}">{{ articles.2.author }}</a> | {{ articles.2.date_created|date:"M d, Y" }}</h3>
+									<p>
+										{{ articles.2.body_en|truncatewords:50 }}
+									</p>
+								</div>
+							</article>
+
+							{% endif %}
+						</div>
+						
+					</div>
+
+
+			<!-- All the other (thirdary?) posts -->
 	<!-- MATT: This is where I will use a LOOP to just make this post once (or three times).
 	
 		At the top of the page we can grab all the posts from the database and put them in PHP variables and arrays.
@@ -123,57 +128,60 @@
 	<div class="articleList gridBlock col-md-10 col-md-offset-1">
 		<div class="row">
 		
-			<?php
-				for($i=3; $i<9; $i++):
-				$thisArticle = $articles[$i];
-			?>
+			{% for article in articles %}
+				{% if forloop.counter > 3 %}
+
+				
 				<article class="postContent col-md-4">
 					<div  class="postMedia">
-						<a href="?article=<?php echo $thisArticle['celebration_id'];?>">
-							<img src="
-								<?php
-									echo $URL_start . $thisArticle['cover_image'];
-								?>
-							">
+						<a href="?article={{ article.id }}">
+							<img src="/media/{{ article.cover_image }}" />
 						</a>
 					</div>
 					<div class="articleHead">
 						<h6 class="postType">
-							<a href="#"><?php echo $thisArticle['article_type']; ?></a>
+							<a href="#">{{ article.article_category }}</a>
 						</h6>
 						<h1>
-							<a href="?article=<?php echo $thisArticle['celebration_id'];?>">
-								<?php echo $thisArticle['celebration_title']; ?>
+							<a href="?article={{ article.id }}">
+								{{ article.title }}
 							</a>
 						</h1>
 						<h2>
-							<?php
-								if($thisArticle['work_artist'] != 'NONE')
-								{
-									echo $thisArticle['work_artist'];
-								}
-							?>
+							{% if article.work_link %}
+								{{ article.work_link.creator }}
+							{% endif %}
 						</h2>
 						<h3>
-							<a href="#"><?php echo $thisArticle['post_datetime']; ?></a>
+							<a>{{ article.date_created|date:"M d, Y" }}</a>
 						</h3>
 						<h3>
-							<a href="#"><?php echo $thisArticle['author_name']; ?></a>
+							<a href="/indie_db?author={{ article.author }}">{{ article.author }}</a>
 						</h3>
 						<p>
-							<?php echo $thisArticle['celebration_text']; ?>
+							{{ article.body_en }}
 						</p>
 					</div>
 				</article>
 			
-			<?php
-				endfor;
-			?>
+			{% endif %}
+
+			{% endfor%}
 			
 			
 		</div>
 	</div>
 
-	</section>
-	
+</section> <!-- end of section id=index / class=container -->
+		<div class="row">
+			{% if articles.has_previous %}
+            <a href="?page={{ articles.previous_page_number }}" class="left">previous</a>
+        	{% endif %}
 
+        	{% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}" class="right">next</a>
+        	{% endif %}
+        </div>
+
+
+{% endblock %}
