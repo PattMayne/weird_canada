@@ -3,6 +3,11 @@
 /*
 	Matt's Custom Styling
 */
+
+.border{
+  border: 1px solid red;
+}
+
 .postLinks{
 	font-size: 175% !important;
 }
