@@ -107,7 +107,41 @@
 
 			</section> <!-- end of section id=index / class=container -->
 
+
+
+	<div class="container">
+	<div class="row">
+		
+			<ul>
+
+				<h3>So THIS is how we'll reference the first three</h3>
+			1-{{ articles.0 }}<br>
+
+			2-{{ articles.1 }}<br>
+
+			3-{{ articles.2 }}<br>
+
+			<h3>And this is how we'll get the rest of them.</h3>
+
+
+			{% for article in articles %}
+				{% if forloop.counter >= 3 %}
+
+				<li>
+					<h3>{{ article.title }}</h3>
+					<h5>{{ article.author }}</h5>
+				</li>
+				{% endif %}
+
+			{% endfor%}
+
+			</ul>
+
+			<h5>Pretty straight forward... Now I just need 24 or 32 articles...</h5>
+
+
 		
 	</div>
+</div>
 
 {% endblock %}
