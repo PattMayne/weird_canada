@@ -79,22 +79,24 @@
 							{% if articles.2 %}
 							
 							<article class="postContent"><!-- second secondary post -->
-								<div  class="postMedia col-md-8">
-									<a href="?article=22">
-										<img src="/media/{{ articles.2.cover_image }}" class="front_page_pic left" />
+								<div class="postMedia col-md-7">
+									<a href="?article={{ articles.2.id }}">
+										<img src="/media/{{ articles.2.cover_image }}" class="front_page_pic" />
 									</a>
 								</div>
-								<div class="articleHead col-md-4">
-									<p class="postType"><a href="?how_category=word">CategoryName</a></p>
-									<h1><a href="?article=44">
-										The Title
-									</a></h1>
+								<div class="articleHead col-md-3">
+									<p class="postType"><a href="?cat={{ articles.2.article_category }}">{{ articles.2.article_category }}</a></p>
+									<h1>
+										<a href="#">
+											{{ articles.2.title }}
+										</a>
+									</h1>
 									<h2>
-										Artist Name
+										
 									</h2>
-									<h3><a href="#">Author Name</a> | Posted Date</h3>
+									<h3><a href="#">{{ articles.2.author }}</a> | {{ articles.2.date_created }}</h3>
 									<p>
-										Lots of Text. Lorem ipsum deidus maximo glorious.
+										{{ articles.2.body_en }}
 									</p>
 								</div>
 							</article>
@@ -105,12 +107,71 @@
 					</div>
 
 
+			<!-- All the other (thirdary?) posts -->
+	<!-- MATT: This is where I will use a LOOP to just make this post once (or three times).
+	
+		At the top of the page we can grab all the posts from the database and put them in PHP variables and arrays.
+		
+		Then we can generate as many "articles" as we fucking need. Yeah boy.
+		
+		But I need to check this out to see how the formatting works. See how one is labelled differently from the others.
+		
+		!!!!!!!!!!!!!!!!!!!!!
+		I'm pretty sure I can just do a PHP loop here for X number of items...
+		Everything inside the <article> tag looks identical.
+	-->
+	
+	<div class="articleList gridBlock col-md-10 col-md-offset-1">
+		<div class="row">
+		
+			{% for article in articles %}
+				{% if forloop.counter >= 3 %}
+
+				
+				<article class="postContent col-md-4">
+					<div  class="postMedia">
+						<a href="?article={{ article.id }}">
+							<img src="/media/{{ article.cover_image }}" />
+						</a>
+					</div>
+					<div class="articleHead">
+						<h6 class="postType">
+							<a href="#">{{ article.article_category }}</a>
+						</h6>
+						<h1>
+							<a href="?article={{ article.id }}">
+								{{ article.title }}
+							</a>
+						</h1>
+						<h2>
+							{% if article.work_link %}
+								{{ article.work_link.creator }}
+							{% endif %}
+						</h2>
+						<h3>
+							<a href="#">{{ article.date_created }}</a>
+						</h3>
+						<h3>
+							<a href="#">{{ article.author }}</a>
+						</h3>
+						<p>
+							{{ article.body_en }}
+						</p>
+					</div>
+				</article>
+			
+			{% endif %}
+
+			{% endfor%}
+			
+			
+		</div>
+	</div>
 
 			</section> <!-- end of section id=index / class=container -->
 
-
-
-	<div class="container">
+		
+<div class="container">
 	<div class="row">
 		
 			<ul>
