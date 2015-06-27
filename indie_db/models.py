@@ -101,7 +101,7 @@ class ProductionCompany(models.Model):
 
 class Work(models.Model):
     cover_image = models.FileField(upload_to='img/work/%Y/%m/%d', default='img/default.png')
-    work_category = models.OneToOneField(WorkCategory, null=True, blank=True)
+    work_category = models.ForeignKey(WorkCategory, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     extra_data = models.TextField(null=True, blank=True)
