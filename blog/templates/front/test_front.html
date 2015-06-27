@@ -70,7 +70,7 @@
 									</h2>
 									<h3><a href="#">{{ articles.1.author }}</a> | {{ articles.1.date_created }}</h3>
 									<p>
-										{{ articles.1.body_en }}
+										{{ articles.1.body_en|truncatewords:50 }}
 									</p>
 								</div>
 							</article>
@@ -96,7 +96,7 @@
 									</h2>
 									<h3><a href="#">{{ articles.2.author }}</a> | {{ articles.2.date_created }}</h3>
 									<p>
-										{{ articles.2.body_en }}
+										{{ articles.2.body_en|truncatewords:50 }}
 									</p>
 								</div>
 							</article>
