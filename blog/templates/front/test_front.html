@@ -10,22 +10,20 @@
 			<ul>
 
 			{% for article in articles %}
+				{% if forloop.counter >= 3 %}
 
 				<li>
 					<h3>{{ article.title }}</h3>
 					<h5>{{ article.author }}</h5>
 				</li>
-
+				{% endif %}
 
 			{% endfor%}
 
 			</ul>
 
-			<h1>SEP</h1>
 
-			<br>
 
-			{{ articles.0.title }}
 
 		</div>
 	</div>
