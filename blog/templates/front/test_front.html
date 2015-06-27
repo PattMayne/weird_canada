@@ -34,7 +34,7 @@
 									{{ articles.0.author }}
 								</b>
 							</h2>
-							<h2><a href="/indie_db?artist={{ articles.0.author.id }}">{{ articles.0.author }}</a> | {{ articles.0.date_created|date:'Y-m-d' }}</h2>
+							<h2><a href="/indie_db?artist={{ articles.0.author.id }}">{{ articles.0.author }}</a> | {{ articles.0.date_created|date:"M d, Y" }}</h2>
 
 							<p>
 								<!-- THIS ONCE SAID: $articles[0]['celebration_text']; -->
