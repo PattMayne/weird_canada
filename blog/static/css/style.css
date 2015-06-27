@@ -36,6 +36,7 @@
 
 .secondary_pic{
   min-height: 550px!important;
+  max-height: 750px!important;
 }
 
 .innerArticlePic{
