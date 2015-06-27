@@ -52,6 +52,7 @@ class Tag(models.Model):
 
 
 class Article(models.Model):
+    cover_image = models.FileField(upload_to='img/article/%Y/%m/%d', default='img/default.png')
     author = models.ForeignKey(Author, blank=True, null=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True, null=True)

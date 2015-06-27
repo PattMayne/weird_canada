@@ -37,6 +37,48 @@
 
 		</div>
 	</div>
+
+	<div class="panel">
+		<div class="row">
+
+			<section id="index" class="container">
+	
+				<!--Primary Post-->
+				<div class="articleList features inner col-md-10 col-md-offset-1">
+					<article class="postContent">
+						<div class="postMedia">
+							<a href="?article={{ articles.0.id }}">
+								<img src="/media/{{ articles.0.cover_image }}" class="front_page_pic" />
+							</a>
+						</div>
+						<div class="articleHead">
+							<p class="postType">
+								<a href="?cat="{{ articles.0.article_category }}>
+									{{ articles.0.article_category }}
+								</a>
+							</p>
+							<h1>
+								<a href="?article={{ articles.0.id }}" class="primary-post-title">
+									{{ articles.0.title }}
+								</a>
+							</h1>
+							<h2 class=""><b>
+								
+							</b></h2>
+							<h2><a href="#">{{ articles.0.author }}</a> | {{ articles.0.date_created }}</h2>
+
+							<p>
+								<!-- THIS ONCE SAID: $articles[0]['celebration_text']; -->
+							</p>
+							
+						</div>
+					</article>
+				</div>
+
+			</section> <!-- end of section id=index / class=container -->
+
+		</div>
+	</div>
 </div>
 
 {% endblock %}
