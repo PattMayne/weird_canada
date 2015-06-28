@@ -2700,6 +2700,12 @@ meta.foundation-mq-topbar {
   border-bottom-left-radius: 43px;
   */
   color: #000000; }
+
+  .panel input,
+  .input select{
+    border: 1px solid #222222;
+  }
+
   .panel > :first-child {
     margin-top: 0; }
   .panel > :last-child {
