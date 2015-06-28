@@ -65,7 +65,7 @@
 						<li>Article Category:<a href="#">{{ article.article_category }}</a></li>
 						<li>How Category:
 							<a href="#">
-								{% for category in article.how_category %}
+								{% for category in article.how_category.all %}
 									{{ category }}, 
 								{% endfor %}
 							</a>
