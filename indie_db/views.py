@@ -62,7 +62,7 @@ def index(request):
     categories = ArticleCategory.objects.all()
     if request.method == 'GET' and 'cat' in request.GET and request.GET.get('cat') != 'all':
         category = request.GET.get('cat')
-        articles = Article.objects.filter(publish=True).filter(article_category__title__contains=category).order_by('-date_created')
+        articles = Article.objects.filter(publish=True).filter(article_category__title__icontains=category).order_by('-date_created')
     else:
         articles = Article.objects.filter(publish=True).order_by('-date_created')
 
@@ -106,11 +106,11 @@ def search_articles(request):
 
         if 'title' in request.GET and request.GET.get('title') != '':
             search_string += 'title=' + request.GET.get('title') + '&'
-            articles = articles.filter(title__contains=request.GET.get('title'))
+            articles = articles.filter(title__icontains=request.GET.get('title'))
 
         if 'artist_name' in request.GET and request.GET.get('artist_name') != '':
             search_string += 'artist_name=' + request.GET.get('artist_name') + '&'
-            articles = articles.filter(work_link__creator__name__contains=request.GET.get('artist_name'))
+            articles = articles.filter(work_link__creator__name__icontains=request.GET.get('artist_name'))
 
         if 'tag' in request.GET and request.GET.get('tag') != '':
             search_string += 'tag=' + request.GET.get('tag') + '&'
@@ -118,7 +118,7 @@ def search_articles(request):
 
         if 'cat' in request.GET and request.GET.get('cat') != '' and request.GET.get('cat') != 'all':
             search_string += 'cat=' + request.GET.get('cat') + '&'
-            articles = articles.filter(article_category__title__contains=request.GET.get('cat'))
+            articles = articles.filter(article_category__title__icontains=request.GET.get('cat'))
 
     articles = articles.order_by('-date_created')
 
