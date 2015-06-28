@@ -60,7 +60,7 @@ def index(request):
 
     articles = []
     categories = ArticleCategory.objects.all()
-    if request.method == 'GET' and 'cat' in request.GET and request.GET.get('cat') is not 'all':
+    if request.method == 'GET' and 'cat' in request.GET and request.GET.get('cat') != 'all':
         category = request.GET.get('cat')
         articles = Article.objects.filter(publish=True).filter(article_category__title__contains=category).order_by('-date_created')
     else:
