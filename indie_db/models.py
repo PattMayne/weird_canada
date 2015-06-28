@@ -43,7 +43,6 @@ class WorkCategory(models.Model):
         return self.title
 
 
-
 class Style(models.Model):
     name = models.CharField(max_length=64)
 
