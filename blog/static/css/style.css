@@ -4,6 +4,10 @@
 	Matt's Custom Styling
 */
 
+.details_list li{
+  font-size: 70%;
+}
+
 .border{
   border: 1px solid red;
 }

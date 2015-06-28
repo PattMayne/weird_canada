@@ -8,9 +8,7 @@
 		<article>
 		
 		<div class="postMedia col-md-4">
-				<img src="
 					<img src="/media/{{ article.cover_image }}" class="front_page_pic" />
-				">
 				<div class="postMediaPlayer">
 					Audio Player (Not Functional Yet)
 				</div>
@@ -50,7 +48,7 @@
 
 				<div class="col-md-4">
 					<h2>Details</h2>
-					<ul>
+					<ul class="details_list">
 						{% if article.work_link.self_published %}
 						<li>
 							Label: <a href="#">
