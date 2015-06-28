@@ -100,7 +100,7 @@ def search_articles(request):
     articles_per_page = 12
     categories = ArticleCategory.objects.all()
     articles = Article.objects.filter(publish=True)
-    search_string = '?'
+    search_string = '&'
 
     if request.method == 'GET':
 
