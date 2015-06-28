@@ -2685,10 +2685,11 @@ meta.foundation-mq-topbar {
 /* Panels */
 .panel {
 
-  border: none;
+  border: 1px solid #111111;
   margin-bottom: 1.25rem;
   padding: 1.25rem;
-  background: #d9d9d9;
+  background: #ffffff;
+  border-radius:5px;
   
   /*
   border-radius:15px;
