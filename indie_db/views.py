@@ -114,7 +114,7 @@ def search_articles(request):
 
         if 'tag' in request.GET and request.GET.get('tag') != '':
             search_string += 'tag=' + request.GET.get('tag') + '&'
-            articles = articles.filter(tags__tag_name=request.GET.get('tags'))
+            articles = articles.filter(tags__tag_name=request.GET.get('tag'))
 
         if 'cat' in request.GET and request.GET.get('cat') != '' and request.GET.get('cat') != 'all':
             search_string += 'cat=' + request.GET.get('cat') + '&'
