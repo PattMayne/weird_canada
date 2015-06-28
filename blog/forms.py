@@ -84,7 +84,7 @@ class AddArticleForm(ModelForm):
         article.body_fr = self.cleaned_data['body_fr']
         article.publish = self.cleaned_data['publish']
         article.article_category = self.cleaned_data['article_category']
-        work.epoch = self.cleaned_data['epoch']
+        article.epoch = self.cleaned_data['epoch']
         article.save()
         return article
 

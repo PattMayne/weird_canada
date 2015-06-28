@@ -39,7 +39,7 @@ class AddArtistForm(ModelForm):
 class AddWorkForm(ModelForm):
     class Meta:
         model = Work
-        fields = ('work_category', 'title', 'description', 'extra_data', 'created', 'city', 'self_published', 'epoch', 'styles')
+        fields = ('work_category', 'title', 'description', 'extra_data', 'created', 'city', 'self_published', 'styles')
 
         labels = {
             'created': _('Release Date'),
