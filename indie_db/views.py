@@ -116,6 +116,10 @@ def search_articles(request):
             search_string += 'tags=' + request.GET.get('tags') + '&'
             articles = articles.filter(tags__tag_name=request.GET.get('tags'))
 
+        if 'cat' in request.GET and request.GET.get('cat') != '':
+            search_string += 'cat=' + request.GET.get('cat') + '&'
+            articles = articles.filter(article_category__title__contains=request.GET.get('cat'))
+
     articles = articles.order_by('-date_created')
 
     pager = Paginator(articles, articles_per_page)
