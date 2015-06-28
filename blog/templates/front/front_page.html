@@ -14,7 +14,7 @@
 				<div class="articleList features inner col-md-10 col-md-offset-1">
 					<article class="postContent">
 						<div class="postMedia">
-							<a href="?article={{ articles.0.id }}">
+							<a href="/articles?id={{ articles.0.id }}">
 								<img src="/media/{{ articles.0.cover_image }}" class="front_page_pic" />
 							</a>
 						</div>
@@ -25,7 +25,7 @@
 								</a>
 							</p>
 							<h1>
-								<a href="?article={{ articles.0.id }}" class="primary-post-title">
+								<a href="/articles?id={{ articles.0.id }}" class="primary-post-title">
 									{{ articles.0.title }}
 								</a>
 							</h1>
@@ -34,7 +34,7 @@
 									{{ articles.0.author }}
 								</b>
 							</h2>
-							<h2><a href="/indie_db?author={{ articles.0.author.id }}">{{ articles.0.author }}</a> | {{ articles.0.date_created|date:"M d, Y" }}</h2>
+							<h2><a href="/indie_db/authors?id={{ articles.0.author.id }}">{{ articles.0.author }}</a> | {{ articles.0.date_created|date:"M d, Y" }}</h2>
 
 							<p>
 								<!-- THIS ONCE SAID: $articles[0]['celebration_text']; -->
@@ -55,7 +55,7 @@
 							<article class="postContent"><!-- first secondary post -->
 
 								<div  class="postMedia col-md-8">
-									<a href="?article={{ articles.1.id }}">
+									<a href="/articles?id={{ articles.1.id }}">
 										<img src="/media/{{ articles.1.cover_image }}" class="secondary_pic"/>
 									</a>
 								</div>
@@ -63,14 +63,14 @@
 								<div class="articleHead col-md-4">
 									<p class="postType"><a href="?cat={{ articles.1.article_category }}">{{ articles.1.article_category }}</a></p>
 									<h1>
-										<a href="?article={{ articles.1.id }}">
+										<a href="/articles?id={{ articles.1.id }}">
 											{{ articles.1.title }}
 										</a>
 									</h1>
 									<h2>
 										
 									</h2>
-									<h3><a href="/indie_db?author={{ articles.1.author.id }}">{{ articles.1.author }}</a> | {{ articles.1.date_created|date:"M d, Y" }}</h3>
+									<h3><a href="/indie_db/authors?id={{ articles.1.author.id }}">{{ articles.1.author }}</a> | {{ articles.1.date_created|date:"M d, Y" }}</h3>
 									<p>
 										{{ articles.1.body_en|truncatewords:50 }}
 									</p>
@@ -84,21 +84,21 @@
 							
 							<article class="postContent"><!-- second secondary post -->
 								<div class="postMedia col-md-8">
-									<a href="?article={{ articles.2.id }}">
+									<a href="/articles?id={{ articles.2.id }}">
 										<img src="/media/{{ articles.2.cover_image }}" class="secondary_pic"/>
 									</a>
 								</div>
 								<div class="articleHead col-md-4">
 									<p class="postType"><a href="?cat={{ articles.2.article_category }}">{{ articles.2.article_category }}</a></p>
 									<h1>
-										<a href="?article={{ articles.2.id }}">
+										<a href="/articles?id={{ articles.2.id }}">
 											{{ articles.2.title }}
 										</a>
 									</h1>
 									<h2>
 										
 									</h2>
-									<h3><a href="/indie_db?author={{ articles.2.author.id }}">{{ articles.2.author }}</a> | {{ articles.2.date_created|date:"M d, Y" }}</h3>
+									<h3><a href="/indie_db/authors?id={{ articles.2.author.id }}">{{ articles.2.author }}</a> | {{ articles.2.date_created|date:"M d, Y" }}</h3>
 									<p>
 										{{ articles.2.body_en|truncatewords:50 }}
 									</p>
@@ -134,7 +134,7 @@
 				
 				<article class="postContent col-md-4">
 					<div  class="postMedia">
-						<a href="?article={{ article.id }}">
+						<a href="/articles?id={{ article.id }}">
 							<img src="/media/{{ article.cover_image }}" />
 						</a>
 					</div>
@@ -143,7 +143,7 @@
 							<a href="#">{{ article.article_category }}</a>
 						</h6>
 						<h1>
-							<a href="?article={{ article.id }}">
+							<a href="/articles?id={{ article.id }}">
 								{{ article.title }}
 							</a>
 						</h1>
@@ -156,7 +156,7 @@
 							<a>{{ article.date_created|date:"M d, Y" }}</a>
 						</h3>
 						<h3>
-							<a href="/indie_db?author={{ article.author }}">{{ article.author }}</a>
+							<a href="/indie_db/authors?id={{ article.author }}">{{ article.author }}</a>
 						</h3>
 						<p>
 							{{ article.body_en }}

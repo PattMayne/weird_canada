@@ -88,3 +88,5 @@ def index(request):
         return render(request, 'front/grid_page.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page})
 
 
+def article(request):
+    if request.method == 'GET' and 'id' in request.GET:

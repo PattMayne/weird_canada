@@ -43,6 +43,18 @@ class WorkCategory(models.Model):
         return self.title
 
 
+class WorkRelativeEpoch(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = "Work of Art Relative Epoch"
+
+    def __str__(self):
+        return self.title
+
+
 class Style(models.Model):
     name = models.CharField(max_length=64)
 
@@ -102,6 +114,7 @@ class ProductionCompany(models.Model):
 class Work(models.Model):
     cover_image = models.FileField(upload_to='img/work/%Y/%m/%d', default='img/default.png')
     work_category = models.ForeignKey(WorkCategory, null=True, blank=True)
+    epoch = models.ForeignKey(WorkRelativeEpoch, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     extra_data = models.TextField(null=True, blank=True)

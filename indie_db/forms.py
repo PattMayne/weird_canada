@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput
-from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany
+from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany, WorkRelativeEpoch, Style
 from blog.models import Article, Tag, Author
 
 
@@ -39,26 +39,28 @@ class AddArtistForm(ModelForm):
 class AddWorkForm(ModelForm):
     class Meta:
         model = Work
-        fields = ('work_category', 'title', 'description', 'extra_data', 'created', 'city', 'self_published')
+        fields = ('work_category', 'title', 'description', 'extra_data', 'created', 'city', 'self_published', 'epoch', 'styles')
 
         labels = {
             'created': _('Release Date'),
-            'work_category': _('Media Category'),
             'title': _('Title'),
+            'work_category': _('Media Category'),
+            'epoch': _('Epoch ("When" Category)'),
             'description': _('Description'),
             'extra_data': _('Extra Info'),
             'city': _('City and Province'),
-            #'styles': _('Styles and Genres')
+            'styles': _('Styles and Genres')
         }
 
         widgets = {
             'created': DateInput(attrs={'required': False}),
             'work_category': Select(attrs={'required': True}),
+            'epoch': Select(attrs={'required': True}),
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
             'description': Textarea(attrs={'required': False, 'placeholder': 'Enter Description'}),
             'extra_data': Textarea(attrs={'required': False, 'placeholder': 'Enter Extra Info'}),
             'city': TextInput(attrs={'placeholder': 'City, PR', 'required': False}),
-            #'styles': TextInput(attrs={'required': False, 'placeholder': 'Separate them with a comma (" , ") Max five'})
+            'styles': TextInput(attrs={'required': False, 'placeholder': 'Separate them with a comma (" , ") Max five'})
         }
 
     def save(self, commit=True):
@@ -69,6 +71,7 @@ class AddWorkForm(ModelForm):
         work.extra_data = self.cleaned_data['extra_data']
         work.city = self.cleaned_data['city']
         work.work_category = self.cleaned_data['work_category']
+        work.epoch = self.cleaned_data['epoch']
         work.save()
         return work
 

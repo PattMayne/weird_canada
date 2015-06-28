@@ -1,0 +1,86 @@
+
+
+	<section id="post" class="container reviewPost">
+		<article>
+		
+		<div class="postMedia col-md-4">
+				<img src="
+					<img src="/media/{{ article.cover_image }}" class="front_page_pic" />
+				">
+				<div class="postMediaPlayer">
+					Audio Player (Not Functional Yet)
+				</div>
+				<div class="postMeta col-md-12">
+					<div class="postCredits">
+						<p class="postAuthor">
+							From the Hollywood garbage dump of <strong>{{ article.author }}</strong>
+						</p>
+						<p class="postDate"><strong>Posted:</strong> {{ article.date_created|date:"M d, Y" }}</p>
+					</div>
+					
+				</div>
+		</div>
+		
+		<div class="postContent col-md-6">
+			<div class="articleHead">
+				<p class="postType">
+					<a href="#">
+						{{ article.article_category }}
+					</a>
+				</p>
+				<h1>{{ article.title }}</h1>
+				
+	
+				{% if article.work_link %}
+					<h2>{{ article.work_link.creator }}</h2>
+				{% endif %}
+			</div>
+			
+			<div class="unassigned_article_text_class">
+				{{ article.body_en }}
+			</div>
+			
+			<div class="postLinks row">
+				
+				{% if article.work_link %}
+
+				<div class="col-md-4">
+					<h2>Details</h2>
+					<ul>
+						<li>
+							Label: <a href="#">
+								<?php echo $article['publisher_name']; ?>
+							</a>
+						</li>
+						<li>Format: <a href="#">{{ article.work_link.work_category }}</a></li>
+						<li>Category: {{ article.article_category }}</a></li>
+						<li>Artist Origin: <a href="#">{{ article.work_link.city }}</a></li>
+						<li>
+								<a href="<?php echo $article['buy_link']; ?>">Buy this Record</a>
+						</li>
+					</ul>
+				</div>
+				{% endif %}
+
+				<div class="col-md-4">
+					<h2>Tags</h2>
+						<ul>
+							<li>
+								<a href="#"><?php echo $article['work_themes_moods']; ?></a>
+							</li>
+						</ul>
+				</div>
+				<div class="col-md-4">
+					<h2>Genres</h2>
+						<ul>
+							<li>
+								<a href="#"><?php echo $article['work_genre']; ?></a>
+							</li>
+						</ul>
+				</div>
+			</div>
+		</div>
+
+		
+	</article>
+</section>
