@@ -83,7 +83,7 @@ class Article(models.Model):
     epoch = models.ForeignKey(RelativeEpoch, null=True, blank=True)
     slug = models.SlugField(max_length=200, blank=True, null=True)
     article_category = models.ForeignKey(ArticleCategory, blank=True, null=True)
-    how_category = models.ForeignKey(HowCategory, blank=True, null=True)
+    how_category = models.ManyToManyField(HowCategory, blank=True, null=True)
     body_en = models.TextField(blank=True, null=True)
     body_fr = models.TextField(blank=True, null=True)
     is_review = models.BooleanField(default=False)
