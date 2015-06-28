@@ -2737,7 +2737,7 @@ meta.foundation-mq-topbar {
       .panel.callout a:not(.button):hover, .panel.callout a:not(.button):focus {
         color: #533122; }
   .panel.radius {
-    border-radius: 3px; }
+   /* border-radius: 3px;*/ }
 
 .dropdown.button, button.dropdown {
   position: relative;
