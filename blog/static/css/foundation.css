@@ -2686,11 +2686,11 @@ meta.foundation-mq-topbar {
 .panel {
 
   border-style: solid;
-  border-width: 2px;
-  border-color: #333333;
+  border-width: 1px;
+  border-color: #373737;
   margin-bottom: 1.25rem;
   padding: 1.25rem;
-  background: #f0f0f0;
+  background: #f6f6f6;
   border-radius:15px;
   /*
   border-top-right-radius: 43px;
