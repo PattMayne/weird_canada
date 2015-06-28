@@ -92,4 +92,4 @@ def article(request):
     if request.method == 'GET' and 'id' in request.GET:
         article_id = request.GET.get('id')
         article = Article.objects.get(pk=article_id)
-        return render(request, 'front/front_page.html', {'article': article})        
+        return render(request, 'front/article.html', {'article': article})
