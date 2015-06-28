@@ -83,7 +83,7 @@
 						<ul>
 							<li>
 								
-									{% for tag in article.tags %}
+									{% for tag in article.tags.all %}
 										<a href="/search?tag={{tag}}">{{ tag }}</a>, 
 									{% endfor %}
 								
@@ -94,7 +94,7 @@
 				<div class="col-md-4">
 					<h2>Genres</h2>
 						<ul>
-							{% for style in article.work_link.styles %}
+							{% for style in article.work_link.styles.all %}
 								<li>
 									<a href="/indie_db/works/search?style={{ article.work_link.style }}">{{ article.work_link.style }}</a>
 								</li>
