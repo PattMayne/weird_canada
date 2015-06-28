@@ -60,7 +60,7 @@ def index(request):
 
     articles = []
     categories = ArticleCategory.objects.all()
-    if request.method == 'GET' and 'cat' in request.GET:        
+    if request.method == 'GET' and 'cat' in request.GET and request.GET.get('cat') is not 'all':
         category = request.GET.get('cat')
         articles = Article.objects.filter(publish=True).filter(article_category__title__contains=category).order_by('-date_created')
     else:
@@ -83,9 +83,9 @@ def index(request):
         articles = pager.page(pager.num_pages)
 
     if page == 1 or page == '1':
-        return render(request, 'front/front_page.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page})
+        return render(request, 'front/front_page.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'cat': category})
     else:
-        return render(request, 'front/grid_page.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page})
+        return render(request, 'front/grid_page.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'cat': category})
 
 
 def article(request):
