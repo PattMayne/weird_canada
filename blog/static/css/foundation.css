@@ -2702,7 +2702,7 @@ meta.foundation-mq-topbar {
   color: #000000; }
 
   .panel input,
-  .input select{
+  .panel select{
     border: 1px solid #222222;
   }
 
