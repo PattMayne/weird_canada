@@ -2687,13 +2687,15 @@ meta.foundation-mq-topbar {
 
   border-style: solid;
   border-width: 2px;
-  border-color: #131313;
+  border-color: #333333;
   margin-bottom: 1.25rem;
   padding: 1.25rem;
-  background: #ffffff;
-  border-radius:2px;
+  background: #f0f0f0;
+  border-radius:15px;
+  /*
   border-top-right-radius: 43px;
   border-bottom-left-radius: 43px;
+  */
   color: #000000; }
   .panel > :first-child {
     margin-top: 0; }
