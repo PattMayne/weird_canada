@@ -112,11 +112,11 @@ def search_articles(request):
             search_string += 'artist_name=' + request.GET.get('artist_name') + '&'
             articles = articles.filter(work_link__creator__name__contains=request.GET.get('artist_name'))
 
-        if 'tags' in request.GET and request.GET.get('tags') != '':
-            search_string += 'tags=' + request.GET.get('tags') + '&'
+        if 'tag' in request.GET and request.GET.get('tag') != '':
+            search_string += 'tag=' + request.GET.get('tag') + '&'
             articles = articles.filter(tags__tag_name=request.GET.get('tags'))
 
-        if 'cat' in request.GET and request.GET.get('cat') != '':
+        if 'cat' in request.GET and request.GET.get('cat') != '' and request.GET.get('cat') != 'all':
             search_string += 'cat=' + request.GET.get('cat') + '&'
             articles = articles.filter(article_category__title__contains=request.GET.get('cat'))
 
