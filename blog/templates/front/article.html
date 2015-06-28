@@ -15,7 +15,7 @@
 				<div class="postMeta col-md-12">
 					<div class="postCredits">
 						<p class="postAuthor">
-							From the Hollywood garbage dump of <strong>{{ article.author }}</strong>
+							{{ article.author.tagline }} <strong>{{ article.author }}</strong>
 						</p>
 						<p class="postDate"><strong>Posted:</strong> {{ article.date_created|date:"M d, Y" }}</p>
 					</div>
@@ -82,7 +82,7 @@
 
 				<div class="col-md-4">
 					<h2>Tags</h2>
-						<ul>
+						<ul class="details_list">
 							<li>
 								
 									{% for tag in article.tags.all %}
@@ -95,7 +95,7 @@
 				{% if article.work_link %}
 				<div class="col-md-4">
 					<h2>Genres</h2>
-						<ul>
+						<ul class="details_list">
 							{% for style in article.work_link.styles.all %}
 								<li>
 									<a href="/indie_db/works/search?style={{ article.work_link.style }}">{{ article.work_link.style }}</a>
