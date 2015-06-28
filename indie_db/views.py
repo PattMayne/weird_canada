@@ -114,7 +114,7 @@ def search_articles(request):
 
         if 'tags' in request.GET:
             search_string += 'tags=' + request.GET.get('tags') + '&'
-            articles = articles.filter(tags__contains=request.GET.get('tags'))
+            articles = articles.filter(tags__tag_name=request.GET.get('tags'))
 
     articles = articles.order_by('-date_created')
 
