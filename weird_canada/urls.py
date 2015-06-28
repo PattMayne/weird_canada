@@ -45,5 +45,9 @@ urlpatterns = patterns('',
     url(r'^wc_admin/browse_articles/$', 'blog.views.browse_articles', name="browse_articles_view"),
     url(r'^wc_admin/browse_artists/$', 'blog.views.browse_artists', name="browse_artists_view"),
     url(r'^wc_admin/browse_works/$', 'blog.views.browse_works', name="browse_works_view"),
+
+    # The Front Site
+
+    url(r'^article/$', 'indie_db.views.article', name="front_article_view"),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -60,12 +60,19 @@
 							</a>
 						</li>
 						{% endif %}
-						<li>Category<a href="#">{{ article.work_link.work_category }}</a></li>
+						<li>Work Category<a href="#">{{ article.work_link.work_category }}</a></li>
 						<li>Relative Epoch:<a href="#">{{ article.epoch }}</a></li>
-						<li>{{ article.article_category }}</li>
-						<li><a href="#">{{ article.work_link.city }}</a></li>
+						<li>Article Category:<a href="#">{{ article.article_category }}</a></li>
+						<li>How Category:
+							<a href="#">
+								{% for category in article.how_category %}
+									{{ category }}, 
+								{% endfor %}
+							</a>
+						</li>
+						<li>City:<a href="#">{{ article.work_link.city }}</a></li>
 						<li>
-								<a href="<?php echo $article['buy_link']; ?>">Buy Link</a>
+								<a href="{{ article.website }}">Buy Link</a>
 						</li>
 					</ul>
 				</div>
@@ -75,18 +82,27 @@
 					<h2>Tags</h2>
 						<ul>
 							<li>
-								<a href="#"><?php echo $article['work_themes_moods']; ?></a>
+								
+									{% for tag in article.tags %}
+										<a href="/search?tag={{tag}}">{{ tag }}</a>, 
+									{% endfor %}
+								
 							</li>
 						</ul>
 				</div>
+				{% if article.work_link %}
 				<div class="col-md-4">
 					<h2>Genres</h2>
 						<ul>
-							<li>
-								<a href="#"><?php echo $article['work_genre']; ?></a>
-							</li>
+							{% for style in article.work_link.styles %}
+								<li>
+									<a href="/indie_db/works/search?style={{ article.work_link.style }}">{{ article.work_link.style }}</a>
+								</li>
+							{% endfor %}
+
 						</ul>
 				</div>
+				{% endif %}
 			</div>
 		</div>
 
