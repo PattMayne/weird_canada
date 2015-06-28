@@ -23,7 +23,7 @@
 					</div>
 					<div class="articleHead">
 						<h6 class="postType">
-							<a href="?cat={{ article.article_category }}">{{ article.article_category }}</a>
+							<a href="/?cat={{ article.article_category }}">{{ article.article_category }}</a>
 						</h6>
 						<h1>
 							<a href="/article?id={{ article.id }}">
@@ -59,11 +59,11 @@
 		<div class="row">
 			<hr>
 			{% if articles.has_previous %}
-            <a href="?page={{ articles.previous_page_number }}&cat={{ cat }}" class="left">previous</a>
+            <a href="/?page={{ articles.previous_page_number }}&cat={{ cat }}" class="left">previous</a>
         	{% endif %}
 
         	{% if articles.has_next %}
-            <a href="?page={{ articles.next_page_number }}&cat={{ cat }}" class="right">next</a>
+            <a href="/?page={{ articles.next_page_number }}&cat={{ cat }}" class="right">next</a>
         	{% endif %}
         </div>
 
