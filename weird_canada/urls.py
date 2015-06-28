@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^wc_admin/save_new_author/', 'blog.views.save_new_author_profile', name="save_new_author_profile_view"),
 
     # add stuff to the database
+
     url(r'^wc_admin/write_new_artist/', 'blog.views.write_new_artist', name="write_new_artist_view"),
     url(r'^wc_admin/write_new_work/', 'blog.views.write_new_work', name="write_new_work_view"),
     url(r'^wc_admin/save_new_artist/', 'blog.views.save_new_artist', name="save_new_artist_view"),
@@ -38,6 +39,7 @@ urlpatterns = patterns('',
     url(r'^wc_admin/save_new_production_company/', 'blog.views.save_new_production_company', name="save_new_production_company_view"),
 
     # view raw database info
+
     url(r'^wc_admin/view_artist/$', 'blog.views.view_artist', name="view_artist_view"),
     url(r'^wc_admin/view_work/$', 'blog.views.view_work', name="view_work_view"),
     url(r'^wc_admin/view_article/$', 'blog.views.view_article', name="view_article_view"),
@@ -50,5 +52,10 @@ urlpatterns = patterns('',
 
     url(r'^article/$', 'indie_db.views.article', name="front_article_view"),
     url(r'^search/$', 'indie_db.views.search_articles', name="search_articles_view"),
+
+    # Front / Indie_DB
+
+    url(r'^indie_db/works/search/$', 'indie_db.views.search_works', name="search_works_view"),
+
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
