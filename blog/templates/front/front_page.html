@@ -14,7 +14,7 @@
 				<div class="articleList features inner col-md-10 col-md-offset-1">
 					<article class="postContent">
 						<div class="postMedia">
-							<a href="/articles?id={{ articles.0.id }}">
+							<a href="/article?id={{ articles.0.id }}">
 								<img src="/media/{{ articles.0.cover_image }}" class="front_page_pic" />
 							</a>
 						</div>
@@ -25,7 +25,7 @@
 								</a>
 							</p>
 							<h1>
-								<a href="/articles?id={{ articles.0.id }}" class="primary-post-title">
+								<a href="/article?id={{ articles.0.id }}" class="primary-post-title">
 									{{ articles.0.title }}
 								</a>
 							</h1>
@@ -55,7 +55,7 @@
 							<article class="postContent"><!-- first secondary post -->
 
 								<div  class="postMedia col-md-8">
-									<a href="/articles?id={{ articles.1.id }}">
+									<a href="/article?id={{ articles.1.id }}">
 										<img src="/media/{{ articles.1.cover_image }}" class="secondary_pic"/>
 									</a>
 								</div>
@@ -63,7 +63,7 @@
 								<div class="articleHead col-md-4">
 									<p class="postType"><a href="?cat={{ articles.1.article_category }}">{{ articles.1.article_category }}</a></p>
 									<h1>
-										<a href="/articles?id={{ articles.1.id }}">
+										<a href="/article?id={{ articles.1.id }}">
 											{{ articles.1.title }}
 										</a>
 									</h1>
@@ -84,14 +84,14 @@
 							
 							<article class="postContent"><!-- second secondary post -->
 								<div class="postMedia col-md-8">
-									<a href="/articles?id={{ articles.2.id }}">
+									<a href="/article?id={{ articles.2.id }}">
 										<img src="/media/{{ articles.2.cover_image }}" class="secondary_pic"/>
 									</a>
 								</div>
 								<div class="articleHead col-md-4">
 									<p class="postType"><a href="?cat={{ articles.2.article_category }}">{{ articles.2.article_category }}</a></p>
 									<h1>
-										<a href="/articles?id={{ articles.2.id }}">
+										<a href="/article?id={{ articles.2.id }}">
 											{{ articles.2.title }}
 										</a>
 									</h1>
@@ -134,7 +134,7 @@
 				
 				<article class="postContent col-md-4">
 					<div  class="postMedia">
-						<a href="/articles?id={{ article.id }}">
+						<a href="/article?id={{ article.id }}">
 							<img src="/media/{{ article.cover_image }}" />
 						</a>
 					</div>
@@ -143,7 +143,7 @@
 							<a href="#">{{ article.article_category }}</a>
 						</h6>
 						<h1>
-							<a href="/articles?id={{ article.id }}">
+							<a href="/article?id={{ article.id }}">
 								{{ article.title }}
 							</a>
 						</h1>
