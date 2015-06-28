@@ -9,18 +9,23 @@
 		<br><br>
 		<div class="panel">
 			<div class="row">
-				<h3>Search Articles:</h3>
-				<form method="get" action="/search/">
-					<input type="text" name="title" id="title_id" placeholder="Title" />
-					<input type="text" name="artist_name" id="artist_name_id" placeholder="Artist" />
-					<input type="text" name="tags" id="tags_id" placeholder="Tag">
-					<select name="category_select" id="category_select_id">
-						<option value="all">All Categories</option>
-						{% for category in categories %}
-						<option value="{{ category }}">{{ category }}</option>
-						{% endfor %}
-					</select>
-				</form>
+				<div class="large-12 columns">
+					<h3>Search Articles:</h3>
+					<form method="get" action="/search/">
+						<input type="text" name="title" id="title_id" placeholder="Title" />
+						<input type="text" name="artist_name" id="artist_name_id" placeholder="Artist" />
+						<input type="text" name="tags" id="tags_id" placeholder="Tag">
+						<select name="category_select" id="category_select_id">
+							<option value="all">All Categories</option>
+							{% for category in categories %}
+							<option value="{{ category }}">{{ category }}</option>
+							{% endfor %}
+						</select>
+						<br>
+						<input type="submit" class="button small" value="SEARCH" />
+						<br>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

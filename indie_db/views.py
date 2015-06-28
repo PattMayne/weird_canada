@@ -100,20 +100,20 @@ def search_articles(request):
     articles_per_page = 12
     categories = ArticleCategory.objects.all()
     articles = Article.objects.filter(publish=True)
-    search_string = ''
+    search_string = '?'
 
     if request.method == 'GET':
 
         if 'title' in request.GET:
-            search_string += '&title=' . request.GET.get('title')
+            search_string += 'title=' . request.GET.get('title') . '&'
             articles = articles.filter(title__contains=request.GET.get('title'))
 
         if 'artist_name' in request.GET:
-            search_string += '&artist_name=' . request.GET.get('artist_name')
+            search_string += 'artist_name=' . request.GET.get('artist_name') . '&'
             articles = articles.filter(work_link__creator__name__contains=request.GET.get('artist_name'))
 
         if 'tags' in request.GET:
-            search_string += '&tags=' . request.GET.get('tags')
+            search_string += 'tags=' . request.GET.get('tags') . '&'
             articles = articles.filter(tags__contains=request.GET.get('tags'))
 
     articles = articles.order_by('-date_created')
