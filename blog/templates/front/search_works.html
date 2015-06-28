@@ -1,0 +1,109 @@
+{% extends "base_front.html" %}
+
+{% block title %} Weird Canada {% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<br><br>
+		<div class="panel">
+			<div class="row">
+				<div class="large-12 columns">
+					<h3>Search Articles:</h3>
+					<form method="get" action="/indie_db/works/search/">
+
+						<input type="text" name="title" id="title_id" placeholder="Title" />
+						<input type="text" name="artist_name" id="artist_name_id" placeholder="Artist" />
+						<input type="text" name="style" id="style_id" placeholder="Style or Genre">
+						<input type="text" name="city" id="city_id" placeholder="City">
+						<select name="cat" id="cat_id">
+							<option value="all">All Categories</option>
+							{% for category in categories %}
+							<option value="{{ category }}">{{ category }}</option>
+							{% endfor %}
+						</select>
+						<br>
+						<input type="submit" class="button small" value="SEARCH" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	
+		{% if works.has_previous %}
+         	<a href="?page={{ works.previous_page_number }}{{ search_string }}" class="left">previous</a>
+      	{% endif %}
+
+      	{% if works.has_next %}
+         	<a href="?page={{ works.next_page_number }}{{ search_string }}" class="right">next</a>
+      	{% endif %}
+      	<hr>
+</div>
+
+	
+
+<section id="index" class="container">
+
+	<div class="articleList gridBlock col-md-10 col-md-offset-1">
+		<div class="row">
+			<h6 class="left">{{ total_results }} results</h6>
+
+			<h6 class="right">page {{ page }} of {{ number_of_pages }}</h6>
+			<br><br>
+			
+			<table>
+				<tr>
+					<th>TITLE</th>
+					<th>ARTIST</th>
+					<th>CATEGORY</th>
+					<th>CITY</th>
+					<th>RELEASE DATE</th>
+				</tr>
+				
+			{% for work in works %}
+				<tr>
+					<td>
+						{{ work.title }}
+					</td>
+					<td>
+						{{ work.artist }}
+					</td>
+					<td>
+						{{ work.work_category }}
+					</td>
+					<td>
+						{{ work.city }}
+					</td>
+					<td>
+						{{ work.created }}
+					</td>
+				</tr>
+
+			{% endfor%}
+
+			</table>
+			
+			
+		</div>
+	</div>
+
+</section> <!-- end of section id=index / class=container -->
+
+		<div class="row">
+			<hr>
+			{% if works.has_previous %}
+            <a href="?page={{ works.previous_page_number }}{{ search_string }}" class="left">previous</a>
+        	{% endif %}
+
+        	{% if works.has_next %}
+            <a href="?page={{ works.next_page_number }}{{ search_string }}" class="right">next</a>
+        	{% endif %}
+        </div>
+
+
+{% endblock %}

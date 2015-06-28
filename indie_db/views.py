@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Weird Canada apps stuff
 from indie_db.forms import AddArtistForm, AddWorkForm, AddProductionCompanyForm
-from indie_db.models import Artist, Work, URL, Style, Contributor, Track, ProductionCompany
+from indie_db.models import Artist, Work, URL, Style, Contributor, Track, ProductionCompany, WorkCategory
 from blog.models import Article, Author, Tag, ArticleCategory
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
@@ -138,3 +138,55 @@ def search_articles(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         articles = pager.page(pager.num_pages)
     return render(request, 'front/search_articles.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
+
+
+# INDIE_DB stuff
+
+def search_works(request):
+    works = Work.objects.all()
+    works_per_page = 3
+    categories = WorkCategory.objects.all()
+    works = Work.objects.filter()
+    search_string = '&'
+
+    if request.method == 'GET':
+
+        if 'title' in request.GET and request.GET.get('title') != '':
+            search_string += 'title=' + request.GET.get('title') + '&'
+            works = works.filter(title__icontains=request.GET.get('title'))
+
+        if 'artist_name' in request.GET and request.GET.get('artist_name') != '':
+            search_string += 'artist_name=' + request.GET.get('artist_name') + '&'
+            works = works.filter(creator__name__icontains=request.GET.get('artist_name'))
+
+        if 'style' in request.GET and request.GET.get('style') != '':
+            search_string += 'style=' + request.GET.get('style') + '&'
+            works = works.filter(styles__style_name=request.GET.get('style'))
+
+        if 'city' in request.GET and request.GET.get('city') != '':
+            search_string += 'city=' + request.GET.get('city') + '&'
+            works = works.filter(city__icontains=request.GET.get('city'))
+
+        if 'cat' in request.GET and request.GET.get('cat') != '' and request.GET.get('cat') != 'all':
+            search_string += 'cat=' + request.GET.get('cat') + '&'
+            works = works.filter(work_category__title__icontains=request.GET.get('cat'))
+
+    works = works.order_by('-created')
+
+    pager = Paginator(works, works_per_page)
+
+    if request.method == 'GET' and 'page' in request.GET:
+        page = request.GET.get('page')
+    else:
+        page = 1
+
+    try:
+        works = pager.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        works = pager.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        works = pager.page(pager.num_pages)
+
+    return render(request, 'front/search_works.html', {'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
