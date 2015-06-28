@@ -1166,20 +1166,23 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #603928;
-  border-color: #4d2e20;
+  background-color: #111111;
+  border-color: #222222;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #4d2e20; }
+    background-color: #888888;
+    color: #333333;}
   button:hover, button:focus, .button:hover, .button:focus {
-    color: #FFFFFF; }
+    background-color: #888888;
+    color: #333333; }
   button.secondary, .button.secondary {
-    background-color: #937b50;
-    border-color: #766240;
+    background-color: #111111;
+    border-color: #111111;
     color: #FFFFFF; }
     button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
-      background-color: #766240; }
+      background-color: #888888;
+    color: #333333;}
     button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
       color: #FFFFFF; }
   button.success, .button.success {
