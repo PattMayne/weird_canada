@@ -1,6 +1,6 @@
 {% extends "base_front.html" %}
 
-{% block title %} Weird Canada {% endblock %}
+{% block title %} Search Works of Art - Weird Canada {% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
 		<div class="panel">
 			<div class="row">
 				<div class="large-12 columns">
-					<h3>Search Articles:</h3>
+					<h3>Search Works of Art:</h3>
 					<form method="get" action="/indie_db/works/search/">
 
 						<input type="text" name="title" id="title_id" placeholder="Title" />
@@ -58,11 +58,11 @@
 			
 			<table>
 				<tr>
-					<th>TITLE</th>
-					<th>ARTIST</th>
-					<th>CATEGORY</th>
-					<th>CITY</th>
-					<th>RELEASE DATE</th>
+					<th><h5>TITLE</h5></th>
+					<th><h5>ARTIST</h5></th>
+					<th><h5>CATEGORY</h5></th>
+					<th><h5>CITY</h5></th>
+					<th><h5>RELEASE DATE</h5></th>
 				</tr>
 				
 			{% for work in works %}
