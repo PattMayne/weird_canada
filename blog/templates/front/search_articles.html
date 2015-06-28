@@ -12,7 +12,7 @@
 				<div class="large-12 columns">
 					<h3>Search Articles:</h3>
 					<form method="get" action="/search/">
-					
+
 						<input type="text" name="title" id="title_id" placeholder="Title" />
 						<input type="text" name="artist_name" id="artist_name_id" placeholder="Artist" />
 						<input type="text" name="tag" id="tag_id" placeholder="Tag">
@@ -38,6 +38,8 @@
 
 	<div class="articleList gridBlock col-md-10 col-md-offset-1">
 		<div class="row">
+			<h6 class="right">{{ total_results }} results</h6>
+			<h6 class="right">{{ page }} of {{ number_of_pages }} pages</h6>
 		
 			{% for article in articles %}
 				
