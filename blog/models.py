@@ -32,6 +32,18 @@ class ArticleCategory(models.Model):
         return self.title
 
 
+class RelativeEpoch(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = "Work of Art Relative Epoch"
+
+    def __str__(self):
+        return self.title
+
+
 class Author(models.Model):
     authorname = models.CharField(max_length=200, unique=True)
     tagline = models.CharField(max_length=300, default='From the mad mind of ')
@@ -55,6 +67,7 @@ class Article(models.Model):
     cover_image = models.FileField(upload_to='img/article/%Y/%m/%d', default='img/default.png')
     author = models.ForeignKey(Author, blank=True, null=True)
     title = models.CharField(max_length=200)
+    epoch = models.ForeignKey(RelativeEpoch, null=True, blank=True)
     slug = models.SlugField(max_length=200, blank=True, null=True)
     article_category = models.ForeignKey(ArticleCategory, blank=True, null=True)
     body_en = models.TextField(blank=True, null=True)

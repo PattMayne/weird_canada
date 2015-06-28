@@ -47,16 +47,25 @@
 				<div class="col-md-4">
 					<h2>Details</h2>
 					<ul>
+						{% if article.work_link.self_published %}
 						<li>
 							Label: <a href="#">
-								<?php echo $article['publisher_name']; ?>
+								Self Published
 							</a>
 						</li>
-						<li>Format: <a href="#">{{ article.work_link.work_category }}</a></li>
-						<li>Category: {{ article.article_category }}</a></li>
-						<li>Artist Origin: <a href="#">{{ article.work_link.city }}</a></li>
+						{% else %}
 						<li>
-								<a href="<?php echo $article['buy_link']; ?>">Buy this Record</a>
+							Label: <a href="/indie_db/publishers?id={{ article.work_link.production_company.id }}">
+								{{ article.work_link.production_company }}
+							</a>
+						</li>
+						{% endif %}
+						<li>Category<a href="#">{{ article.work_link.work_category }}</a></li>
+						<li>Relative Epoch:<a href="#">{{ article.epoch }}</a></li>
+						<li>{{ article.article_category }}</li>
+						<li><a href="#">{{ article.work_link.city }}</a></li>
+						<li>
+								<a href="<?php echo $article['buy_link']; ?>">Buy Link</a>
 						</li>
 					</ul>
 				</div>

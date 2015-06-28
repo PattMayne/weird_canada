@@ -54,11 +54,12 @@ class EditAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'publish')
+        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'publish', 'epoch')
 
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
             'date_created': DateInput(attrs={'required': True}),
+            'epoch': Select(attrs={'required': True}),
             'a_category': Select(attrs={'required': True}),
             'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
             'publish': CheckboxInput(attrs={'required': False}),
@@ -72,6 +73,7 @@ class AddArticleForm(ModelForm):
             'publish': _('Publish Now?'),
             'body_fr': _('Article Français'),
             'article_category': _('Choose Category'),
+            'epoch': _('Epoch ("When" Category)'),
         }
 
     def save(self, commit=True):
@@ -82,6 +84,7 @@ class AddArticleForm(ModelForm):
         article.body_fr = self.cleaned_data['body_fr']
         article.publish = self.cleaned_data['publish']
         article.article_category = self.cleaned_data['article_category']
+        work.epoch = self.cleaned_data['epoch']
         article.save()
         return article
 

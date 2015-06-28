@@ -45,7 +45,6 @@ class AddWorkForm(ModelForm):
             'created': _('Release Date'),
             'title': _('Title'),
             'work_category': _('Media Category'),
-            'epoch': _('Epoch ("When" Category)'),
             'description': _('Description'),
             'extra_data': _('Extra Info'),
             'city': _('City and Province'),
@@ -55,7 +54,6 @@ class AddWorkForm(ModelForm):
         widgets = {
             'created': DateInput(attrs={'required': False}),
             'work_category': Select(attrs={'required': True}),
-            'epoch': Select(attrs={'required': True}),
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
             'description': Textarea(attrs={'required': False, 'placeholder': 'Enter Description'}),
             'extra_data': Textarea(attrs={'required': False, 'placeholder': 'Enter Extra Info'}),
@@ -71,7 +69,6 @@ class AddWorkForm(ModelForm):
         work.extra_data = self.cleaned_data['extra_data']
         work.city = self.cleaned_data['city']
         work.work_category = self.cleaned_data['work_category']
-        work.epoch = self.cleaned_data['epoch']
         work.save()
         return work
 
