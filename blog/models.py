@@ -32,13 +32,26 @@ class ArticleCategory(models.Model):
         return self.title
 
 
+class HowCategory(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = "How Category"
+        verbose_name_plural = "How Categories"
+
+    def __str__(self):
+        return self.title
+
+
 class RelativeEpoch(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ['title']
-        verbose_name = "Work of Art Relative Epoch"
+        verbose_name = "Relative Epoch"
 
     def __str__(self):
         return self.title
@@ -70,6 +83,7 @@ class Article(models.Model):
     epoch = models.ForeignKey(RelativeEpoch, null=True, blank=True)
     slug = models.SlugField(max_length=200, blank=True, null=True)
     article_category = models.ForeignKey(ArticleCategory, blank=True, null=True)
+    how_category = models.ForeignKey(HowCategory, blank=True, null=True)
     body_en = models.TextField(blank=True, null=True)
     body_fr = models.TextField(blank=True, null=True)
     is_review = models.BooleanField(default=False)
