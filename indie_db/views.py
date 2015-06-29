@@ -194,7 +194,7 @@ def search_works(request):
 
 def single_work(request):
     if request.method == 'GET':
-        work_id = request.GET.get('work_id')
+        work_id = int(request.GET.get('id'))
         work = Work.objects.get(pk=work_id)
         return render(request, 'front/single_work.html', {'work': work})
 
