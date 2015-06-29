@@ -66,24 +66,25 @@
 				</tr>
 				
 			{% for work in works %}
-				<tr>
-					<td>
-						{{ work.title }}
-					</td>
-					<td>
-						{{ work.creator }}
-					</td>
-					<td>
-						{{ work.work_category }}
-					</td>
-					<td>
-						{{ work.city }}
-					</td>
-					<td>
-						{{ work.created }}
-					</td>
-				</tr>
-
+				<a href="/indie_db/works?id={{ work.id }}">
+					<tr>
+						<td>
+							{{ work.title }}
+						</td>
+						<td>
+							{{ work.creator }}
+						</td>
+						<td>
+							{{ work.work_category }}
+						</td>
+						<td>
+							{{ work.city }}
+						</td>
+						<td>
+							{{ work.created }}
+						</td>
+					</tr>
+				</a>
 			{% endfor%}
 
 			</table>

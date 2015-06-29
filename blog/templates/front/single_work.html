@@ -1,0 +1,99 @@
+{% extends "base_front.html" %}
+
+{% block title %} {{ work.title }} {% endblock %}
+
+{% block content %}
+
+	<section id="post" class="container reviewPost">
+		<article>
+		
+		<div class="postMedia col-md-4">
+					<img src="/media/{{ article.work }}" class="front_page_pic" />
+				<div class="postMediaPlayer">
+					Audio Player (Not Functional Yet)
+				</div>
+				<div class="postMeta col-md-12">
+					<div class="postCredits">
+						<p class="postAuthor">
+							Artist: {{ work.creator }}
+						</p>
+						<p class="postDate"><strong>Released:</strong> {{ work.created|date:"M d, Y" }}</p>
+					</div>
+					
+				</div>
+		</div>
+		
+		<div class="postContent col-md-6">
+			<div class="articleHead">
+				<p class="postType">
+					<a href="#">
+						{{ work.work_category }}
+					</a>
+				</p>
+				<h1>{{ work.title }}</h1>
+				
+			</div>
+			
+			<div class="unassigned_article_text_class">
+				{{ work.description }}
+			</div>
+			
+			<div class="postLinks row">
+
+				<div class="col-md-4">
+					<h2>Details</h2>
+					<ul class="details_list">
+						{% if work.self_published %}
+						<li>
+							Label: <a href="#">
+								Self Published
+							</a>
+						</li>
+						{% else %}
+						<li>
+							Label: <a href="/indie_db/publishers?id={{ work.production_company.id }}">
+								{{ work.production_company }}
+							</a>
+						</li>
+						{% endif %}
+						<li>Work Category<a href="#">{{ work.work_category }}</a></li>
+						<li>City:<a href="#">{{ work.city }}</a></li>
+						<li>
+								<a href="{{ work.website }}">Buy Link</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-md-4">
+					<h2>Tags</h2>
+						<ul class="details_list">
+							<li>
+								
+									{% for tag in article.tags.all %}
+										<a href="/search?tag={{tag}}">{{ tag }}</a>, 
+									{% endfor %}
+								
+							</li>
+						</ul>
+				</div>
+				{% if article.work_link %}
+				<div class="col-md-4">
+					<h2>Genres</h2>
+						<ul class="details_list">
+							{% for style in article.work_link.styles.all %}
+								<li>
+									<a href="/indie_db/works/search?style={{ article.work_link.style }}">{{ article.work_link.style }}</a>
+								</li>
+							{% endfor %}
+
+						</ul>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+
+		
+	</article>
+</section>
+
+{% endblock %}
