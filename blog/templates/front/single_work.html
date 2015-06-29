@@ -31,6 +31,7 @@
 					</a>
 				</p>
 				<h1>{{ work.title }}</h1>
+				<h4>By: <a href="/indie_db/artists?id={{ work.creator.id }}">{{ work.creator }}</a></h4>
 				
 			</div>
 			
@@ -40,7 +41,7 @@
 			
 			<div class="postLinks row">
 
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<h2>Details</h2>
 					<ul class="details_list">
 						{% if work.self_published %}
@@ -56,31 +57,19 @@
 							</a>
 						</li>
 						{% endif %}
-						<li>Work Category<a href="#">{{ work.work_category }}</a></li>
-						<li>City:<a href="#">{{ work.city }}</a></li>
+						<li>Category: <a href="#">{{ work.work_category }}</a></li>
+						<li>City: <a href="#">{{ work.city }}</a></li>
 						<li>
 								<a href="{{ work.website }}">Buy Link</a>
 						</li>
 					</ul>
 				</div>
 
-				<div class="col-md-4">
-					<h2>Tags</h2>
+
+				<div class="col-md-6">
+					<h2>Genres / Styles</h2>
 						<ul class="details_list">
-							<li>
-								
-									{% for tag in article.tags.all %}
-										<a href="/search?tag={{tag}}">{{ tag }}</a>, 
-									{% endfor %}
-								
-							</li>
-						</ul>
-				</div>
-				{% if article.work_link %}
-				<div class="col-md-4">
-					<h2>Genres</h2>
-						<ul class="details_list">
-							{% for style in article.work_link.styles.all %}
+							{% for style in work.styles.all %}
 								<li>
 									<a href="/indie_db/works/search?style={{ article.work_link.style }}">{{ article.work_link.style }}</a>
 								</li>
@@ -88,7 +77,7 @@
 
 						</ul>
 				</div>
-				{% endif %}
+				
 			</div>
 		</div>
 
