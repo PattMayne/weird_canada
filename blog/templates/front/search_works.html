@@ -66,10 +66,12 @@
 				</tr>
 				
 			{% for work in works %}
-				<a href="/indie_db/works?id={{ work.id }}">
+				
 					<tr>
 						<td>
+							<a href="/indie_db/works?id={{ work.id }}">
 							{{ work.title }}
+							</a>
 						</td>
 						<td>
 							{{ work.creator }}
@@ -84,7 +86,7 @@
 							{{ work.created }}
 						</td>
 					</tr>
-				</a>
+				
 			{% endfor%}
 
 			</table>
