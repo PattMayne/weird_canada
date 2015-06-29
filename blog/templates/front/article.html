@@ -46,7 +46,7 @@
 				
 				{% if article.work_link %}
 
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<h2>Details</h2>
 					<ul class="details_list">
 						{% if article.work_link.self_published %}
@@ -62,17 +62,17 @@
 							</a>
 						</li>
 						{% endif %}
-						<li>Work Category<a href="#">{{ article.work_link.work_category }}</a></li>
-						<li>Relative Epoch:<a href="#">{{ article.epoch }}</a></li>
-						<li>Article Category:<a href="#">{{ article.article_category }}</a></li>
-						<li>How Category:
+						<li>Work Category: <a href="#">{{ article.work_link.work_category }}</a></li>
+						<li>Relative Epoch: <a href="#">{{ article.epoch }}</a></li>
+						<li>Article Category: <a href="#">{{ article.article_category }}</a></li>
+						<li>How Category: 
 							<a href="#">
 								{% for category in article.how_category.all %}
 									{{ category }}, 
 								{% endfor %}
 							</a>
 						</li>
-						<li>City:<a href="#">{{ article.work_link.city }}</a></li>
+						<li>City: <a href="#">{{ article.work_link.city }}</a></li>
 						<li>
 								<a href="{{ article.website }}">Buy Link</a>
 						</li>
@@ -80,7 +80,7 @@
 				</div>
 				{% endif %}
 
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<h2>Tags</h2>
 						<ul class="details_list">
 							<li>
@@ -93,7 +93,7 @@
 						</ul>
 				</div>
 				{% if article.work_link %}
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<h2>Genres</h2>
 						<ul class="details_list">
 							{% for style in article.work_link.styles.all %}
