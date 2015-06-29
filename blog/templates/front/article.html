@@ -62,9 +62,9 @@
 							</a>
 						</li>
 						{% endif %}
-						<li>Work Category: <a href="#">{{ article.work_link.work_category }}</a></li>
+						<li>Work Category: <a href="/indie_db/works/search?cat={{ article.work_link.work_category }}">{{ article.work_link.work_category }}</a></li>
 						<li>Relative Epoch: <a href="#">{{ article.epoch }}</a></li>
-						<li>Article Category: <a href="#">{{ article.article_category }}</a></li>
+						<li>Article Category: <a href="/search?cat={{article.article_category}}">{{ article.article_category }}</a></li>
 						<li>How Category: 
 							<a href="#">
 								{% for category in article.how_category.all %}
