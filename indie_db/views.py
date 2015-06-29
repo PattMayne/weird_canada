@@ -252,7 +252,7 @@ def single_artist(request):
 
         return render(request, 'front/single_artist.html', {'categories': categories, 'artist': artist, 'styles': styles, 'works': works})
     else:
-        return HttpResponseRedirect('/indie_db/works/search/')
+        return HttpResponseRedirect('/indie_db/artists/search/')
 
 
 def single_publisher(request):
