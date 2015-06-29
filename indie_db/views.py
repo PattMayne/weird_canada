@@ -192,21 +192,21 @@ def search_works(request):
     return render(request, 'front/search_works.html', {'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
 
 
-def view_work(request):
+def single_work(request):
     if request.method == 'GET':
         work_id = request.GET.get('work_id')
         work = Work.objects.get(pk=work_id)
         return render(request, 'front/single_work.html', {'work': work})
 
 
-def view_artist(request):
+def single_artist(request):
     if request.method == 'GET':
         artist_id = request.GET.get('artist_id')
         artist = Artist.objects.get(pk=artist_id)
         return render(request, 'front/single_artist.html', {'artist': artist})
 
 
-def view_publisher(request):
+def single_publisher(request):
     if request.method == 'GET':
         publisher_id = request.GET.get('publisher_id')
         publisher = ProductionCompany.objects.get(pk=publisher_id)
