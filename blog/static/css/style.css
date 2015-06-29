@@ -5,10 +5,6 @@
 */
 
 /* A lined TABLE element */
-.lined th{
-  border-bottom: 1px solid #bbbbbb;
-
-}
 
 .lined td{
   border-bottom: 1px solid #cccccc;
