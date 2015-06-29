@@ -43,6 +43,9 @@
          	<a href="?page={{ works.next_page_number }}{{ search_string }}" class="right">next</a>
       	{% endif %}
       	<hr>
+      	<h6 class="left">{{ total_results }} results</h6>
+
+		<h6 class="right">page {{ page }} of {{ number_of_pages }}</h6>
 </div>
 
 	
@@ -50,9 +53,7 @@
 <div class="container">
 	<div class="row">
 
-		<h6 class="left">{{ total_results }} results</h6>
-
-		<h6 class="right">page {{ page }} of {{ number_of_pages }}</h6>
+		
 
 		<div class="panel">
 			<div class="row">
