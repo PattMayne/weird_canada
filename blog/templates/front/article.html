@@ -26,7 +26,7 @@
 		<div class="postContent col-md-6">
 			<div class="articleHead">
 				<p class="postType">
-					<a href="#">
+					<a href="/?cat={{ article.article_category }}">
 						{{ article.article_category }}
 					</a>
 				</p>
@@ -51,9 +51,7 @@
 					<ul class="details_list">
 						{% if article.work_link.self_published %}
 						<li>
-							Label: <a href="#">
 								Self Published
-							</a>
 						</li>
 						{% else %}
 						<li>
@@ -63,14 +61,12 @@
 						</li>
 						{% endif %}
 						<li>Work Category: <a href="/indie_db/works/search?cat={{ article.work_link.work_category }}">{{ article.work_link.work_category }}</a></li>
-						<li>Relative Epoch: <a href="#">{{ article.epoch }}</a></li>
+						<li>Relative Epoch: {{ article.epoch }}</li>
 						<li>Article Category: <a href="/search?cat={{article.article_category}}">{{ article.article_category }}</a></li>
 						<li>How Category: 
-							<a href="#">
 								{% for category in article.how_category.all %}
 									{{ category }}, 
 								{% endfor %}
-							</a>
 						</li>
 						<li>City: <a href="/indie_db/works/search?city={{ article.work_link.city }}">{{ article.work_link.city }}</a></li>
 						<li>
