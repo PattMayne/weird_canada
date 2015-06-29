@@ -101,23 +101,28 @@ def search_articles(request):
     categories = ArticleCategory.objects.all()
     articles = Article.objects.filter(publish=True)
     search_string = '&'
+    search_display = []
 
     if request.method == 'GET':
 
         if 'title' in request.GET and request.GET.get('title') != '':
             search_string += 'title=' + request.GET.get('title') + '&'
+            search_display.append(request.GET.get('title'))
             articles = articles.filter(title__icontains=request.GET.get('title'))
 
         if 'artist_name' in request.GET and request.GET.get('artist_name') != '':
             search_string += 'artist_name=' + request.GET.get('artist_name') + '&'
+            search_display.append(request.GET.get('artist_name'))
             articles = articles.filter(work_link__creator__name__icontains=request.GET.get('artist_name'))
 
         if 'tag' in request.GET and request.GET.get('tag') != '':
             search_string += 'tag=' + request.GET.get('tag') + '&'
+            search_display.append(request.GET.get('tag'))
             articles = articles.filter(tags__tag_name=request.GET.get('tag'))
 
         if 'cat' in request.GET and request.GET.get('cat') != '' and request.GET.get('cat') != 'all':
             search_string += 'cat=' + request.GET.get('cat') + '&'
+            search_display.append(request.GET.get('cat'))
             articles = articles.filter(article_category__title__icontains=request.GET.get('cat'))
 
     articles = articles.order_by('-date_created')
@@ -137,7 +142,7 @@ def search_articles(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         articles = pager.page(pager.num_pages)
-    return render(request, 'front/search_articles.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
+    return render(request, 'front/search_articles.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
 
 
 # INDIE_DB stuff
