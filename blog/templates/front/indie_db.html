@@ -1,0 +1,72 @@
+{% extends "base_front.html" %}
+
+{% block title %} Indie_DB - Weird Canada {% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<br><br>
+		<div class="panel">
+			<div class="row">
+				<div class="large-12 columns">
+					<h3>Search Works of Art:</h3>
+					<form method="get" action="/indie_db/works/search/">
+
+						<input type="text" name="title" id="title_id" placeholder="Title" />
+						<input type="text" name="artist_name" id="artist_name_id" placeholder="Artist" />
+						<input type="text" name="style" id="style_id" placeholder="Style or Genre">
+						<input type="text" name="city" id="city_id" placeholder="City">
+						<select name="cat" id="cat_id">
+							<option value="all">All Categories</option>
+							{% for category in work_categories %}
+							<option value="{{ category }}">{{ category }}</option>
+							{% endfor %}
+						</select>
+						<br>
+						<input type="submit" class="button small" value="SEARCH" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<br><br>
+		<div class="panel">
+			<div class="row">
+				<div class="large-12 columns">
+					<h3>Search Artists:</h3>
+					<form method="get" action="/indie_db/artists/search/">
+
+						<input type="text" name="name" id="name_id" placeholder="Artist Name" />
+						<br>
+						<input type="submit" class="button small" value="SEARCH" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<br><br>
+		<div class="panel">
+			<div class="row">
+				<div class="large-12 columns">
+					<h3>Search Production Companies and Publishers:</h3>
+					<form method="get" action="/indie_db/publishers/search/">
+
+						<input type="text" name="name" id="name_id" placeholder="Name" />
+						<input type="text" name="city" id="city_id" placeholder="City" />
+						<br>
+						<input type="submit" class="button small" value="SEARCH" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+
+{% endblock %}

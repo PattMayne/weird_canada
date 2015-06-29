@@ -76,21 +76,24 @@ class AddWorkForm(ModelForm):
 class AddProductionCompanyForm(ModelForm):
     class Meta:
         model = ProductionCompany
-        fields = ('name', 'location')
+        fields = ('name', 'city', 'description')
 
         labels = {
             'name': _('Name of Company'),
-            'location': _('City and Province'),
+            'city': _('City and Province'),
+            'description': _('Description'),
             }
 
         widgets = {
             'name': TextInput(attrs={'placeholder': 'Enter Artist Name', 'required': True}),
-            'location': TextInput(attrs={'required': False}),
+            'city': TextInput(attrs={'required': False}),
+            'Description': TextInput(attrs={'required': False}),
             }
 
     def save(self, commit=True):
         production_company = super(AddProductionCompanyForm, self).save(commit=True)
         production_company.name = self.cleaned_data['name']
-        production_company.location = self.cleaned_data['location']
+        production_company.city = self.cleaned_data['city']
+        production_company.Description = self.cleaned_data['Description']
         production_company.save()
         return production_company
