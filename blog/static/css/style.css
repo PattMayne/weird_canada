@@ -4,6 +4,12 @@
 	Matt's Custom Styling
 */
 
+/* A lined TABLE element */
+.lined th{
+  border-bottom: 1px solid #999999;
+
+}
+
 .details_list li{
   font-size: 70%;
 }
