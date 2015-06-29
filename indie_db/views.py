@@ -240,7 +240,7 @@ def single_work(request):
 def single_artist(request):
     categories = ArticleCategory.objects.all()
     works = []
-    if request.method == 'GET':
+    if request.method == 'GET' and 'id' in request.GET:
         artist_id = request.GET.get('id')
         artist = Artist.objects.get(pk=artist_id)
         works = Work.objects.filter(creator=artist)
