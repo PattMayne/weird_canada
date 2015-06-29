@@ -55,6 +55,7 @@ urlpatterns = patterns('',
 
     # Front / Indie_DB
 
+    url(r'^indie_db/$', 'blog.views.indie_index', name="indie_index_page"),
     url(r'^indie_db/works/search/$', 'indie_db.views.search_works', name="search_works_view"),
     url(r'^indie_db/works/$', 'indie_db.views.single_work', name="single_work_view"),
     url(r'^indie_db/artists/search/$', 'indie_db.views.search_artists', name="search_artists_view"),
