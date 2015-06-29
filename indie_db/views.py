@@ -193,10 +193,11 @@ def search_works(request):
 
 
 def single_work(request):
-    if request.method == 'GET':
+    if request.method == 'GET' and 'id' in request.GET:
         work_id = int(request.GET.get('id'))
         work = Work.objects.get(pk=work_id)
         return render(request, 'front/single_work.html', {'work': work})
+    return HttpResponseRedirect('/indie_db/works/search/')
 
 
 def single_artist(request):
