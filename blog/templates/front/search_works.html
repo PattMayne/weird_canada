@@ -19,7 +19,7 @@
 						<input type="text" name="city" id="city_id" placeholder="City">
 						<select name="cat" id="cat_id">
 							<option value="all">All Categories</option>
-							{% for category in categories %}
+							{% for category in work_categories %}
 							<option value="{{ category }}">{{ category }}</option>
 							{% endfor %}
 						</select>

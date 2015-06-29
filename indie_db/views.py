@@ -145,7 +145,8 @@ def search_articles(request):
 def search_works(request):
     works = Work.objects.all()
     works_per_page = 3
-    categories = WorkCategory.objects.all()
+    categories = ArticleCategory.objects.all()
+    work_categories = WorkCategory.objects.all()
     works = Work.objects.filter()
     search_string = '&'
 
@@ -189,26 +190,29 @@ def search_works(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         works = pager.page(pager.num_pages)
 
-    return render(request, 'front/search_works.html', {'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
+    return render(request, 'front/search_works.html', {'work_categories': work_categories, 'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
 
 
 def single_work(request):
+    categories = ArticleCategory.objects.all()
     if request.method == 'GET' and 'id' in request.GET:
         work_id = int(request.GET.get('id'))
         work = Work.objects.get(pk=work_id)
-        return render(request, 'front/single_work.html', {'work': work})
+        return render(request, 'front/single_work.html', {'categories': categories, 'work': work})
     return HttpResponseRedirect('/indie_db/works/search/')
 
 
 def single_artist(request):
+    categories = ArticleCategory.objects.all()
     if request.method == 'GET':
         artist_id = request.GET.get('artist_id')
         artist = Artist.objects.get(pk=artist_id)
-        return render(request, 'front/single_artist.html', {'artist': artist})
+        return render(request, 'front/single_artist.html', {'categories': categories, 'artist': artist})
 
 
 def single_publisher(request):
+    categories = ArticleCategory.objects.all()
     if request.method == 'GET':
         publisher_id = request.GET.get('publisher_id')
         publisher = ProductionCompany.objects.get(pk=publisher_id)
-        return render(request, 'front/single_publisher.html', {'publisher': publisher})
+        return render(request, 'front/single_publisher.html', {'categories': categories, 'publisher': publisher})
