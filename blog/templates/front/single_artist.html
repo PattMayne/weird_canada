@@ -32,9 +32,11 @@
 					<ul class="details_list">
 						<li>Born/Formed: {{ artist.birthdate }}</li>
 						<li>Died/Disbanded: {{ artist.deathdate }}</li>
+						{% if artist.website %}
 						<li>
-								<a href="{{ artist.website }}">::web/sounds::</a>
+								<a href="{{ artist.website.link }}">::web/sounds::</a>
 						</li>
+						{% endif %}
 					</ul>
 				</div>
 

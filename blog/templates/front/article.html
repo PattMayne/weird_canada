@@ -69,9 +69,11 @@
 								{% endfor %}
 						</li>
 						<li>City: <a href="/indie_db/works/search?city={{ article.work_link.city }}">{{ article.work_link.city }}</a></li>
+						{% if article.work_link.website %}
 						<li>
-								<a href="{{ article.website }}">Buy Link</a>
+								<a href="{{ article.work_link.website.link }}">::web/sounds::</a>
 						</li>
+						{% endif %}
 					</ul>
 				</div>
 				{% endif %}

@@ -59,9 +59,11 @@
 						{% endif %}
 						<li>Category: <a href="/indie_db/works/search?cat={{ work.work_category }}">{{ work.work_category }}</a></li>
 						<li>City: <a href="/indie_db/works/search?city={{ work.city }}">{{ work.city }}</a></li>
+						{% if work.website %}
 						<li>
-								<a href="{{ work.website }}">::web/sounds::</a>
+								<a href="{{ work.website.link }}">::web/sounds::</a>
 						</li>
+						{% endif %}
 					</ul>
 				</div>
 
