@@ -246,7 +246,7 @@ def single_artist(request):
         works = Work.objects.filter(creator=artist)
         styles = []
         for work in works:
-            for style in work.styles:
+            for style in work.styles.all():
                 if style not in styles:
                     styles.append(style)
 
