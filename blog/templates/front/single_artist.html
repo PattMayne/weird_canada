@@ -69,7 +69,7 @@
 						<ul class="details_list">
 							{% for member in artist.members.all %}
 								<li>
-									<a href="/indie_db/artists?id={{ artist.id }}">{{ artist.name }}</a>
+									<a href="/indie_db/artists?id={{ member.id }}">{{ member.name }}</a>
 								</li>
 							{% endfor %}
 
