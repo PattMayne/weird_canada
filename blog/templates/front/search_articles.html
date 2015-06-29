@@ -22,6 +22,12 @@
 							<option value="{{ category }}">{{ category }}</option>
 							{% endfor %}
 						</select>
+						<select name="how" id="how_id">
+							<option value="all">All 'How' Categories</option>
+							{% for category in how_categories %}
+							<option value="{{ category }}">{{ category }}</option>
+							{% endfor %}
+						</select>
 						<br>
 						<input type="submit" class="button small" value="SEARCH" />
 

@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Weird Canada apps stuff
 from indie_db.forms import AddArtistForm, AddWorkForm, AddProductionCompanyForm
 from indie_db.models import Artist, Work, URL, Style, Contributor, Track, ProductionCompany, WorkCategory
-from blog.models import Article, Author, Tag, ArticleCategory
+from blog.models import Article, Author, Tag, ArticleCategory, HowCategory
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
 
@@ -99,6 +99,7 @@ def article(request):
 def search_articles(request):
     articles_per_page = 12
     categories = ArticleCategory.objects.all()
+    how_categories = HowCategory.objects.all()
     articles = Article.objects.filter(publish=True)
     search_string = '&'
     search_display = []
@@ -124,6 +125,11 @@ def search_articles(request):
             search_string += 'cat=' + request.GET.get('cat') + '&'
             search_display.append(request.GET.get('cat'))
             articles = articles.filter(article_category__title__icontains=request.GET.get('cat'))
+
+        if 'how' in request.GET and request.GET.get('how') != '' and request.GET.get('how') != 'all':
+            search_string += 'cat=' + request.GET.get('how') + '&'
+            search_display.append(request.GET.get('how'))
+            articles = articles.filter(how_category__title__icontains=request.GET.get('how'))
 
     articles = articles.order_by('-date_created')
 
