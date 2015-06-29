@@ -164,26 +164,32 @@ def search_works(request):
     categories = ArticleCategory.objects.all()
     work_categories = WorkCategory.objects.all()
     search_string = '&'
+    search_display = []
 
     if request.method == 'GET':
 
         if 'title' in request.GET and request.GET.get('title') != '':
+            search_display.append(request.GET.get('title'))
             search_string += 'title=' + request.GET.get('title') + '&'
             works = works.filter(title__icontains=request.GET.get('title'))
 
         if 'artist_name' in request.GET and request.GET.get('artist_name') != '':
+            search_display.append(request.GET.get('artist_name'))
             search_string += 'artist_name=' + request.GET.get('artist_name') + '&'
             works = works.filter(creator__name__icontains=request.GET.get('artist_name'))
 
         if 'style' in request.GET and request.GET.get('style') != '':
+            search_display.append(request.GET.get('style'))
             search_string += 'style=' + request.GET.get('style') + '&'
             works = works.filter(styles__name__icontains=request.GET.get('style'))
 
         if 'city' in request.GET and request.GET.get('city') != '':
+            search_display.append(request.GET.get('city'))
             search_string += 'city=' + request.GET.get('city') + '&'
             works = works.filter(city__icontains=request.GET.get('city'))
 
         if 'cat' in request.GET and request.GET.get('cat') != '' and request.GET.get('cat') != 'all':
+            search_display.append(request.GET.get('cat'))
             search_string += 'cat=' + request.GET.get('cat') + '&'
             works = works.filter(work_category__title__icontains=request.GET.get('cat'))
 
@@ -205,18 +211,20 @@ def search_works(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         works = pager.page(pager.num_pages)
 
-    return render(request, 'front/search_works.html', {'work_categories': work_categories, 'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
+    return render(request, 'front/search_works.html', {'work_categories': work_categories, 'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
 
 
 def search_artists(request):
     artists = Artist.objects.all()
     artists_per_page = 3
     categories = ArticleCategory.objects.all()
+    search_display = []
     search_string = '&'
 
     if request.method == 'GET':
 
         if 'name' in request.GET and request.GET.get('name') != '':
+            search_display.append(request.GET.get('name'))
             search_string += 'name=' + request.GET.get('name') + '&'
             artists = artists.filter(name__icontains=request.GET.get('name'))
 
@@ -238,7 +246,7 @@ def search_artists(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         artists = pager.page(pager.num_pages)
 
-    return render(request, 'front/search_artists.html', {'categories': categories, 'artists': artists, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
+    return render(request, 'front/search_artists.html', {'categories': categories, 'artists': artists, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
 
 
 def single_work(request):

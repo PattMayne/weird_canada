@@ -35,9 +35,22 @@
 
 <div class="row">
 		
-      	<p class="left">{{ total_results }} results</p>
+      	<div class="large-3 columns">
+				<h6 class="left">{{ total_results }} results</h6>
+			</div>
+			<div class="large-6 columns">
 
-		<p class="right">page {{ page }} of {{ number_of_pages }}</p>
+				<h6 class="center align_center">
+					<b>Search:</b>
+					{% for search in search_display %}
+						 {{ search }} 
+					{% endfor %}
+				</h6>
+			</div>
+			<div class="large-3 columns">
+
+				<h6 class="right">page {{ page }} of {{ number_of_pages }}</h6>
+			</div>
 		<hr>
 		{% if works.has_previous %}
          	<a href="?page={{ works.previous_page_number }}{{ search_string }}" class="left">previous</a>
