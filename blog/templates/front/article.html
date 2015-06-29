@@ -34,7 +34,7 @@
 				
 	
 				{% if article.work_link %}
-					<h2>{{ article.work_link.creator }}</h2>
+				<h2><a href="/indie_db/artists?id={{ article.work_link.creator.id }}">{{ article.work_link.creator }}</a></h2>
 				{% endif %}
 			</div>
 			
