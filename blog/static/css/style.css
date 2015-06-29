@@ -15,6 +15,10 @@
 
 }
 
+.lined:hover{
+  background-color: #eeeeee;
+}
+
 .details_list li{
   font-size: 70%;
 }
