@@ -26,12 +26,12 @@
 		<div class="postContent col-md-6">
 			<div class="articleHead">
 				<p class="postType">
-					<a href="#">
+					<a href="/indie_db/works?cat={{ work.work_category }}">
 						{{ work.work_category }}
 					</a>
 				</p>
 				<h1>{{ work.title }}</h1>
-				<h6>By: <a href="/indie_db/artists?id={{ work.creator.id }}">{{ work.creator }}</a></h6>
+				<h6><i><a href="/indie_db/artists?id={{ work.creator.id }}">{{ work.creator }}</a></i></h6>
 				
 			</div>
 			
@@ -60,7 +60,7 @@
 						<li>Category: <a href="/indie_db/works/search?cat={{ work.work_category }}">{{ work.work_category }}</a></li>
 						<li>City: <a href="/indie_db/works/search?city={{ work.city }}">{{ work.city }}</a></li>
 						<li>
-								<a href="{{ work.website }}">Buy Link</a>
+								<a href="{{ work.website }}">::web/sounds::</a>
 						</li>
 					</ul>
 				</div>

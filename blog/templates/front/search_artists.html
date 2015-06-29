@@ -1,0 +1,93 @@
+{% extends "base_front.html" %}
+
+{% block title %} Search Artists - Weird Canada {% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<br><br>
+		<div class="panel">
+			<div class="row">
+				<div class="large-12 columns">
+					<h3>Search Artists:</h3>
+					<form method="get" action="/indie_db/artists/search/">
+
+						<input type="text" name="name" id="name_id" placeholder="Artist Name" />
+						<br>
+						<input type="submit" class="button small" value="SEARCH" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+		
+      	<p class="left">{{ total_results }} results</p>
+
+		<p class="right">page {{ page }} of {{ number_of_pages }}</p>
+		<hr>
+		{% if artists.has_previous %}
+         	<a href="?page={{ artists.previous_page_number }}{{ search_string }}" class="left">previous</a>
+      	{% endif %}
+
+      	{% if artists.has_next %}
+         	<a href="?page={{ artists.next_page_number }}{{ search_string }}" class="right">next</a>
+      	{% endif %}
+      	
+</div>
+
+	
+
+<div class="container">
+	<div class="row">
+
+		
+
+		<div class="panel">
+			<div class="row">
+				<div class="large-12 columns align_center">
+					<br><br>
+					
+					<table class="lined">
+						<tr>
+							<th>NAME</th>
+						</tr>
+						
+					{% for artist in artists %}
+						
+							<tr>
+								<td>
+									<a href="/indie_db/artists?id={{ artist.id }}">
+									{{ artist.name }}
+									</a>
+								</td>
+
+							</tr>
+						
+					{% endfor%}
+
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+		<div class="row">
+			<hr>
+			{% if artists.has_previous %}
+            <a href="?page={{ artists.previous_page_number }}{{ search_string }}" class="left">previous</a>
+        	{% endif %}
+
+        	{% if artists.has_next %}
+            <a href="?page={{ artists.next_page_number }}{{ search_string }}" class="right">next</a>
+        	{% endif %}
+        </div>
+
+
+{% endblock %}

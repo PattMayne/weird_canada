@@ -1,0 +1,89 @@
+{% extends "base_front.html" %}
+
+{% block title %} {{ artist.name }} {% endblock %}
+
+{% block content %}
+
+	<section id="post" class="container reviewPost">
+		<article>
+		
+		<div class="postMedia col-md-4">
+					<img src="/media/{{ artist.prof_image }}" class="front_page_pic" />
+				<div class="postMeta col-md-12">
+					<div class="postCredits">
+					</div>
+				</div>
+		</div>
+		
+		<div class="postContent col-md-6">
+			<div class="articleHead">
+				<p class="postType">Artist</p>
+				<h1>{{ artist.name }}</h1>
+			</div>
+			
+			<div class="unassigned_article_text_class">
+				{{ artist.description }}
+			</div>
+			
+			<div class="postLinks row">
+
+				<div class="col-md-6">
+					<h2>Details</h2>
+					<ul class="details_list">
+						<li>Born/Formed: {{ artist.birthdate }}</li>
+						<li>Died/Disbanded: {{ artist.deathdate }}</li>
+						<li>
+								<a href="{{ artist.website }}">::web/sounds::</a>
+						</li>
+					</ul>
+				</div>
+
+
+				<div class="col-md-6">
+					<h2>Genres / Styles</h2>
+						<ul class="details_list">
+							{% for style in styles %}
+								<li>
+									<a href="/indie_db/works/search?style={{ style }}">{{ style }}</a>
+								</li>
+							{% endfor %}
+
+						</ul>
+				</div>
+
+				<div class="col-md-6">
+					<h2>Works:</h2>
+						<ul class="details_list">
+							{% for work in works %}
+								<li>
+									<a href="/work?id={{ work.id }}">{{ work.title }}</a>
+								</li>
+							{% endfor %}
+
+						</ul>
+				</div>
+				
+				{% if artist.group %}
+				<div class="col-md-6">
+					<h2>Members:</h2>
+						<ul class="details_list">
+							{% for member in artist.members.all %}
+								<li>
+									<a href="/artists?id={{ artist.id }}">{{ artist.name }}</a>
+								</li>
+							{% endfor %}
+
+						</ul>
+				</div>
+				{% endif %}
+				
+			</div>
+		</div>
+
+
+
+		
+	</article>
+</section>
+
+{% endblock %}

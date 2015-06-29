@@ -147,7 +147,6 @@ def search_works(request):
     works_per_page = 3
     categories = ArticleCategory.objects.all()
     work_categories = WorkCategory.objects.all()
-    works = Work.objects.filter()
     search_string = '&'
 
     if request.method == 'GET':
@@ -193,6 +192,39 @@ def search_works(request):
     return render(request, 'front/search_works.html', {'work_categories': work_categories, 'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
 
 
+def search_artists(request):
+    artists = Artist.objects.all()
+    artists_per_page = 3
+    categories = ArticleCategory.objects.all()
+    search_string = '&'
+
+    if request.method == 'GET':
+
+        if 'name' in request.GET and request.GET.get('name') != '':
+            search_string += 'name=' + request.GET.get('name') + '&'
+            artists = artists.filter(name__icontains=request.GET.get('name'))
+
+    #artists = artists.order_by('-birthdate')
+
+    pager = Paginator(artists, artists_per_page)
+
+    if request.method == 'GET' and 'page' in request.GET:
+        page = request.GET.get('page')
+    else:
+        page = 1
+
+    try:
+        artists = pager.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        artists = pager.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        artists = pager.page(pager.num_pages)
+
+    return render(request, 'front/search_artists.html', {'categories': categories, 'artists': artists, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string})
+
+
 def single_work(request):
     categories = ArticleCategory.objects.all()
     articles = []
@@ -201,20 +233,33 @@ def single_work(request):
         articles = Article.objects.filter(work_link=work_id)
         work = Work.objects.get(pk=work_id)
         return render(request, 'front/single_work.html', {'categories': categories, 'work': work, 'articles': articles})
-    return HttpResponseRedirect('/indie_db/works/search/')
+    else:
+        return HttpResponseRedirect('/indie_db/works/search/')
 
 
 def single_artist(request):
     categories = ArticleCategory.objects.all()
+    works = []
     if request.method == 'GET':
-        artist_id = request.GET.get('artist_id')
+        artist_id = request.GET.get('id')
         artist = Artist.objects.get(pk=artist_id)
-        return render(request, 'front/single_artist.html', {'categories': categories, 'artist': artist})
+        works = Work.objects.filter(creator=artist)
+        styles = []
+        for work in works:
+            for style in work.styles:
+                if style not in styles:
+                    styles.append(style)
+
+        return render(request, 'front/single_artist.html', {'categories': categories, 'artist': artist, 'styles': styles, 'works': works})
+    else:
+        return HttpResponseRedirect('/indie_db/works/search/')
 
 
 def single_publisher(request):
     categories = ArticleCategory.objects.all()
     if request.method == 'GET':
-        publisher_id = request.GET.get('publisher_id')
+        publisher_id = request.GET.get('id')
         publisher = ProductionCompany.objects.get(pk=publisher_id)
         return render(request, 'front/single_publisher.html', {'categories': categories, 'publisher': publisher})
+    else:
+        return HttpResponseRedirect('/indie_db/works/search/')
