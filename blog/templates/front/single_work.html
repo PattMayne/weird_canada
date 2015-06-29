@@ -46,7 +46,7 @@
 					<ul class="details_list">
 						{% if work.self_published %}
 						<li>
-							Label: <a href="#">
+							Label: <a href="/indie_db/publishers/search?self_published=true">
 								Self Published
 							</a>
 						</li>
@@ -57,8 +57,8 @@
 							</a>
 						</li>
 						{% endif %}
-						<li>Category: <a href="#">{{ work.work_category }}</a></li>
-						<li>City: <a href="#">{{ work.city }}</a></li>
+						<li>Category: <a href="/indie_db/works/search?cat={{ work.work_category }}">{{ work.work_category }}</a></li>
+						<li>City: <a href="/indie_db/works/search?city={{ work.city }}">{{ work.city }}</a></li>
 						<li>
 								<a href="{{ work.website }}">Buy Link</a>
 						</li>
