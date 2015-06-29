@@ -148,7 +148,7 @@ def search_articles(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         articles = pager.page(pager.num_pages)
-    return render(request, 'front/search_articles.html', {'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
+    return render(request, 'front/search_articles.html', {'how_categories': how_categories, 'categories': categories, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
 
 
 # INDIE_DB stuff
