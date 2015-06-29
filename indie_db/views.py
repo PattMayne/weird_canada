@@ -148,8 +148,9 @@ def search_articles(request):
 # INDIE_DB stuff
 
 def indie_index(request):
-    return render(request, 'front/indie_db.html')
-    
+    categories = ArticleCategory.objects.all()
+    return render(request, 'front/indie_db.html', {'categories': categories})
+
 
 def search_works(request):
     works = Work.objects.all()
