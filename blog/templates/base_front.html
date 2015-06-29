@@ -57,9 +57,6 @@
 
 			<ul class="right" class="active">
 
-				<li>
-					<a href="/indie_db/">Indie DB</a>
-				</li>
 
 				{% for category in categories %}
 					
@@ -68,6 +65,14 @@
 					</li>
 
 				{% endfor %}
+
+				<li class="has-dropdown">
+			        <a href="#">Search</a>
+			        <ul class="dropdown">
+			          <li><a href="/search">Search Articles</a></li>
+			          <li><a href="/indie_db/">Indie Art Database</a></li>
+			        </ul>
+			      </li>
 
 			</ul> <!-- Left Nav Section -->
 		</section>
