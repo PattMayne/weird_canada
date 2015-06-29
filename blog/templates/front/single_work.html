@@ -77,9 +77,23 @@
 
 						</ul>
 				</div>
+
+				<div class="col-md-12">
+					<h2>Articles about this Work:</h2>
+						<ul class="details_list">
+							{% for article in articles %}
+								<li>
+									<a href="/article?id={{ article.id }}">{{ article.title }}</a>
+								</li>
+							{% endfor %}
+
+						</ul>
+				</div>
 				
 			</div>
 		</div>
+
+
 
 		
 	</article>

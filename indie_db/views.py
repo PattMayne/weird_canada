@@ -195,10 +195,12 @@ def search_works(request):
 
 def single_work(request):
     categories = ArticleCategory.objects.all()
+    articles = []
     if request.method == 'GET' and 'id' in request.GET:
         work_id = int(request.GET.get('id'))
+        articles = Article.objects.filter(work_link=work_id)
         work = Work.objects.get(pk=work_id)
-        return render(request, 'front/single_work.html', {'categories': categories, 'work': work})
+        return render(request, 'front/single_work.html', {'categories': categories, 'work': work, 'articles': articles})
     return HttpResponseRedirect('/indie_db/works/search/')
 
 
