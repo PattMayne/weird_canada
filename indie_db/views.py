@@ -161,7 +161,7 @@ def search_works(request):
 
         if 'style' in request.GET and request.GET.get('style') != '':
             search_string += 'style=' + request.GET.get('style') + '&'
-            works = works.filter(styles__style_name=request.GET.get('style'))
+            works = works.filter(styles__name__icontains=request.GET.get('style'))
 
         if 'city' in request.GET and request.GET.get('city') != '':
             search_string += 'city=' + request.GET.get('city') + '&'
