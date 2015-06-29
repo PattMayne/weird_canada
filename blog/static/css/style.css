@@ -15,7 +15,7 @@
 
 }
 
-.lined:hover td{
+.lined tr:hover{
   background-color: #cccccc;
 }
 
