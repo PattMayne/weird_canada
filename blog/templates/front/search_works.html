@@ -47,64 +47,62 @@
 
 	
 
-<section id="index" class="container">
-
-	
-	<div class="articleList gridBlock col-md-10 col-md-offset-1">
-		<div class="row">
+<div class="container">
+	<div class="row">
 		<div class="panel">
-		<div class="row">
-			<h6 class="left">{{ total_results }} results</h6>
+			<div class="row">
+				<div class="large-12 columns">
+					<h6 class="left">{{ total_results }} results</h6>
 
-			<h6 class="right">page {{ page }} of {{ number_of_pages }}</h6>
-			<br><br>
-			
-			<table class="lined">
-				<tr>
-					<th><h6>TITLE</h6></th>
-					<th><h6>ARTIST</h6></th>
-					<th><h6>CATEGORY</h6></th>
-					<th><h6>CITY</h6></th>
-					<th><h6>RELEASE DATE</h6></th>
-				</tr>
-				
-			{% for work in works %}
-				
-					<tr>
-						<td>
-							<a href="/indie_db/works?id={{ work.id }}">
-							{{ work.title }}
-							</a>
-						</td>
-						<td>
-							<a href="/indie_db/artists?id={{ work.creator.id }}">
-							{{ work.creator }}
-							</a>
-						</td>
-						<td>
-							<a href="/indie_db/works/search?cat={{ work.work_category }}">
-							{{ work.work_category }}
-							</a>
-						</td>
-						<td>
-							<a href="/indie_db/works/search?city={{ work.city }}">
-							{{ work.city }}
-							</a>
-						</td>
-						<td>
-							{{ work.created }}
-						</td>
-					</tr>
-				
-			{% endfor%}
+					<h6 class="right">page {{ page }} of {{ number_of_pages }}</h6>
+					<br><br>
+					
+					<table class="lined">
+						<tr>
+							<th><h6>TITLE</h6></th>
+							<th><h6>ARTIST</h6></th>
+							<th><h6>CATEGORY</h6></th>
+							<th><h6>CITY</h6></th>
+							<th><h6>RELEASE DATE</h6></th>
+						</tr>
+						
+					{% for work in works %}
+						
+							<tr>
+								<td>
+									<a href="/indie_db/works?id={{ work.id }}">
+									{{ work.title }}
+									</a>
+								</td>
+								<td>
+									<a href="/indie_db/artists?id={{ work.creator.id }}">
+									{{ work.creator }}
+									</a>
+								</td>
+								<td>
+									<a href="/indie_db/works/search?cat={{ work.work_category }}">
+									{{ work.work_category }}
+									</a>
+								</td>
+								<td>
+									<a href="/indie_db/works/search?city={{ work.city }}">
+									{{ work.city }}
+									</a>
+								</td>
+								<td>
+									{{ work.created }}
+								</td>
+							</tr>
+						
+					{% endfor%}
 
-			</table>
-		</div>
-		</div>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
+</div>
 
-</section> <!-- end of section id=index / class=container -->
 
 		<div class="row">
 			<hr>
