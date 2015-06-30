@@ -71,15 +71,35 @@
 					<table class="lined">
 						<tr>
 							<th>NAME</th>
+							<th>CITY</th>
+							<th>FORMATS</th>
+							<th>STYLES</th>
 						</tr>
 						
 					{% for publisher in publishers %}
 						
 							<tr>
+
 								<td>
 									<a href="/indie_db/publishers?id={{ publisher.id }}">
 									{{ publisher.name }}
 									</a>
+								</td>
+
+								<td>
+									{{ publisher.city }}
+								</td>
+
+								<td>
+									{% for format in publisher.formats.all %}
+										{{ format }}
+									{% endfor %}
+								</td>
+
+								<td>
+									{% for style in publisher.styles.all %}
+										{{ style }}
+									{% endfor %}
 								</td>
 
 							</tr>

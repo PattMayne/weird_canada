@@ -26,13 +26,20 @@
 						<li>City: {{ publisher.city }}</li>
 						{% if publisher.website %}
 						<li>
-								<a href="{{ publisher.website.link }}">Website</a>
+								Website:<a href="{{ publisher.website.link }}">{{ publisher.website.name }}</a>
 						</li>
 						{% endif %}
-						<li>
+						<li>Styles:
 						{% for style in publisher.styles.all %}
 								
 									<a href="/indie_db/works/search?style={{ style }}">{{ style }}</a>
+								
+							{% endfor %}
+						</li>
+						<li>Styles:
+						{% for format in publisher.formats.all %}
+								
+									<a href="/indie_db/works/search?format={{ format }}">{{ format }}</a>
 								
 							{% endfor %}
 						</li>

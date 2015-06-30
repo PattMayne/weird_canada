@@ -80,17 +80,6 @@
 						</ul>
 				</div>
 
-				<div class="col-md-6">
-					<h2>Related Articles:</h2>
-						<ul class="details_list">
-							{% for article in articles %}
-								<li>
-									<a href="/article?id={{ article.id }}">{{ article.title }}</a>
-								</li>
-							{% endfor %}
-
-						</ul>
-				</div>
 				
 			</div>
 		</div>
@@ -100,5 +89,65 @@
 		
 	</article>
 </section>
+
+	<section id="index" class="container">
+
+	<div class="articleList gridBlock col-md-10 col-md-offset-1">
+		<div class="row">
+		
+			{% for article in articles %}
+				
+				<article class="postContent col-md-4">
+					<div  class="postMedia">
+						<a href="/article?id={{ article.id }}">
+							<img src="/media/{{ article.cover_image }}" />
+						</a>
+					</div>
+					<div class="articleHead">
+						<h6 class="postType">
+							<a href="/?cat={{ article.article_category }}">{{ article.article_category }}</a>
+						</h6>
+						<h1>
+							<a href="/article?id={{ article.id }}">
+								{{ article.title }}
+							</a>
+						</h1>
+						<h2>
+							{% if article.work_link %}
+								{{ article.work_link.creator }}
+							{% endif %}
+						</h2>
+						<h3>
+							<a>{{ article.date_created|date:"M d, Y" }}</a>
+						</h3>
+						<h3>
+							<a href="/indie_db/authors?id={{ article.author }}">{{ article.author }}</a>
+						</h3>
+						<p>
+							{{ article.body_en }}
+						</p>
+					</div>
+				</article>
+
+
+			{% endfor%}
+			
+			
+		</div>
+	</div>
+
+</section> <!-- end of section id=index / class=container -->
+
+		<div class="row">
+			<hr>
+			{% if articles.has_previous %}
+            <a href="/?page={{ articles.previous_page_number }}&cat={{ cat }}" class="left">previous</a>
+        	{% endif %}
+
+        	{% if articles.has_next %}
+            <a href="/?page={{ articles.next_page_number }}&cat={{ cat }}" class="right">next</a>
+        	{% endif %}
+        </div>
+
 
 {% endblock %}
