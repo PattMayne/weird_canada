@@ -295,7 +295,7 @@ def search_publishers(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         publishers = pager.page(pager.num_pages)
 
-    return render(request, 'front/search_artists.html', {'categories': categories, 'publishers': publishers, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
+    return render(request, 'front/search_publishers.html', {'categories': categories, 'publishers': publishers, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
 
 
 def single_work(request):
