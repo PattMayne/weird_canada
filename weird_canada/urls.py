@@ -60,6 +60,8 @@ urlpatterns = patterns('',
     url(r'^indie_db/works/$', 'indie_db.views.single_work', name="single_work_view"),
     url(r'^indie_db/artists/search/$', 'indie_db.views.search_artists', name="search_artists_view"),
     url(r'^indie_db/artists/$', 'indie_db.views.single_artist', name="single_artist_view"),
+    url(r'^indie_db/publishers/search/$', 'indie_db.views.search_publishers', name="search_publishers_view"),
+    url(r'^indie_db/publishers/$', 'indie_db.views.single_publisher', name="single_publisher_view"),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

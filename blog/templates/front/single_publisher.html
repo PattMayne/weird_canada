@@ -1,0 +1,64 @@
+{% extends "base_front.html" %}
+
+{% block title %} {{ publisher.name }} {% endblock %}
+
+{% block content %}
+
+	<section id="post" class="container reviewPost">
+		<article>
+		
+	
+		<div class="postContent col-md-12">
+			<div class="articleHead">
+				<p class="postType">Production Company / Publisher</p>
+				<h1>{{ publisher.name }}</h1>
+			</div>
+			
+			<div class="unassigned_article_text_class">
+				{{ publisher.description }}
+			</div>
+			
+			<div class="postLinks row">
+
+				<div class="col-md-6">
+					<h2>Details</h2>
+					<ul class="details_list">
+						<li>City: {{ publisher.city }}</li>
+						{% if publisher.website %}
+						<li>
+								<a href="{{ publisher.website.link }}">Website</a>
+						</li>
+						{% endif %}
+						<li>
+						{% for style in publisher.styles.all %}
+								
+									<a href="/indie_db/works/search?style={{ style }}">{{ style }}</a>
+								
+							{% endfor %}
+						</li>
+					</ul>
+				</div>
+
+
+				<div class="col-md-6">
+					<h2>Works Produced:</h2>
+						<ul class="details_list">
+							{% for work in works %}
+								<li>
+									<a href="/indie_db/works?id={{ work.id }}">{{ work.title }}</a>
+								</li>
+							{% endfor %}
+
+						</ul>
+				</div>
+				
+			</div>
+		</div>
+
+
+
+		
+	</article>
+</section>
+
+{% endblock %}

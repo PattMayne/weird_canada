@@ -1,0 +1,109 @@
+{% extends "base_front.html" %}
+
+{% block title %} Search Publishers & Production Companies - Weird Canada {% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<br><br>
+		<div class="panel">
+			<div class="row">
+				<div class="large-12 columns">
+					<h3>Search Production Companies and Publishers:</h3>
+					<form method="get" action="/indie_db/publishers/search/">
+
+						<input type="text" name="name" id="name_id" placeholder="Name" />
+						<input type="text" name="city" id="city_id" placeholder="City" />
+						<input type="text" name="format" id="format_id" placeholder="Format(s)" />
+						<input type="text" name="style" id="style_id" placeholder="Genre or Style" />
+						<br>
+						<input type="submit" class="button small" value="SEARCH" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+		
+      	<div class="large-3 columns">
+				<h6 class="left">{{ total_results }} results</h6>
+			</div>
+			<div class="large-6 columns">
+
+				<h6 class="center align_center">
+					<b>Search:</b>
+					{% for search in search_display %}
+						 {{ search }} 
+					{% endfor %}
+				</h6>
+			</div>
+			<div class="large-3 columns">
+
+				<h6 class="right">page {{ page }} of {{ number_of_pages }}</h6>
+			</div>
+		<hr>
+		{% if publishers.has_previous %}
+         	<a href="?page={{ publishers.previous_page_number }}{{ search_string }}" class="left">previous</a>
+      	{% endif %}
+
+      	{% if publishers.has_next %}
+         	<a href="?page={{ publishers.next_page_number }}{{ search_string }}" class="right">next</a>
+      	{% endif %}
+      	
+</div>
+
+	
+
+<div class="container">
+	<div class="row">
+
+		
+
+		<div class="panel">
+			<div class="row">
+				<div class="large-12 columns align_center">
+					<br><br>
+					
+					<table class="lined">
+						<tr>
+							<th>NAME</th>
+						</tr>
+						
+					{% for publisher in publishers %}
+						
+							<tr>
+								<td>
+									<a href="/indie_db/publishers?id={{ publisher.id }}">
+									{{ publisher.name }}
+									</a>
+								</td>
+
+							</tr>
+						
+					{% endfor%}
+
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+		<div class="row">
+			<hr>
+			{% if publishers.has_previous %}
+            <a href="?page={{ publishers.previous_page_number }}{{ search_string }}" class="left">previous</a>
+        	{% endif %}
+
+        	{% if publishers.has_next %}
+            <a href="?page={{ publishers.next_page_number }}{{ search_string }}" class="right">next</a>
+        	{% endif %}
+        </div>
+
+
+{% endblock %}

@@ -250,6 +250,54 @@ def search_artists(request):
     return render(request, 'front/search_artists.html', {'categories': categories, 'artists': artists, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
 
 
+def search_publishers(request):
+    publishers = ProductionCompany.objects.all()
+    publishers_per_page = 3
+    categories = ArticleCategory.objects.all()
+    search_display = []
+    search_string = '&'
+
+    if request.method == 'GET':
+
+        if 'name' in request.GET and request.GET.get('name') != '':
+            search_display.append(request.GET.get('name'))
+            search_string += 'name=' + request.GET.get('name') + '&'
+            publishers = publishers.filter(name__icontains=request.GET.get('name'))
+
+        if 'format' in request.GET and request.GET.get('format') != '':
+            search_display.append(request.GET.get('format'))
+            search_string += 'format=' + request.GET.get('format') + '&'
+            publishers = publishers.filter(formats__label__icontains=request.GET.get('format'))
+
+        if 'style' in request.GET and request.GET.get('style') != '':
+            search_display.append(request.GET.get('style'))
+            search_string += 'style=' + request.GET.get('style') + '&'
+            publishers = publishers.filter(styles__name__icontains=request.GET.get('style'))
+
+        if 'city' in request.GET and request.GET.get('city') != '':
+            search_display.append(request.GET.get('city'))
+            search_string += 'city=' + request.GET.get('city') + '&'
+            publishers = publishers.filter(city__icontains=request.GET.get('city'))
+
+    pager = Paginator(publishers, publishers_per_page)
+
+    if request.method == 'GET' and 'page' in request.GET:
+        page = request.GET.get('page')
+    else:
+        page = 1
+
+    try:
+        publishers = pager.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        publishers = pager.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        publishers = pager.page(pager.num_pages)
+
+    return render(request, 'front/search_artists.html', {'categories': categories, 'publishers': publishers, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
+
+
 def single_work(request):
     categories = ArticleCategory.objects.all()
     articles = []
@@ -285,6 +333,7 @@ def single_publisher(request):
     if request.method == 'GET':
         publisher_id = request.GET.get('id')
         publisher = ProductionCompany.objects.get(pk=publisher_id)
-        return render(request, 'front/single_publisher.html', {'categories': categories, 'publisher': publisher})
+        works = Work.objects.filter(production_company=publisher)
+        return render(request, 'front/single_publisher.html', {'categories': categories, 'publisher': publisher, 'works': works})
     else:
         return HttpResponseRedirect('/indie_db/works/search/')

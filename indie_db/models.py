@@ -30,6 +30,13 @@ class Track(models.Model):
         return self.title
 
 
+class Format(models.Model):
+    label = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.label
+
+
 class WorkCategory(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
@@ -91,6 +98,7 @@ class ProductionCompany(models.Model):
     city = models.CharField(max_length=200, null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True)
     styles = models.ManyToManyField(Style, null=True, blank=True)
+    formats = models.ManyToManyField(Format, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
@@ -114,6 +122,7 @@ class Work(models.Model):
     creator = models.ForeignKey(Artist, null=True, blank=True)
     website = models.ForeignKey(URL, null=True, blank=True)
     styles = models.ManyToManyField(Style, null=True, blank=True)
+    formats = models.ManyToManyField(Format, null=True, blank=True)
     contributors = models.ManyToManyField(Contributor, null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True)
     tracklist = models.ManyToManyField(Track, null=True, blank=True)
