@@ -194,6 +194,11 @@ def search_works(request):
             search_string += 'cat=' + request.GET.get('cat') + '&'
             works = works.filter(work_category__title__icontains=request.GET.get('cat'))
 
+        if 'self_published' in request.GET:
+            search_display.append('Self Published')
+            search_string += 'self_published=' + 'True' + '&'
+            works = works.filter(self_published=True)
+
     works = works.order_by('-created')
 
     pager = Paginator(works, works_per_page)
