@@ -124,8 +124,14 @@
   text-align: center;
 }
 
+/* OVER-RIDING TABS STYLES */
+
 .language_tab_button{
   font-size: 65%;
+}
+
+.tabs{
+  background: none!important;
 }
 
 /*!
