@@ -71,9 +71,24 @@
 										
 									</h2>
 									<h3><a href="/indie_db/authors?id={{ articles.1.author.id }}">{{ articles.1.author }}</a> | {{ articles.1.date_created|date:"M d, Y" }}</h3>
-									<p>
-										{{ articles.1.body_en|truncatewords:50 }}
-									</p>
+
+									<div class="tabs-content">
+									  <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-en">
+									    <p class="justify">
+											{{ articles.1.body_en|truncatewords:50 }}
+										</p>
+									  </section>
+									  <section role="tabpanel" aria-hidden="true" class="content" id="panel2-fr">
+									    <p class="justify">
+											{{ articles.1.body_en|truncatewords:50 }}
+										</p>
+									  </section>
+									</div>
+
+									<ul class="tabs" data-tab role="tablist">
+									  <li class="tab-title active" role="presentational"><a href="#panel2-en" role="tab" tabindex="0" aria-selected="true" controls="panel2-en">English</a></li>
+									  <li class="tab-title" role="presentational"><a href="#panel2-fr" role="tab" tabindex="0" aria-selected="false" controls="panel2-fr">Francais</a></li>
+									</ul>
 								</div>
 
 							</article>
