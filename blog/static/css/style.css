@@ -134,6 +134,7 @@
 .tabs li,
 .tabs li a{
   background: none!important;
+  z-index: -1;
 }
 
 /*!
