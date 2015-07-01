@@ -36,10 +36,22 @@
 							</h2>
 							<h2><a href="/indie_db/authors?id={{ articles.0.author.id }}">{{ articles.0.author }}</a> | {{ articles.0.date_created|date:"M d, Y" }}</h2>
 
-							<p>
-								<!-- THIS ONCE SAID: $articles[0]['celebration_text']; -->
-								Celebration Text!
-							</p>
+							<div class="tabs-content">
+									<section role="tabpanel" aria-hidden="false" class="content active" id="panel2-en">
+									 	<p class="justify">
+									{{ articles.0.body_en|truncatewords:50 }}
+								</p>
+							  </section>
+							  <section role="tabpanel" aria-hidden="true" class="content" id="panel2-fr">
+							    <p class="justify">
+									{{ articles.0.body_fr|truncatewords:50 }}
+								</p>
+							  </section>
+								<ul class="tabs" data-tab role="tablist">
+									<li class="tab-title active" role="presentational"><a href="#panel2-en" role="tab" tabindex="0" aria-selected="true" controls="panel2-en"><p class="language_tab_button">English</p></a></li>
+									<li class="tab-title" role="presentational"><a href="#panel2-fr" role="tab" tabindex="0" aria-selected="false" controls="panel2-fr"><p class="language_tab_button">Francais</p></a></li>
+								</ul>
+							</div>
 
 						</div>
 					</article>
@@ -115,9 +127,22 @@
 										
 									</h2>
 									<h3><a href="/indie_db/authors?id={{ articles.2.author.id }}">{{ articles.2.author }}</a> | {{ articles.2.date_created|date:"M d, Y" }}</h3>
-									<p>
-										{{ articles.2.body_en|truncatewords:50 }}
-									</p>
+									<div class="tabs-content">
+									  <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-en">
+									    <p class="justify">
+											{{ articles.2.body_en|truncatewords:50 }}
+										</p>
+									  </section>
+									  <section role="tabpanel" aria-hidden="true" class="content" id="panel2-fr">
+									    <p class="justify">
+											{{ articles.2.body_fr|truncatewords:50 }}
+										</p>
+									  </section>
+										<ul class="tabs" data-tab role="tablist">
+											<li class="tab-title active" role="presentational"><a href="#panel2-en" role="tab" tabindex="0" aria-selected="true" controls="panel2-en"><p class="language_tab_button">English</p></a></li>
+											<li class="tab-title" role="presentational"><a href="#panel2-fr" role="tab" tabindex="0" aria-selected="false" controls="panel2-fr"><p class="language_tab_button">Francais</p></a></li>
+										</ul>
+									</div>
 								</div>
 							</article>
 
@@ -174,9 +199,22 @@
 						<h3>
 							<a href="/indie_db/authors?id={{ article.author }}">{{ article.author }}</a>
 						</h3>
-						<p>
-							{{ article.body_en }}
-						</p>
+						<div class="tabs-content">
+						  <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-en">
+						    <p class="justify">
+								{{ article.body_en|truncatewords:50 }}
+							</p>
+						  </section>
+						  <section role="tabpanel" aria-hidden="true" class="content" id="panel2-fr">
+						    <p class="justify">
+								{{ article.body_fr|truncatewords:50 }}
+							</p>
+						  </section>
+							<ul class="tabs" data-tab role="tablist">
+								<li class="tab-title active" role="presentational"><a href="#panel2-en" role="tab" tabindex="0" aria-selected="true" controls="panel2-en"><p class="language_tab_button">English</p></a></li>
+								<li class="tab-title" role="presentational"><a href="#panel2-fr" role="tab" tabindex="0" aria-selected="false" controls="panel2-fr"><p class="language_tab_button">Francais</p></a></li>
+							</ul>
+						</div>
 					</div>
 				</article>
 			
