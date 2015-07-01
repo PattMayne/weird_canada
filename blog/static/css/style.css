@@ -124,6 +124,10 @@
   text-align: center;
 }
 
+.primary-post-title{
+  z-index:4!important;
+}
+
 /* OVER-RIDING TABS STYLES */
 
 .language_tab_button{
