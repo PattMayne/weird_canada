@@ -130,7 +130,9 @@
   font-size: 65%;
 }
 
-.tabs{
+.tabs,
+.tabs li,
+.tabs li a{
   background: none!important;
 }
 
