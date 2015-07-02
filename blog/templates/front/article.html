@@ -49,7 +49,18 @@
 			</div>
 
 			<div class="unassigned_article_text_class">
-				{{ article.body_en }}
+				<div class="tabs-content">
+						  <section role="tabpanel" aria-hidden="false" class="content active" id="panel{{article.id}}-en">
+						    <p class="justify">
+								{{ article.body_en|truncatewords:50 }}
+							</p>
+						  </section>
+						  <section role="tabpanel" aria-hidden="true" class="content" id="panel{{article.id}}-fr">
+						    <p class="justify">
+								{{ article.body_fr|truncatewords:50 }}
+							</p>
+						  </section>
+						</div>
 			</div>
 			
 			<div class="postLinks row">
