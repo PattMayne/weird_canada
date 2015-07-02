@@ -200,19 +200,19 @@
 							<a href="/indie_db/authors?id={{ article.author }}">{{ article.author }}</a>
 						</h3>
 						<div class="tabs-content">
-						  <section role="tabpanel" aria-hidden="false" class="content active" id="panel{{article.id}}-en">
+						  <section role="tabpanel" aria-hidden="false" class="content active" id="panel1-en">
 						    <p class="justify">
 								{{ article.body_en|truncatewords:50 }}
 							</p>
 						  </section>
-						  <section role="tabpanel" aria-hidden="true" class="content" id="panel{{article.id}}-fr">
+						  <section role="tabpanel" aria-hidden="true" class="content" id="panel1-fr">
 						    <p class="justify">
 								{{ article.body_fr|truncatewords:50 }}
 							</p>
 						  </section>
 							<ul class="tabs" data-tab role="tablist">
-								<li class="tab-title active" role="presentational"><a href="#panel{{article.id}}-en" role="tab" tabindex="0" aria-selected="true" controls="panel{{article.id}}-en"><p class="language_tab_button">English</p></a></li>
-								<li class="tab-title" role="presentational"><a href="#panel{{article.id}}-fr" role="tab" tabindex="0" aria-selected="false" controls="panel{{article.id}}-fr"><p class="language_tab_button">Francais</p></a></li>
+								<li class="tab-title active" role="presentational"><a href="#panel1-en" role="tab" tabindex="0" aria-selected="true" controls="panel1-en"><p class="language_tab_button">English</p></a></li>
+								<li class="tab-title" role="presentational"><a href="#panel1-fr" role="tab" tabindex="0" aria-selected="false" controls="panel1-fr"><p class="language_tab_button">Francais</p></a></li>
 							</ul>
 						</div>
 					</div>
