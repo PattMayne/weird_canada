@@ -36,10 +36,29 @@
 				{% if article.work_link %}
 				<h2><a href="/indie_db/artists?id={{ article.work_link.creator.id }}">{{ article.work_link.creator }}</a></h2>
 				{% endif %}
+
+				<ul class="tabs" data-tab role="tablist">
+					<li class="tab-title active" role="presentational"><a href="#panel1-en" role="tab" tabindex="0" aria-selected="true" controls="panel1-en"><p class="language_tab_button">English</p><</li>
+					<li class="tab-title" role="presentational"><a href="#panel1-fr" role="tab" tabindex="0" aria-selected="false" controls="panel1-fr"><p class="language_tab_button">Francais</p></a></li>
+				</ul>
+
+
 			</div>
 			
 			<div class="unassigned_article_text_class">
-				{{ article.body_en }}
+				<div class="tabs-content">
+					<section role="tabpanel" aria-hidden="false" class="content active" id="panel1-en">
+						<p class="justify">
+							{{ article.body_en }}
+						</p>
+					</section>
+					 <section role="tabpanel" aria-hidden="true" class="content" id="panel1-fr">
+						 <p class="justify">
+							{{ article.body_fr }}
+						</p>
+					 </section>
+							
+				</div>
 			</div>
 			
 			<div class="postLinks row">
