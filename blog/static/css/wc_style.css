@@ -71,3 +71,35 @@
 .article_text{
 	text-align: justify;
 }
+
+.no_pad_left{
+	padding-left: 0!important;
+}
+
+.no_pad_right{
+	padding-right: 0!important;
+}
+
+.no_pad_top{
+	padding-top: 0!important;
+}
+
+.no_pad_bottom{
+	padding-bottom: 0!important;
+}
+
+.no_margin_bottom{
+	margin-bottom: 0!important;
+}
+
+.no_margin_right{
+	margin-right: 0!important;
+}
+
+.no_margin_left{
+	margin-left: 0!important;
+}
+
+.no_margin_top{
+	margin-top: 0!important;
+}
