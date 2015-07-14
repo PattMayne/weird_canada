@@ -12,6 +12,7 @@
 				<div class="postMediaPlayer">
 					Audio Player (Not Functional Yet)
 				</div>
+
 				<div class="postMeta col-md-12">
 					<div class="postCredits">
 						<p class="postAuthor">
@@ -21,6 +22,28 @@
 					</div>
 					
 				</div>
+
+			{% if article.work.tracklist.count > 0 %}
+
+				<div class="postMeta col-md-12">
+					<div class="postCredits">
+						<ul>
+
+						 {% for track in article.work.tracklist %}
+
+							<li>
+								<p><b>{{ track.position }}</b> - {{ track.title }} [{{ track.duration }}]</p>
+							</li>
+
+						 {% endfor %}
+						 
+						</ul>
+					</div>
+					
+				</div>
+
+			{% endif %}
+
 		</div>
 		
 		<div class="postContent col-md-6">
