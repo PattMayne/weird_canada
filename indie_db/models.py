@@ -29,6 +29,9 @@ class Track(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-position']
+
 
 class Format(models.Model):
     label = models.CharField(max_length=200)
