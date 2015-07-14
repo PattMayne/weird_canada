@@ -30,7 +30,7 @@ class Track(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['-position']
+        ordering = ['position']
 
 
 class Format(models.Model):
