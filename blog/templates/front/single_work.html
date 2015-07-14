@@ -21,6 +21,29 @@
 					</div>
 					
 				</div>
+
+				{% if work.tracklist %}
+
+				<div class="postMeta col-md-12">
+					<div class="postCredits">
+						<h5>Tracklist:</h5>
+						<ul>
+
+						 {% for track in work.tracklist.all %}
+
+							<li>
+								<p><b>{{ track.position }}</b> - {{ track.title }} [{{ track.duration }}]</p>
+							</li>
+
+						 {% endfor %}
+
+						</ul>
+					</div>
+					
+				</div>
+
+
+			{% endif %}
 		</div>
 		
 		<div class="postContent col-md-6">
