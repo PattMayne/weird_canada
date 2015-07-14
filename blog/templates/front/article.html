@@ -23,14 +23,14 @@
 					
 				</div>
 
-			{% if article.work.tracklist.count > 0 %}
+			{% if article.work_link.tracklist %}
 
 				<div class="postMeta col-md-12">
 					<div class="postCredits">
 						<p>hi</p>
 						<ul>
 
-						 {% for track in article.work.tracklist %}
+						 {% for track in article.work_link.tracklist %}
 
 							<li>
 								<p><b>{{ track.position }}</b> - {{ track.title }} [{{ track.duration }}]</p>
@@ -42,8 +42,7 @@
 					</div>
 					
 				</div>
-				{%else%}
-				<p>bye</p>
+
 
 			{% endif %}
 
