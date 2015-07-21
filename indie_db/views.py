@@ -345,9 +345,11 @@ def single_publisher(request):
 
 
 def view_page(request):
+    categories = ArticleCategory.objects.all()
+    pages = Page.objects.filter(publish=True)
     if request.method == 'GET':
         page_handle = request.GET.get('page')
         page = Page.objects.filter(handle=page_handle)[0]
-        return render(request, 'front/page_blank.html', {'page': page})
+        return render(request, 'front/page_blank.html', {'categories': categories, 'page': page, 'pages': pages})
     else:
         return HttpResponseRedirect('/indie_db/works/search/')
