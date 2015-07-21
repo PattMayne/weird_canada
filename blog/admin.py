@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Article, Tag, Author, ArticleCategory, RelativeEpoch, HowCategory
+from blog.models import Article, Tag, Author, ArticleCategory, RelativeEpoch, HowCategory, Page
 
 # Register your models here.
 admin.site.register(Article)
@@ -8,4 +8,4 @@ admin.site.register(Tag)
 admin.site.register(RelativeEpoch)
 admin.site.register(ArticleCategory)
 admin.site.register(HowCategory)
-#admin.site.register(ArticleImage)
+admin.site.register(Page)
