@@ -28,15 +28,6 @@ def user_has_author(sent_user):
         return False
 
 
-#TEST
-def test(request):
-    author_form = AddAuthorForm
-    article_form = AddArticleForm
-    artist_form = AddArtistForm
-    work_form = AddWorkForm
-    return render(request, 'blog/temp.html', {'author_form': author_form, 'article_form': article_form, 'work_form': work_form, 'artist_form': artist_form})
-
-
 # WC_ADMIN
 
 
@@ -640,3 +631,4 @@ def save_new_author_profile(request):
                     return render(request, 'blog/error.html', {'error_message': error_message, 'form': author_form})
     error_message = 'Something went wrong.'
     return render(request, 'blog/error.html', {'error_message': error_message})
+

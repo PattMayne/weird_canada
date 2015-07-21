@@ -89,11 +89,28 @@ class Article(models.Model):
     is_review = models.BooleanField(default=False)
     publish = models.BooleanField(default=True)
     date_created = models.DateTimeField(blank=True, null=True)
-    modified = models.DateTimeField(auto_now=True)
+    date_modified = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     work_link = models.ForeignKey(Work, null=True, blank=True)
     artist_link = models.ForeignKey(Artist, null=True, blank=True)
     images = models.ManyToManyField(ArticleImage, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ["-date_created"]
+
+
+class Page(models.Model):
+    handle = models.CharField(max_length=300, default='Weird Canada')
+    title = models.CharField(max_length=300, default='Weird Canada')
+    body_en = models.TextField(blank=True, null=True)
+    body_fr = models.TextField(blank=True, null=True)
+    creator = models.ForeignKey(User, null=True, blank=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    date_modified = models.DateTimeField(auto_now=True)
+    publish = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

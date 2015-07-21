@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Weird Canada apps stuff
 from indie_db.forms import AddArtistForm, AddWorkForm, AddProductionCompanyForm
 from indie_db.models import Artist, Work, URL, Style, Contributor, Track, ProductionCompany, WorkCategory
-from blog.models import Article, Author, Tag, ArticleCategory, HowCategory
+from blog.models import Article, Author, Tag, ArticleCategory, HowCategory, Page
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
 
@@ -342,3 +342,10 @@ def single_publisher(request):
         return render(request, 'front/single_publisher.html', {'categories': categories, 'publisher': publisher, 'works': works})
     else:
         return HttpResponseRedirect('/indie_db/works/search/')
+
+
+def view_page(request):
+    if request.method == 'GET':
+        page_handle = request.GET.get('page')
+        page = Page.objects.filter(handle=page_handle)[0]
+        body = page.body_en
