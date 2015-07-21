@@ -348,6 +348,6 @@ def view_page(request):
     if request.method == 'GET':
         page_handle = request.GET.get('page')
         page = Page.objects.filter(handle=page_handle)[0]
-        return render(request, 'front/single_publisher.html', {'categories': categories, 'publisher': publisher, 'works': works})
+        return render(request, 'front/page_blank.html', {'page': page})
     else:
         return HttpResponseRedirect('/indie_db/works/search/')

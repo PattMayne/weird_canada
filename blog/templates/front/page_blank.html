@@ -18,12 +18,12 @@
 
 			<section role="tabpanel" aria-hidden="false" class="content active" id="panel1-en">
 				<p class="justify">
-					{{ page.body_en }}
+					{{ page.body_en | safe }}
 				</p>
 	  		</section>
 	  		<section role="tabpanel" aria-hidden="true" class="content" id="panel1-fr">
 				 <p class="justify">
-					{{ page.body_fr }}
+					{{ page.body_fr | safe }}
 				</p>
 		 </section>
 

@@ -80,12 +80,12 @@
 					<div class="tabs-content">
 						  <section role="tabpanel" aria-hidden="false" class="content active" id="panel1-en">
 						    <p class="justify">
-								{{ article.body_en }}
+								{{ article.body_en | safe}}
 							</p>
 						  </section>
 						  <section role="tabpanel" aria-hidden="true" class="content" id="panel1-fr">
 						    <p class="justify">
-								{{ article.body_fr }}
+								{{ article.body_fr | safe }}
 							</p>
 						  </section>
 							
