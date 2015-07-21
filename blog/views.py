@@ -631,4 +631,3 @@ def save_new_author_profile(request):
                     return render(request, 'blog/error.html', {'error_message': error_message, 'form': author_form})
     error_message = 'Something went wrong.'
     return render(request, 'blog/error.html', {'error_message': error_message})
-

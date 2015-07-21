@@ -11,7 +11,6 @@ urlpatterns = patterns('',
     url(r'^$', 'indie_db.views.index'),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^test/$', 'blog.views.test', name="test_page"),
     url(r'^wc_admin/$', 'blog.views.wc_admin_hub', name="wc_admin_hub_view"),
 
     # profile / admin stuff
@@ -52,6 +51,7 @@ urlpatterns = patterns('',
 
     url(r'^article/$', 'indie_db.views.article', name="front_article_view"),
     url(r'^search/$', 'indie_db.views.search_articles', name="search_articles_view"),
+    url(r'^page/$', 'indie_db.views.view_page', name="view_page_view"),
 
     # Front / Indie_DB
 
