@@ -201,12 +201,12 @@
 						</h3>
 
 						<div class="tabs-content hide-for-medium-up">
-						  <section role="tabpanel" aria-hidden="false" class="content active" id="panel1-en">
+						  <section role="tabpanel" aria-hidden="false" class="content active" id="panel1-en-{{ forloop.counter }}">
 						    <p class="justify">
 								{{ article.body_en|truncatewords:50 }}
 							</p>
 						  </section>
-						  <section role="tabpanel" aria-hidden="true" class="content" id="panel1-fr">
+						  <section role="tabpanel" aria-hidden="true" class="content" id="panel1-fr-{{ forloop.counter }}">
 						    <p class="justify">
 								{{ article.body_fr|truncatewords:50 }}
 							</p>
