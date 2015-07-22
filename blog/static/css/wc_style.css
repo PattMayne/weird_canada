@@ -46,6 +46,8 @@
 
 .tabs .tab-title{
 	background-color: #ffffff!important;
+	padding: 0;
+	margin: 0;
 }
 
 .tabs .active{
