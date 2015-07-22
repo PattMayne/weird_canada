@@ -101,6 +101,16 @@
 										</ul>
 									</div>
 
+									<div class="audio_panel">
+										{% for audio_file in article.audio_links %}
+											 <audio controls>
+												  <source src="{{ audio_file.audio_link }}" type="audio/ogg">
+												Your browser does not support the audio element.
+												</audio> 
+
+										{% endfor %}
+									</div>
+
 									
 								</div>
 
