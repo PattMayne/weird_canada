@@ -1,9 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
 #from django_markdown.models import MarkdownField
-from indie_db.models import Artist, Work
+from indie_db.models import Artist, Work, Track
 
 # Create your models here.
+
+
+class AudioPlayerLink(models.Model):
+    audio_link = models.CharField(max_length=400)
+    title = models.CharField(max_length=200)
+    artist = models.ManyToManyField(Artist, null=True, blank=True)
+    work = models.ForeignKey(Work, null=True, blank=True)
+    track = models.ForeignKey(Track, null=True, blank=True)
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
 
 
 class ArticleImage(models.Model):
@@ -94,6 +108,7 @@ class Article(models.Model):
     work_link = models.ForeignKey(Work, null=True, blank=True)
     artist_link = models.ForeignKey(Artist, null=True, blank=True)
     images = models.ManyToManyField(ArticleImage, null=True, blank=True)
+    audio_links = models.ManyToManyField(AudioPlayerLink, null=True, blank=True)
 
     def __str__(self):
         return self.title
