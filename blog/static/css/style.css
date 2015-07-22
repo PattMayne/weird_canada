@@ -136,6 +136,8 @@
 
 .language_tab_button{
   font-size: 65%;
+  padding: 0!important;
+  margin: 0!important;
 }
 
 .tabs,

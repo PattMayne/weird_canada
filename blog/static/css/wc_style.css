@@ -45,17 +45,14 @@
 
 
 .tabs .tab-title{
-	background-color: #CCCCCC!important;
-	padding: 5px!important;
-}
-
-.tabs .active{
 	background-color: #ffffff!important;
 }
 
-.tabs .active p{
-		color: #010101!important;
+.tabs .active{
+	background-color: #cccccc!important;
 }
+
+
 
 
 /*
