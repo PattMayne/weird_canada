@@ -54,10 +54,32 @@
 				<h6><i><a href="/indie_db/artists?id={{ work.creator.id }}">{{ work.creator }}</a></i></h6>
 				
 			</div>
-			
-			<div class="unassigned_article_text_class">
-				{{ work.description }}
+
+
+			<div class="large-6 columns no_pad_left no_margin_right">
+				<ul class="tabs" data-tab role="tablist">
+					<li class="tab-title active" role="presentational"><a href="#panel1-en" role="tab" tabindex="0" aria-selected="true" controls="panel1-en"><p class="language_tab_button">English</p></a></li>
+					<li class="tab-title" role="presentational"><a href="#panel1-fr" role="tab" tabindex="0" aria-selected="false" controls="panel1-fr"><p class="language_tab_button">Francais</p></a></li>
+				</ul>
 			</div>
+			
+			<br><br>
+			
+				<div class="unassigned_article_text_class">
+					<div class="tabs-content">
+						  <section role="tabpanel" aria-hidden="false" class="content active" id="panel1-en">
+						    <p class="justify">
+								{{ work.description_en }}
+							</p>
+						  </section>
+						  <section role="tabpanel" aria-hidden="true" class="content" id="panel1-fr">
+						    <p class="justify">
+								{{ work.description_fr }}
+							</p>
+						  </section>
+							
+						</div>
+				</div>
 			
 			<div class="postLinks row">
 

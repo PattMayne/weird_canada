@@ -42,7 +42,8 @@ class Format(models.Model):
 
 class WorkCategory(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_fr = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ['title']
@@ -71,7 +72,8 @@ class URL(models.Model):
 class Artist(models.Model):
     prof_image = models.FileField(upload_to='img/artist/%Y/%m/%d', default='img/default.png')
     name = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_fr = models.TextField(blank=True, null=True)
     birthdate = models.DateField(null=True, blank=True)
     deathdate = models.DateField(null=True, blank=True)
     group = models.BooleanField(default=False)
@@ -102,7 +104,8 @@ class ProductionCompany(models.Model):
     author = models.ForeignKey(User, null=True, blank=True)
     styles = models.ManyToManyField(Style, null=True, blank=True)
     formats = models.ManyToManyField(Format, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_fr = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -116,7 +119,8 @@ class Work(models.Model):
     cover_image = models.FileField(upload_to='img/work/%Y/%m/%d', default='img/default.png')
     work_category = models.ForeignKey(WorkCategory, null=True, blank=True)
     title = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_fr = models.TextField(blank=True, null=True)
     extra_data = models.TextField(null=True, blank=True)
     created = models.DateField(null=True, blank=True)
     city = models.CharField(max_length=200)
