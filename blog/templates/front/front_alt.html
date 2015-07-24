@@ -40,12 +40,12 @@
 									<div class="tabs-content">
 									  <section role="tabpanel" aria-hidden="false" class="content active" id="panel{{article.id}}-en">
 									    <p class="justify crop">
-											{{ article.body_en|truncatewords:500 }}
+											{{ article.body_en|truncatewords_html:52 }}
 										</p>
 									  </section>
 									  <section role="tabpanel" aria-hidden="true" class="content" id="panel{{article.id}}-fr">
 									    <p class="justify crop">
-											{{ article.body_fr|truncatewords:500 }}
+											{{ article.body_fr|truncatewords_html:52 }}
 										</p>
 									  </section>
 										<ul class="tabs left" data-tab role="tablist">
