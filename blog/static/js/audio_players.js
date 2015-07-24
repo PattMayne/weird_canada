@@ -5,9 +5,9 @@ var player;
 
 function play_track(player_id)
 {
-	if (player.playing)
+	if (player != null)
 		{
-			player.stop();
+			player.pause();
 		}
 	player = document.getElementById(player_id);
 	player.play();
