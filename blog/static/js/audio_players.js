@@ -5,7 +5,10 @@ var player;
 
 function play_track(player_id)
 {
-	player.stop();
+	if (player.playing)
+		{
+			player.stop();
+		}
 	player = document.getElementById(player_id);
 	player.play();
 
