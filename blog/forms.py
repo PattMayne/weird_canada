@@ -10,12 +10,13 @@ from blog.models import Article, Tag, Author
 class AddAuthorForm(ModelForm):
     class Meta:
         model = Author
-        fields = ('authorname', 'tagline', 'description', 'website')
+        fields = ('authorname', 'tagline', 'description_en', 'description_fr', 'website')
 
         widgets = {
                 'authorname': TextInput(attrs={'placeholder': 'Enter Name', 'required': True}),
                 'tagline': TextInput(attrs={'placeholder': 'From the SOMETHING of...', 'required': True}),
-                'description': Textarea(attrs={'required': True, 'placeholder': 'Enter Description'}),
+                'description_en': Textarea(attrs={'required': True, 'placeholder': 'Enter Description (English)'}),
+                'description_en': Textarea(attrs={'required': True, 'placeholder': 'Entrez Description (Français)'}),
                 'website': TextInput(attrs={'required': False, 'placeholder': 'Enter Full URL'})
             }
 
@@ -23,7 +24,8 @@ class AddAuthorForm(ModelForm):
         author = super(AddAuthorForm, self).save(commit=True)
         author.authorname = self.cleaned_data['authorname']
         author.tagline = self.cleaned_data['tagline']
-        author.description = self.cleaned_data['description']
+        author.description_en = self.cleaned_data['description_en']
+        author.description_fr = self.cleaned_data['description_fr']
         author.website = self.cleaned_data['website']
         author.save()
         return author
@@ -32,12 +34,13 @@ class AddAuthorForm(ModelForm):
 class EditAuthorForm(ModelForm):
     class Meta:
         model = Author
-        fields = ('authorname', 'tagline', 'description', 'website')
+        fields = ('authorname', 'tagline', 'description_en', 'description_fr', 'website')
 
         widgets = {
                 'authorname': TextInput(attrs={'placeholder': 'Enter Name', 'required': True}),
                 'tagline': TextInput(attrs={'placeholder': 'From the SOMETHING of...', 'required': True}),
-                'description': Textarea(attrs={'required': True, 'placeholder': 'Enter Description'}),
+                'description_en': Textarea(attrs={'required': True, 'placeholder': 'Enter Description (English)'}),
+                'description_en': Textarea(attrs={'required': True, 'placeholder': 'Entrez Description (Français)'}),
                 'website': TextInput(attrs={'required': False, 'placeholder': 'Enter Full URL'})
             }
 
@@ -45,7 +48,8 @@ class EditAuthorForm(ModelForm):
         author = super(EditAuthorForm, self).save(commit=True)
         author.authorname = self.cleaned_data['authorname']
         author.tagline = self.cleaned_data['tagline']
-        author.description = self.cleaned_data['description']
+        author.description_en = self.cleaned_data['description_en']
+        author.description_fr = self.cleaned_data['description_fr']
         author.website = self.cleaned_data['website']
         author.save()
         return author

@@ -36,7 +36,8 @@ class ArticleImage(models.Model):
 
 class ArticleCategory(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_fr = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ['title']
@@ -49,7 +50,8 @@ class ArticleCategory(models.Model):
 
 class HowCategory(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_fr = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ['title']
@@ -62,7 +64,8 @@ class HowCategory(models.Model):
 
 class RelativeEpoch(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_fr = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ['title']
@@ -75,7 +78,8 @@ class RelativeEpoch(models.Model):
 class Author(models.Model):
     authorname = models.CharField(max_length=200, unique=True)
     tagline = models.CharField(max_length=300, default='From the mad mind of ')
-    description = models.TextField(blank=True, null=True)
+    description_en = models.TextField(blank=True, null=True)
+    description_fr = models.TextField(blank=True, null=True)
     user = models.OneToOneField(User, blank=True, null=True)
     website = models.CharField(max_length=400, blank=True, null=True)
 
