@@ -44,6 +44,7 @@
 }
 
 .crop {
+	width: auto;
       white-space: wrap; 
 	height: 10em;
     overflow: hidden;
