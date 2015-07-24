@@ -13,7 +13,7 @@
 					<div class="audio_panel">
 						{% for audio_file in article.audio_links.all %}
 						<p>{{ audio_file.title }}</p>
-							<audio controls>
+							<audio class="audioTrack" preload="none" controls="controls">
 								<source src="{{ audio_file.ogg_link }}" type="audio/ogg; codecs=&quot;vorbis&quot;" />
 								<source src="{{ audio_file.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
 							</audio> 
