@@ -44,9 +44,7 @@
 }
 
 .crop {
-
-
-      overflow: hidden;
+	max-height: 110px;
       text-overflow: ellipsis;
       width: 400px;
     }
