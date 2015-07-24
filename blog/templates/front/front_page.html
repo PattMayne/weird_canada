@@ -108,8 +108,9 @@
 													<source src="{{ audio_file.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
 												</audio>
 												<a href="#" onclick="play_track({{ audio_file.id }})"><i class="fa fa-play-circle"></i></a>
+												&nbsp;
 												<a href="#" onclick="pause_track()"><i class="fa fa-pause"></i></a>
-												{{audio_file.title}}
+												&nbsp;&nbsp;&nbsp;{{audio_file.title}}
 										{% endfor %}
 									</div>
 
