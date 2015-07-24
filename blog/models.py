@@ -7,7 +7,8 @@ from indie_db.models import Artist, Work, Track
 
 
 class AudioPlayerLink(models.Model):
-    audio_link = models.CharField(max_length=400)
+    mp3_link = models.CharField(max_length=400)
+    ogg_link = models.CharField(max_length=400)
     title = models.CharField(max_length=200)
     artist = models.ManyToManyField(Artist, null=True, blank=True)
     work = models.ForeignKey(Work, null=True, blank=True)
