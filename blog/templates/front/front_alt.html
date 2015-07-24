@@ -26,26 +26,26 @@
 								</div>
 
 								<div class="articleHead col-md-4">
-									<p class="postType"><a href="/?cat={{ articles.1.article_category }}">{{ articles.1.article_category }}</a></p>
+									<p class="postType"><a href="/?cat={{ articles.1.article_category }}">{{ article.article_category }}</a></p>
 									<h1>
 										<a href="/article?id={{ articles.1.id }}">
-											{{ articles.1.title }}
+											{{ article.title }}
 										</a>
 									</h1>
 									<h2>
 										
 									</h2>
-									<h3><a href="/indie_db/authors?id={{ articles.1.author.id }}">{{ articles.1.author }}</a> | {{ articles.1.date_created|date:"M d, Y" }}</h3>
+									<h3><a href="/indie_db/authors?id={{ articles.1.author.id }}">{{ article.author }}</a> | {{ article.date_created|date:"M d, Y" }}</h3>
 
 									<div class="tabs-content">
 									  <section role="tabpanel" aria-hidden="false" class="content active" id="panel{{articles.1.id}}-en">
 									    <p class="justify">
-											{{ articles.1.body_en|truncatewords:50 }}
+											{{ article.body_en|truncatewords:50 }}
 										</p>
 									  </section>
 									  <section role="tabpanel" aria-hidden="true" class="content" id="panel{{articles.1.id}}-fr">
 									    <p class="justify">
-											{{ articles.1.body_fr|truncatewords:50 }}
+											{{ article.body_fr|truncatewords:50 }}
 										</p>
 									  </section>
 										<ul class="tabs left" data-tab role="tablist">
@@ -55,7 +55,7 @@
 									</div>
 
 									<div class="audio_panel">
-										{% for audio_file in articles.1.audio_links.all %}
+										{% for audio_file in article.audio_links.all %}
 												<audio class="audioTrack" preload="none" id="{{ audio_file.id }}">
 													<source src="{{ audio_file.ogg_link }}" type="audio/ogg; codecs=&quot;vorbis&quot;" />
 													<source src="{{ audio_file.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
