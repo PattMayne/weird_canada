@@ -103,10 +103,11 @@
 
 									<div class="audio_panel">
 										{% for audio_file in articles.1.audio_links.all %}
-												<audio class="audioTrack" preload="none" controls="controls">
+												<audio class="audioTrack" preload="none" id="{{ audio_file.id }}">
 													<source src="{{ audio_file.ogg_link }}" type="audio/ogg; codecs=&quot;vorbis&quot;" />
 													<source src="{{ audio_file.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
 												</audio>
+												<button type="button" onclick="play_track({{ audio_file.id }})">Play</button>
 										{% endfor %}
 									</div>
 
