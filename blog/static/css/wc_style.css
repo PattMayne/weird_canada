@@ -43,6 +43,13 @@
    color: #222222!important;  
 }
 
+.crop {
+      white-space: nowrap;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 400px;
+    }
 
 .tabs .tab-title{
 	background-color: #ffffff!important;
