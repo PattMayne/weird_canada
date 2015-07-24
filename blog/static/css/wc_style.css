@@ -44,9 +44,10 @@
 }
 
 .crop {
-	max-height: 110px;
-      text-overflow: ellipsis;
-      width: 400px;
+      white-space: wrap; 
+    width: 12em; 
+	height: 7em;
+    overflow: hidden;
     }
 
 .tabs .tab-title{
