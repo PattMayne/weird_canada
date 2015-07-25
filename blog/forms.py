@@ -60,9 +60,10 @@ class EditAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'how_category', 'publish', 'epoch')
+        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'how_category', 'publish', 'epoch', 'cover_image')
 
         widgets = {
+            'cover_image': FileInput()
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
             'date_created': DateTimeInput(attrs={'required': True}),
             'epoch': Select(attrs={'required': True}),
@@ -74,6 +75,7 @@ class AddArticleForm(ModelForm):
         }
 
         labels = {
+            'cover_image': _('Cover Image'),
             'date_created': _('Orignal Publication Date'),
             'title': _('Title'),
             'body_en': _('English Text'),
@@ -87,6 +89,7 @@ class AddArticleForm(ModelForm):
     def save(self, commit=True):
         article = super(AddArticleForm, self).save(commit=True)
         article.title = self.cleaned_data['title']
+        article.cover_image = self.cleaned_data['cover_image']
         chosen_creation_date = self.cleaned_data['date_created']
         now = datetime.datetime.now()
         hour = now.hour
