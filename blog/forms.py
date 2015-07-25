@@ -67,7 +67,7 @@ class AddArticleForm(ModelForm):
             'date_created': DateInput(attrs={'required': True}),
             'epoch': Select(attrs={'required': True}),
             'article_category': Select(attrs={'required': True}),
-            'how_category': Select(attrs={'required': True}),
+            'how_category': Select(attrs={'required': False}),
             'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
             'publish': CheckboxInput(attrs={'required': False}),
             'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False})
