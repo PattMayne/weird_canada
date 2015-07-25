@@ -88,12 +88,11 @@ class AddArticleForm(ModelForm):
         article = super(AddArticleForm, self).save(commit=True)
         article.title = self.cleaned_data['title']
         chosen_creation_date = self.cleaned_data['date_created']
-        if article.pk is None:
-            now = datetime.datetime.now()
-            hour = now.hour
-            minute = now.minute
-            chosen_creation_date = chosen_creation_date.replace(hour=hour, minute=minute)
-            article.date_created = chosen_creation_date
+        now = datetime.datetime.now()
+        hour = now.hour
+        minute = now.minute
+        chosen_creation_date = chosen_creation_date.replace(hour=hour, minute=minute)
+        article.date_created = chosen_creation_date
         article.date_modified = datetime.datetime.now()
         article.body_en = self.cleaned_data['body_en']
         article.body_fr = self.cleaned_data['body_fr']
