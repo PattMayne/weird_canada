@@ -88,7 +88,7 @@ class AddArticleForm(ModelForm):
         article = super(AddArticleForm, self).save(commit=True)
         article.title = self.cleaned_data['title']
         chosen_creation_date = self.cleaned_data['date_created']
-        if self.pk is None:
+        if article.pk is None:
             now = datetime.datetime.now()
             hour = now.hour
             minute = now.minute
