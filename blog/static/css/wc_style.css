@@ -44,6 +44,10 @@
 }
 
 
+.postMedia{
+	border: 1px solid black;
+}
+
 .tabs .tab-title{
 	background-color: #ffffff!important;
 	padding: 0;

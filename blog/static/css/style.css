@@ -8096,6 +8096,7 @@ footer bad-nav .languageToggle:hover {
   #index .articleList.gridBlock .postMedia img, #grids .articleList.gridBlock .postMedia img {
     width: auto;
     height: 100%;
+    max-height: 700px!important;
   }
 }
 
