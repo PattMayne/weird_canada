@@ -825,6 +825,11 @@ dd {
 }
 
 @media (min-width: 768px) {
+
+  .secondary_pic {
+    min-height: 500px!important;
+  }
+
   /* line 152, ../bower_components/bootstrap-sass/lib/_type.scss */
   .dl-horizontal dt {
     float: left;
