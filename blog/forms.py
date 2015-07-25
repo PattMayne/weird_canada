@@ -1,3 +1,5 @@
+import datetime
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
@@ -85,7 +87,14 @@ class AddArticleForm(ModelForm):
     def save(self, commit=True):
         article = super(AddArticleForm, self).save(commit=True)
         article.title = self.cleaned_data['title']
-        article.date_created = self.cleaned_data['date_created']
+        chosen_creation_date = self.cleaned_data['date_created']
+        if self.pk is None:
+            now = datetime.datetime.now()
+            hour = now.hour
+            minute = now.minute
+            chosen_creation_date = chosen_creation_date.replace(hour=hour, minute=minute)
+            article.date_created = chosen_creation_date
+        article.date_modified = datetime.datetime.now()
         article.body_en = self.cleaned_data['body_en']
         article.body_fr = self.cleaned_data['body_fr']
         article.publish = self.cleaned_data['publish']
