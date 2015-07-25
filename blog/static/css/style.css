@@ -54,7 +54,7 @@
 }
 
 .secondary_pic{
-  min-height: 275px!important;
+  min-height: 100%!important;
   max-height: 725px!important;
 }
 
