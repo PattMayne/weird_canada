@@ -54,8 +54,10 @@
 }
 
 .secondary_pic{
+  /*
   min-height: 475px!important;
   max-height: 725px!important;
+  */
 }
 
 .innerArticlePic{
@@ -7983,6 +7985,7 @@ footer bad-nav .languageToggle:hover {
     margin: -25% 0;
     width: 100%;
     height: auto;
+    max-height: 700px!important;
   }
 }
 @media (min-width: 992px) {
@@ -8174,6 +8177,7 @@ section .postMedia {
 section .postMedia img {
   width: 100%;
   height: auto;
+  max-height: 700px!important;
 }
 /* line 348, ../sass/partials/_page.scss */
 section .postMedia .postImageThumbs {
