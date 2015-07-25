@@ -4,7 +4,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
-from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput
+from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput, DateTimeInput, SelectMultiple
 from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany
 from blog.models import Article, Tag, Author
 
@@ -64,10 +64,10 @@ class AddArticleForm(ModelForm):
 
         widgets = {
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
-            'date_created': DateInput(attrs={'required': True}),
+            'date_created': DateTimeInput(attrs={'required': True}),
             'epoch': Select(attrs={'required': True}),
             'article_category': Select(attrs={'required': True}),
-            'how_category': Select(attrs={'required': False}),
+            'how_category': SelectMultiple(attrs={'required': False}),
             'body_en': Textarea(attrs={'placeholder': 'Write English Article', 'required': False}),
             'publish': CheckboxInput(attrs={'required': False}),
             'body_fr': Textarea(attrs={'placeholder': 'Donnez votre article Française', 'required': False})
