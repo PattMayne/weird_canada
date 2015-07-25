@@ -54,7 +54,8 @@
 }
 
 .secondary_pic{
-
+  min-height: 300px!important;
+  max-height: 725px!important;
 }
 
 .innerArticlePic{
