@@ -22,7 +22,7 @@
 								<h4>{{ track.position }}. {{ track.title }}</h4>
 								<p>Duration: {{ track.duration }}</p>
 								<p>
-									{% for audio in track.AudioPlayerLink_set.all %}
+									{% for audio in track.audioplayerlink_set.all %}
 					                   {{ audio }}
 					               {% endfor %}
 								</p>
