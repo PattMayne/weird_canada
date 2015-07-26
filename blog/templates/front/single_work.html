@@ -29,9 +29,9 @@
 						 {% for track in work.tracklist.all %}
 
 							<li>
-								<p><b>{{ track.position }}</b> - {{ track.title }} [{{ track.duration }}]</p>
+								<p><b>{{ track.position }}</b> - {{ track.title }} [{{ track.duration }}]
 
-								{% for audio_file in track.audioplayerlink_set.all %}
+									{% for audio_file in track.audioplayerlink_set.all %}
 												<audio class="audioTrack" preload="none" id="{{ audio_file.id }}">
 													<source src="{{ audio_file.ogg_link }}" type="audio/ogg; codecs=&quot;vorbis&quot;" />
 													<source src="{{ audio_file.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
@@ -41,6 +41,7 @@
 												&nbsp;&nbsp;&nbsp;{{audio_file.title}}
 												<br />
 										{% endfor %}
+								</p>
 							</li>
 
 						 {% endfor %}
