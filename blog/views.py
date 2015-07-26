@@ -349,13 +349,13 @@ def edit_track(request):
 def add_track(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
-        title = request.POST.get('track_title')
-        duration = request.POST.get('track_duration')
-        position = request.POST.get('track_position')
+        title = request.POST.get('new_track_title')
+        duration = request.POST.get('new_track_duration')
+        position = request.POST.get('new_track_position')
         track = Track()
         track.title = title
         track.duration = duration
-        track.position = position
+        track.position = int(position)
         track.save()
         work.tracklist.add(track)
         work.save()
