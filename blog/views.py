@@ -332,7 +332,7 @@ def edit_track(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         track_id = request.POST.get('track_id')
-        track = Track.objects.get(pk=int(track_id))
+        track = Track.objects.get(pk=track_id)
         title = request.POST.get('track_' + str(track_id) + '_title')
         duration = request.POST.get('track_' + str(track_id) + '_duration')
         position = request.POST.get('track_' + str(track_id) + '_position')
