@@ -87,8 +87,9 @@
 
 				{% endif %}
 
-				<h6>CONTRIBUTORS:</h6>
-				<div class="large-12 columns">
+				
+				<div class="large-12 columns sub_panel">
+					<h6>CONTRIBUTORS:</h6>
 					<p>
 						{% for contributor in work.contributors.all %}
 							
@@ -103,7 +104,7 @@
 				</div>
 
 			</div>
-			<div class="large-12 columns">
+			<div class="large-12 columns sub_panel">
 
 				<h6>WEBSITE:</h6>
 				<div class="large-12 columns">
@@ -113,13 +114,26 @@
 			</div>
 			<div class="large-12 columns">
 
-				<h6>DESCRIPTION:</h6>
-				<div class="large-12 columns">
-					<p>
-						<br>
-						{{ work.description }}
-						<br>
-					</p>
+				
+				<div class="large-12 columns sub_panel">
+					<h6>DESCRIPTION:</h6>
+					<div class="large-6 columns">
+						<p class="justify">
+							Anglais:
+							<br>
+							{{ work.description_en }}
+							<br>
+						</p>
+					</div>
+					<div class="large-6 columns">
+						<p class="justify">
+							French:
+
+							<br>
+							{{ work.description_fr }}
+							<br>
+						</p>
+					</div>
 				</div>
 
 			</div>
@@ -141,7 +155,13 @@
 
 				</form>
 
-				<a href="/wc_admin/edit_tracklist/" class="button small" >Add/Edit Tracklist</a>
+				<form method="post" action="/wc_admin/edit_tracklist/">
+					{% csrf_token %}
+					<input type="hidden" name="work_id" value="{{ work.id }}">
+					<input type="submit" class="button small" value="Add/Edit Tracklist">
+
+				</form>
+
 			</div>
 			<div class="large-8 medium-8 columns">
 				<h6>Add Contributor</h6>
