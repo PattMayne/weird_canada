@@ -54,6 +54,16 @@
 				
 				</div>
 
+				<div class="large-12 columns sub_panel">
+					<h6>LABEL:</h6>
+					{% if work.self_published %}
+						<p>Self-Released</p>
+					{% else %}
+						<p>{{ work.production_company }}</p>
+					{% endif %}
+					<br/>
+				</div>
+
 			</div>
 
 			<div class="large-6 columns">
