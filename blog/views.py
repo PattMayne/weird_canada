@@ -636,7 +636,7 @@ def browse_companies(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         companies = pager.page(pager.num_pages)
-    return render(request, 'blog/browse_works.html', {'companies': companies, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request})
+    return render(request, 'blog/browse_companies.html', {'companies': companies, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request})
 
 
 
