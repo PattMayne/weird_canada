@@ -12,8 +12,8 @@
 				<h1>{{ work.title }}</h1>
 
 			</div>
-			<div class="large-6 columns">
 
+			<div class="large-6 columns">
 				
 				<div class="large-12 columns sub_panel">
 					<h6>ARTIST:</h6>
@@ -46,7 +46,17 @@
 					<br/>
 				</div>
 
+				<div class="large-12 columns sub_panel">
+
+					<h6>WEBSITE:</h6>
+					<div class="large-12 columns">
+						<p><a href="{{work.website.link}}">{{work.website.name}}</a></p>
+					</div>
+				
+				</div>
+
 			</div>
+
 			<div class="large-6 columns">
 
 				
@@ -71,8 +81,9 @@
 
 				{% if has_tracklist %}
 
-				<h6>TRACKLIST:</h6>
+				
 				<div class="large-12 columns sub_panel">
+					<h6>TRACKLIST:</h6>
 					<p>
 						<ul class="wc_list">
 						{% for track in work.tracklist.all %}
@@ -88,7 +99,7 @@
 				{% endif %}
 
 				
-				<div class="large-6 columns sub_panel">
+				<div class="large-12 columns sub_panel">
 					<h6>CONTRIBUTORS:</h6>
 					<p>
 						{% for contributor in work.contributors.all %}
@@ -104,14 +115,9 @@
 				</div>
 
 			</div>
-			<div class="large-6 columns sub_panel">
+		
 
-				<h6>WEBSITE:</h6>
-				<div class="large-12 columns">
-					<p><a href="{{work.website.link}}">{{work.website.name}}</a></p>
-				</div>
 			
-			</div>
 			<div class="large-12 columns">
 
 				
