@@ -346,6 +346,25 @@ def edit_track(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
+def add_track(request):
+    if request.method == 'POST' and request.user.is_authenticated():
+        work = Work.objects.get(pk=request.POST.get('work_id'))
+        title = request.POST.get('track_title')
+        duration = request.POST.get('track_duration')
+        position = request.POST.get('track_position')
+        track = Track()
+        track.title = title
+        track.duration = duration
+        track.position = position
+        track.save()
+        work.tracklist.add(track)
+        work.save()
+        return HttpResponseRedirect('/wc_admin/edit_tracklist/?id=' + str(work.id))
+    else:
+        error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
+
+
 def write_new_production_company(request):
     production_company_form = AddProductionCompanyForm
     return render(request, 'blog/production_company_write_new.html', {'production_company_form': production_company_form})

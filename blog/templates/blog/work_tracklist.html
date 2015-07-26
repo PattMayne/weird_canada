@@ -113,6 +113,43 @@
 
 				{% endfor %}
 
+				<div class="large-12 columns">
+
+					<a href="" class="button small" data-reveal-id="new_track_modal">Add New Track</a>
+
+					<div id="new_track_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+							  <h2 id="modalTitle">Add New Track</h2>
+							  <p class="lead">Fill in the details. This track will be added to the current tracklist.</p>
+
+								<div class="large-12 columns">
+									<p class="justify">
+										<form method="post" action="/wc_admin/edit_track/">
+											{% csrf_token %}
+
+											<label for="text">Title:
+												<input type="text" name="new_track_title" id="new_track_title" placeholder="Title" required />
+											</label>
+
+											<label for="number">Position:
+												<input type="number" style="max-width: 75px;" name="new_track_position" id="new_track_position" placeholder="00" required />
+											</label>
+
+											<label for="text">Duration:
+												<input type="text" style="max-width: 125px;" name="new_track_duration" id="new_track_duration" placeholder="00" required />
+											</label>
+
+											<input type="hidden" name="track_id" id="track_id" value="{{ track.id }}" />
+											<input type="hidden" name="work_id" id="work_id" value="{{ work.id }}" />
+											<input type="submit" class="button small" value="SAVE" />
+										</form>
+										
+									</p>
+								</div>
+
+							  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+							</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
