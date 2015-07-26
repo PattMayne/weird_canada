@@ -9,46 +9,56 @@
 		<div class="row">
 			<div class="large-12 columns">
 
-				<h2>{{ work.title }}</h2>
+				<h1>{{ work.title }}</h1>
 
 			</div>
 			<div class="large-6 columns">
 
-				<h5>ARTIST:</h5>
-				<div class="large-12 columns">
+				
+				<div class="large-12 columns sub_panel">
+					<h6>ARTIST:</h6>
 					<p>{{work.creator.name}}</p>
+					<br/>
 				</div>
 
-				<h5>RELEASED:</h5>
-				<div class="large-12 columns">
+				
+				<div class="large-12 columns sub_panel">
+					<h6>RELEASED:</h6>
 					<p>{{work.created}}</p>
+					<br/>
 				</div>
 
-				<h5>CITY:</h5>
-				<div class="large-12 columns">
+				
+				<div class="large-12 columns sub_panel">
+					<h6>CITY:</h6>
 					<p>{{work.city}}</p>
+					<br/>
 				</div>
 
-				<h5>LABEL:</h5>
-				<div class="large-12 columns">
+				
+				<div class="large-12 columns sub_panel">
+					<h6>LABEL:</h6>
 					{% if work.self_published %}
 						<p>Self-Released</p>
 					{% else %}
 						<p>{{ work.production_company }}</p>
 					{% endif %}
-
+					<br/>
 				</div>
 
 			</div>
 			<div class="large-6 columns">
 
-				<h5>CATEGORY:</h5>
-				<div class="large-12 columns">
+				
+				<div class="large-12 columns sub_panel">
+					<h6>CATEGORY:</h6>
 					<p>{{work.work_category}}</p>
+					<br/>
 				</div>
 
-				<h5>STYLES & GENRES:</h5>
-				<div class="large-12 columns">
+				
+				<div class="large-12 columns sub_panel">
+					<h6>STYLES & GENRES:</h6>
 					<p>
 						{% for style in work.styles.all %}
 							
@@ -56,12 +66,13 @@
 		
 						{% endfor %}
 					</p>
+					<br/>
 				</div>
 
 				{% if has_tracklist %}
 
-				<h5>TRACKLIST:</h5>
-				<div class="large-12 columns">
+				<h6>TRACKLIST:</h6>
+				<div class="large-12 columns sub_panel">
 					<p>
 						<ul class="wc_list">
 						{% for track in work.tracklist.all %}
@@ -71,11 +82,12 @@
 						{% endfor %}
 						</ul>
 					</p>
+					<br/>
 				</div>
 
 				{% endif %}
 
-				<h5>CONTRIBUTORS:</h5>
+				<h6>CONTRIBUTORS:</h6>
 				<div class="large-12 columns">
 					<p>
 						{% for contributor in work.contributors.all %}
@@ -93,7 +105,7 @@
 			</div>
 			<div class="large-12 columns">
 
-				<h5>WEBSITE:</h5>
+				<h6>WEBSITE:</h6>
 				<div class="large-12 columns">
 					<p><a href="{{work.website.link}}">{{work.website.name}}</a></p>
 				</div>
@@ -101,7 +113,7 @@
 			</div>
 			<div class="large-12 columns">
 
-				<h5>DESCRIPTION:</h5>
+				<h6>DESCRIPTION:</h6>
 				<div class="large-12 columns">
 					<p>
 						<br>
@@ -129,10 +141,10 @@
 
 				</form>
 
-				<a href="" class="button small" data-reveal-id="add_tracklist_modal">Add Tracklist</a>
+				<a href="/wc_admin/edit_tracklist/" class="button small" >Add/Edit Tracklist</a>
 			</div>
 			<div class="large-8 medium-8 columns">
-				<h5>Add Contributor</h5>
+				<h6>Add Contributor</h6>
 				<div class="large-6 columns">
 					
 					<p class="justify">
@@ -175,7 +187,7 @@
 
 				<hr>
 
-				<h5>Set Production/Publication Company</h5>
+				<h6>Set Production/Publication Company</h6>
 
 				<div class="large-12 columns">
 
@@ -194,7 +206,7 @@
 								{% endfor %}
 							</select>
 							<br>
-							<h5>OR</h5>
+							<h6>OR</h6>
 							<label for="self_released">Check Here if Self-Released
 								<input type="checkbox" name="self_released">
 							</label>
@@ -223,7 +235,7 @@
 					<div class="large-4 medium-6 columns">
 						<a href="/wc_admin/view_article/?id={{ article.id }}">
 								<div class="sub_panel link_panel">
-									<h5>{{ article.title }}</h5>
+									<h6>{{ article.title }}</h6>
 									<p>By {{ article.author }}
 										<br>
 										{{ article.date_created }}
@@ -242,25 +254,6 @@
 
 						<!-- MODALS -->
 
-
-<div id="add_tracklist_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <h2 id="modalTitle">Add Track List to this Work</h2>
-  <p class="lead">How many tracks will you add?</p>
-
-	<div class="large-12 columns">
-		<p class="justify">
-			<form method="post" action="/wc_admin/add_tracklist/">
-				{% csrf_token %}
-				<input type="number" name="number_of_tracks" id="number_of_tracks" placeholder="How Many?" required />
-				<input type="hidden" name="work_id" id="work_id" value="{{ work.id }}" />
-				<input type="submit" class="button small" value="PROCEED" />
-			</form>
-			
-		</p>
-	</div>
-
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-</div>
 
 
 						<!-- END of MODALS -->

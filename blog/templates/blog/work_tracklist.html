@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %} Add Tracklist {% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+		<div class="panel">
+			<div class="row">
+				<h2>Tracklist for {{ work.title }}</h2>
+				<h4>{{ work.creator }}
+
+				{% for track in work.tracklist.all %}
+
+					<div class="panel">
+						<div class="row">
+
+							<div class="large-9 medium-10 columns">
+								<h3>{{ track.position }}. {{ track.title }}</h3>
+								<h6>Duration: {{ track.duration }}</h6>
+							</div>
+
+							<div class="large-3 medium-2 columns">
+
+								<a href="" class="button small" data-reveal-id="delete_track_{{track.id}}_modal">Delete/Remove Track</a>
+
+								<br>
+
+								<a href="" class="button small" data-reveal-id="edit_track_{{track.id}}_modal">Edit Track</a>
+
+
+						<!-- MODALS FOR this track -->
+
+							<!-- EDIT TRACK MODAL -->
+							<div id="edit_track_{{track.id}}_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+							  <h2 id="modalTitle">Edit Track: {{ track.title }}</h2>
+							  <p class="lead">How many tracks will you add?</p>
+
+								<div class="large-12 columns">
+									<p class="justify">
+										<form method="post" action="/wc_admin/edit_track/">
+											{% csrf_token %}
+
+											<label for="text">Title:
+												<input type="text" name="track_{{track.id}}_title" id="track_{{track.id}}_title" value="{{track.title}}" required />
+											</label>
+
+											<label for="text">Position:
+												<input type="text" style="max-width: 75px;" name="track_{{track.id}}_position" id="track_{{track.id}}_position" value="{{track.position}}" required />
+											</label>
+
+											<label for="text">Duration:
+												<input type="text" style="max-width: 125px;" name="track_{{track.id}}_duration" id="track_{{track.id}}_duration" value="{{track.duration}}" required />
+											</label>
+
+											<input type="hidden" name="track_id" id="track_id" value="{{ track.id }}" />
+											<input type="submit" class="button small" value="SAVE" />
+										</form>
+										
+									</p>
+								</div>
+
+							  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+							</div>
+
+							<!-- DELETE TRACK MODAL -->
+							<div id="delete_track_{{track.id}}_modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+							  <h2 id="modalTitle">Delete Track: {{ track.title }}</h2>
+							  <p class="lead">Do you want to permanently delete this track from the database?</p>
+
+								<div class="large-6 medium-6 columns">
+									<p>
+
+										<form method="post" action="/wc_admin/delete_track/">
+											{% csrf_token %}
+											<input type="hidden" name="track_id" value="{{track.id}}">
+											<input type="hidden" name="work_id" value="{{work.id}}">
+											<button type="submit" class="button small" href="">Delete Track (permanent)</button>
+
+										</form>
+										
+									</p>
+								</div>
+
+								<div class="large-6 medium-6 columns">
+									<p>
+
+										<form method="post" action="/wc_admin/remove_track/">
+											{% csrf_token %}
+											<input type="hidden" name="track_id" value="{{track.id}}">
+											<input type="hidden" name="work_id" value="{{work.id}}">
+											<button type="submit" class="button small" href="">Remove Track from this Tracklist</button>
+											<i>(The track will remain in the database, but may be inaccessible)</i>
+
+										</form>
+										
+									</p>
+								</div>
+
+							  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+							</div>
+
+
+												<!-- END of MODALS -->
+							</div>
+
+						</div>
+					</div>
+
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

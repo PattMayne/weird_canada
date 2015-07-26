@@ -4,7 +4,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
-from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput, DateTimeInput, SelectMultiple, FileField
+from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput, CheckboxInput, DateField, DateInput, DateTimeInput, SelectMultiple
 from indie_db.models import URL, Artist, Work, Contributor, ProductionCompany
 from blog.models import Article, Tag, Author
 
@@ -60,10 +60,9 @@ class EditAuthorForm(ModelForm):
 class AddArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'how_category', 'publish', 'epoch', 'cover_image')
+        fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'how_category', 'publish', 'epoch')
 
         widgets = {
-            'cover_image': FileInput(attrs={'required': True}),
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
             'date_created': DateTimeInput(attrs={'required': True}),
             'epoch': Select(attrs={'required': True}),
@@ -75,7 +74,6 @@ class AddArticleForm(ModelForm):
         }
 
         labels = {
-            'cover_image': _('Upload Cover Image'),
             'date_created': _('Orignal Publication Date'),
             'title': _('Title'),
             'body_en': _('English Text'),
@@ -85,6 +83,25 @@ class AddArticleForm(ModelForm):
             'how_category': _('Choose How Category'),
             'epoch': _('Epoch ("When" Category)'),
         }
+
+    def save(self, commit=True):
+        article = super(AddArticleForm, self).save(commit=True)
+        article.title = self.cleaned_data['title']
+        chosen_creation_date = self.cleaned_data['date_created']
+        now = datetime.datetime.now()
+        hour = now.hour
+        minute = now.minute
+        chosen_creation_date = chosen_creation_date.replace(hour=hour, minute=minute)
+        article.date_created = chosen_creation_date
+        article.date_modified = datetime.datetime.now()
+        article.body_en = self.cleaned_data['body_en']
+        article.body_fr = self.cleaned_data['body_fr']
+        article.publish = self.cleaned_data['publish']
+        article.article_category = self.cleaned_data['article_category']
+        article.how_category = self.cleaned_data['how_category']
+        article.epoch = self.cleaned_data['epoch']
+        article.save()
+        return article
 
 
 class UpdateProfileForm(forms.ModelForm):

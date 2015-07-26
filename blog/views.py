@@ -77,7 +77,7 @@ def write_new_mono_article(request):
 
 def save_new_review_article(request):
     if request.method == 'POST' and request.user.is_authenticated():
-        form = AddArticleForm(request.POST, request.FILES)
+        form = AddArticleForm(request.POST)
         work_id = request.POST.get('work_id')
         work = Work.objects.get(pk=work_id)
         artist = work.creator
@@ -121,7 +121,7 @@ def save_new_review_article(request):
 
 def save_new_mono_article(request):
     if request.method == 'POST' and request.user.is_authenticated():
-        form = AddArticleForm(request.POST, request.FILES)
+        form = AddArticleForm(request.POST)
         if form.is_valid():
             article = form.save()
             author = Author.objects.filter(user=request.user)[0]
@@ -290,20 +290,26 @@ def add_contributor(request):
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def write_tracklist(request):
+def edit_tracklist(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
-        number_of_tracks = request.POST.get('number_of_tracks')
-        track_number_list = []
-        for track_no in range(1, int(number_of_tracks) + 1):
-            track_number_list.append(track_no)
-        return render(request, 'blog/work_add_tracklist.html', {'work': work, 'number_of_tracks': number_of_tracks, 'track_number_list': track_number_list})
+        return render(request, 'blog/work_tracklist.html', {'work': work})
     else:
         error_message = 'You must be logged in to access this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def save_tracklist(request):
+def delete_track(request):
+    error_message = 'You must be logged in to access this page.'
+    return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+def remove_track(request):
+    error_message = 'You must be logged in to access this page.'
+    return render(request, 'blog/error.html', {'error_message': error_message})
+
+
+def save_track(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         number_of_tracks = request.POST.get('number_of_tracks')
