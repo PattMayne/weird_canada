@@ -121,7 +121,7 @@ def save_new_review_article(request):
 
 def save_new_mono_article(request):
     if request.method == 'POST' and request.user.is_authenticated():
-        form = AddArticleForm(request.POST, request.FILES or None)
+        form = AddArticleForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             article = form.save()
             author = Author.objects.filter(user=request.user)[0]

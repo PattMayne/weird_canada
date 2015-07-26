@@ -75,7 +75,7 @@ class AddArticleForm(ModelForm):
         }
 
         labels = {
-            'cover_image': _('Cover Image'),
+            'cover_image': _('Upload Cover Image'),
             'date_created': _('Orignal Publication Date'),
             'title': _('Title'),
             'body_en': _('English Text'),
