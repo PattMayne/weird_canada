@@ -300,13 +300,29 @@ def edit_tracklist(request):
 
 
 def delete_track(request):
-    error_message = 'You must be logged in to access this page.'
-    return render(request, 'blog/error.html', {'error_message': error_message})
+    if request.method == 'POST' and request.user.is_authenticated():
+        track = Track.objects.get(pk=request.POST.get('track_id'))
+        work = Work.objects.get(pk=request.POST.get('work_id'))
+        works = track.work_set.all()
+        for work in works:
+            work.tracklist.remove(track)
+            work.save()
+        track.delete()
+        return render(request, 'blog/work_tracklist.html', {'work': work})
+    else:
+        error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
 
 
 def remove_track(request):
-    error_message = 'You must be logged in to access this page.'
-    return render(request, 'blog/error.html', {'error_message': error_message})
+    if request.method == 'POST' and request.user.is_authenticated():
+        track = Track.objects.get(pk=request.POST.get('track_id'))
+        work = Work.objects.get(pk=request.POST.get('work_id'))
+        work.tracklist.remove(track)
+        return render(request, 'blog/work_tracklist.html', {'work': work})
+    else:
+        error_message = 'You must be logged in to access this page.'
+        return render(request, 'blog/error.html', {'error_message': error_message})
 
 
 def edit_track(request):
