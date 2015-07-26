@@ -42,7 +42,7 @@ class AddArtistForm(ModelForm):
 class AddWorkForm(ModelForm):
     class Meta:
         model = Work
-        fields = ('work_category', 'title', 'description_en', 'description_fr', 'extra_data', 'created', 'city', 'self_published', 'styles')
+        fields = ('work_category', 'title', 'description_en', 'description_fr', 'extra_data', 'created', 'city', 'self_published')
 
         labels = {
             'created': _('Release Date'),
@@ -52,7 +52,6 @@ class AddWorkForm(ModelForm):
             'description_fr': _('Français Description'),
             'extra_data': _('Extra Info'),
             'city': _('City and Province'),
-            'styles': _('Styles and Genres')
         }
 
         widgets = {
@@ -63,7 +62,6 @@ class AddWorkForm(ModelForm):
             'description_fr': Textarea(attrs={'required': True, 'placeholder': 'Entrez description (Français)'}),
             'extra_data': Textarea(attrs={'required': False, 'placeholder': 'Enter Extra Info'}),
             'city': TextInput(attrs={'placeholder': 'City, PR', 'required': False}),
-            'styles': TextInput(attrs={'required': False, 'placeholder': 'Separate them with a comma (" , ") Max five'})
         }
 
     def save(self, commit=True):
