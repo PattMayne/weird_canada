@@ -23,7 +23,10 @@
 								<p>Duration: {{ track.duration }}</p>
 								<p>
 									{% for audio in track.audioplayerlink_set.all %}
-					                   {{ audio }}
+					                   <audio class="audioTrack" preload="none" controls="controls">
+										<source src="{{ audio.ogg_link }}" type="audio/ogg; codecs=&quot;vorbis&quot;" />
+										<source src="{{ audio.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
+									</audio> 
 					               {% endfor %}
 								</p>
 							</div>

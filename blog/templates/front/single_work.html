@@ -30,6 +30,17 @@
 
 							<li>
 								<p><b>{{ track.position }}</b> - {{ track.title }} [{{ track.duration }}]</p>
+
+								{% for audio_file in track.audioplayerlink_set.all %}
+												<audio class="audioTrack" preload="none" id="{{ audio_file.id }}">
+													<source src="{{ audio_file.ogg_link }}" type="audio/ogg; codecs=&quot;vorbis&quot;" />
+													<source src="{{ audio_file.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
+												</audio>
+												<a onclick="play_track({{ audio_file.id }})"><i class="fa fa-play-circle"></i></a>
+												<a onclick="pause_track()"><i class="fa fa-pause"></i></a>
+												&nbsp;&nbsp;&nbsp;{{audio_file.title}}
+												<br />
+										{% endfor %}
 							</li>
 
 						 {% endfor %}
