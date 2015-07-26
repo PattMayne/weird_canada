@@ -17,40 +17,48 @@
 				
 				<div class="large-12 columns sub_panel">
 					<h6>ARTIST:</h6>
-					<p>{{work.creator.name}}</p>
-					<br/>
+					<div class="large-12 columns">
+						<p>{{work.creator.name}}</p>
+						<br/>
+					</div>
 				</div>
 
 				
 				<div class="large-12 columns sub_panel">
 					<h6>RELEASED:</h6>
-					<p>{{work.created}}</p>
-					<br/>
+					<div class="large-12 columns">
+						<p>{{work.created}}</p>
+						<br/>
+					</div>
 				</div>
 
 				
 				<div class="large-12 columns sub_panel">
 					<h6>CITY:</h6>
-					<p>{{work.city}}</p>
-					<br/>
+					<div class="large-12 columns">
+						<p>{{work.city}}</p>
+						<br/>
+					</div>
 				</div>
 
 				
 				<div class="large-12 columns sub_panel">
 					<h6>LABEL:</h6>
-					{% if work.self_published %}
-						<p>Self-Released</p>
-					{% else %}
-						<p>{{ work.production_company }}</p>
-					{% endif %}
-					<br/>
+					<div class="large-12 columns">
+						{% if work.self_published %}
+							<p>Self-Released</p>
+						{% else %}
+							<p>{{ work.production_company }}</p>
+						{% endif %}
+						<br/>
+					</div>
 				</div>
 
 				<div class="large-12 columns sub_panel">
 					<h6>WEBSITE:</h6>
-					
-						<p><a href="{{work.website.link}}">{{work.website.name}}</a></p>
-					
+						<div class="large-12 columns">
+							<p><a href="{{work.website.link}}">{{work.website.name}}</a></p>
+						</div>
 				
 				</div>
 
@@ -63,21 +71,25 @@
 				
 				<div class="large-12 columns sub_panel">
 					<h6>CATEGORY:</h6>
-					<p>{{work.work_category}}</p>
-					<br/>
+					<div class="large-12 columns">
+						<p>{{work.work_category}}</p>
+						<br/>
+					</div>
 				</div>
 
 				
 				<div class="large-12 columns sub_panel">
 					<h6>STYLES & GENRES:</h6>
-					<p>
-						{% for style in work.styles.all %}
-							
-							{{ style }}, 
-		
-						{% endfor %}
-					</p>
-					<br/>
+					<div class="large-12 columns">
+						<p>
+							{% for style in work.styles.all %}
+								
+								{{ style }}, 
+			
+							{% endfor %}
+						</p>
+						<br/>
+					</div>
 				</div>
 
 				{% if has_tracklist %}
@@ -102,17 +114,19 @@
 				
 				<div class="large-12 columns sub_panel">
 					<h6>CONTRIBUTORS:</h6>
-					<p>
-						{% for contributor in work.contributors.all %}
-							
-							<p>
-								<b>NAME:</b> {{ contributor.contributing_artist.name }} <br>
-								<b>ROLE:</b> {{ contributor.role }}
-							</p>
-							<br>
-		
-						{% endfor %}
-					</p>
+					<div class="large-12 columns">
+						<p>
+							{% for contributor in work.contributors.all %}
+								
+								<p>
+									<b>NAME:</b> {{ contributor.contributing_artist.name }} <br>
+									<b>ROLE:</b> {{ contributor.role }}
+								</p>
+								<br>
+			
+							{% endfor %}
+						</p>
+					</div>
 				</div>
 
 				<br><br>
