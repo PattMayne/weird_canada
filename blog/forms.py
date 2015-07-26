@@ -86,26 +86,6 @@ class AddArticleForm(ModelForm):
             'epoch': _('Epoch ("When" Category)'),
         }
 
-    def save(self, commit=True):
-        article = super(AddArticleForm, self).save(commit=True)
-        article.title = self.cleaned_data['title']
-        article.cover_image = self.cleaned_data['cover_image']
-        chosen_creation_date = self.cleaned_data['date_created']
-        now = datetime.datetime.now()
-        hour = now.hour
-        minute = now.minute
-        chosen_creation_date = chosen_creation_date.replace(hour=hour, minute=minute)
-        article.date_created = chosen_creation_date
-        article.date_modified = datetime.datetime.now()
-        article.body_en = self.cleaned_data['body_en']
-        article.body_fr = self.cleaned_data['body_fr']
-        article.publish = self.cleaned_data['publish']
-        article.article_category = self.cleaned_data['article_category']
-        article.how_category = self.cleaned_data['how_category']
-        article.epoch = self.cleaned_data['epoch']
-        article.save()
-        return article
-
 
 class UpdateProfileForm(forms.ModelForm):
     username = forms.CharField(required=False)
