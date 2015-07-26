@@ -11,22 +11,28 @@
 				<h2>{{ production_company.name }}</h2>
 				<br>
 			
+				<div class="sub_panel">
+					<h5>WEBSITE:</h5>
+					<p><a href="{{production_company.website.link}}">{{ production_company.website.name }}</a></p>
+				</div>
 
-				<h5>WEBSITE:</h5>
-				<p><a href="{{production_company.website.link}}">{{ production_company.website.name }}</a></p>
-				<br>
+				<div class="sub_panel">
+					<h5>CITY:</h5>
+					<p>{{ production_company.city }}</p>
+				</div>
 
-				<h5>CITY:</h5>
-				<p>{{ production_company.city }}</p>
-				<br>
+				<div class="sub_panel">
 
-				<h5>Styles:</h5>
-				<p>{% for style in production_company.styles.all %} {{ style }}, {% endfor %}</p>
-				<br>
+					<h5>Styles:</h5>
+					<p>{% for style in production_company.styles.all %} {{ style }}, {% endfor %}</p>
 
-				<h5>Formats:</h5>
-				<p>{% for format in production_company.formats.all %} {{ format }}, {% endfor %}</p>
-				<br>
+				</div>
+
+				<div class="sub_panel">
+
+					<h5>Formats:</h5>
+					<p>{% for format in production_company.formats.all %} {{ format }}, {% endfor %}</p>
+				</div>
 			</div>
 		</div>
 
