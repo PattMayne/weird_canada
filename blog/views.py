@@ -337,7 +337,7 @@ def edit_track(request):
         track.duration = duration
         track.position = position
         track.save()
-        return HttpResponseRedirect('/wc_admin/edit_tracklist/', {'work': work}})
+        return HttpResponseRedirect('/wc_admin/edit_tracklist/', {'work': work})
     else:
         error_message = 'You must be logged in to access this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
