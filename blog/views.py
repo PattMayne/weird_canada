@@ -77,7 +77,7 @@ def write_new_mono_article(request):
 
 def save_new_review_article(request):
     if request.method == 'POST' and request.user.is_authenticated():
-        form = AddArticleForm(request.POST, request.FILES or None)
+        form = AddArticleForm(request.POST, request.FILES)
         work_id = request.POST.get('work_id')
         work = Work.objects.get(pk=work_id)
         artist = work.creator
@@ -121,7 +121,7 @@ def save_new_review_article(request):
 
 def save_new_mono_article(request):
     if request.method == 'POST' and request.user.is_authenticated():
-        form = AddArticleForm(request.POST or None, request.FILES or None)
+        form = AddArticleForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save()
             author = Author.objects.filter(user=request.user)[0]
