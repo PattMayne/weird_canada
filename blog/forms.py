@@ -63,7 +63,7 @@ class AddArticleForm(ModelForm):
         fields = ('date_created', 'title', 'body_en', 'body_fr', 'article_category', 'how_category', 'publish', 'epoch', 'cover_image')
 
         widgets = {
-            'cover_image': FileField(),
+            'cover_image': FileInput(attrs={'required': True}),
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
             'date_created': DateTimeInput(attrs={'required': True}),
             'epoch': Select(attrs={'required': True}),
