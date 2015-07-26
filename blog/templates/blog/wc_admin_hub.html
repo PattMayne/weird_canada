@@ -131,7 +131,8 @@
 							<a href="/wc_admin/view_article/?id={{ article.id }}"><h5>{{ article.title }}</h5></a>
 							<ul class="wc_list">
 								<li><p>Author: {{ article.author }}</p></li>
-								<li><p>How cat: {{ article.how_category }}</p></li>
+								<li><p>Article cat: {{ article.article_category }}</p></li>
+								<li><p>How cat(s): {% for cat in article.how_category.all %} {{ cat }}, {% endfor %} </p></li>
 							</ul>
 
 						</div>
