@@ -11,7 +11,7 @@
 	<div class="panel">
 		<div class="row">
 			<div class="large-12 columns">
-				<h2>{{ article.title }}</h2>
+				<h1>{{ article.title }}</h1>
 			</div>
 
 			<div class="large-6 medium-6 columns">
@@ -90,14 +90,14 @@
 
 			<div class="large-6 medium-6 columns">
 				<img src="/media/{{ article.cover_image }}" class="front_page_pic" />
-
+				<br>
 			</div>
 
 			<div class="large-6 medium-6 columns">
 				<p>
 					<a class="button small" href="/admin/blog/article/{{ article.id }}/">Edit Article in Django Admin</a>
 					<br />
-					...in the django admin you can edit the Cover Image and other stuff too...
+					...in the django admin you can edit the Cover Image, Author, and other stuff too...
 				</p>
 			</div>
 
