@@ -126,11 +126,16 @@
 					<div class="large-12 columns">
 						{% for article in latest_articles %}
 
-						<a href="/wc_admin/view_article/?id={{ article.id }}"><h5>{{ article.title }}</h5></a>
-						<ul class="wc_list">
-							<li><p>{{ article.author }}</p></li>
-							<li><p>{{ article.category }}</p></li>
-						</ul>
+						<div class="sub_panel">
+
+							<a href="/wc_admin/view_article/?id={{ article.id }}"><h5>{{ article.title }}</h5></a>
+							<ul class="wc_list">
+								<li><p>Author: {{ article.author }}</p></li>
+								<li><p>Article cat: {{ article.article_category }}</p></li>
+								<li><p>How cat: {{ article.how_category }}</p></li>
+							</ul>
+
+						</div>
 
 						{% endfor %}
 						<br>
@@ -144,11 +149,15 @@
 
 						{% for work in latest_works %}
 
-						<a href="/wc_admin/view_work/?id={{ work.id }}"><h5>{{ work.title }}</h5></a>
-						<ul class="wc_list">
-							<li><p>{{ work.creator }}</p></li>
-							<li><p>{{ work.category }}</p></li>	
-						</ul>
+						<div class="sub_panel">
+
+							<a href="/wc_admin/view_work/?id={{ work.id }}"><h5>{{ work.title }}</h5></a>
+							<ul class="wc_list">
+								<li><p>{{ work.creator }}</p></li>
+								<li><p>{{ work.category }}</p></li>	
+							</ul>
+
+						</div>
 
 						{% endfor %}
 						<br>
@@ -162,9 +171,9 @@
 					<h3>LATEST ARTISTS:</h3>
 					<div class="large-12 columns">
 						{% for artist in latest_artists %}
-
-						<a href="/wc_admin/view_artist/?id={{ artist.id }}"><h5>{{ artist.name }}</h5></a>
-
+						<div class="sub_panel">
+							<a href="/wc_admin/view_artist/?id={{ artist.id }}"><h5>{{ artist.name }}</h5></a>
+						</div>
 						{% endfor %}
 						<br>
 					</div>
@@ -200,6 +209,7 @@
 						</table>
 					</div>
 				</div>
+			</div>
 		</div>
 	</div>
 </div>
