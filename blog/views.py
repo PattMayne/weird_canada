@@ -294,6 +294,9 @@ def edit_tracklist(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
         return render(request, 'blog/work_tracklist.html', {'work': work})
+    elif request.method == 'GET' and request.user.is_authenticated():
+        work = Work.objects.get(pk=request.GET.get('id'))
+        return render(request, 'blog/work_tracklist.html', {'work': work})
     else:
         error_message = 'You must be logged in to access this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
@@ -337,7 +340,7 @@ def edit_track(request):
         track.duration = duration
         track.position = position
         track.save()
-        return HttpResponseRedirect('/wc_admin/edit_tracklist/', {'work': work})
+        return HttpResponseRedirect('/wc_admin/edit_tracklist/?id=' + str(work.id))
     else:
         error_message = 'You must be logged in to access this page.'
         return render(request, 'blog/error.html', {'error_message': error_message})
