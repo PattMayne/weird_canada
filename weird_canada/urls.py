@@ -2,11 +2,14 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from blog.feeds import LatestArticlesFeed
 
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'weird_canada.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+
+    url(r'^feed/$', LatestArticlesFeed()),
 
     url(r'^$', 'indie_db.views.index'),
 
