@@ -11,14 +11,16 @@
 				<h2>Tracklist for {{ work.title }}</h2>
 				<h4>{{ work.creator }}
 
-				{% for track in work.tracklist.all %}
+				
 
-					<div class="panel">
+				{% for track in work.tracklist.all %}
+					<div class="sub_panel">
 						<div class="row">
+					
 
 							<div class="large-9 medium-10 columns">
-								<h3>{{ track.position }}. {{ track.title }}</h3>
-								<h6>Duration: {{ track.duration }}</h6>
+								<h4>{{ track.position }}. {{ track.title }}</h4>
+								<p>Duration: {{ track.duration }}</p>
 							</div>
 
 							<div class="large-3 medium-2 columns">
