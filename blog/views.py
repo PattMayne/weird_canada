@@ -601,6 +601,45 @@ def browse_works(request):
     return render(request, 'blog/browse_works.html', {'works': works, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request, 'category': category})
 
 
+def browse_companies(request):
+    results_per_page = 25
+    search_request = ''
+    order_by_request = ''
+    order_by = '-id'
+    if request.method == 'GET':
+        
+        order_by_request = request.GET.get('order_by')
+        search_request = request.GET.get('search')
+
+        if order_by_request == 'name_asc':
+            order_by = 'name'
+        elif order_by_request == 'name_desc':
+            order_by = '-name'
+
+        if search_request is None:
+            all_companies = ProductionCompany.objects.all().order_by(order_by)
+        else:
+            all_companies = ProductionCompany.objects.filter(name__icontains=search_request).order_by(order_by)
+
+    pager = Paginator(all_companies, results_per_page)
+
+    if request.method == 'GET' and 'page' in request.GET:
+        page = request.GET.get('page')
+    else:
+        page = 1
+
+    try:
+        companies = pager.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        companies = pager.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        companies = pager.page(pager.num_pages)
+    return render(request, 'blog/browse_works.html', {'companies': companies, 'results_per_page': results_per_page, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search': search_request, 'order_by': order_by_request})
+
+
+
 # WC_ADMIN profile stuff
 
 

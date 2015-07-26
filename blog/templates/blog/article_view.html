@@ -47,7 +47,7 @@
 					{% if article.work_link %}
 					<tr>
 						<td>
-							<h6>Work:</h6>
+							<h6>Based On Work:</h6>
 						</td>
 						<td>
 							<h6><a href="/wc_admin/view_work/?id={{ article.work_link.id }}"> {{ article.work_link }}</a></h6>
@@ -58,10 +58,21 @@
 					{% if article.artist_link %}
 					<tr>
 						<td>
-							<h6>Artist: </h6>
+							<h6>Based On Artist: </h6>
 						</td>
 						<td>
 							<h6>{{ article.artist_link }}</h6>
+						</td>
+					</tr>
+					{% endif %}
+
+					{% if article.company_link %}
+					<tr>
+						<td>
+							<h6>Based On Production Company: </h6>
+						</td>
+						<td>
+							<h6>{{ article.company_link }}</h6>
 						</td>
 					</tr>
 					{% endif %}

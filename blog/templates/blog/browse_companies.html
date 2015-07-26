@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %} Browse Production Companies {% endblock %}
+
+{% block content %}
+
+<div class="large-12 columns">
+	<div class="row">
+		<div class="panel">
+			<div class="row">
+				<h6>SEARCH & SORT:</h6>
+				<form method="get" action="/wc_admin/browse_companies/">
+					
+					<div class="large-6 medium-6 columns">
+
+						<select name="order_by" id="id_order_by">
+							<option value="name_desc">Name (desc)</option>
+							<option value="name_asc">Name (asc)</option>
+						</select>
+						<br>
+
+					</div>
+					<div class="large-6 medium-6 columns">
+						<input type="text" name="search" id="id_search" placeholder="Search Names">
+					</div>
+					
+					<div class="large-12 columns">
+						<input type="submit" class="button small" value="GO">
+					</div>
+
+					<div class="large-12 columns">
+						<p>Page {{page}} of {{ number_of_pages }}</p>
+						<p>{{ total_results }} results</p>
+					</div>
+
+				</form>
+				<div class="large-12 columns">
+					<h3>COMPANIES:</h3>
+
+					{% for company in companies %}
+							
+						<div class="large-4 medium-6 small-12 columns">
+							<a href="/wc_admin/view_company/?id={{ company.id }}">
+								<div class="sub_panel link_panel">
+									<h5>{{ company.name }}</h5>
+									<p>
+										<b>City:</b> {{ company.city }}
+									</p>
+									<p>
+										<b>Formats:</b> {% for format in company.formats.all %} {{ format }}, {% endfor %}
+									</p>
+									<p>
+										<b>Styles:</b> {% for style in company.styles.all %} {{ style }}, {% endfor %}
+									</p>
+								</div>
+							</a>
+						</div>
+
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="large-12 columns">
+			{% if artists.has_previous %}
+            <a href="?page={{ artists.previous_page_number }}&order_by={{ order_by }}&search={{ search }}" class="left">previous</a>
+        	{% endif %}
+
+        	{% if artists.has_next %}
+            <a href="?page={{ artists.next_page_number }}&order_by={{ order_by }}&search={{ search }}" class="right">next</a>
+        	{% endif %}
+        </div>
+	</div>
+</div>
+
+
+{% endblock %}

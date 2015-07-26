@@ -166,7 +166,7 @@ def indie_index(request):
 
 def search_works(request):
     works = Work.objects.all()
-    works_per_page = 3
+    works_per_page = 25
     categories = ArticleCategory.objects.all()
     pages = Page.objects.filter(publish=True)
     work_categories = WorkCategory.objects.all()
@@ -228,7 +228,7 @@ def search_works(request):
 
 def search_artists(request):
     artists = Artist.objects.all()
-    artists_per_page = 3
+    artists_per_page = 25
     categories = ArticleCategory.objects.all()
     pages = Page.objects.filter(publish=True)
     search_display = []
@@ -264,7 +264,7 @@ def search_artists(request):
 
 def search_publishers(request):
     publishers = ProductionCompany.objects.all()
-    publishers_per_page = 3
+    publishers_per_page = 25
     categories = ArticleCategory.objects.all()
     pages = Page.objects.filter(publish=True)
     search_display = []

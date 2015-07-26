@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 #from django_markdown.models import MarkdownField
-from indie_db.models import Artist, Work, Track
+from indie_db.models import Artist, Work, Track, ProductionCompany
 
 # Create your models here.
 
@@ -112,6 +112,7 @@ class Article(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     work_link = models.ForeignKey(Work, null=True, blank=True)
     artist_link = models.ForeignKey(Artist, null=True, blank=True)
+    company_link = models.ForeignKey(ProductionCompany, null=True, blank=True)
     images = models.ManyToManyField(ArticleImage, null=True, blank=True)
     audio_links = models.ManyToManyField(AudioPlayerLink, null=True, blank=True)
 
