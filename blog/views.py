@@ -309,19 +309,18 @@ def remove_track(request):
     return render(request, 'blog/error.html', {'error_message': error_message})
 
 
-def save_track(request):
+def edit_track(request):
     if request.method == 'POST' and request.user.is_authenticated():
         work = Work.objects.get(pk=request.POST.get('work_id'))
-        number_of_tracks = request.POST.get('number_of_tracks')
-        for track_no in range(1, int(number_of_tracks) + 1):
-            new_track = Track()
-            new_track.position = track_no
-            new_track.title = request.POST.get('track_title_' + str(track_no))
-            if 'duration_' + str(track_no) in request.POST:
-                new_track.duration = request.POST.get('duration_' + str(track_no))
-            new_track.save()
-            work.tracklist.add(new_track)
-            work.save()
+        track_id = request.POST.get('track_id')
+        track = Work.objects.get(pk=track_id)
+        title = request.POST.get('track_' + str(track_id) + '_title')
+        duration = request.POST.get('track_' + str(track_id) + '_duration')
+        position = request.POST.get('track_' + str(track_id) + '_position')
+        track.title = title
+        track.duration = duration
+        track.position = position
+        track.save()
         return HttpResponseRedirect('/wc_admin/view_work/?id=' + str(work.id))
     else:
         error_message = 'You must be logged in to access this page.'

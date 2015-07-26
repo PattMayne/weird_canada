@@ -35,7 +35,7 @@ urlpatterns = patterns('',
     url(r'^wc_admin/edit_tracklist/', 'blog.views.edit_tracklist', name="edit_tracklist_view"),
     url(r'^wc_admin/delete_track/', 'blog.views.delete_track', name="delete_track_view"),
     url(r'^wc_admin/remove_track/', 'blog.views.remove_track', name="remove_track_view"),
-    url(r'^wc_admin/save_track/', 'blog.views.save_track', name="save_track_view"),
+    url(r'^wc_admin/edit_track/', 'blog.views.edit_track', name="edit_track_view"),
     url(r'^wc_admin/write_new_production_company/', 'blog.views.write_new_production_company', name="add_new_production_company_view"),
     url(r'^wc_admin/save_new_production_company/', 'blog.views.save_new_production_company', name="save_new_production_company_view"),
 
