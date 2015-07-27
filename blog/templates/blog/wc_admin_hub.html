@@ -286,6 +286,20 @@
 						Visitors to the site will primarily be looking at Articles, but they'll be able to do dynamic searches of Artists and Works to help them find the right Articles. Plus they can just check out raw data about an album, book, or artist without reading a full review.
 					</p>
 		  		</div>
+		  	<p>
+		  		<b>Custom Admin VS. Django Admin:</b>
+		  	</p>
+
+		  		<div class="large-12 columns">
+					<p class="justify">
+						The <b>custom admin</b> site (where you are right now) is streamlined to make it easier to add artists, works of art, and articles based on works of art. This is also the best place to add or edit the tracklists for an album (don't try to edit tracklists in the django-admin site... it will be a headache).
+						<br>
+						However, the <b>django-admin</b> site is a more powerful administration tool and will give you more control over the database once the items are created.
+						<br><br>
+						So, the idea is that you should create objects in the custom admin (here), and perform fine-tuning and editing in the django-admin.
+					</p>
+		  		</div>
+
 		  </div>
 
 		  <div class="content" id="panel2">
@@ -356,9 +370,7 @@
 		  	</p>
 		  	<div class="large-12 columns">
 				<p class="justify">
-					If you are the person who wrote an article or who created a profile then you can go back and edit those things later. Otherwise, only certain privilaged users can edit articles and profiles that they did not create.
-					<br><br>
-					To edit your entries just go to the entry and press the "edit" button. That button will only appear for those who have the rights to edit them.
+					Most of the editing will be done in Django's built-in backend. That's where you'll want to add a cover image, set an article's <i>author,</i> and many other things.
 				</p>
 		  	</div>
 		  </div>
