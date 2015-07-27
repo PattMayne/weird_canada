@@ -43,16 +43,6 @@
 					</div>
 				{% endif %}
 
-				<div class="postMeta col-md-12">
-					<div class="postCredits">
-						<p class="postAuthor">
-							{{ article.author.tagline }} <strong>{{ article.author }}</strong>
-						</p>
-						<p class="postDate"><strong>Posted:</strong> {{ article.date_created|date:"M d, Y" }}</p>
-					</div>
-					
-				</div>
-
 			{% if article.work_link.tracklist.count > 0 %}
 
 				<div class="postMeta col-md-12">
@@ -107,6 +97,17 @@
 					{% if article.work_link %}
 					<h2><a href="/indie_db/artists?id={{ article.work_link.creator.id }}">{{ article.work_link.creator }}</a></h2>
 					{% endif %}
+
+					<div class="postMeta col-md-12">
+						<div class="postCredits">
+							<p class="postAuthor">
+								{{ article.author.tagline }} <strong>{{ article.author }}</strong>
+							</p>
+							<p class="postDate"><strong>Posted:</strong> {{ article.date_created|date:"M d, Y" }}</p>
+						</div>
+						
+					</div>
+
 				</div>
 			</div>
 
