@@ -4,9 +4,9 @@ from blog.models import Article
 
 
 class LatestArticlesFeed(Feed):
-    title = "Weird Canada Latest Articles"
+    title = "weird canada - A blog for emerging and experimental Canadian music and arts"
     link = "/feed/"
-    description = "The latest articles from WeirdCanada.com"
+    description = "we are northernly"
 
     def items(self):
         return Article.objects.order_by('-date_created')[:5]

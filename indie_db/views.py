@@ -84,8 +84,10 @@ def index(request):
         articles = pager.page(pager.num_pages)
 
     if page == 1 or page == '1':
-        return render(request, 'front/front_alt.html', {'categories': categories, 'pages': pages, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'cat': category})
-        #return render(request, 'front/front_page.html', {'categories': categories, 'pages': pages, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'cat': category})
+        if request.method == 'GET' and 'alt' in request.GET:
+            return render(request, 'front/front_page.html', {'categories': categories, 'pages': pages, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'cat': category})
+        else:
+            return render(request, 'front/front_alt.html', {'categories': categories, 'pages': pages, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'cat': category})        
     else:
         return render(request, 'front/grid_page.html', {'categories': categories, 'pages': pages, 'articles': articles, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'cat': category})
 
