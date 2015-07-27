@@ -50,11 +50,11 @@
 	margin: 0;
 }
 
-.tab-title .a .p,
-.tab-title .a {
+.tab-title a p,
+.tab-title a {
 
 	margin: 0!important;
-	padding:0!important;
+	padding: 0!important;
 }
 
 .tabs .active{
