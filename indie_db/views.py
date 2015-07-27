@@ -194,7 +194,7 @@ def search_works(request):
             search_string += 'style=' + request.GET.get('style') + '&'
             works = works.filter(styles__name__icontains=request.GET.get('style'))
 
-        if 'format' in request.GET and request.GET.get('format') != '':
+        if 'format' in request.GET and request.GET.get('format') != '' and request.GET.get('format') != 'all':
             search_display.append(request.GET.get('format'))
             search_string += 'format=' + request.GET.get('format') + '&'
             works = works.filter(formats__label__icontains=request.GET.get('format'))
