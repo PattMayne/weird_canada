@@ -15,9 +15,12 @@ class LatestArticlesFeed(Feed):
         return item.title
 
     def item_description(self, item):
+        work_info = ''
+        if item.work_link:
+            work_info = item.work_link.creator + ' - ' + item.work_link.title + '<br><br>'
         body_en = item.body_en[:700]
         body_fr = item.body_fr[:700]
-        summary = '<b>EN:</b><br>' + body_en + '<br><br><b>FR:</b><br>' + body_fr
+        summary = work_info + '<b>EN:</b><br>' + body_en + '<br><br><b>FR:</b><br>' + body_fr
         return summary
 
     # item_link is only needed if NewsItem has no get_absolute_url method.
