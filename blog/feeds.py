@@ -17,7 +17,7 @@ class LatestArticlesFeed(Feed):
     def item_description(self, item):
         work_info = ''
         if item.work_link:
-            work_info = item.work_link.creator + ' - ' + item.work_link.title + '<br><br>'
+            work_info = item.work_link.creator.name + ' - ' + item.work_link.title + '<br><br>'
         body_en = item.body_en[:700]
         body_fr = item.body_fr[:700]
         summary = work_info + '<b>EN:</b><br>' + body_en + '<br><br><b>FR:</b><br>' + body_fr
