@@ -5,18 +5,18 @@ from blog.models import Article
 
 class LatestArticlesFeed(Feed):
     title = "Weird Canada Latest Articles"
-    link = "/"
+    link = "/feed/"
     description = "The latest articles from WeirdCanada.com"
 
-    def articles(self):
+    def items(self):
         return Article.objects.order_by('-date_created')[:5]
 
-    def article_title(self, article):
-        return article.title
+    def item_title(self, item):
+        return item.title
 
-    def item_description(self, article):
-        return article.description
+    def item_description(self, item):
+        return item.description
 
     # item_link is only needed if NewsItem has no get_absolute_url method.
-    def item_link(self, article):
-        return reverse('news-item', args=[article.pk])
+    def item_link(self, item):
+        return reverse('news-item', args=[item.pk])
