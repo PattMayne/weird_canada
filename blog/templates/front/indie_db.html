@@ -17,6 +17,12 @@
 						<input type="text" name="artist_name" id="artist_name_id" placeholder="Artist" />
 						<input type="text" name="style" id="style_id" placeholder="Style or Genre">
 						<input type="text" name="city" id="city_id" placeholder="City">
+						<select name="format" id="format_id">
+							<option value="all">All Formats</option>
+							{% for format in formats %}
+							<option value="{{ format }}">{{ format }}</option>
+							{% endfor %}
+						</select>
 						<select name="cat" id="cat_id">
 							<option value="all">All Categories</option>
 							{% for category in work_categories %}

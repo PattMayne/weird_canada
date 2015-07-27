@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Weird Canada apps stuff
 from indie_db.forms import AddArtistForm, AddWorkForm, AddProductionCompanyForm
-from indie_db.models import Artist, Work, URL, Style, Contributor, Track, ProductionCompany, WorkCategory
+from indie_db.models import Artist, Work, URL, Style, Contributor, Track, ProductionCompany, WorkCategory, Format
 from blog.models import Article, Author, Tag, ArticleCategory, HowCategory, Page
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
@@ -161,15 +161,17 @@ def search_articles(request):
 
 def indie_index(request):
     categories = ArticleCategory.objects.all()
+    formats = Format.objects.all()
     pages = Page.objects.filter(publish=True)
     work_categories = WorkCategory.objects.all()
-    return render(request, 'front/indie_db.html', {'categories': categories, 'work_categories': work_categories, 'pages': pages})
+    return render(request, 'front/indie_db.html', {'formats': formats, 'categories': categories, 'work_categories': work_categories, 'pages': pages})
 
 
 def search_works(request):
     works = Work.objects.all()
     works_per_page = 25
     categories = ArticleCategory.objects.all()
+    formats = Format.objects.all()
     pages = Page.objects.filter(publish=True)
     work_categories = WorkCategory.objects.all()
     search_string = '&'
@@ -191,6 +193,11 @@ def search_works(request):
             search_display.append(request.GET.get('style'))
             search_string += 'style=' + request.GET.get('style') + '&'
             works = works.filter(styles__name__icontains=request.GET.get('style'))
+
+        if 'format' in request.GET and request.GET.get('format') != '':
+            search_display.append(request.GET.get('format'))
+            search_string += 'format=' + request.GET.get('format') + '&'
+            works = works.filter(formats__label__icontains=request.GET.get('format'))
 
         if 'city' in request.GET and request.GET.get('city') != '':
             search_display.append(request.GET.get('city'))
@@ -225,7 +232,7 @@ def search_works(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         works = pager.page(pager.num_pages)
 
-    return render(request, 'front/search_works.html', {'work_categories': work_categories, 'pages': pages, 'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
+    return render(request, 'front/search_works.html', {'formats': formats, 'work_categories': work_categories, 'pages': pages, 'categories': categories, 'works': works, 'total_results': pager.count, 'number_of_pages': pager.num_pages, 'page': page, 'search_string': search_string, 'search_display': search_display})
 
 
 def search_artists(request):
