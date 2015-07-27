@@ -12,46 +12,55 @@
 				<br>
 			
 				<div class="sub_panel">
-					<h5>WEBSITE:</h5>
-					<p><a href="{{production_company.website.link}}">{{ production_company.website.name }}</a></p>
-				</div>
-
-				<div class="sub_panel">
-					<h5>CITY:</h5>
-					<p>{{ production_company.city }}</p>
-				</div>
-
-				<div class="sub_panel">
-
-					<h5>Styles:</h5>
-					<p>{% for style in production_company.styles.all %} {{ style }}, {% endfor %}</p>
-
-				</div>
-
-				<div class="sub_panel">
-
-					<h5>Formats:</h5>
-					<p>{% for format in production_company.formats.all %} {{ format }}, {% endfor %}</p>
-				</div>
-
-				<div class="sub_panel">
-					<h6>DESCRIPTION:</h6>
-					<div class="large-6 columns">
-						<p class="justify">
-							ANGLAIS:
-							<br><br><br>
-							{{ production_company.description_en }}
-							<br>
-						</p>
+					<div class="row">
+						<h5>WEBSITE:</h5>
+						<p><a href="{{production_company.website.link}}">{{ production_company.website.name }}</a></p>
 					</div>
-					<div class="large-6 columns">
-						<p class="justify">
-							FRENCH:
+				</div>
 
-							<br><br><br>
-							{{ production_company.description_fr }}
-							<br>
-						</p>
+				<div class="sub_panel">
+					<div class="row">
+						<h5>CITY:</h5>
+						<p>{{ production_company.city }}</p>
+					</div>
+				</div>
+
+				<div class="sub_panel">
+					<div class="row">
+
+						<h5>Styles:</h5>
+						<p>{% for style in production_company.styles.all %} {{ style }}, {% endfor %}</p>
+					</div>
+				</div>
+
+				<div class="sub_panel">
+					<div class="row">
+
+						<h5>Formats:</h5>
+						<p>{% for format in production_company.formats.all %} {{ format }}, {% endfor %}</p>
+					</div>
+				</div>
+
+				<div class="sub_panel">
+					<div class="row">
+						<h6>DESCRIPTION:</h6>
+						<div class="large-6 columns">
+							<p class="justify">
+								ANGLAIS:
+								<br><br><br>
+								{{ production_company.description_en }}
+								<br>
+							</p>
+						</div>
+						<div class="large-6 columns">
+							<p class="justify">
+								FRENCH:
+
+								<br><br><br>
+								{{ production_company.description_fr }}
+								<br>
+							</p>
+						</div>
 					</div>
 				</div>
 

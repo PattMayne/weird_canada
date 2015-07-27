@@ -29,11 +29,15 @@
 									{{ articles.0.title }}
 								</a>
 							</h1>
+
+							<!--
 							<h2 class="">
 								<b>
 									{{ articles.0.author }}
 								</b>
 							</h2>
+							-->
+							
 							<h2><a href="/indie_db/authors?id={{ articles.0.author.id }}">{{ articles.0.author }}</a> | {{ articles.0.date_created|date:"M d, Y" }}</h2>
 							<p>
 								<div class="tabs-content">

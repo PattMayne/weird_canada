@@ -55,7 +55,7 @@ from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAut
 
 def index(request):
 
-    articles_per_page = 9
+    articles_per_page = 6
     category = 'all'
 
     articles = []

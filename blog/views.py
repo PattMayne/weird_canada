@@ -13,7 +13,7 @@ from indie_db.models import Artist, Work, URL, Style, Contributor, Track, Produc
 from blog.models import Article, Author, Tag
 from blog.forms import AddArticleForm, AddAuthorForm, UpdateProfileForm, EditAuthorForm
 
-# Create your views here.
+# This file is for the backend... these functions define admin behaviours
 
 
 #  EXTRA FUNCTIONS

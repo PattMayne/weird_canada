@@ -24,8 +24,8 @@ class AddArtistForm(ModelForm):
             'birthdate': DateInput(attrs={'required': False}),
             'deathdate': DateInput(attrs={'required': False}),
             'group': CheckboxInput(attrs={'required': False}),
-            'description_en': Textarea(attrs={'required': True, 'placeholder': 'Enter Artist Description (English)'}),
-            'description_fr': Textarea(attrs={'required': True, 'placeholder': 'Entrez Artiste description (Français)'}),
+            'description_en': Textarea(attrs={'required': False, 'placeholder': 'Enter Artist Description (English)'}),
+            'description_fr': Textarea(attrs={'required': False, 'placeholder': 'Entrez Artiste description (Français)'}),
             }
 
     def save(self, commit=True):
@@ -58,8 +58,8 @@ class AddWorkForm(ModelForm):
             'created': DateInput(attrs={'required': False}),
             'work_category': Select(attrs={'required': True}),
             'title': TextInput(attrs={'placeholder': 'Enter Title', 'required': True}),
-            'description_en': Textarea(attrs={'required': True, 'placeholder': 'Enter Description (English)'}),
-            'description_fr': Textarea(attrs={'required': True, 'placeholder': 'Entrez description (Français)'}),
+            'description_en': Textarea(attrs={'required': False, 'placeholder': 'Enter Description (English)'}),
+            'description_fr': Textarea(attrs={'required': False, 'placeholder': 'Entrez description (Français)'}),
             'extra_data': Textarea(attrs={'required': False, 'placeholder': 'Enter Extra Info'}),
             'city': TextInput(attrs={'placeholder': 'City, PR', 'required': False}),
         }
@@ -90,7 +90,7 @@ class AddProductionCompanyForm(ModelForm):
             }
 
         widgets = {
-            'name': TextInput(attrs={'placeholder': 'Enter Artist Name', 'required': True}),
+            'name': TextInput(attrs={'placeholder': 'Enter Company Name', 'required': True}),
             'city': TextInput(attrs={'required': False}),
             'description_en': Textarea(attrs={'required': False, 'placeholder': 'Enter Description (English)'}),
             'description_fr': Textarea(attrs={'required': False, 'placeholder': 'Entrez description (Français)'}),
