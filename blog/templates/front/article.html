@@ -12,35 +12,36 @@
 					<br>
 
 					{% if article.work_link %}
-
-					<h4>{{ article.work_link.creator.name }}</h4>
-					<p><i>{{ article.work_link.title }}</i></p>
-
+					<div class="align_center">
+						<h4>{{ article.work_link.creator.name }}</h4>
+						<p><i>{{ article.work_link.title }}</i></p>
+					</div>
 					{% elif article.artist_link %}
-					
-					<h4>{{ article.artist_link.name }}</h4>
-
+					<div class="align_center">
+						<h4>{{ article.artist_link.name }}</h4>
+					</div>
 					{% elif article.company_link %}
-					
-					<h4>{{ article.company_link.name }}</h4>
-
+					<div class="align_center">
+						<h4>{{ article.company_link.name }}</h4>
+					</div>
 					{% endif %}
 
+				{% if article.audio_links.count > 0 %}
+					<div class="postMediaPlayer">
+						<div class="audio_panel">
+							{% for audio_file in article.audio_links.all %}
+							
+								<audio class="audioTrack" preload="none" controls="controls">
+									<source src="{{ audio_file.ogg_link }}" type="audio/ogg; codecs=&quot;vorbis&quot;" />
+									<source src="{{ audio_file.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
+								</audio> 
+								<p>{{ audio_file.title }}</p>
+								<br>
 
-				<div class="postMediaPlayer">
-					<div class="audio_panel">
-						{% for audio_file in article.audio_links.all %}
-						
-							<audio class="audioTrack" preload="none" controls="controls">
-								<source src="{{ audio_file.ogg_link }}" type="audio/ogg; codecs=&quot;vorbis&quot;" />
-								<source src="{{ audio_file.mp3_link }}" type="audio/mpeg; codecs=&quot;mp3&quot;" />
-							</audio> 
-							<p>{{ audio_file.title }}</p>
-							<br>
-
-						{% endfor %}
+							{% endfor %}
+						</div>
 					</div>
-				</div>
+				{% endif %}
 
 				<div class="postMeta col-md-12">
 					<div class="postCredits">
