@@ -67,9 +67,9 @@
 				
 				{% if artist.group %}
 				<div class="col-md-6">
-					<h2>Members:</h2>
+					<h2>Worked with:</h2>
 						<ul class="details_list">
-							{% for member in artist.members.all %}
+							{% for member in artist.worked_with.all %}
 								<li>
 									<a href="/indie_db/artists?id={{ member.id }}">{{ member.name }}</a>
 								</li>

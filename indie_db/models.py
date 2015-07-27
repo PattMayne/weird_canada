@@ -77,7 +77,7 @@ class Artist(models.Model):
     birthdate = models.DateField(null=True, blank=True)
     deathdate = models.DateField(null=True, blank=True)
     group = models.BooleanField(default=False)
-    members = models.ManyToManyField('self', null=True, blank=True)
+    worked_with = models.ManyToManyField('self', null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True)
     website = models.ForeignKey(URL, null=True, blank=True)
 
