@@ -9,6 +9,24 @@
 		
 		<div class="postMedia col-md-4">
 					<img src="/media/{{ article.cover_image }}" class="front_page_pic" />
+					<br>
+
+					{% if article.work_link %}
+
+					<h4>{{ article.work_link.creator.name }}</h4>
+					<p><i>{{ article.work_link.title }}</i></p>
+
+					{% elif article.artist_link %}
+					
+					<h4>{{ article.artist_link.name }}</h4>
+
+					{% elif article.company_link %}
+					
+					<h4>{{ article.company_link.name }}</h4>
+
+					{% endif %}
+
+
 				<div class="postMediaPlayer">
 					<div class="audio_panel">
 						{% for audio_file in article.audio_links.all %}
