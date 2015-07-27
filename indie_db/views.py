@@ -347,7 +347,7 @@ def single_artist(request):
                 if style not in styles:
                     styles.append(style)
 
-        return render(request, 'front/single_artist.html', {'categories': categories, 'artist': artist, 'styles': styles, 'works': works, 'pages': pages, 'groups': groups})
+        return render(request, 'front/single_artist.html', {'categories': categories, 'artist': artist, 'styles': styles, 'works': works, 'pages': pages})
     else:
         return HttpResponseRedirect('/indie_db/artists/search/')
 
