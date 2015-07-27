@@ -78,6 +78,20 @@
 						</ul>
 				</div>
 				{% endif %}
+
+				{% if groups.count > 0 %}
+				<div class="col-md-6">
+					<h2>Member of:</h2>
+						<ul class="details_list">
+							{% for group in groups %}
+								<li>
+									<a href="/indie_db/artists?id={{ group.id }}">{{ group.name }}</a>
+								</li>
+							{% endfor %}
+
+						</ul>
+				</div>
+				{% endif %}
 				
 			</div>
 		</div>
