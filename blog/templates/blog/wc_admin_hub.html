@@ -285,6 +285,7 @@
 					<p class="justify">
 						Visitors to the site will primarily be looking at Articles, but they'll be able to do dynamic searches of Artists and Works to help them find the right Articles. Plus they can just check out raw data about an album, book, or artist without reading a full review.
 					</p>
+					<br>
 		  		</div>
 		  	<p>
 		  		<b>Custom Admin VS. Django Admin:</b>
@@ -293,7 +294,7 @@
 		  		<div class="large-12 columns">
 					<p class="justify">
 						The <b>custom admin</b> site (where you are right now) is streamlined to make it easier to add artists, works of art, and articles based on works of art. This is also the best place to add or edit the tracklists for an album (don't try to edit tracklists in the django-admin site... it will be a headache).
-						<br>
+						<br><br>
 						However, the <b>django-admin</b> site is a more powerful administration tool and will give you more control over the database once the items are created.
 						<br><br>
 						So, the idea is that you should create objects in the custom admin (here), and perform fine-tuning and editing in the django-admin.
@@ -349,6 +350,13 @@
 					A profile for a "Work" of art cannot exist in the database until a profile exists for the Artist who created it. So first you have to either find that Artist in the database, or create a new profile for the Artist.
 					<br><br>
 					After finding or saving the Artist's profile, go to their profile page and press "Add Work by this Artist." The form from there should be self-explanatory. There are extra options you can add after you save the profile... extra options include adding Contributors and a Track List.
+				</p>
+				<br>
+				<p>
+			  		<b>Tracklists:</b>
+			  	</p>
+				<p class="justify">
+					Once a Work has been added to the database you can add a tracklist to the Work. Each Track exists as a database object, just like a Work. You can add, edit, and remove Track objects as much as you want, but you should do this in the <b>custom admin</b> (here) rather than the django-admin.
 				</p>
 		  	</div>
 		  </div>
