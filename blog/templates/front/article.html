@@ -9,22 +9,6 @@
 		
 		<div class="postMedia col-md-4">
 					<img src="/media/{{ article.cover_image }}" class="front_page_pic" />
-					<br>
-
-					{% if article.work_link %}
-					<div class="align_center">
-						<h4>{{ article.work_link.creator.name }}</h4>
-						<p><i>{{ article.work_link.title }}</i></p>
-					</div>
-					{% elif article.artist_link %}
-					<div class="align_center">
-						<h4>{{ article.artist_link.name }}</h4>
-					</div>
-					{% elif article.company_link %}
-					<div class="align_center">
-						<h4>{{ article.company_link.name }}</h4>
-					</div>
-					{% endif %}
 
 				{% if article.audio_links.count > 0 %}
 					<div class="postMediaPlayer">
@@ -42,6 +26,16 @@
 						</div>
 					</div>
 				{% endif %}
+
+				<div class="postMeta col-md-12">
+					<div class="postCredits">
+						<p class="postAuthor">
+							{{ article.author.tagline }} <strong>{{ article.author }}</strong>
+						</p>
+						<p class="postDate"><strong>Posted:</strong> {{ article.date_created|date:"M d, Y" }}</p>
+					</div>
+					
+				</div>
 
 			{% if article.work_link.tracklist.count > 0 %}
 
@@ -96,17 +90,18 @@
 		
 					{% if article.work_link %}
 					<h2><a href="/indie_db/artists?id={{ article.work_link.creator.id }}">{{ article.work_link.creator }}</a></h2>
+
+					{% elif article.artist_link %}
+		
+						<h2>{{ article.artist_link.name }}</h2>
+
+					{% elif article.company_link %}
+				
+						<h2>{{ article.company_link.name }}</h2>
+
+
 					{% endif %}
 
-					<div class="postMeta col-md-12">
-						<div class="postCredits">
-							<p class="postAuthor">
-								{{ article.author.tagline }} <strong>{{ article.author }}</strong>
-							</p>
-							<p class="postDate"><strong>Posted:</strong> {{ article.date_created|date:"M d, Y" }}</p>
-						</div>
-						
-					</div>
 
 				</div>
 			</div>
