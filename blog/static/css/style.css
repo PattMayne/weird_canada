@@ -325,7 +325,7 @@ button,
 input,
 select,
 textarea {
-  font-family: inherit;
+  font-family: Gibson, "Chunkfive", "Helvetica Neue", Helvetica, Arial, sans-serif;;
   font-size: 100%;
   margin: 0;
 }
